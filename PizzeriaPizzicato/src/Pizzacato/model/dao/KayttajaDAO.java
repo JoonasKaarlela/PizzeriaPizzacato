@@ -1,5 +1,5 @@
 package Pizzacato.model.dao;
 
-public class Testi3 {
-
+public class KayttajaDAO {
+	
 }

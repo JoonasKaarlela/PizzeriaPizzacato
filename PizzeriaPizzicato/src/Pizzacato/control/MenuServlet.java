@@ -28,6 +28,9 @@ public class MenuServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		
+		// Attribuutit korjataan perjantaina oikean nimisiksi
+		
 		PizzaDAO pizzadao = new PizzaDAO();
 		Arraylist<Pizza> pizzat = pizzadao.findAll();
 		

@@ -1,5 +1,5 @@
 package Pizzacato.model;
 
-public class Testi {
+public class Test {
 
 }

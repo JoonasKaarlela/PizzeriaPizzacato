@@ -6,11 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import Pizzacato.model.Kayttaja;
+
 public class KayttajaDAO extends DataAccessObject {
 	
-	
-	// Vaihda tyypiksi Kayttaja, palauta haettu kayttaja
-	public void haeKayttaja(String kayttajatunnus, String salasana) throws SQLException{
+
+	public Kayttaja haeKayttaja(String kayttajatunnus, String salasana) throws SQLException{
 		
 		// YHTEYS TIETOKANTAAN
 		Connection conn = getConnection();
@@ -21,9 +22,8 @@ public class KayttajaDAO extends DataAccessObject {
 		Statement statement = conn.createStatement();
 
 		ResultSet results = statement.executeQuery(query);
-		// id, käyttäjätunnus, salasana, osoite, s-posti, omistaja
 		
-		//Kayttaja kayttaja = null;
+		Kayttaja kayttaja = null;
 		if(!results.next()){
 			System.out.println("KAYTTAJÄÄ EI LÖYTYNYT");
 		} else {
@@ -34,10 +34,10 @@ public class KayttajaDAO extends DataAccessObject {
 			String sposti = results.getString(5);
 			Boolean omistaja = results.getBoolean(6);
 			
-			//kayttaja = new Kayttaja(id, kayttaja_tunnus, kayttaja_salasana, osoite, sposti, omistaja);
+			kayttaja = new Kayttaja(id, kayttaja_tunnus, kayttaja_salasana, osoite, sposti, omistaja);
 		}
 		
-		//return Kayttaja;
+		return kayttaja;
 		
 	}
 	

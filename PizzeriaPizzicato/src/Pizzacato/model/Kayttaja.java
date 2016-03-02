@@ -9,7 +9,7 @@ public class Kayttaja {
 		private boolean omistaja;
 
 
-public Kayttaja(String kayttaja, String kayttajatunnus, String salasana, boolean omistaja){
+public Kayttaja(String kayttaja_id, String kayttajatunnus, String salasana, String osoite, String sahkoposti, boolean omistaja){
 		this.kayttaja_id = kayttaja_id;
 		this.kayttajatunnus = kayttajatunnus;
 		this.salasana = salasana;

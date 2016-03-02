@@ -1,5 +1,5 @@
 package Pizzacato.model.dao;
 
-public class PizzaDAO {
+public class PizzaDAO{
 
 }

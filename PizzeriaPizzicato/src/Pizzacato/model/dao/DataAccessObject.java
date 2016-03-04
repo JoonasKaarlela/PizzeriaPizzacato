@@ -15,7 +15,7 @@ public class DataAccessObject {
 
 		String username = "a1500924";
 		String password = "xoMAsf72e";
-		String url = "jbdc:mysql://proto411.haaga-helia.fi";
+		String url = "jdbc:mariadb://localhost:3306/a1500924";
 
 		
 		try {

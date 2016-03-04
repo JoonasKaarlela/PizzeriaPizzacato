@@ -1,15 +1,18 @@
 package Pizzacato.control;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Pizzacato.control.Arraylist;
-import Pizzacato.control.Pizza;
-import Pizzacato.control.PizzaDAO;
+
+import Pizzacato.model.Pizza;
+import Pizzacato.model.dao.PizzaDAO;
 
 /**
  * Matias K
@@ -17,23 +20,20 @@ import Pizzacato.control.PizzaDAO;
 @WebServlet("/Menu")
 public class MenuServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
-    public MenuServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		
-		
-		// Attribuutit korjataan perjantaina oikean nimisiksi
-		
+		// Luodaan pizzadao ja haetaan kaikki pizzat
 		PizzaDAO pizzadao = new PizzaDAO();
-		Arraylist<Pizza> pizzat = pizzadao.findAll();
-		
+		ArrayList<Pizza> pizzat = new ArrayList<>();
+		try {
+			pizzat = pizzadao.haePizzat();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		// Tallennetaan request-olion alle kaikki pizzat
 		request.setAttribute("pizzat", pizzat);
 		
 		String jsp = "/view/Menu.jsp";

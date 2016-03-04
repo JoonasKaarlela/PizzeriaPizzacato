@@ -35,6 +35,7 @@ public class ListaaPizzatServlet extends HttpServlet {
 		}
 		// Tallennetaan request-olion alle kaikki pizzat
 		request.setAttribute("pizzat", pizzat);
+		request.setAttribute("test", "TESTI");
 		
 		String jsp = "/view/Menu.jsp";
 		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);

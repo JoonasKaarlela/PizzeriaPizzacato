@@ -13,7 +13,7 @@
 	<div id="wrapper">
 		
 		<div id="header">
-			<div id="logo"><img src="../img/pizzerialogo-lapinakyva.png" width="50" />PizzeriaPizzicato</div>
+			<div id="logo"><img src="pizzerialogo-lapinakyva.png" width="50" />PizzeriaPizzicato</div>
 			<div id="kirjaudu">
 				<form method=post action="Kirjaudu" id="kirjaudu_form">
 					<div id="kayttajatunnus">
@@ -52,7 +52,7 @@
                     <div class="menuitem">
                         <table>
                             <tr>
-                                <td valign="middle"><div class="pizzakuva"><img src="../img/pizza.png" width="120" /></div></td>
+                                <td valign="middle"><div class="pizzakuva"><img src="pizza.png" width="120" /></div></td>
                                 <td>
                                 	<div class="pizzainfo">
 		
@@ -74,7 +74,7 @@
                     <div class="menuitem">
                         <table>
                             <tr>
-                                <td valign="middle"><div class="pizzakuva"><img src="../img/pizza.png" width="120" /></div></td>
+                                <td valign="middle"><div class="pizzakuva"><img src="pizza.png" width="120" /></div></td>
                                 <td>
                                 	<div class="pizzainfo">
 		

@@ -21,13 +21,6 @@ public class Pizza {
 		
 		}
 	
-	public String getKuva() {
-		return kuva;
-	}
-
-	public void setKuva(String kuva) {
-		this.kuva = kuva;
-	}
 
 	public Pizza(){
 		this.pizza_id = "";
@@ -86,6 +79,14 @@ public class Pizza {
 
 	public void setHinta(double hinta) {
 		this.hinta = hinta;
+	}
+	
+	public String getKuva() {
+		return kuva;
+	}
+	
+	public void setKuva(String kuva) {
+		this.kuva = kuva;
 	}
 
 	@Override

@@ -17,7 +17,6 @@ public class DataAccessObject {
 		String password = "xoMAsf72e";
 		String url = "jdbc:mariadb://localhost:3306/a1500924";
 
-		
 		try {
 			Class.forName("org.mariadb.jdbc.Driver").newInstance();
 			connection = DriverManager.getConnection(url, username, password);

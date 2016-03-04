@@ -33,7 +33,6 @@ public class PiilotapizzaServlet extends HttpServlet {
 		
 		System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
 				
-	response.sendRedirect("Menu");	
 	}
 		response.sendRedirect("Menu");	
 

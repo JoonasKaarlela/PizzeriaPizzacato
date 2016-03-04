@@ -8,17 +8,27 @@ public class Pizza {
 	private String kuvaus;
 	private boolean listalla;
 	private double hinta;
+	private String kuva;
 	
-	public Pizza (String pizza_id,String nimi, String tayte_id, String kuvaus,boolean listalla, Double hinta){
+	public Pizza (String pizza_id,String nimi, String tayte_id, String kuvaus,boolean listalla, Double hinta, String kuva){
 		this.pizza_id = pizza_id;
 		this.nimi = nimi;
 		this.tayte_id = tayte_id;
 		this.kuvaus = kuvaus;
 		this.listalla = listalla;
 		this.hinta = hinta;
+		this.kuva = kuva;
 		
 		}
 	
+	public String getKuva() {
+		return kuva;
+	}
+
+	public void setKuva(String kuva) {
+		this.kuva = kuva;
+	}
+
 	public Pizza(){
 		this.pizza_id = "";
 		this.nimi = "";
@@ -80,7 +90,8 @@ public class Pizza {
 	@Override
 	public String toString() {
 		return "Pizza [pizza_id=" + pizza_id + ", nimi=" + nimi + ", tayte_id="
-				+ tayte_id + ", kuvaus=" + kuvaus + ", hinta=" + hinta + "]";
+				+ tayte_id + ", kuvaus=" + kuvaus + ", listalla=" + listalla
+				+ ", hinta=" + hinta + ", kuva=" + kuva + "]";
 	}
 	
 	

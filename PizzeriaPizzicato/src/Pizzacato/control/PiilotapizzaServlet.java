@@ -35,7 +35,7 @@ public class PiilotapizzaServlet extends HttpServlet {
 				
 	response.sendRedirect("Menu");	
 	}
-	
+		response.sendRedirect("Menu");	
 
 }
 }

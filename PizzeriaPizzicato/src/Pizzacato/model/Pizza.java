@@ -2,17 +2,17 @@ package Pizzacato.model;
 
 public class Pizza {
 	
-	private String pizzaId;
+	private String pizza_id;
 	private String nimi;
-	private String tayteId;
+	private String tayte_id;
 	private String kuvaus;
 	private boolean listalla;
 	private double hinta;
 	
-	public Pizza (String pizzaId,String nimi, String tayteId, String kuvaus,boolean listalla, Double hinta){
-		this.pizzaId = pizzaId;
+	public Pizza (String pizza_id,String nimi, String tayte_id, String kuvaus,boolean listalla, Double hinta){
+		this.pizza_id = pizza_id;
 		this.nimi = nimi;
-		this.tayteId = tayteId;
+		this.tayte_id = tayte_id;
 		this.kuvaus = kuvaus;
 		this.listalla = listalla;
 		this.hinta = hinta;
@@ -20,9 +20,9 @@ public class Pizza {
 		}
 	
 	public Pizza(){
-		this.pizzaId = "";
+		this.pizza_id = "";
 		this.nimi = "";
-		this.tayteId = "";
+		this.tayte_id = "";
 		this.kuvaus = "";
 		this.listalla = false;
 		this.hinta = 0.00;
@@ -37,12 +37,12 @@ public class Pizza {
 		this.nimi = nimi;
 	}
 
-	public String getTayteId() {
-		return tayteId;
+	public String getTayte_id() {
+		return tayte_id;
 	}
 
-	public void setTayteId(String tayteId) {
-		this.tayteId = tayteId;
+	public void setTayte_id(String tayte_id) {
+		this.tayte_id = tayte_id;
 	}
 
 	public String getKuvaus() {
@@ -53,12 +53,12 @@ public class Pizza {
 		this.kuvaus = kuvaus;
 	}
 
-	public String getPizzaId() {
-		return pizzaId;
+	public String getPizza_id() {
+		return pizza_id;
 	}
 
-	public void setPizzaId(String pizzaId) {
-		this.pizzaId = pizzaId;
+	public void setPizza_id(String pizza_id) {
+		this.pizza_id = pizza_id;
 	}
 	
 	public void setListalla(boolean listalla){
@@ -79,8 +79,8 @@ public class Pizza {
 
 	@Override
 	public String toString() {
-		return "Pizza [pizzaId=" + pizzaId + ", nimi=" + nimi + ", tayteId="
-				+ tayteId + ", kuvaus=" + kuvaus + ", hinta=" + hinta + "]";
+		return "Pizza [pizza_id=" + pizza_id + ", nimi=" + nimi + ", tayte_id="
+				+ tayte_id + ", kuvaus=" + kuvaus + ", hinta=" + hinta + "]";
 	}
 	
 	

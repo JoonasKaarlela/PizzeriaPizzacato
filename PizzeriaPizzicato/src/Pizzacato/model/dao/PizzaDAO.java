@@ -18,7 +18,7 @@ public class PizzaDAO extends DataAccessObject{
 		// YHTEYS
 		Connection conn = getConnection();
 		
-		// TYHJÄ LISTA PIZZOILLE
+		// TYHJï¿½ LISTA PIZZOILLE
 		ArrayList<Pizza> pizzat = new ArrayList<>();
 		
 		// HAKU LAUSE
@@ -26,7 +26,7 @@ public class PizzaDAO extends DataAccessObject{
 		Statement statement = conn.createStatement();
 		ResultSet results = statement.executeQuery(query);
 		
-		// ITEROI TULOKSET LÄPI => LUO UUSI PIZZA OLIO => LISÄÄ LISTAAN...
+		// ITEROI TULOKSET Lï¿½PI => LUO UUSI PIZZA OLIO => LISï¿½ï¿½ LISTAAN...
 		while(results.next()){
 			String id = results.getString(1);
 			String nimi = results.getString(2);
@@ -44,17 +44,17 @@ public class PizzaDAO extends DataAccessObject{
 	
 
 	public void lisaaPizza(Pizza pizza) throws SQLException{
-		// LISÄÄ UUSI PIZZA TIETOKANTAAN.
+		// LISï¿½ï¿½ UUSI PIZZA TIETOKANTAAN.
 		
 		// YHTEYS
 		Connection conn = getConnection();
 		
-		// LISÄYS LAUSE
-		String query = "INSERT INTO pizza(pizzaId, nimi, tayteId, kuvaus, listalla, hinta) VALUES(?, ?, ?, ?, ?, ?)";
+		// LISï¿½YS LAUSE
+		String query = "INSERT INTO pizza(pizza_id, nimi, tayte_id, kuvaus, listalla, hinta) VALUES(?, ?, ?, ?, ?, ?)";
 		PreparedStatement statement = conn.prepareStatement(query);
-		statement.setString(1, pizza.getPizzaId());
+		statement.setString(1, pizza.getPizza_id());
 		statement.setString(2, pizza.getNimi());
-		statement.setString(3, pizza.getTayteId());
+		statement.setString(3, pizza.getTayte_id());
 		statement.setString(4, pizza.getKuvaus());
 		statement.setBoolean(5, pizza.getListalla());
 		statement.setDouble(6, pizza.getHinta());
@@ -62,7 +62,7 @@ public class PizzaDAO extends DataAccessObject{
 		// EXECUTE
 		int syotettiin = statement.executeUpdate();
 		if(syotettiin > 0){
-			System.out.println("uusi pizza: " + pizza.getNimi() + " lisättiin tietokantaan...");
+			System.out.println("uusi pizza: " + pizza.getNimi() + " lisï¿½ttiin tietokantaan...");
 		}
 		
 	}
@@ -104,7 +104,7 @@ public class PizzaDAO extends DataAccessObject{
 	}
 	
 	public void naytaListalla(String id) throws SQLException{
-		// NÄYTÄ KYSEINEN PIZZA LISTALLA
+		// Nï¿½YTï¿½ KYSEINEN PIZZA LISTALLA
 		
 		// YHTEYS
 		Connection conn = getConnection();
@@ -117,7 +117,7 @@ public class PizzaDAO extends DataAccessObject{
 		// EXECUTE
 		int asetettiin_nakyviin = statement.executeUpdate();
 		if(asetettiin_nakyviin > 0){
-			System.out.println("pizza " + id + " asetettiin näkyviin listalle");
+			System.out.println("pizza " + id + " asetettiin nï¿½kyviin listalle");
 		}
 	}
 	

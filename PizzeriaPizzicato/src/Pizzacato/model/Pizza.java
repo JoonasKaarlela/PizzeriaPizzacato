@@ -10,7 +10,7 @@ public class Pizza {
 	private double hinta;
 	private String kuva;
 	
-	public Pizza (String pizza_id,String nimi, String tayte_id, String kuvaus,boolean listalla, Double hinta, String kuva){
+	public Pizza(String pizza_id,String nimi, String tayte_id, String kuvaus,boolean listalla, Double hinta, String kuva){
 		this.pizza_id = pizza_id;
 		this.nimi = nimi;
 		this.tayte_id = tayte_id;

@@ -22,7 +22,7 @@ public class PizzaDAO extends DataAccessObject{
 		ArrayList<Pizza> pizzat = new ArrayList<>();
 		
 		// HAKU LAUSE
-		String query = "SELECT * FROM pizza";
+		String query = "SELECT * FROM PIZZA";
 		Statement statement = conn.createStatement();
 		ResultSet results = statement.executeQuery(query);
 		
@@ -50,7 +50,7 @@ public class PizzaDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		
 		// LIS�YS LAUSE
-		String query = "INSERT INTO pizza(pizza_id, nimi, tayte_id, kuvaus, listalla, hinta) VALUES(?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO PIZZA(pizza_id, nimi, tayte_id, kuvaus, listalla, hinta) VALUES(?, ?, ?, ?, ?, ?)";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, pizza.getPizza_id());
 		statement.setString(2, pizza.getNimi());
@@ -74,7 +74,7 @@ public class PizzaDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		
 		// POISTO LAUSE
-		String query = "DELETE FROM pizza WHERE pizzaId=?";
+		String query = "DELETE FROM PIZZA WHERE pizzaId=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, id);
 		
@@ -92,7 +92,7 @@ public class PizzaDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		
 		// PIILOTA LAUSE
-		String query = "UPDATE pizza SET listalla=False WHERE pizzaId=?";
+		String query = "UPDATE PIZZA SET listalla=false WHERE pizzaId=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, id);
 		
@@ -110,7 +110,7 @@ public class PizzaDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		
 		// NAYTA LAUSE
-		String query = "UPDATE pizza SET listalla=True WHERE pizzaId=?";
+		String query = "UPDATE PIZZA SET listalla=true WHERE pizzaId=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, id);
 		
@@ -118,6 +118,29 @@ public class PizzaDAO extends DataAccessObject{
 		int asetettiin_nakyviin = statement.executeUpdate();
 		if(asetettiin_nakyviin > 0){
 			System.out.println("pizza " + id + " asetettiin n�kyviin listalle");
+		}
+	}
+	
+	public void muokkaaPizzaa(Pizza pizza) throws SQLException{
+		// TALLENNA UUDET TIEDOT
+		
+		//YHTEYS
+		Connection conn = getConnection();
+		
+		//PAIVITA LAUSE
+		String query = "UPDATE PIZZA SET nimi=?, tayte_id=?, kuvaus=?, listalla=?, hinta=? WHERE pizza_id=?";
+		PreparedStatement statement = conn.prepareStatement(query);
+		statement.setString(1, pizza.getNimi());
+		statement.setString(2, pizza.getTayte_id());
+		statement.setString(3, pizza.getKuvaus());
+		statement.setBoolean(4, pizza.getListalla());
+		statement.setDouble(5, pizza.getHinta());
+		statement.setString(6, pizza.getPizza_id());
+		
+		//EXECUTE
+		int paivitettiin = statement.executeUpdate();
+		if(paivitettiin > 0){
+			System.out.println("Paivitettiin: " + paivitettiin + " attribuuttia");
 		}
 	}
 	

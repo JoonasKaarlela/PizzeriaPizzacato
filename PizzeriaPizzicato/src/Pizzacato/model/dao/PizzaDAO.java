@@ -59,23 +59,66 @@ public class PizzaDAO extends DataAccessObject{
 		statement.setBoolean(5, pizza.getListalla());
 		statement.setDouble(6, pizza.getHinta());
 		
+		// EXECUTE
 		int syotettiin = statement.executeUpdate();
-		if(syotettiin > 1){
-			System.out.println("uusi pizza lisättiin!");
+		if(syotettiin > 0){
+			System.out.println("uusi pizza: " + pizza.getNimi() + " lisättiin tietokantaan...");
 		}
 		
 	}
 	
-	public void poistaPizza() throws SQLException{
+	public void poistaPizza(String id) throws SQLException{
+		// POISTA KYSEINEN PIZZA TIETOKANNASTA
 		
+		// YHTEYS
+		Connection conn = getConnection();
+		
+		// POISTO LAUSE
+		String query = "DELETE FROM pizza WHERE pizzaId=?";
+		PreparedStatement statement = conn.prepareStatement(query);
+		statement.setString(1, id);
+		
+		// EXECUTE
+		int poistettiin = statement.executeUpdate();
+		if( poistettiin > 0){
+			System.out.println("pizza " + id + " poistettiin tietokannasta...");
+		}
 	}
 	
-	public void piilotaListalla() throws SQLException{
-	
+	public void piilotaListalla(String id) throws SQLException{
+		// PIILOTA KYSEINEN PIZZA LISTALLA
+		
+		// YHTEYS
+		Connection conn = getConnection();
+		
+		// PIILOTA LAUSE
+		String query = "UPDATE pizza SET listalla=False WHERE pizzaId=?";
+		PreparedStatement statement = conn.prepareStatement(query);
+		statement.setString(1, id);
+		
+		//EXECUTE
+		int piilotettiin = statement.executeUpdate();
+		if(piilotettiin > 0){
+			System.out.println("pizza " + id + " piilotettiin listalta");
+		}
 	}
 	
-	public void naytaListalla() throws SQLException{
+	public void naytaListalla(String id) throws SQLException{
+		// NÄYTÄ KYSEINEN PIZZA LISTALLA
 		
+		// YHTEYS
+		Connection conn = getConnection();
+		
+		// NAYTA LAUSE
+		String query = "UPDATE pizza SET listalla=True WHERE pizzaId=?";
+		PreparedStatement statement = conn.prepareStatement(query);
+		statement.setString(1, id);
+		
+		// EXECUTE
+		int asetettiin_nakyviin = statement.executeUpdate();
+		if(asetettiin_nakyviin > 0){
+			System.out.println("pizza " + id + " asetettiin näkyviin listalle");
+		}
 	}
 	
 	

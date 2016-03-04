@@ -1,0 +1,147 @@
+body, html {
+	margin:0;
+	padding: 0;
+	background-color:#222;
+	color:#FFF;
+	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-size:cover;
+	background-repeat:no-repeat;
+}
+
+
+#wrapper {
+	margin:auto;
+	padding-top:20px;
+	width: 1024px;
+}
+
+a {
+	text-decoration: none;
+	color: #FFF;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* HEADER ALKAA*/
+#header {
+	width:100%;
+}
+
+#logo {
+	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size:40px;
+	float: left;
+	height:100px;
+}
+
+#kirjaudu {
+	float:right;
+}
+
+#nav {
+	width: 100%;
+	padding:0;
+	background: #CCC;
+}
+
+#nav ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+#nav ul li {
+	display:inline-block;
+	padding: 10px 20px;
+	border-top: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	border-left:0;
+	margin:0;
+	float:left;
+	
+}
+
+#nav ul li:first-child {
+	border-left: 1px solid #CCC;
+}
+/* HEADER LOPPUU */
+
+
+/* BANNER ALKAA */
+#banner {
+	height:300px;
+	background:url(../img/banner.jpg);
+	background-repeat:no-repeat;
+}
+
+.bannertxt {
+	position: relative;
+	top: 100px;
+	left: 40px;
+	font-size: 100px;
+	color: #FFF;
+}
+/* BANNER LOPPUU */
+
+/* MENU ALKAA */
+.menu {
+	padding:0px 20px 0px 20px
+}
+
+.menuitemwrap {
+	width:450px;
+	float: left;
+	margin: 21px;
+}
+
+.menuitem {
+	border: 1px solid #CCC;
+}
+
+.menuitem table {
+	width: 100%;
+}
+
+.pizzamenu {
+	margin:0;
+	padding:0;
+
+}
+
+.pizzamenu li {
+	width: 45%;
+	padding:1%;
+	margin: 10px 1%;
+	background-color: #333;
+	float:left;
+	opacity: 0.8;
+	border: 1px solid #CCC;
+	display: inline-block;
+}
+.pizzakuva {
+	float:left;
+}
+
+.pizzainfo {
+	padding-right:20px;
+}
+.pizzanimi {
+	font-weight:bold;
+}
+
+.pizzahinta button {
+	float: right;
+	margin-right:20px;
+}
+
+.pizzakuvaus {
+}
+/* MENU LOPPUU */
+
+
+.clear {
+	clear:both;
+}
+

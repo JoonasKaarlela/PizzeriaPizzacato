@@ -36,6 +36,7 @@ public class Pizza {
 		this.kuvaus = "";
 		this.listalla = false;
 		this.hinta = 0.00;
+		this.kuva = "";
 		
 	}
 

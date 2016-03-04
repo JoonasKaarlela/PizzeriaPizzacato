@@ -60,6 +60,14 @@ public class Pizza {
 	public void setPizzaId(String pizzaId) {
 		this.pizzaId = pizzaId;
 	}
+	
+	public void setListalla(boolean listalla){
+		this.listalla = listalla;
+	}
+	
+	public boolean getListalla(){
+		return this.listalla;
+	}
 
 	public double getHinta() {
 		return hinta;

@@ -14,7 +14,7 @@ import Pizzacato.model.Kayttaja;
 import Pizzacato.model.dao.KayttajaDAO;
 
 
-@WebServlet("/KirjauduServlet")
+@WebServlet("/Kirjaudu")
 public class KirjauduServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -47,7 +47,7 @@ public class KirjauduServlet extends HttpServlet {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("kayttaja", kayttaja);
 			
-			// KÄYTTÖ = HttpSession session = request.getSession();
+			// KÄYTTÖ = HttpSession session = request.getSession(false); | false = ei tehdä uutta sessiota
 			// session.getAttribute("kayttaja");
 			
 		}

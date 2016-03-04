@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Menu</title>
-<link href="../css/styles.css" rel="stylesheet" type="text/css">
+<link href="styles.css" rel="stylesheet" type="text/css">
+<link href="grid.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	
@@ -13,7 +14,19 @@
 		
 		<div id="header">
 			<div id="logo"><img src="../img/pizzerialogo-lapinakyva.png" width="50" />PizzeriaPizzicato</div>
-			<div id="kirjaudu"><a href="#">Kirjaudu</a></div>
+			<div id="kirjaudu">
+				<form method=post action="Kirjaudu" id="kirjaudu_form">
+					<div id="kayttajatunnus">
+						<div> <input placeholder=kayttajatunnus name=kayttajatunnus /> </div>
+					</div>
+					<div id="salasana"> 
+						<div> <input placeholder=salasana name=salasana type=password /> </div>
+					</div>
+					<div id="submit"> 
+						<div> <button type=submit> kirjaudu </button> </div>
+					</div> 
+				</form>
+			</div>
             
             <div class="clear"></div>
             

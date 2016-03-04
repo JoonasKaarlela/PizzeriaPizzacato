@@ -36,9 +36,43 @@ a:hover {
 	height:100px;
 }
 
+
 #kirjaudu {
 	float:right;
 }
+
+#kirjaudu_form{
+	width:100%;
+	height:100%;
+	display:flex;
+	flex:nowrap row;
+}
+
+#kayttajatunnus{
+	width:40%;
+	height:100%;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+#salasana{
+	width:40%;
+	height:100%;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+#submit{
+	width:20%;
+	height:100%;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+
 
 #nav {
 	width: 100%;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.util.ArrayList, Pizzacato.model.Pizza" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,20 +15,36 @@
 		
 		<div id="header">
 			<div id="logo"><img src="pizzerialogo-lapinakyva.png" width="50" />PizzeriaPizzicato</div>
+			
+			<!--  JOS KIRJAUTUNUT SISÄÄN NÄYTÄ KIRAJUDU ULOS, JOS EI NIIN NÄYTÄ KIRJAUTUMIS LOMAKE -->
 			<div id="kirjaudu">
-				<form method=post action="Kirjaudu" id="kirjaudu_form">
-					<div id="kayttajatunnus">
-						<div> <input placeholder=kayttajatunnus name=kayttajatunnus /> </div>
-					</div>
-					<div id="salasana"> 
-						<div> <input placeholder=salasana name=salasana type=password /> </div>
-					</div>
-					<div id="submit"> 
-						<div> <button type=submit> kirjaudu </button> </div>
-					</div> 
-				</form>
+				<c:choose>
+	
+					<c:when test="${request.getSession().getAttribute("kayttaja") != null }">
+						<div>
+							<div> Hello, ${request.getSession().getAttribute("kayttaja").getKayttajatunnus() }</div>
+							<div> <a href="logout"> kirjaudu ulos </a> </div>
+						</div>
+					</c:when>
+					
+					<c:otherwise>
+						<form method=post action="Kirjaudu" id="kirjaudu_form">
+							<div id="kayttajatunnus">
+								<div> <input placeholder=kayttajatunnus name=kayttajatunnus /> </div>
+							</div>
+							<div id="salasana"> 
+								<div> <input placeholder=salasana name=salasana type=password /> </div>
+							</div>
+							<div id="submit"> 
+								<div> <button type=submit> kirjaudu </button> </div>
+							</div> 
+						</form>
+					</c:otherwise>
+					
+				</c:choose>
 			</div>
 
+			<!--  NAVIGOINTI -->
             <div class="clear"></div>
 			<div id="nav">
 				<ul>
@@ -40,60 +57,37 @@
 		
         <div class="clear"></div>
         
+        <!--  BANNERI -->
 		<div id="banner">
 			<div class="bannertxt">Pizzaa</div>
 		</div>
         
+        <!--  PIZZA MENU ALKAA -->
 		<div id="content">
 			<div class="menu">
 				
                 <div class="menuitemwrap">
                     <div class="menuitem">
+                    
                         <table>
-                        
-                        <%
-                        	ArrayList<Pizza> pizzat = new ArrayList<>(); 
-							pizzat = (ArrayList<Pizza>) request.getAttribute("pizzat");
-                        	for(Pizza pizza : pizzat){
-                        %>
-       
-                        <tr>
+                        <!--  LOOPPAA PIZZAT -->
+                        <c:forEach items="${pizzat}" value="pizza">
+        					<tr>
                         	<form method=post action=lisaaPizza>
-                                <td valign="middle"><div class="pizzakuva"><img src=<%pizza.getKuva(); %> width="120" /></div></td>
+                                <td valign="middle"><div class="pizzakuva"><img src=${pizza.getKuva()} width="120" /></div></td>
                                 <td>
                                 	<div class="pizzainfo">
-                                        <div class="pizzanimi"><%=pizza.getNimi() %></div>
-                                    	<div class="pizzakuvaus"><%=pizza.getKuvaus() %></div>                                     
-										<div class="pizzahinta">13,37 € <button type=submit value="Lisää">Lisää</button></div>
+                                        <div class="pizzanimi"> ${pizza.getNimi()} </div>
+                                    	<div class="pizzakuvaus"> ${pizza.getKuvaus()}</div>                                     
+										<div class="pizzahinta"> ${pizza.getHinta()}€ <button type=submit value="Lisää">Lisää</button></div>
                                     </div>
-									<input type=hidden name=pizzan_id value=<%=pizza.getPizza_id() %> />
+									<input type=hidden name=pizzan_id value=${pizza.getPizza_id()} />
                                 </td>
                              </form>
                          </tr>
-                        <% } %>
+                        </c:forEach>
                         </table>
-                    </div>
-                </div>
-                
-                
-                <div class="menuitemwrap">
-                    <div class="menuitem">
-                        <table>
-                            <tr>
-                                <td valign="middle"><div class="pizzakuva"><img src="pizza.png" width="120" /></div></td>
-                                <td>
-                                	<div class="pizzainfo">
-		
-                                        <div class="pizzanimi">Joku Pizza</div>
-
-                                    	<div class="pizzakuvaus">Fusce purus morbi tortor magna condimentum vel, placerat id blandit sit amet tortor.</div>
-                                        
-										<div class="pizzahinta">13,37 € <button value="Lisää">Lisää</button></div>
-                                    </div>
-
-                                </td>
-                            </tr>
-                        </table>
+                        
                     </div>
                 </div>
                 

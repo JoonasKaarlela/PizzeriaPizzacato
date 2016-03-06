@@ -22,7 +22,7 @@
 	
 					<c:when test="${request.getSession().getAttribute("kayttaja") != null }">
 						<div>
-							<div> Hello, ${request.getSession().getAttribute("kayttaja").getKayttajatunnus() }</div>
+							<div> Terve, ${request.getSession().getAttribute("kayttaja").getKayttajatunnus()}</div>
 							<div> <a href="logout"> kirjaudu ulos </a> </div>
 						</div>
 					</c:when>

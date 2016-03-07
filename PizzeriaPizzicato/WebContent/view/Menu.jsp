@@ -20,7 +20,7 @@
 			<div id="kirjaudu">
 				<c:choose>
 	
-					<c:when test="${request.getSession().getAttribute("kayttaja") != null }">
+					<c:when test="${request.getSession().getAttribute('kayttaja') != null }">
 						<div>
 							<div> Terve, ${request.getSession().getAttribute("kayttaja").getKayttajatunnus()}</div>
 							<div> <a href="logout"> kirjaudu ulos </a> </div>

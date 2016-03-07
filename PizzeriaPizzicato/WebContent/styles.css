@@ -154,6 +154,11 @@ button{
 	width: 100%;
 }
 
+.menuitem td:first-child {
+	width: 150px;
+	height: 150px;
+}
+
 .pizzamenu {
 	margin:0;
 	padding:0;

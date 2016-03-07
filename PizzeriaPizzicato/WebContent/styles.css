@@ -141,13 +141,14 @@ button{
 }
 
 .menuitemwrap {
-	width:450px;
+	width:472px;
 	float: left;
-	margin: 21px;
+	margin: 10px;
 }
 
 .menuitem {
 	border: 1px solid #CCC;
+	padding: 10px;
 }
 
 .menuitem table {
@@ -155,8 +156,8 @@ button{
 }
 
 .menuitem td:first-child {
-	width: 150px;
-	height: 150px;
+	width: 175px;
+	height: 175px;
 }
 
 .pizzamenu {

@@ -17,16 +17,14 @@
 			
 			<!--  JOS KIRJAUTUNUT SISÄÄN NÄYTÄ KIRAJUDU ULOS, JOS EI NIIN NÄYTÄ KIRJAUTUMIS LOMAKE -->
 			<div id="kirjaudu">
-				<c:choose>
-	
-					<c:when test="${request.getSession().getAttribute('kayttaja')}">
-						<div>
-							<div> Terve, ${request.getSession().getAttribute("kayttaja").getKayttajatunnus()}</div>
-							<div> <a href="logout"> kirjaudu ulos </a> </div>
-						</div>
-					</c:when>
+					<c:choose>
 					
-					<c:otherwise>
+						<c:when test="${kayttaja != null}">
+							<h1> Hei, <c:out value="${kayttaja.getKayttajatunnus()}"></c:out> </h1>
+							<div> <a href="logout"> kirjaudu ulos </a> </div>
+						</c:when>
+						
+						<c:otherwise>
 						<form method=post action="Kirjaudu" id="kirjaudu_form">
 							<div id="kayttajatunnus">
 								<div> <input placeholder=kayttajatunnus name=kayttajatunnus /> </div>
@@ -38,9 +36,9 @@
 								<div> <button type=submit> kirjaudu </button> </div>
 							</div> 
 						</form>
-					</c:otherwise>
-					
-				</c:choose>
+						</c:otherwise>
+						
+					</c:choose>
 			</div>
 
 			<!--  NAVIGOINTI -->

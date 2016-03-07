@@ -15,7 +15,7 @@ public Kayttaja(String kayttaja_id, String kayttajatunnus, String salasana, Stri
 		this.salasana = salasana;
 		this.osoite = osoite;
 		this.sahkoposti = sahkoposti;
-		this.omistaja = false;
+		this.omistaja = omistaja;
 		
 }
 
@@ -70,7 +70,7 @@ public void setSahkoposti(String sahkoposti) {
 }
 
 public boolean isOmistaja() {
-	return omistaja;
+	return this.omistaja;
 }
 
 public void setOmistaja(boolean omistaja) {

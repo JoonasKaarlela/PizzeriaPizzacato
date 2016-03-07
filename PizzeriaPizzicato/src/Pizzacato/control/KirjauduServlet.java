@@ -46,10 +46,6 @@ public class KirjauduServlet extends HttpServlet {
 		if( kayttaja != null){
 			HttpSession session = request.getSession(true);
 			session.setAttribute("kayttaja", kayttaja);
-			
-			// KÄYTTÖ = HttpSession session = request.getSession(false); | false = ei tehdä uutta sessiota
-			// session.getAttribute("kayttaja");
-			
 		}
 		
 		// OHJAA MENU SIVULLE

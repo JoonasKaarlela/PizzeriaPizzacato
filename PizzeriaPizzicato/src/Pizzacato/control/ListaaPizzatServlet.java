@@ -42,18 +42,15 @@ public class ListaaPizzatServlet extends HttpServlet {
 		try{
 			// Haetaan käyttäjä sessiosta
 			Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");		
-	
 			// Tsekataan onko käyttäjä omistaja vai asiakas
 			if( kayttaja.isOmistaja() ){
 				sivu = "/view/Omistaja.jsp";
 			} 
-			
 			// Kaikki ok => Renderaa sivu
 			RequestDispatcher dispather = getServletContext().getRequestDispatcher(sivu);	
 			dispather.forward(request, response);
 			
 		}catch(NullPointerException e){
-			
 			// Jos käyttäjä ei ole kirjautunut => renderaa Menu.jsp
 			RequestDispatcher dispather = getServletContext().getRequestDispatcher(sivu);	
 			dispather.forward(request, response);

@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Menu</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
-<link href="grid.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	
@@ -20,7 +19,7 @@
 			<div id="kirjaudu">
 				<c:choose>
 	
-					<c:when test="${request.getSession().getAttribute('kayttaja') != null }">
+					<c:when test="${request.getSession().getAttribute('kayttaja')}">
 						<div>
 							<div> Terve, ${request.getSession().getAttribute("kayttaja").getKayttajatunnus()}</div>
 							<div> <a href="logout"> kirjaudu ulos </a> </div>
@@ -68,9 +67,10 @@
 				
                 <div class="menuitemwrap">
                     <div class="menuitem">
-                     <!--  LOOPPAA PIZZAT -->
-                        <c:forEach var="pizza" items="${pizzat}">
-                        	
+
+                        <!--  LOOPPAA PIZZAT -->
+                        <c:forEach items="${pizzat}" var="pizza">
+
                         	<!--  JOS PIZZA LISTALLA=TRUE, NÄYTÄ PIZZA -->
                         <c:choose>
                         <c:when test="${pizza.getListalla()}">

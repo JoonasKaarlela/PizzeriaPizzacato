@@ -68,7 +68,7 @@
 				
                 <div class="menuitemwrap">
                     <div class="menuitem">
-                    
+                    	<form method=post action=lisaaPizza>
                         <table>
                         <!--  LOOPPAA PIZZAT -->
                         <c:forEach var="pizza" items="${pizzat}">
@@ -77,7 +77,6 @@
                         	<c:choose>
                         		<c:when test="${pizza.getListalla()}">
                         			<tr>
-                        			<form method=post action=lisaaPizza>
                                 		<td valign="middle"><div class="pizzakuva"><img src=${pizza.getKuva()} width="120" /></div></td>
                                			 <td>
                                 		<div class="pizzainfo">
@@ -87,14 +86,13 @@
                                     </div>
 									<input type=hidden name=pizzan_id value=${pizza.getPizza_id()} />
                                 	</td>
-                             	</form>
                        		    </tr>
                         	</c:when>
                         </c:choose>
                                         	
                         </c:forEach>
                         </table>
-                        
+                        </form>
                     </div>
                 </div>
                 

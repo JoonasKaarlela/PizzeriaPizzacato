@@ -68,31 +68,33 @@
 				
                 <div class="menuitemwrap">
                     <div class="menuitem">
-                    	<form method=post action=lisaaPizza>
-                        <table>
-                        <!--  LOOPPAA PIZZAT -->
+                     <!--  LOOPPAA PIZZAT -->
                         <c:forEach var="pizza" items="${pizzat}">
                         	
                         	<!--  JOS PIZZA LISTALLA=TRUE, NÄYTÄ PIZZA -->
-                        	<c:choose>
-                        		<c:when test="${pizza.getListalla()}">
-                        			<tr>
-                                		<td valign="middle"><div class="pizzakuva"><img src=${pizza.getKuva()} width="120" /></div></td>
-                               			 <td>
-                                		<div class="pizzainfo">
-                                        <div class="pizzanimi"> ${pizza.getNimi()} </div>
-                                    	<div class="pizzakuvaus"> ${pizza.getKuvaus()}</div>                                     
-										<div class="pizzahinta"> ${pizza.getHinta()}€ <button type=submit value="Lisää">Lisää</button></div>
-                                    </div>
-									<input type=hidden name=pizzan_id value=${pizza.getPizza_id()} />
-                                	</td>
-                       		    </tr>
-                        	</c:when>
+                        <c:choose>
+                        <c:when test="${pizza.getListalla()}">
+	                    	<form method=post action=lisaaPizza>
+		                        <table>
+		                       
+		                        		<tr>
+		                                	<td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" width="120" /></div></td>
+		                               		<td>
+		                                		<div class="pizzainfo">
+			                                        <div class="pizzanimi"> ${pizza.getNimi()} </div>
+			                                    	<div class="pizzakuvaus"> ${pizza.getKuvaus()}</div>                                     
+													<div class="pizzahinta"> ${pizza.getHinta()}€ <button type=submit value="Lisää">Lisää</button></div>
+		                                    	</div>
+											<input type=hidden name=pizzan_id value="${pizza.getPizza_id()}" />
+		                                	</td>
+		                       		    </tr>
+		                        
+		                        </table>
+	                        </form>
+                        </c:when>
                         </c:choose>
                                         	
                         </c:forEach>
-                        </table>
-                        </form>
                     </div>
                 </div>
                 

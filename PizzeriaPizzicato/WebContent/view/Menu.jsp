@@ -79,7 +79,7 @@
 		                        <table>
 		                       
 		                        	<tr>
-		                                <td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" /></div></td>
+		                                <td valign="middle"><div class="pizzakuva"><img src="pizza1.png" style="width:150px;height:125px;" /></div></td>
 		                               	<td valign="top">
 		                                	<div class="pizzainfo">
 			                                	<div class="pizzanimi"> ${pizza.getNimi()} </div>

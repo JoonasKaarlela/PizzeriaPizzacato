@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Pizzacato.model.Kayttaja;
 import Pizzacato.model.Pizza;
 import Pizzacato.model.dao.PizzaDAO;
 
@@ -36,9 +37,28 @@ public class ListaaPizzatServlet extends HttpServlet {
 		// Tallennetaan request-olion alle kaikki pizzat
 		request.setAttribute("pizzat", pizzat);
 		
-		String jsp = "/view/Menu.jsp";
-		RequestDispatcher dispather = getServletContext().getRequestDispatcher(jsp);
-		dispather.forward(request, response);
+		String sivu = "/view/Menu.jsp";
+		
+		try{
+			// Haetaan käyttäjä sessiosta
+			Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");		
+	
+			// Tsekataan onko käyttäjä omistaja vai asiakas
+			if( kayttaja.isOmistaja() ){
+				sivu = "/view/Omistaja.jsp";
+			} 
+			
+			// Kaikki ok => Renderaa sivu
+			RequestDispatcher dispather = getServletContext().getRequestDispatcher(sivu);	
+			dispather.forward(request, response);
+			
+		}catch(NullPointerException e){
+			
+			// Jos käyttäjä ei ole kirjautunut => renderaa Menu.jsp
+			RequestDispatcher dispather = getServletContext().getRequestDispatcher(sivu);	
+			dispather.forward(request, response);
+		}
+		
 		
 	}
 

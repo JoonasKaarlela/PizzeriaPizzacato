@@ -71,7 +71,7 @@
                     
                         <table>
                         <!--  LOOPPAA PIZZAT -->
-                        <c:forEach items="${pizzat}" value="pizza">
+                        <c:forEach var="pizza" items="${pizzat}">
                         	
                         	<!--  JOS PIZZA LISTALLA=TRUE, NÄYTÄ PIZZA -->
                         	<c:choose>

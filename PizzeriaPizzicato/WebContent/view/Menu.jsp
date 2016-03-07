@@ -36,6 +36,9 @@
 								<div> <button type=submit> kirjaudu </button> </div>
 							</div> 
 						</form>
+						<div class="error">
+							<p style="color:crimson"> <c:out value="${error}"></c:out></p>
+						</div>
 						</c:otherwise>
 						
 					</c:choose>

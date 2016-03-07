@@ -40,10 +40,18 @@ public class ListaaPizzatServlet extends HttpServlet {
 		String sivu = "/view/Menu.jsp";
 		
 		try{
+			// Nollaa errorit
+			request.removeAttribute("error");
+			
 			// Haetaan käyttäjä sessiosta
 			Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");	
 			System.out.println("Tervetuloa " + kayttaja.getKayttajatunnus() + "!");
 			request.setAttribute("kayttaja", kayttaja);
+			
+			// Haetaan mahdolliset errorit
+			String error = (String) request.getSession().getAttribute("error");
+			request.setAttribute("error", error);
+			
 			// Tsekataan onko käyttäjä omistaja vai asiakas
 			if( kayttaja.isOmistaja() ){
 				sivu = "/view/Omistaja.jsp";

@@ -18,7 +18,7 @@ public class KayttajaDAO extends DataAccessObject {
 		
 		
 		// HAKU LAUSE
-		String query = "SELECT * FROM KAYTTAJA WHERE kayttajatunnus=" + kayttajatunnus + " AND salasana=" + salasana;
+		String query = "SELECT * FROM KAYTTAJA WHERE kayttajatunnus=\"" + kayttajatunnus + "\" AND salasana=\"" + salasana + "\"";
 		Statement statement = conn.createStatement();
 
 		ResultSet results = statement.executeQuery(query);

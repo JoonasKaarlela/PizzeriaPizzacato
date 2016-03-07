@@ -35,7 +35,7 @@ public class KirjauduServlet extends HttpServlet {
 		
 		// KOKEILE KIRJAUTUA SISÄÄN.
 		try{
-			kayttaja = kayttajadao.haeKayttaja(kayttajatunnus, salasana);
+			kayttaja = (Kayttaja) kayttajadao.haeKayttaja(kayttajatunnus, salasana);
 		} catch(SQLException e){
 			System.out.println("Kirjautuminen epäonnistui");
 			System.out.println(e.getMessage());
@@ -44,10 +44,9 @@ public class KirjauduServlet extends HttpServlet {
 		// TSEKATAAN LÖYTYIKÖ KÄYTTÄJÄ
 		// JOS OK => TALLENNA TALLENNA UUTEEN "SESSIOON"
 		if( kayttaja != null){
-			HttpSession session = request.getSession(true);
-			session.setAttribute("kayttaja", kayttaja);
+			request.getSession(true).setAttribute("kayttaja", kayttaja);
+			request.getSession(false).setAttribute("token", "123");
 		}
-		
 		// OHJAA MENU SIVULLE
 		response.sendRedirect("Menu");
 		

@@ -41,11 +41,16 @@ public class ListaaPizzatServlet extends HttpServlet {
 		
 		try{
 			// Haetaan käyttäjä sessiosta
-			Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");		
+			Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");	
+			System.out.println("Tervetuloa " + kayttaja.getKayttajatunnus() + "!");
+			request.setAttribute("kayttaja", kayttaja);
 			// Tsekataan onko käyttäjä omistaja vai asiakas
 			if( kayttaja.isOmistaja() ){
 				sivu = "/view/Omistaja.jsp";
-			} 
+				System.out.println("Olet omistaja");
+			} else {
+				System.out.println("Et ole omistaja");
+			}
 			// Kaikki ok => Renderaa sivu
 			RequestDispatcher dispather = getServletContext().getRequestDispatcher(sivu);	
 			dispather.forward(request, response);
@@ -59,9 +64,5 @@ public class ListaaPizzatServlet extends HttpServlet {
 		
 	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
 
 }

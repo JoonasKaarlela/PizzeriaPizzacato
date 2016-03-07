@@ -75,7 +75,7 @@
                         <div class="menuitemwrap">
                    			<div class="menuitem">
 	                    	
-	                    	<form method=post action=lisaaPizza>
+	                    	<form method=post action=lisaaOstoskoriin>
 		                        <table>
 		                       
 		                        	<tr>
@@ -86,7 +86,7 @@
 			                                    <div class="pizzakuvaus"> ${pizza.getKuvaus()}</div>                                     
 												<div class="pizzahinta"> ${pizza.getHinta()}€ <button type=submit value="Lisää">Lisää</button></div>
 		                                    </div>
-											<input type=hidden name=pizzan_id value="${pizza.getPizza_id()}" />
+											<input type=hidden name=pizza_id value="${pizza}" />
 		                                </td>
 		                        	</tr>
 		                        

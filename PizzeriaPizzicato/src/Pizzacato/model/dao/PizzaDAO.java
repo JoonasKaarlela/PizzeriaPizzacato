@@ -34,7 +34,8 @@ public class PizzaDAO extends DataAccessObject{
 			String kuvaus = results.getString(4);
 			boolean listalla = results.getBoolean(5);
 			double hinta = results.getDouble(6);
-			Pizza pizza = new Pizza(id, nimi, tayte_id, kuvaus, listalla, hinta);
+			String kuva = "";
+			Pizza pizza = new Pizza(id, nimi, tayte_id, kuvaus, listalla, hinta, kuva);
 			pizzat.add(pizza);
 		}
 		

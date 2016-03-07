@@ -1,0 +1,46 @@
+package Pizzacato.control;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import Pizzacato.model.Pizza;
+import Pizzacato.model.dao.PizzaDAO;
+
+/**
+ * Marianne
+ */
+@WebServlet("/MuokkaaPizzaServlet")
+public class MuokkaaPizzaServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String id = request.getParameter("id");
+		String nimi = request.getParameter("nimi");
+		String tayte_id = request.getParameter("tayte_id");
+		String kuvaus = request.getParameter("kuvaus");
+		Boolean listalla = Boolean.parseBoolean(request.getParameter("listalla"));
+		Double hinta = Double.parseDouble(request.getParameter("hinta"));
+		String kuva = request.getParameter("kuva");
+		
+		PizzaDAO pizzadao = new PizzaDAO();
+		
+		Pizza pizza = new Pizza(id, nimi, tayte_id, kuvaus, listalla, hinta, kuva);
+		
+		try{
+			pizzadao.muokkaaPizzaa(pizza);
+		} catch(SQLException e){
+			System.out.println("ERROR: " + e.getMessage());
+		}
+		response.sendRedirect("menu");
+		
+	}
+}

@@ -75,11 +75,11 @@
                         <div class="menuitemwrap">
                    			<div class="menuitem">
 	                    	
-	                    	<form method=post action=lisaaPizza>
+	                    	<form method=post action=lisaaOstoskoriin>
 		                        <table>
 		                       
 		                        	<tr>
-		                                <td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" /></div></td>
+		                                <td valign="middle"><div class="pizzakuva"><img src="pizza1.png" style="width:150px;height:125px;" /></div></td>
 		                               	<td valign="top">
 		                                	<div class="pizzainfo">
 			                                	<div class="pizzanimi"> ${pizza.getNimi()} </div>
@@ -87,7 +87,7 @@
 												<div class="pizzahinta"> ${pizza.getHinta()}€</div>
 												<button type=submit value="Lisää">Lisää</button>
 		                                    </div>
-											<input type=hidden name=pizzan_id value="${pizza.getPizza_id()}" />
+											<input type=hidden name=pizza_id value="${pizza}" />
 		                                </td>
 		                        	</tr>
 		                        

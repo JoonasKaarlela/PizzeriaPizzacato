@@ -27,7 +27,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 		String tayte_id = request.getParameter("tayte_id");
 		String kuvaus = request.getParameter("kuvaus");
 		boolean listalla = false;
-		double hinta = Double.valueOf("hinta");
+		double hinta = Double.parseDouble(request.getParameter("hinta"));
 		String kuva = request.getParameter("kuva");
 	
 		

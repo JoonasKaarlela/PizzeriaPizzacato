@@ -1,6 +1,6 @@
 package Pizzacato.model;
 
-public class Pizza {
+public class Pizza implements Comparable<Pizza> {
 	
 	private String pizza_id;
 	private String nimi;
@@ -88,6 +88,8 @@ public class Pizza {
 	public void setKuva(String kuva) {
 		this.kuva = kuva;
 	}
+	
+	
 
 	@Override
 	public String toString() {
@@ -95,8 +97,12 @@ public class Pizza {
 				+ tayte_id + ", kuvaus=" + kuvaus + ", listalla=" + listalla
 				+ ", hinta=" + hinta + ", kuva=" + kuva + "]";
 	}
-	
-	
-	
+
+
+	@Override
+	public int compareTo(Pizza pizza) {	
+		return Integer.parseInt(this.getPizza_id()) - Integer.parseInt(pizza.getPizza_id());
+	}
+
 
 }

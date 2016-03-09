@@ -8,6 +8,10 @@ body, html {
 	background-repeat:no-repeat;
 }
 
+.muokkaus{
+	color:crimson;
+}
+
 
 #wrapper {
 	margin:auto;

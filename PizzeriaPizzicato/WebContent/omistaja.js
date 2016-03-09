@@ -25,7 +25,10 @@ function muokkaa(id){
 	$('.poista', $('.pizzainfo')[index]).each(function(){
 		$(this).css('display', 'block');
 		$(this).click(function(){
-			alert('are you sure?');
+			var answer = prompt("Are you sure? ( type yes if sure)", "");
+			if( answer == "yes"){
+				// poista pizza
+			}
 		});
 	});
 	

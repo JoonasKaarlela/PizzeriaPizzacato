@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<h1> Tervetuloa, <c:out value="${kayttaja.getKayttajatunnus()}"></c:out></h1>
+	<h1> Tervetuloa, <c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out></h1>
 	<a href="logout"> kirjaudu ulos </a>
 
 </body>

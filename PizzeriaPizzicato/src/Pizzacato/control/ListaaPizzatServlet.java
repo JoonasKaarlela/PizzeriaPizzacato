@@ -46,7 +46,6 @@ public class ListaaPizzatServlet extends HttpServlet {
 			// Haetaan käyttäjä sessiosta
 			Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");	
 			System.out.println("Tervetuloa " + kayttaja.getKayttajatunnus() + "!");
-			request.setAttribute("kayttaja", kayttaja);
 			
 			// Haetaan mahdolliset errorit
 			String error = (String) request.getSession().getAttribute("error");

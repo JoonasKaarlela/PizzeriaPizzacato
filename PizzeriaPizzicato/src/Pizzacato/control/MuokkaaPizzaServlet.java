@@ -16,7 +16,7 @@ import Pizzacato.model.dao.PizzaDAO;
 /**
  * Marianne
  */
-@WebServlet("/MuokkaaPizzaServlet")
+@WebServlet("/muokkaa")
 public class MuokkaaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

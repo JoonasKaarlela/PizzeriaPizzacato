@@ -14,7 +14,7 @@ import Pizzacato.model.Pizza;
 import Pizzacato.model.dao.PizzaDAO;
 
 
-@WebServlet("/LisaaPizzaServlet")
+@WebServlet("/lisaa")
 public class LisaaPizzaServlet extends HttpServlet {
 	
 

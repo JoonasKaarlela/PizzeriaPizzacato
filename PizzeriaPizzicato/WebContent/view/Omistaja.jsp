@@ -49,7 +49,7 @@
 				
 
                         <!--  LOOPPAA PIZZAT -->
-                        <c:forEach items="${pizzat}" var="pizza">
+                        <c:forEach items="${pizzat}" var="pizza" varStatus="current">
 
                         	<!--  JOS PIZZA LISTALLA=TRUE, NÄYTÄ PIZZA -->
                         <c:choose>
@@ -58,7 +58,7 @@
                         <div class="menuitemwrap">
                    			<div class="menuitem">
 	                    	
-	                    	<form method=post action=muokkaaPizzaa>
+	                    	<form method=post action=muokkaa>
 		                        <table id="pizzat">
 		                       
 		                        	<tr class='pizza'>
@@ -68,8 +68,8 @@
 			                                	<div class="pizzanimi"><input class="pizza_input" type="text" value="${pizza.getNimi()}" disabled/> </div>
 			                                    <div class="pizzakuvaus" ><textarea disabled class="pizza_input">${pizza.getKuvaus()}</textarea></div>                                     
 												<div class="pizzahinta"><input type="text" class="pizza_input" value="${pizza.getHinta()}€" disabled/></div>
-												<button type="button" value="muokkaa"  class='muokkaa' onClick="muokkaa(${pizza.getPizza_id()})">Muokkaa</button>
-                                                <button type="button" value="poista" class='poista'  style="display:none">Poista</button>
+												<button type="button" value="muokkaa"  class='muokkaa' onClick="muokkaa('${pizza.getPizza_id()}', '${current.index}')">Muokkaa</button>
+                                                <button type="button" value="poista" class='poista hidden'>Poista</button>
                                                 <input type="checkbox" value="piilota"/>
 		                                    </div>
 											<input type=hidden name=pizzan_id value="${pizza.getPizza_id()}" />

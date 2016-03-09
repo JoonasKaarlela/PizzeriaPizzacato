@@ -12,6 +12,9 @@ body, html {
 	color:crimson;
 }
 
+.hidden{
+	display:none;
+}
 
 #wrapper {
 	margin:auto;

@@ -88,7 +88,7 @@
 			                                	<div class="pizzanimi"> ${pizza.getNimi()} </div>
 			                                    <div class="pizzakuvaus"> ${pizza.getKuvaus()}</div>                                     
 												<div class="pizzahinta"> ${pizza.getHinta()}€</div>
-												<button type=submit value="Lisää">Lisää</button>
+												<button type=submit value="Lisää">Lisää ostoskoriin</button>
 		                                    </div>
 											<input type=hidden name=pizza_id value="${pizza}" />
 		                                </td>

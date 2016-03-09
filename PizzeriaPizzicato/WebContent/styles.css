@@ -8,6 +8,10 @@ body, html {
 	background-repeat:no-repeat;
 }
 
+.muokkaus{
+	color:crimson;
+}
+
 
 #wrapper {
 	margin:auto;
@@ -183,6 +187,7 @@ button{
 .pizzainfo {
 	padding-right:20px;
 }
+
 .pizzanimi {
 	font-weight:bold;
 }
@@ -205,8 +210,34 @@ button{
 
 .menuitem textarea {
 	resize: none;
-	width: 100%;
-	height: 100px;
+	width: 98%;
+	height: auto;
+	background: none;
+	border: 0px;
+	color: #FFF;
+	font-size: 14px;
+	font-family: Arial;
+	display: block;
+	padding: 1%;
+	margin: 3px 0px;
 }
 
+.pizzainfo input[type="text"] {
+	background: none;
+	border: 0;
+	color: #FFF;
+	width: 98%;
+	font-size: 14px;
+	padding: 1%;
+}
+
+.pizzainfo input[type="checkbox"] {
+	width: auto;
+}
+
+.muokkaa {
+	background: #FFF !important;
+	color: #333 !important;
+}
+/* OMISTAJA LOPPUU */
 

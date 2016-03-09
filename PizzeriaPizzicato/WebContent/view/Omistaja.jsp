@@ -7,8 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title> Omistaja </title>
 <link href="styles.css" rel="stylesheet" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript" src="omistaja.js"></script>
 </head>
 <body>
+
 
 <div id="wrapper">
 		
@@ -17,7 +20,7 @@
 			
 			<!-- KIRJAUDU -->
 			<div id="kirjaudu">
-				<h1> Tervetuloa, <c:out value="${kayttaja.getKayttajatunnus()}"></c:out></h1>
+				<h1> Tervetuloa, <c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out></h1>
 				<a href="logout"> kirjaudu ulos </a>
 			</div>
 			
@@ -44,7 +47,6 @@
 		<div id="content">
 			<div class="menu">
 				
-                
 
                         <!--  LOOPPAA PIZZAT -->
                         <c:forEach items="${pizzat}" var="pizza">
@@ -56,19 +58,19 @@
                         <div class="menuitemwrap">
                    			<div class="menuitem">
 	                    	
-	                    	<form method=post action=lisaaPizza>
-		                        <table>
+	                    	<form method=post action=muokkaaPizzaa>
+		                        <table id="pizzat">
 		                       
-		                        	<tr>
+		                        	<tr class='pizza'>
 		                                <td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" /></div></td>
 		                               	<td valign="top">
 		                                	<div class="pizzainfo">
-			                                	<div class="pizzanimi"><input type="text" value="${pizza.getNimi()}" disabled /> </div>
-			                                    <div class="pizzakuvaus"><textarea disabled>${pizza.getKuvaus()}</textarea></div>                                     
-												<div class="pizzahinta"><input type="text" value="${pizza.getHinta()}€" disabled /></div>
-												<button type="button" value="muokkaa">Muokkaa</button>
-                                                <button type="button" value="poista">Poista</button>
-                                                <input type="checkbox" value="piilota"/>Piilota Pizza
+			                                	<div class="pizzanimi"><input class="pizza_input" type="text" value="${pizza.getNimi()}" disabled/> </div>
+			                                    <div class="pizzakuvaus" ><textarea disabled class="pizza_input">${pizza.getKuvaus()}</textarea></div>                                     
+												<div class="pizzahinta"><input type="text" class="pizza_input" value="${pizza.getHinta()}€" disabled/></div>
+												<button type="button" value="muokkaa"  class='muokkaa' onClick="muokkaa(${pizza.getPizza_id()})">Muokkaa</button>
+                                                <button type="button" value="poista" class='poista'  style="display:none">Poista</button>
+                                                <input type="checkbox" value="piilota"/>
 		                                    </div>
 											<input type=hidden name=pizzan_id value="${pizza.getPizza_id()}" />
 		                                </td>

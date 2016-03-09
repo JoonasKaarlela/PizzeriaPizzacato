@@ -3,6 +3,7 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,6 +35,10 @@ public class ListaaPizzatServlet extends HttpServlet {
 			System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
 			e.printStackTrace();
 		}
+		
+		// Laita pizzat id järjestykseen id:n mukaan
+		Collections.sort(pizzat);
+		
 		// Tallennetaan request-olion alle kaikki pizzat
 		request.setAttribute("pizzat", pizzat);
 		

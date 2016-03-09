@@ -19,8 +19,8 @@
 			<div id="kirjaudu">
 					<c:choose>
 					
-						<c:when test="${kayttaja != null}">
-							<h1> Hei, <c:out value="${kayttaja.getKayttajatunnus()}"></c:out> </h1>
+						<c:when test="${sessionScope.kayttaja != null}">
+							<h1> Hei, <c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out> </h1>
 							<div> <a href="logout"> kirjaudu ulos </a> </div>
 						</c:when>
 						

@@ -37,6 +37,9 @@ public class ListaaPizzatServlet extends HttpServlet {
 		// Tallennetaan request-olion alle kaikki pizzat
 		request.setAttribute("pizzat", pizzat);
 		
+		
+		
+		// Katso onko kirjautunut, omistaja/asiakas
 		String sivu = "/view/Menu.jsp";
 		
 		try{
@@ -46,7 +49,6 @@ public class ListaaPizzatServlet extends HttpServlet {
 			// Haetaan käyttäjä sessiosta
 			Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");	
 			System.out.println("Tervetuloa " + kayttaja.getKayttajatunnus() + "!");
-			request.setAttribute("kayttaja", kayttaja);
 			
 			// Haetaan mahdolliset errorit
 			String error = (String) request.getSession().getAttribute("error");

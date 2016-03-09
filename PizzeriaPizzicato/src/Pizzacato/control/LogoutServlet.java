@@ -15,7 +15,6 @@ public class LogoutServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().invalidate();
-		request.removeAttribute("kayttaja");
 		response.sendRedirect("Menu");
 		System.out.println("käyttäjä kirjautui ulos");
 	}

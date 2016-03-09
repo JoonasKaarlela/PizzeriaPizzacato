@@ -52,7 +52,7 @@
 					<li><a href="#">Menu</a></li>
 					<li><a href="#">Yhteystiedot</a></li>
 				</ul>
-			</div>
+			</div><!-- NAV LOPPUU -->
 		</div>
 		
         <div class="clear"></div>
@@ -87,7 +87,8 @@
 		                                	<div class="pizzainfo">
 			                                	<div class="pizzanimi"> ${pizza.getNimi()} </div>
 			                                    <div class="pizzakuvaus"> ${pizza.getKuvaus()}</div>                                     
-												<div class="pizzahinta"> ${pizza.getHinta()}€ <button type=submit value="Lisää">Lisää</button></div>
+												<div class="pizzahinta"> ${pizza.getHinta()}€</div>
+												<button type=submit value="Lisää">Lisää ostoskoriin</button>
 		                                    </div>
 											<input type=hidden name=pizza_id value="${pizza}" />
 		                                </td>
@@ -108,8 +109,8 @@
 				<div class="clear"></div>
 				
 				
-			</div>
-		</div>
+			</div><!-- MENU LOPPUU -->
+		</div><!-- CONTENT LOPPUU -->
 		
 	</div>
 

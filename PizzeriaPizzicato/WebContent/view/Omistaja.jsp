@@ -92,6 +92,24 @@
 				
 				
 			</div><!-- MENU LOPPUU -->
+			
+			<!-- LISÄÄ PIZZA -->
+			<div id="uusiPizza">
+				<form method=post action=lisaa enctype="multipart/form-data">
+					<input name="nimi" placeholder="pizzan nimi" />
+					<input name="kuvaus" placeholder="kuvaus" />
+					<input name="hinta" placeholder="hinta" />
+					<input type="file" name="kuva" />
+					<select name="tayte_id">
+						<!-- looppaa täytteet -->
+						<c:forEach items="${taytteet}" var="tayte">
+							<option value="${tayte.getTayteId()}"> ${tayte.getNimi()} </option>
+						</c:forEach>
+					</select>
+					<button type=submit> lisaa </button>
+				</form>
+			</div>
+			
 		</div><!-- CONTENT LOPPUU -->
 		
 	</div>

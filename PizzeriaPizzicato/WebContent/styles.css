@@ -242,5 +242,11 @@ button{
 	background: #FFF !important;
 	color: #333 !important;
 }
+
+#uusiPizza{
+	height:150px;
+	border:2px solid white;
+}
+
 /* OMISTAJA LOPPUU */
 

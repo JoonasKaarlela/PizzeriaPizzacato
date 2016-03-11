@@ -68,7 +68,7 @@
 			                                	<div class="pizzanimi"><input class="pizza_input" type="text" value="${pizza.getNimi()}" name="nimi" disabled/> </div>
 			                                    <div class="pizzakuvaus" ><textarea disabled class="pizza_input" name="kuvaus">${pizza.getKuvaus()}</textarea></div>                                     
 												<div class="pizzahinta"><input type="text" class="pizza_input" value="${pizza.getHinta()}€" name="hinta" disabled/></div>
-												<button type="button" value="muokkaa"  class='muokkaa' onClick="muokkaa('${pizza.getPizza_id()}', '${current.index}')">Muokkaa</button>
+												<button type="button" value="muokkaa"  class='muokkaa' onClick="muokkaa('${pizza.getPizza_id()}', '${current.index}'); return false;">Muokkaa</button>
                                                 <button type="button" value="poista" class='poista hidden'>Poista</button>
                                                 <input type="checkbox" value="piilota" name="piilossa"/>
 		                                    </div>

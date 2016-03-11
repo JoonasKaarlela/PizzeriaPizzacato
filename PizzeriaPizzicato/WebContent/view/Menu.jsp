@@ -82,12 +82,13 @@
 		                        <table>
 		                       
 		                        	<tr>
-		                                <td valign="middle"><div class="pizzakuva"><img src="pizza1.png" style="width:150px;height:125px;" /></div></td>
+		                                <td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" style="width:150px;height:125px;" /></div></td>
 		                               	<td valign="top">
 		                                	<div class="pizzainfo">
 			                                	<div class="pizzanimi"> ${pizza.getNimi()} </div>
 			                                    <div class="pizzakuvaus"> ${pizza.getKuvaus()}</div>                                     
 												<div class="pizzahinta"> ${pizza.getHinta()}€</div>
+												<div class="pizzantayte"> ${pizza.getTaytteet()} </div>
 												<button type=submit value="Lisää">Lisää ostoskoriin</button>
 		                                    </div>
 											<input type=hidden name=pizza_id value="${pizza}" />

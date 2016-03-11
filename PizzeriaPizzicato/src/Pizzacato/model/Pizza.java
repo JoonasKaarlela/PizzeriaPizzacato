@@ -1,19 +1,21 @@
 package Pizzacato.model;
 
-public class Pizza {
+import java.util.ArrayList;
+
+public class Pizza implements Comparable<Pizza> {
 	
 	private String pizza_id;
 	private String nimi;
-	private String tayte_id;
+	private String taytteet;
 	private String kuvaus;
 	private boolean listalla;
 	private double hinta;
 	private String kuva;
 	
-	public Pizza(String pizza_id,String nimi, String tayte_id, String kuvaus,boolean listalla, Double hinta, String kuva){
+	public Pizza(String pizza_id,String nimi, String taytteet, String kuvaus,boolean listalla, Double hinta, String kuva){
 		this.pizza_id = pizza_id;
 		this.nimi = nimi;
-		this.tayte_id = tayte_id;
+		this.taytteet = taytteet;
 		this.kuvaus = kuvaus;
 		this.listalla = listalla;
 		this.hinta = hinta;
@@ -25,7 +27,7 @@ public class Pizza {
 	public Pizza(){
 		this.pizza_id = "";
 		this.nimi = "";
-		this.tayte_id = "";
+		this.taytteet = "";
 		this.kuvaus = "";
 		this.listalla = false;
 		this.hinta = 0.00;
@@ -41,12 +43,12 @@ public class Pizza {
 		this.nimi = nimi;
 	}
 
-	public String getTayte_id() {
-		return tayte_id;
+	public String getTaytteet() {
+		return this.taytteet;
 	}
 
-	public void setTayte_id(String tayte_id) {
-		this.tayte_id = tayte_id;
+	public void setTaytteet(String taytteet){
+		this.taytteet = taytteet;
 	}
 
 	public String getKuvaus() {
@@ -88,15 +90,12 @@ public class Pizza {
 	public void setKuva(String kuva) {
 		this.kuva = kuva;
 	}
+	
 
 	@Override
-	public String toString() {
-		return "Pizza [pizza_id=" + pizza_id + ", nimi=" + nimi + ", tayte_id="
-				+ tayte_id + ", kuvaus=" + kuvaus + ", listalla=" + listalla
-				+ ", hinta=" + hinta + ", kuva=" + kuva + "]";
+	public int compareTo(Pizza pizza) {	
+		return Integer.parseInt(this.getPizza_id()) - Integer.parseInt(pizza.getPizza_id());
 	}
-	
-	
-	
+
 
 }

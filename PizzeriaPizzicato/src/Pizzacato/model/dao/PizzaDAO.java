@@ -26,16 +26,16 @@ public class PizzaDAO extends DataAccessObject{
 		Statement statement = conn.createStatement();
 		ResultSet results = statement.executeQuery(query);
 		
-		// ITEROI TULOKSET L�PI => LUO UUSI PIZZA OLIO => LIS�� LISTAAN...
+		// ITEROI TULOKSET => LUO UUSI PIZZA OLIO =>  LISTAAN...
 		while(results.next()){
 			String id = results.getString(1);
 			String nimi = results.getString(2);
-			String tayte_id = results.getString(3);
+			String taytteet = results.getString(3);
 			String kuvaus = results.getString(4);
 			boolean listalla = results.getBoolean(5);
 			double hinta = results.getDouble(6);
-			String kuva = "";
-			Pizza pizza = new Pizza(id, nimi, tayte_id, kuvaus, listalla, hinta, kuva);
+			String kuva = results.getString(7);
+			Pizza pizza = new Pizza(id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
 			pizzat.add(pizza);
 		}
 		
@@ -51,11 +51,11 @@ public class PizzaDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		
 		// LIS�YS LAUSE
-		String query = "INSERT INTO PIZZA(pizza_id, nimi, tayte_id, kuvaus, listalla, hinta) VALUES(?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO PIZZA(pizza_id, nimi, taytteet, kuvaus, listalla, hinta) VALUES(?, ?, ?, ?, ?, ?)";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, pizza.getPizza_id());
 		statement.setString(2, pizza.getNimi());
-		statement.setString(3, pizza.getTayte_id());
+		statement.setString(3, pizza.getTaytteet());
 		statement.setString(4, pizza.getKuvaus());
 		statement.setBoolean(5, pizza.getListalla());
 		statement.setDouble(6, pizza.getHinta());
@@ -75,7 +75,7 @@ public class PizzaDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		
 		// POISTO LAUSE
-		String query = "DELETE FROM PIZZA WHERE pizzaId=?";
+		String query = "DELETE FROM PIZZA WHERE pizza_id=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, id);
 		
@@ -93,7 +93,7 @@ public class PizzaDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		
 		// PIILOTA LAUSE
-		String query = "UPDATE PIZZA SET listalla=false WHERE pizzaId=?";
+		String query = "UPDATE PIZZA SET listalla=false WHERE pizza_id=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, id);
 		
@@ -111,7 +111,7 @@ public class PizzaDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		
 		// NAYTA LAUSE
-		String query = "UPDATE PIZZA SET listalla=true WHERE pizzaId=?";
+		String query = "UPDATE PIZZA SET listalla=true WHERE pizza_id=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, id);
 		
@@ -129,10 +129,10 @@ public class PizzaDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		
 		//PAIVITA LAUSE
-		String query = "UPDATE PIZZA SET nimi=?, tayte_id=?, kuvaus=?, listalla=?, hinta=? WHERE pizza_id=?";
+		String query = "UPDATE PIZZA SET nimi=?, taytteet=?, kuvaus=?, listalla=?, hinta=? WHERE pizza_id=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, pizza.getNimi());
-		statement.setString(2, pizza.getTayte_id());
+		statement.setString(2, pizza.getTaytteet());
 		statement.setString(3, pizza.getKuvaus());
 		statement.setBoolean(4, pizza.getListalla());
 		statement.setDouble(5, pizza.getHinta());

@@ -8,6 +8,13 @@ body, html {
 	background-repeat:no-repeat;
 }
 
+.muokkaus{
+	color:crimson;
+}
+
+.hidden{
+	display:none;
+}
 
 #wrapper {
 	margin:auto;
@@ -240,6 +247,12 @@ button{
 	background: #FFF !important;
 	color: #333 !important;
 }
+
+#uusiPizza{
+	height:150px;
+	border:2px solid white;
+}
+
 /* OMISTAJA LOPPUU */
 
 

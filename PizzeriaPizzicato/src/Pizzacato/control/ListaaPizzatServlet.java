@@ -3,6 +3,7 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import Pizzacato.model.Kayttaja;
 import Pizzacato.model.Pizza;
+import Pizzacato.model.Tayte;
 import Pizzacato.model.dao.PizzaDAO;
+import Pizzacato.model.dao.TayteDAO;
 
 /**
  * Matias K
@@ -34,9 +37,15 @@ public class ListaaPizzatServlet extends HttpServlet {
 			System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
 			e.printStackTrace();
 		}
+		
+		// Laita pizzat id järjestykseen id:n mukaan
+		Collections.sort(pizzat);
+		
 		// Tallennetaan request-olion alle kaikki pizzat
 		request.setAttribute("pizzat", pizzat);
 		
+
+		// Katso onko kirjautunut, omistaja/asiakas
 		String sivu = "/view/Menu.jsp";
 		
 		try{

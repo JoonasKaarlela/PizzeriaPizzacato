@@ -16,7 +16,7 @@ import Pizzacato.model.dao.PizzaDAO;
 /**
  * Marianne
  */
-@WebServlet("/MuokkaaPizzaServlet")
+@WebServlet("/muokkaa")
 public class MuokkaaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -25,22 +25,27 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 
 		String id = request.getParameter("id");
 		String nimi = request.getParameter("nimi");
-		String tayte_id = request.getParameter("tayte_id");
+		String taytteet = request.getParameter("taytteet");
 		String kuvaus = request.getParameter("kuvaus");
-		Boolean listalla = Boolean.parseBoolean(request.getParameter("listalla"));
+	
+		String listallaSTRING = request.getParameter("listalla");
+		Boolean listalla = false;
+		if(listallaSTRING != null){
+			listalla = true;
+		}
+	
 		Double hinta = Double.parseDouble(request.getParameter("hinta"));
-		String kuva = request.getParameter("kuva");
+		String kuva = "pizza1.png";
 		
 		PizzaDAO pizzadao = new PizzaDAO();
 		
-		Pizza pizza = new Pizza(id, nimi, tayte_id, kuvaus, listalla, hinta, kuva);
+		Pizza pizza = new Pizza(id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
 		
 		try{
 			pizzadao.muokkaaPizzaa(pizza);
+			response.sendRedirect("Menu");
 		} catch(SQLException e){
 			System.out.println("ERROR: " + e.getMessage());
 		}
-		response.sendRedirect("menu");
-		
 	}
 }

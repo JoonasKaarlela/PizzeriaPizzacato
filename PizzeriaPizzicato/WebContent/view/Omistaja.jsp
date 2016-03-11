@@ -99,7 +99,6 @@
 					<input name="nimi" placeholder="pizzan nimi" />
 					<input name="kuvaus" placeholder="kuvaus" />
 					<input name="hinta" placeholder="hinta" />
-					<input type="file" name="kuva" />
 					<select name="tayte_id">
 						<!-- looppaa täytteet -->
 						<c:forEach items="${taytteet}" var="tayte">

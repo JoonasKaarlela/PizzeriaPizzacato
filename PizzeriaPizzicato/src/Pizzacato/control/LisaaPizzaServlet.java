@@ -45,43 +45,19 @@ public class LisaaPizzaServlet extends HttpServlet {
 		String kuvaus = request.getParameter("kuvaus");
 		boolean listalla = false;
 		double hinta = Double.parseDouble(request.getParameter("hinta"));
-		String kuva = "";
-		
-		 // Uploadaa kuva
-		ServletFileUpload upload = new ServletFileUpload();	
-		String folder = getServletContext().getRealPath("") + File.separator + "WebContent";
-		
-		try{
-			List<FileItem> fileItems = (List<FileItem>) upload.parseRequest(request);
-			for(FileItem item : fileItems){
-				if( !item.isFormField() ){
-					String filename = new File(item.getName()).getName();
-					String path = folder + File.separator + filename;
-					File uploadedFile = new File(path);
-					System.out.println( path );
-					item.write(uploadedFile);
-					kuva = path;
-					
-					Pizza pizza = new Pizza(pizza_id, nimi, tayte_id, kuvaus, listalla, hinta, kuva);
+		String kuva = "pizza1.png";
 
-					PizzaDAO dao = new PizzaDAO();
+		Pizza pizza = new Pizza(pizza_id, nimi, tayte_id, kuvaus, listalla, hinta, kuva);
+
+		PizzaDAO dao = new PizzaDAO();
 					
-					try{
-						dao.lisaaPizza(pizza);
-						response.sendRedirect("Menu");
-					} catch(SQLException e){
-						System.out.println("ERROR: " + e.getMessage());
-						response.sendRedirect("Menu");
-					}
-				}
-			}
-		} catch(Exception e){
-			System.out.println("Lisäys ei onnistunut");
-			System.out.println(e.getMessage());
-			response.sendRedirect("Menu");
+		try{
+				dao.lisaaPizza(pizza);
+				response.sendRedirect("Menu");
+		} catch(SQLException e){
+				System.out.println("ERROR: " + e.getMessage());
+				response.sendRedirect("Menu");
 		}
-		
-		
 	}
 
 }

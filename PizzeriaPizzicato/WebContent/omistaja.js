@@ -14,8 +14,13 @@ function muokkaa(pizza_id, index){
 	
 	// Muuta button tyyppi ja teksti
 	$('.muokkaa', $('.pizzainfo')[index]).each(function(){
-		$(this).attr("type", "submit");
+		$(this).addClass('hidden');
 		$(this).text("tallenna");
+	});
+	
+	// Tallenna nappi näkyviin
+	$('.tallenna', $('.pizzainfo')[index]).each(function(){
+		$(this).removeClass('hidden');
 	});
 	
 	// Rekisteröi poista pizza funktio

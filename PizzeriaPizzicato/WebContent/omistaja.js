@@ -1,5 +1,7 @@
 function muokkaa(pizza_id, index){
 
+	alert(pizza_id + " " + index);
+	
 	// Aktivoi "input" kentät
 	$('input', $(".pizza")[index]).each(function(){
 		$(this).removeAttr('disabled');

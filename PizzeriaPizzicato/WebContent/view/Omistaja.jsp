@@ -65,14 +65,14 @@
 		                                <td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" /></div></td>
 		                               	<td valign="top">
 		                                	<div class="pizzainfo">
-			                                	<div class="pizzanimi"><input class="pizza_input" type="text" value="${pizza.getNimi()}" disabled/> </div>
-			                                    <div class="pizzakuvaus" ><textarea disabled class="pizza_input">${pizza.getKuvaus()}</textarea></div>                                     
-												<div class="pizzahinta"><input type="text" class="pizza_input" value="${pizza.getHinta()}€" disabled/></div>
+			                                	<div class="pizzanimi"><input class="pizza_input" type="text" value="${pizza.getNimi()}" name="nimi" disabled/> </div>
+			                                    <div class="pizzakuvaus" ><textarea disabled class="pizza_input" name="kuvaus">${pizza.getKuvaus()}</textarea></div>                                     
+												<div class="pizzahinta"><input type="text" class="pizza_input" value="${pizza.getHinta()}€" name="hinta" disabled/></div>
 												<button type="button" value="muokkaa"  class='muokkaa' onClick="muokkaa('${pizza.getPizza_id()}', '${current.index}')">Muokkaa</button>
                                                 <button type="button" value="poista" class='poista hidden'>Poista</button>
-                                                <input type="checkbox" value="piilota"/>
+                                                <input type="checkbox" value="piilota" name="piilossa"/>
 		                                    </div>
-											<input type=hidden name=pizzan_id value="${pizza.getPizza_id()}" />
+											<input type=hidden name=id value="${pizza.getPizza_id()}" />
 		                                </td>
 		                        	</tr>
 		                        

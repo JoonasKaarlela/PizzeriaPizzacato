@@ -52,9 +52,6 @@
                         <c:forEach items="${pizzat}" var="pizza" varStatus="current">
 
                         	<!--  JOS PIZZA LISTALLA=TRUE, NÄYTÄ PIZZA -->
-                        <c:choose>
-                        <c:when test="${pizza.getListalla()}">
-                        
                         <div class="menuitemwrap">
                    			<div class="menuitem">
 	                    	
@@ -62,13 +59,13 @@
 		                        <table id="pizzat">
 		                       
 		                        	<tr class='pizza'>
-		                                <td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" /></div></td>
+		                                <td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" style="width:150px;height:125px;" /></div></td>
 		                               	<td valign="top">
 		                                	<div class="pizzainfo">
 			                                	<div class="pizzanimi"><input class="pizza_input" type="text" value="${pizza.getNimi()}" name="nimi" disabled/> </div>
 			                                    <div class="pizzakuvaus" ><textarea disabled class="pizza_input" name="kuvaus">${pizza.getKuvaus()}</textarea></div>                                     
-												<div class="pizzahinta"><input type="text" class="pizza_input" value="${pizza.getHinta()}€" name="hinta" disabled/></div>
-												<div class="pizzantayte"> <textarea disabled class="pizza_taytteet"> ${pizza.getTaytteet()} </textarea> </div>
+												<div class="pizzahinta"><input type="text" class="pizza_input" value="${pizza.getHinta()}" name="hinta" disabled/></div>
+												<div class="pizzantayte"> <textarea disabled class="pizza_taytteet" name="taytteet"> ${pizza.getTaytteet()} </textarea> </div>
 	
 												<!--  view tila napit -->
 												<button type="button" value="muokkaa"  class='muokkaa' onClick="muokkaa('${pizza.getPizza_id()}', '${current.index}'); return false;">Muokkaa</button>
@@ -77,9 +74,10 @@
 												<button type="submit" value="tallenna" class="tallenna hidden"> Tallenna </button>
                                                 <button type="button" value="poista" class='poista hidden'>Poista</button>
                                                 
-                                                <input type="checkbox" value="piilota" name="piilossa"/>
+                                                <label for="piilossa"> listalla </label>
+                                                <input type="checkbox" value="piilota" name="piilossa" id="piilossa" />
 		                                    </div>
-											<input type=hidden name=id value="${pizza.getPizza_id()}" />
+											<input type=hidden name=id value="${pizza.getPizza_id()}" class="hidden" />
 		                                </td>
 		                        	</tr>
 		                        
@@ -87,10 +85,7 @@
 	                        </form>
                         
                         	</div><!-- MENUITEM LOPPUU -->
-                		</div><!-- MENUITEMWRAP LOPPUU -->
-                        
-                        </c:when>
-                        </c:choose>
+                		</div><!-- MENUITEMWRAP LOPPUU -->       
                                         	
                         </c:forEach>
 
@@ -106,12 +101,7 @@
 					<input name="nimi" placeholder="pizzan nimi" />
 					<input name="kuvaus" placeholder="kuvaus" />
 					<input name="hinta" placeholder="hinta" />
-					<select name="tayte_id">
-						<!-- looppaa täytteet -->
-						<c:forEach items="${taytteet}" var="tayte">
-							<option value="${tayte.getTayteId()}"> ${tayte.getNimi()} </option>
-						</c:forEach>
-					</select>
+					<textarea name="taytteet" placeholder="taytteet"></textarea>
 					<button type=submit> lisaa </button>
 				</form>
 			</div>

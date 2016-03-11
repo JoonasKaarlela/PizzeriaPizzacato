@@ -23,6 +23,11 @@ function muokkaa(pizza_id, index){
 		$(this).removeClass('hidden');
 	});
 	
+	// Listalla nappi näkyviin
+	$('.listalla', $('.pizzainfo')[index]).each(function(){
+		$(this).removeClass('hidden');
+	});
+	
 	// Rekisteröi poista pizza funktio
 	$('.poista', $('.pizzainfo')[index]).each(function(){
 		$(this).removeClass('hidden');

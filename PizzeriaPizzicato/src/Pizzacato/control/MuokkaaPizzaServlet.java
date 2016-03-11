@@ -25,7 +25,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 
 		String id = request.getParameter("id");
 		String nimi = request.getParameter("nimi");
-		String tayte_id = request.getParameter("tayte_id");
+		String taytteet = request.getParameter("taytteet");
 		String kuvaus = request.getParameter("kuvaus");
 	
 		String listallaSTRING = request.getParameter("listalla");
@@ -39,14 +39,13 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		
 		PizzaDAO pizzadao = new PizzaDAO();
 		
-		Pizza pizza = new Pizza(id, nimi, tayte_id, kuvaus, listalla, hinta, kuva);
+		Pizza pizza = new Pizza(id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
 		
 		try{
 			pizzadao.muokkaaPizzaa(pizza);
+			response.sendRedirect("Menu");
 		} catch(SQLException e){
 			System.out.println("ERROR: " + e.getMessage());
 		}
-		response.sendRedirect("menu");
-		
 	}
 }

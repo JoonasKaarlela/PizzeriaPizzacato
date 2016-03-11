@@ -39,15 +39,16 @@ public class LisaaPizzaServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String pizza_id = String.format("%.1f", Math.floor(Math.random()*Math.random()));		
+		String pizza_id = String.format("%.1f", Math.random()*9000+1000 + "x");
+		
 		String nimi = request.getParameter("nimi");
-		String tayte_id = request.getParameter("tayte_id");
+		String taytteet = request.getParameter("taytteet");
 		String kuvaus = request.getParameter("kuvaus");
 		boolean listalla = false;
 		double hinta = Double.parseDouble(request.getParameter("hinta"));
 		String kuva = "pizza1.png";
 
-		Pizza pizza = new Pizza(pizza_id, nimi, tayte_id, kuvaus, listalla, hinta, kuva);
+		Pizza pizza = new Pizza(pizza_id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
 
 		PizzaDAO dao = new PizzaDAO();
 					

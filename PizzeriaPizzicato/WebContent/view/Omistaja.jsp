@@ -69,7 +69,7 @@
 			                                    <div class="pizzakuvaus" ><textarea disabled class="pizza_input" name="kuvaus">${pizza.getKuvaus()}</textarea></div>                                     
 												<div class="pizzahinta"><input type="text" class="pizza_input" value="${pizza.getHinta()}€" name="hinta" disabled/></div>
 												<div class="pizzantayte"> 
-													<select name="tayte_id">
+													<select name="tayte_id" disabled>
 														<c:forEach items="${taytteet}" var="tayte">
 															<option value="${tayte.getTayte_id()}"> ${tayte.getRavintosisalto()} </option>
 														</c:forEach>

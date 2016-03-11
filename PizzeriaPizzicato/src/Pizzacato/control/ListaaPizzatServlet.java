@@ -54,12 +54,10 @@ public class ListaaPizzatServlet extends HttpServlet {
 		request.setAttribute("taytteet", taytteet);
 		
 		
-		
 		// Tallennetaan request-olion alle kaikki pizzat
 		request.setAttribute("pizzat", pizzat);
 		
-		
-		
+
 		// Katso onko kirjautunut, omistaja/asiakas
 		String sivu = "/view/Menu.jsp";
 		

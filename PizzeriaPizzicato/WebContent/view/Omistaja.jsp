@@ -70,13 +70,12 @@
 												<div class="pizzahinta"><input type="text" class="pizza_input" value="${pizza.getHinta()}€" name="hinta" disabled/></div>
 												<div class="pizzantayte"> 
 													<select name="tayte_id">
-														<!-- looppaa täytteet -->
 														<c:forEach items="${taytteet}" var="tayte">
-															<option value="${tayte.getTayteId()}"> ${tayte.getNimi()} </option>
+															<option value="${tayte.getTayte_id()}"> ${tayte.getRavintosisalto()} </option>
 														</c:forEach>
 													</select>
 												</div>
-												
+	
 												<!--  view tila napit -->
 												<button type="button" value="muokkaa"  class='muokkaa' onClick="muokkaa('${pizza.getPizza_id()}', '${current.index}'); return false;">Muokkaa</button>
 												

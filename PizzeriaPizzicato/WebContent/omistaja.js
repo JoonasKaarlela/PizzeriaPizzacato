@@ -12,12 +12,6 @@ function muokkaa(pizza_id, index){
 		$(this).addClass('muokkaus');
 	});
 	
-	// Aktivoi "select" kenttä
-	$('select', $('.pizza')[index]).each(function(){
-		$(this).removeAttr('disabled');
-		$(this).addClass('muokkaus');
-	});
-	
 	// Muuta button tyyppi ja teksti
 	$('.muokkaa', $('.pizzainfo')[index]).each(function(){
 		$(this).addClass('hidden');

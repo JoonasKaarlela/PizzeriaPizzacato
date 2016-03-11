@@ -41,19 +41,6 @@ public class ListaaPizzatServlet extends HttpServlet {
 		// Laita pizzat id järjestykseen id:n mukaan
 		Collections.sort(pizzat);
 		
-		// Hae kaikki täytteet
-		TayteDAO taytedao = new TayteDAO();
-		ArrayList<Tayte> taytteet = new ArrayList<>();
-		
-		try{
-			taytteet = taytedao.haeTaytteet();
-		}catch(SQLException e){
-			System.out.println(e.getMessage());
-		}
-		
-		request.setAttribute("taytteet", taytteet);
-		
-		
 		// Tallennetaan request-olion alle kaikki pizzat
 		request.setAttribute("pizzat", pizzat);
 		

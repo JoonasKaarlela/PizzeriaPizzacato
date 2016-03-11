@@ -29,7 +29,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		String kuvaus = request.getParameter("kuvaus");
 		Boolean listalla = Boolean.parseBoolean(request.getParameter("listalla"));
 		Double hinta = Double.parseDouble(request.getParameter("hinta"));
-		String kuva = request.getParameter("kuva");
+		String kuva = "pizza1.png";
 		
 		PizzaDAO pizzadao = new PizzaDAO();
 		

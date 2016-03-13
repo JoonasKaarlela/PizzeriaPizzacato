@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -34,12 +35,11 @@ import Pizzacato.model.dao.PizzaDAO;
 @WebServlet("/lisaa")
 public class LisaaPizzaServlet extends HttpServlet {
 	
-
-			
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String pizza_id = String.format("%.1f", Math.random()*9000+1000 + "x");
+		// 5 lukua pitkä random luku
+		int id = (int) Math.floor( Math.random()*100000 );
+		String pizza_id = "" + id;
 		
 		String nimi = request.getParameter("nimi");
 		String taytteet = request.getParameter("taytteet");
@@ -53,11 +53,11 @@ public class LisaaPizzaServlet extends HttpServlet {
 		PizzaDAO dao = new PizzaDAO();
 					
 		try{
-				dao.lisaaPizza(pizza);
-				response.sendRedirect("Menu");
+			dao.lisaaPizza(pizza);
+			response.sendRedirect("Menu");
 		} catch(SQLException e){
-				System.out.println("ERROR: " + e.getMessage());
-				response.sendRedirect("Menu");
+			System.out.println("ERROR: " + e.getMessage());
+			response.sendRedirect("Menu");
 		}
 	}
 

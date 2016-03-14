@@ -51,7 +51,7 @@ public class PizzaDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		
 		// LIS�YS LAUSE
-		String query = "INSERT INTO PIZZA(pizza_id, nimi, taytteet, kuvaus, listalla, hinta) VALUES(?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO PIZZA(pizza_id, nimi, taytteet, kuvaus, listalla, hinta, kuva) VALUES(?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, pizza.getPizza_id());
 		statement.setString(2, pizza.getNimi());
@@ -59,6 +59,7 @@ public class PizzaDAO extends DataAccessObject{
 		statement.setString(4, pizza.getKuvaus());
 		statement.setBoolean(5, pizza.getListalla());
 		statement.setDouble(6, pizza.getHinta());
+		statement.setString(7, pizza.getKuva());
 		
 		// EXECUTE
 		int syotettiin = statement.executeUpdate();

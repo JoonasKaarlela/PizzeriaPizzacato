@@ -28,7 +28,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		String taytteet = request.getParameter("taytteet");
 		String kuvaus = request.getParameter("kuvaus");
 	
-		String listallaSTRING = request.getParameter("listalla");
+		String listallaSTRING = request.getParameter("piilossa");
 		Boolean listalla = false;
 		if(listallaSTRING != null){
 			listalla = true;

@@ -209,6 +209,9 @@ button{
 }
 /* MENU LOPPUU */
 
+.listalla {
+	display: inline;
+}
 
 .clear {
 	clear:both;

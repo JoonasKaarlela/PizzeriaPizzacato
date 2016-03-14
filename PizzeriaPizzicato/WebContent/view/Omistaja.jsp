@@ -74,8 +74,10 @@
 												<button type="submit" value="tallenna" class="tallenna hidden"> Tallenna </button>
                                                 <button type="button" value="poista" class='poista hidden'>Poista</button>
                                                 
+                                                <div class="listalla hidden">
                                                 <label for="piilossa"> listalla </label>
                                                 <input type="checkbox" value="piilota" name="piilossa" id="piilossa" />
+                                                </div>
 		                                    </div>
 											<input type=hidden name=id value="${pizza.getPizza_id()}" class="hidden" />
 		                                </td>

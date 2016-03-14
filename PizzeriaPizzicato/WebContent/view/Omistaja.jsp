@@ -99,7 +99,7 @@
 			
 			<!-- LISÄÄ PIZZA -->
 			<div id="uusiPizza">
-				<form method=post action=lisaa enctype="multipart/form-data">
+				<form method=post action=lisaa>
 					<input name="nimi" placeholder="pizzan nimi" />
 					<input name="kuvaus" placeholder="kuvaus" />
 					<input name="hinta" placeholder="hinta" />

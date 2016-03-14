@@ -37,8 +37,8 @@ public class LisaaPizzaServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 5 lukua pitkä random luku
 		int id = (int) Math.floor( Math.random()*100000 );
+		System.out.println(id);
 		String pizza_id = "" + id;
 		
 		String nimi = request.getParameter("nimi");

@@ -32,13 +32,10 @@ function muokkaa(pizza_id, index){
 	$('.poista', $('.pizzainfo')[index]).each(function(){
 		$(this).removeClass('hidden');
 		$(this).click(function(){
-			var vastaus = prompt("Oletko varma? ( kyllä / ei )", "");
-			if( vastaus == "kyllä"){
 				$.post("poista", {id:pizza_id}, function(){
 					location.reload();
 				});
-			}
-		});
+			});
 	});
 
 }

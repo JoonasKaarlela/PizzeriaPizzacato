@@ -47,7 +47,6 @@ public class KirjauduServlet extends HttpServlet {
 		}
 		// OHJAA MENU SIVULLE
 		response.sendRedirect("Menu");
-		
 	}
 
 }

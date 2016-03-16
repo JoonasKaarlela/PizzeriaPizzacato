@@ -25,12 +25,12 @@
 						</c:when>
 						
 						<c:otherwise>
-						<form method=post action="Kirjaudu" id="kirjaudu_form">
+						<form method=post action="Kirjaudu" id="kirjaudu_form" >
 							<div id="kayttajatunnus">
-								<div> <input placeholder=kayttajatunnus name=kayttajatunnus /> </div>
+								<div> <input placeholder=kayttajatunnus name=kayttajatunnus required /> </div>
 							</div>
 							<div id="salasana"> 
-								<div> <input placeholder=salasana name=salasana type=password /> </div>
+								<div> <input placeholder=salasana name=salasana type=password required /> </div>
 							</div>
 							<div id="submit"> 
 								<div> <button type=submit> kirjaudu </button> </div>

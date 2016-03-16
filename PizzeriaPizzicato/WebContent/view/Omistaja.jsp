@@ -21,7 +21,7 @@
 			<!-- KIRJAUDU -->
 			<div id="kirjaudu">
 				<h1> Tervetuloa, <c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out></h1>
-				<a href="logout"> kirjaudu ulos </a>
+				<a href="kirjauduUlos"> kirjaudu ulos </a>
 			</div>
 			
 			

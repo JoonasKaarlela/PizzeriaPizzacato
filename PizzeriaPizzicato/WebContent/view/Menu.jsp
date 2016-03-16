@@ -21,7 +21,7 @@
 					
 						<c:when test="${sessionScope.kayttaja != null}">
 							<h1> Hei, <c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out> </h1>
-							<div> <a href="logout"> kirjaudu ulos </a> </div>
+							<div> <a href="kirjauduUlos"> kirjaudu ulos </a> </div>
 						</c:when>
 						
 						<c:otherwise>

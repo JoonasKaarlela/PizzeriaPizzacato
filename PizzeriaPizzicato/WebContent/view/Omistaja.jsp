@@ -62,21 +62,30 @@
 		                                <td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" style="width:150px;height:125px;" /></div></td>
 		                               	<td valign="top">
 		                                	<div class="pizzainfo">
-			                                	<div class="pizzanimi"><input class="pizza_input" type="text" value="${pizza.getNimi()}" name="nimi" disabled required pattern="^\s*([0-9a-zA-Z]+)\s*$"/> </div>
-			                                    <div class="pizzakuvaus" ><textarea disabled class="pizza_input" name="kuvaus" required pattern="^\s*([0-9a-zA-Z]+)\s*$">${pizza.getKuvaus()}</textarea></div>                                     
-												<div class="pizzahinta"><input type="text" class="pizza_input" value="${pizza.getHinta()}" name="hinta" disabled required pattern="[0-9]{5}"/></div>
-												<div class="pizzantayte"> <textarea disabled class="pizza_taytteet" name="taytteet" required pattern="^\s*([0-9a-zA-Z]+)\s*$"> ${pizza.getTaytteet()} </textarea> </div>
-	
+			                                	<div class="pizzanimi">
+			                                		<input class="pizza_input" type="text" value="${pizza.getNimi()}" name="nimi" disabled required pattern="^\s*([0-9a-zA-Z]+)\s*$"/> 
+			                                	</div>
+			                                    <div class="pizzakuvaus" >
+			                                    	<textarea disabled class="pizza_input" name="kuvaus" required pattern="^\s*([0-9a-zA-Z]+)\s*$">${pizza.getKuvaus()}</textarea>
+			                                    </div>                                     
+												<div class="pizzahinta">
+													<input type="text" class="pizza_input" value="${pizza.getHinta()}" name="hinta" disabled required pattern="[0-9]{5}"/>
+												</div>
+												<div class="pizzantayte">
+													<textarea disabled class="pizza_taytteet" name="taytteet" required pattern="^\s*([0-9a-zA-Z]+)\s*$"> ${pizza.getTaytteet()} </textarea>
+												</div>
 												<!--  view tila napit -->
-												<button type="button" value="muokkaa"  class='muokkaa' onClick="muokkaa('${pizza.getPizza_id()}', '${current.index}'); return false;">Muokkaa</button>
-												
+												<div class="muokkaa">
+													<button type="button" value="muokkaa" onClick="muokkaa('${pizza.getPizza_id()}', '${current.index}'); return false;">Muokkaa</button>
+												</div>	
 												<!--  muokkaus tila napit -->
-												<button type="submit" value="tallenna" class="tallenna hidden"> Tallenna </button>
-                                                <button type="button" value="poista" class='poista hidden'>Poista</button>
-                                                
+												<div class="muokkaus hidden">
+													<button type="submit" value="tallenna" class="tallenna"> Tallenna </button>
+                                                	<button type="button" value="poista" class='poista'>Poista</button>
+                                                </div>
                                                 <div class="listalla hidden">
-                                                <label for="piilossa"> listalla </label>
-                                                <input type="checkbox" value="piilota" name="piilossa" id="piilossa" />
+                                                	<label for="piilossa"> listalla </label>
+                                                	<input type="checkbox" value="piilota" name="piilossa" id="piilossa" />
                                                 </div>
 		                                    </div>
 											<input type=hidden name=id value="${pizza.getPizza_id()}" class="hidden" />

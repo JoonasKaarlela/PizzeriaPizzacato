@@ -1,13 +1,11 @@
-"use strict";
-if( document.readyState == "complete"){
-	
-	// Muutama helpperi funktio
+	// lisaa luokka elementille
 	Element.prototype.addClass = function(name){
 		var names = Array.prototype.split.call(this.className, " ");
 		names.push(name);
 		this.className = names.join(" ");
 	}
 		
+	// poita luokka elementilta
 	Element.prototype.removeClass = function(newName){
 		var names = Array.prototype.split.call(this.className, " ");
 		names.filter(function(currentName, index){
@@ -16,6 +14,7 @@ if( document.readyState == "complete"){
 		this.className = names.join(" ");
 	}
 		
+	// tsekkaa onko elementilla luokka
 	Element.prototype.hasClass = function(name){
 		var	names = Array.prototype.split.calss(this.className, " ");
 		var match = names.filter(function(currentName, index){
@@ -52,7 +51,7 @@ if( document.readyState == "complete"){
 			if(elementti.hasClass("muokkaa") || elementti.hasClass("listalla")){
 				elementti.removeClass("hidden");
 			}
-			if(elementti.hasClass("muokkaus")){
+			if(elementti.hasClass("muokkaus_con")){
 				elementti.addClass("hidden");
 			}
 		});
@@ -64,19 +63,20 @@ if( document.readyState == "complete"){
 		// Aktivoi "input" kentät
 		$('input', $(".pizza")[index]).each(function(){
 			$(this).removeAttr('disabled');
-			$(this).addClass('muokkaus');
 		});
 		
 		// Aktivoi "textarea" kenttä
 		$('textarea', $(".pizza")[index]).each(function(){
 			$(this).removeAttr('disabled');
-			$(this).addClass('muokkaus');
 		});
 		
 		// Muuta button tyyppi ja teksti
-		$('.muokkaa', $('.pizzainfo')[index]).each(function(){
+		$('.muokkaa', $('.pizza')[index]).each(function(){
 			$(this).addClass('hidden');
-			$(this).text("tallenna");
+		});
+		
+		$('.muokkaus', $('.pizza')[index]).each(function(){
+			$(this).removeClass('hidden');
 		});
 		
 		// Tallenna nappi näkyviin
@@ -100,7 +100,5 @@ if( document.readyState == "complete"){
 		});
 
 	}
-}
-
 
 

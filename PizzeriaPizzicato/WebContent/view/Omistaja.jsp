@@ -75,8 +75,8 @@
 													<textarea disabled class="pizza_taytteet" name="taytteet" required pattern="^\s*([0-9a-zA-Z]+)\s*$"> ${pizza.getTaytteet()} </textarea>
 												</div>
 												<!--  view tila napit -->
-												<div class="muokkaa">
-													<button type="button" value="muokkaa" onClick="muokkaa('${pizza.getPizza_id()}', '${current.index}'); return false;">Muokkaa</button>
+												<div class="muokkaa_con">
+													<button type="button" class="muokkaa" value="muokkaa" onClick="muokkaa('${pizza.getPizza_id()}', '${current.index}'); return false;">Muokkaa</button>
 												</div>	
 												<!--  muokkaus tila napit -->
 												<div class="muokkaus hidden">

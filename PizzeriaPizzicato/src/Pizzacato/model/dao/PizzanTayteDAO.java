@@ -12,12 +12,12 @@ import Pizzacato.model.Tayte;
 
 public class PizzanTayteDAO extends DataAccessObject {
 
-	public ArrayList<Tayte> haePizzanTaytteet(String id) throws SQLException{
+	public ArrayList<Tayte> haePizzanTaytteet(String tayte_id) throws SQLException{
 		ArrayList<Tayte> taytteet = new ArrayList<>();
 		
 		Connection conn = getConnection();
 
-		String query = "SELECT * FROM TAYTE WHERE pizzan_id=" + id;
+		String query = "SELECT * FROM TAYTE WHERE pizzan_id=" + tayte_id;
 		Statement statement = conn.createStatement();
 		ResultSet results = statement.executeQuery(query);
 		

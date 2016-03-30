@@ -23,12 +23,14 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import Pizzacato.model.Pizza;
+import Pizzacato.model.Tayte;
 import Pizzacato.model.dao.PizzaDAO;
 
 
@@ -42,7 +44,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 		String pizza_id = "" + id;
 		
 		String nimi = request.getParameter("nimi");
-		String taytteet = request.getParameter("taytteet");
+		ArrayList<Tayte> taytteet = new ArrayList<>();	// request.getParameter("selected");
 		String kuvaus = request.getParameter("kuvaus");
 		boolean listalla = false;
 		double hinta = Double.parseDouble(request.getParameter("hinta"));
@@ -51,7 +53,6 @@ public class LisaaPizzaServlet extends HttpServlet {
 		Pizza pizza = new Pizza(pizza_id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
 
 		PizzaDAO dao = new PizzaDAO();
-					
 		try{
 			dao.lisaaPizza(pizza);
 			response.sendRedirect("Menu");

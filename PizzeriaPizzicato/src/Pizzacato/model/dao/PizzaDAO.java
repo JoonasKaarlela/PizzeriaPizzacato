@@ -63,15 +63,18 @@ public class PizzaDAO extends DataAccessObject{
 		statement.setDouble(5, pizza.getHinta());
 		statement.setString(6, pizza.getKuva());
 		
-		// TODO: LISAA TAYTTEET PIZZANTAYTE
-		
-		
-		
 		// EXECUTE
 		int syotettiin = statement.executeUpdate();
 		if(syotettiin > 0){
 			System.out.println("uusi pizza: " + pizza.getNimi() + " lisattiin tietokantaan...");
 		}
+		
+		//  LISAA PIZZANTÄYTE PÖYTÄÄN
+			for(Tayte tayte : pizza.getTaytteet()){
+				PizzanTayteDAO pizzantaytedao = new PizzanTayteDAO();
+				pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
+			}
+		System.out.println("pizza lisättiin!");
 		
 	}
 	

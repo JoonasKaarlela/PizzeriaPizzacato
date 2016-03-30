@@ -25,41 +25,7 @@
 	
 	
 	function muokkaa(pizza_id, index){
-		
-		/*
-		// UUSI PAREMPI
-		var elementit = Array.from(document.querySelectorAll(".pizzainfo"))[index].children;
-		elementit.forEach(function(elementti){
-			Array.from(elementti.children).map(function(child){
-				if(child.tagName == "input" || child.tagName == "textarea"){
-					child.removeAttribute("disabled");
-				}
-				if(child.hasClass(".poista")){
-					child.removeClass("hidden");
-					child.addEventListener("click", function(){
-						var request = new XMLHttpRequest();
-						request.onreadystatechange = function(){
-							if(request.readyState == 4 && request.status == 200){
-								location.reload();
-							}
-						}
-						request.open("POST", "poista", true);
-						request.send("id="+pizza_id);
-					});
-				}
-			});
-			if(elementti.hasClass("muokkaa") || elementti.hasClass("listalla")){
-				elementti.removeClass("hidden");
-			}
-			if(elementti.hasClass("muokkaus_con")){
-				elementti.addClass("hidden");
-			}
-		});
-		*/
-		
-		
-		
-		// VANHA TOIMIVA
+
 		// Aktivoi "input" kentät
 		$('input', $(".pizza")[index]).each(function(){
 			$(this).removeAttr('disabled');

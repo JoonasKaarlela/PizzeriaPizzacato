@@ -6,13 +6,13 @@ public class Pizza implements Comparable<Pizza> {
 	
 	private String pizza_id;
 	private String nimi;
-	private String taytteet;
+	private ArrayList<Tayte> taytteet;
 	private String kuvaus;
 	private boolean listalla;
 	private double hinta;
 	private String kuva;
 	
-	public Pizza(String pizza_id,String nimi, String taytteet, String kuvaus,boolean listalla, Double hinta, String kuva){
+	public Pizza(String pizza_id,String nimi, ArrayList<Tayte> taytteet, String kuvaus,boolean listalla, Double hinta, String kuva){
 		this.pizza_id = pizza_id;
 		this.nimi = nimi;
 		this.taytteet = taytteet;
@@ -27,7 +27,7 @@ public class Pizza implements Comparable<Pizza> {
 	public Pizza(){
 		this.pizza_id = "";
 		this.nimi = "";
-		this.taytteet = "";
+		this.taytteet = new ArrayList<>();
 		this.kuvaus = "";
 		this.listalla = false;
 		this.hinta = 0.00;
@@ -43,11 +43,11 @@ public class Pizza implements Comparable<Pizza> {
 		this.nimi = nimi;
 	}
 
-	public String getTaytteet() {
+	public ArrayList<Tayte> getTaytteet() {
 		return this.taytteet;
 	}
 
-	public void setTaytteet(String taytteet){
+	public void setTaytteet(ArrayList<Tayte> taytteet){
 		this.taytteet = taytteet;
 	}
 

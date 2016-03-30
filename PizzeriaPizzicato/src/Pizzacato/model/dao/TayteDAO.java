@@ -18,7 +18,7 @@ public class TayteDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		
 		// TYHJA LISTA TAYTTEILLE
-		ArrayList<Tayte> Taytteet = new ArrayList<>();
+		ArrayList<Tayte> taytteet = new ArrayList<>();
 		
 		// HAKU LAUSE
 		String query = "SELECT * FROM TAYTE";
@@ -28,13 +28,16 @@ public class TayteDAO extends DataAccessObject{
 		// ITEROI TULOKSET LAPI => LUO UUSI TAYTE OLIO => LISAA LISTAAN...
 		while(results.next()){
 			String tayte_id = results.getString(1);
-			String ravintosisalto = results.getString(2);
-			Tayte Tayte = new Tayte(tayte_id, ravintosisalto);
-			Taytteet.add(Tayte);
+			String nimi = results.getString(2);
+			String alkupera = results.getString(3);
+			String kuvaus = results.getString(4);
+			double hinta = results.getDouble(5);
+			Tayte tayte = new Tayte(tayte_id, nimi, alkupera, kuvaus, hinta);
+			taytteet.add(tayte);
 		}
 		
 		// PALAUTA TAYTTEET
-		return Taytteet;
+		return taytteet;
 	}
 	
 	public void lisaaTayte(Tayte tayte) throws SQLException{
@@ -44,12 +47,14 @@ public class TayteDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		
 		// LISAYS LAUSE
-		String query = "INSERT INTO TAYTE(tayte_id,ravintosisalto) VALUES(?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO TAYTE(tayte_id, nimi, alkupera, kuvaus, hinta) VALUES(?, ?, ?, ?, ?)";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, tayte.getTayte_id());
-		statement.setString(2, tayte.getRavintosisalto());
+		statement.setString(2, tayte.getNimi());
+		statement.setString(3, tayte.getAlkupera());
+		statement.setString(4, tayte.getKuvaus());
+		statement.setDouble(5, tayte.getHinta());
 
-		
 		// EXECUTE
 		int syotettiin = statement.executeUpdate();
 		if(syotettiin > 0){
@@ -77,15 +82,17 @@ public class TayteDAO extends DataAccessObject{
 		
 		public void muokkaaTaytetta(Tayte tayte) throws SQLException{
 			// TALLENNA UUDET TIEDOT
-			
+
 			//YHTEYS
 			Connection conn = getConnection();
 			
 			//PAIVITA LAUSE
-			String query = "UPDATE TAYTE SET tayte_id=?, ravintosisalto=? WHERE tayte_id=?";
+			String query = "UPDATE TAYTE SET nimi=?, alkupera=?, kuvaus=?, hinta=? WHERE tayte_id=?";
 			PreparedStatement statement = conn.prepareStatement(query);
-			statement.setString(1, tayte.getTayte_id());
-			statement.setString(2, tayte.getRavintosisalto());
+			statement.setString(1, tayte.getNimi());
+			statement.setString(2, tayte.getAlkupera());
+			statement.setString(3,  tayte.getKuvaus());
+			statement.setDouble(4,  tayte.getHinta());
 			
 			//EXECUTE
 			int paivitettiin = statement.executeUpdate();

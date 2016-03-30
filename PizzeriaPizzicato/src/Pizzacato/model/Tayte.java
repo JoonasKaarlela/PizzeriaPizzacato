@@ -10,13 +10,11 @@ public class Tayte {
 		
 
 public Tayte(String tayte_id, String nimi, String alkupera, String kuvaus, Double hinta) {
-	super();
 	this.tayte_id = tayte_id;
 	this.nimi = nimi;
 	this.alkupera = alkupera;
 	this.kuvaus = kuvaus;
 	this.hinta = hinta;
-	
 }
 
 public Tayte(){
@@ -64,12 +62,6 @@ public double getHinta() {
 }
 public void setHinta(double hinta){
 	this.hinta = hinta;
-}
-
-@Override
-public String toString() {
-	return "Tayte [tayte_id=" + tayte_id + ", ravintosisalto=" + ravintosisalto
-			+ "]";
 }
 
 }

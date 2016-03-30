@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Pizzacato.model.Pizza;
+import Pizzacato.model.Tayte;
 
 public class PizzaDAO extends DataAccessObject{
 
@@ -30,7 +31,7 @@ public class PizzaDAO extends DataAccessObject{
 		while(results.next()){
 			String id = results.getString(1);
 			String nimi = results.getString(2);
-			String taytteet = results.getString(3);
+			ArrayList<Tayte> taytteet = new PizzanTayteDAO().haePizzanTaytteet(id);
 			String kuvaus = results.getString(4);
 			boolean listalla = results.getBoolean(5);
 			double hinta = results.getDouble(6);
@@ -44,32 +45,38 @@ public class PizzaDAO extends DataAccessObject{
 	}
 	
 
+	
+
 	public void lisaaPizza(Pizza pizza) throws SQLException{
-		// LISï¿½ï¿½ UUSI PIZZA TIETOKANTAAN.
+		// LISATTIIN UUSI PIZZA TIETOKANTAAN.
 		
 		// YHTEYS
 		Connection conn = getConnection();
 		
-		// LISï¿½YS LAUSE
-		String query = "INSERT INTO PIZZA(pizza_id, nimi, taytteet, kuvaus, listalla, hinta, kuva) VALUES(?, ?, ?, ?, ?, ?, ?)";
+		// LISAYS LAUSE
+		String query = "INSERT INTO PIZZA(pizza_id, nimi, kuvaus, listalla, hinta, kuva) VALUES(?, ?, ?, ?, ?, ?)";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, pizza.getPizza_id());
 		statement.setString(2, pizza.getNimi());
-		statement.setString(3, pizza.getTaytteet());
-		statement.setString(4, pizza.getKuvaus());
-		statement.setBoolean(5, pizza.getListalla());
-		statement.setDouble(6, pizza.getHinta());
-		statement.setString(7, pizza.getKuva());
+		statement.setString(3, pizza.getKuvaus());
+		statement.setBoolean(4, pizza.getListalla());
+		statement.setDouble(5, pizza.getHinta());
+		statement.setString(6, pizza.getKuva());
+		
+		// TODO: LISAA TAYTTEET PIZZANTAYTE
+		
+		
 		
 		// EXECUTE
 		int syotettiin = statement.executeUpdate();
 		if(syotettiin > 0){
-			System.out.println("uusi pizza: " + pizza.getNimi() + " lisï¿½ttiin tietokantaan...");
+			System.out.println("uusi pizza: " + pizza.getNimi() + " lisattiin tietokantaan...");
 		}
 		
 	}
 	
 	public void poistaPizza(String id) throws SQLException{
+			
 		// POISTA KYSEINEN PIZZA TIETOKANNASTA
 		
 		// YHTEYS
@@ -79,6 +86,10 @@ public class PizzaDAO extends DataAccessObject{
 		String query = "DELETE FROM PIZZA WHERE pizza_id=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, id);
+		
+		
+		// TODO: POISTA MYÖS TÄYTTEET TÄLLE PIZZALLE!
+		
 		
 		// EXECUTE
 		int poistettiin = statement.executeUpdate();
@@ -130,14 +141,15 @@ public class PizzaDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		
 		//PAIVITA LAUSE
-		String query = "UPDATE PIZZA SET nimi=?, taytteet=?, kuvaus=?, listalla=?, hinta=? WHERE pizza_id=?";
+		String query = "UPDATE PIZZA SET nimi=?, kuvaus=?, listalla=?, hinta=? WHERE pizza_id=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, pizza.getNimi());
-		statement.setString(2, pizza.getTaytteet());
-		statement.setString(3, pizza.getKuvaus());
-		statement.setBoolean(4, pizza.getListalla());
-		statement.setDouble(5, pizza.getHinta());
-		statement.setString(6, pizza.getPizza_id());
+		statement.setString(2, pizza.getKuvaus());
+		statement.setBoolean(3, pizza.getListalla());
+		statement.setDouble(4, pizza.getHinta());
+		statement.setString(5, pizza.getPizza_id());
+		
+		// TODO: PÄIVITÄ MYÖS TÄYTTEET TÄLLE PIZZALLE!
 		
 		//EXECUTE
 		int paivitettiin = statement.executeUpdate();

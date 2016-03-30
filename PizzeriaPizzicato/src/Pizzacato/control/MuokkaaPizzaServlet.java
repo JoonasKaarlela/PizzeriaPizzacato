@@ -2,6 +2,7 @@ package Pizzacato.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Pizzacato.model.Pizza;
+import Pizzacato.model.Tayte;
 import Pizzacato.model.dao.PizzaDAO;
 
 /**
@@ -25,7 +27,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 
 		String id = request.getParameter("id");
 		String nimi = request.getParameter("nimi");
-		String taytteet = request.getParameter("taytteet");
+		ArrayList<Tayte> taytteet = new ArrayList<>(); // request.getParameter("taytteet");
 		String kuvaus = request.getParameter("kuvaus");
 	
 		String listallaSTRING = request.getParameter("piilossa");

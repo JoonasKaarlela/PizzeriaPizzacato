@@ -26,9 +26,7 @@ public class ListaaPizzatServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
-		// Luodaan pizzadao ja haetaan kaikki pizzat
+		// Haetaan  kaikki pizzat
 		PizzaDAO pizzadao = new PizzaDAO();
 		ArrayList<Pizza> pizzat = new ArrayList<>();
 		try {
@@ -44,7 +42,6 @@ public class ListaaPizzatServlet extends HttpServlet {
 		// Tallennetaan request-olion alle kaikki pizzat
 		request.setAttribute("pizzat", pizzat);
 		
-
 		// Katso onko kirjautunut, omistaja/asiakas
 		String sivu = "/view/Menu.jsp";
 		

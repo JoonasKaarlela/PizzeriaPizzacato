@@ -45,10 +45,11 @@ public class PizzanTayteDAO extends DataAccessObject {
 			Connection conn = getConnection();
 			
 			// LISAYS LAUSE
-			String query = "INSERT INTO PIZZANTAYTE(tayte_id, pizzan_id) VALUES(?, ?)";
+			String query = "INSERT INTO PIZZANTAYTE(id, tayte_id, pizzan_id) VALUES(?, ?, ?)";
 			PreparedStatement statement = conn.prepareStatement(query);
-			statement.setString(1, tayte.getTayte_id());
-			statement.setString(2, pizza.getPizza_id());
+			statement.setString(1, ""+Math.random()*1000000);
+			statement.setString(2, tayte.getTayte_id());
+			statement.setString(3, pizza.getPizza_id());
 
 			// EXECUTE
 			int syotettiin = statement.executeUpdate();

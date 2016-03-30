@@ -1,31 +1,4 @@
-	// lisaa luokka elementille
-	Element.prototype.addClass = function(name){
-		var names = Array.prototype.split.call(this.className, " ");
-		names.push(name);
-		this.className = names.join(" ");
-	}
-		
-	// poita luokka elementilta
-	Element.prototype.removeClass = function(newName){
-		var names = Array.prototype.split.call(this.className, " ");
-		names.filter(function(currentName, index){
-			return newName =! currentName;
-		});
-		this.className = names.join(" ");
-	}
-		
-	// tsekkaa onko elementilla luokka
-	Element.prototype.hasClass = function(name){
-		var	names = Array.prototype.split.calss(this.className, " ");
-		var match = names.filter(function(currentName, index){
-			return currentName == name;
-		});
-		return match.length > 0;
-	}
-	
-	
-	function muokkaa(pizza_id, index){
-
+function muokkaa(pizza_id, index){
 		// Aktivoi "input" kentät
 		$('input', $(".pizza")[index]).each(function(){
 			$(this).removeAttr('disabled');
@@ -64,7 +37,6 @@
 					});
 				});
 		});
-
-	}
+}
 
 

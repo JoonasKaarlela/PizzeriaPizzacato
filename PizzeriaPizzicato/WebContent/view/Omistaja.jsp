@@ -63,16 +63,16 @@
 		                               	<td valign="top">
 		                                	<div class="pizzainfo">
 			                                	<div class="pizzanimi">
-			                                		<input class="pizza_input" type="text" value="${pizza.getNimi()}" name="nimi" disabled required pattern="^\s*([0-9a-zA-Z]+)\s*$"/> 
+			                                		<input class="pizza_input" type="text" value="${pizza.getNimi()}" name="nimi" disabled required pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä"/> 
 			                                	</div>
 			                                    <div class="pizzakuvaus" >
-			                                    	<textarea disabled class="pizza_input" name="kuvaus" required pattern="^\s*([0-9a-zA-Z]+)\s*$">${pizza.getKuvaus()}</textarea>
+			                                    	<textarea disabled class="pizza_input" name="kuvaus" required>${pizza.getKuvaus()}</textarea>
 			                                    </div>                                     
 												<div class="pizzahinta">
-													<input type="text" class="pizza_input" value="${pizza.getHinta()}" name="hinta" disabled required pattern="[0-9]{5}"/>
+													<input type="text" class="pizza_input" value="${pizza.getHinta()}" name="hinta" disabled required pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx"/>
 												</div>
 												<div class="pizzantayte">
-													<textarea disabled class="pizza_taytteet" name="taytteet" required pattern="^\s*([0-9a-zA-Z]+)\s*$"> ${pizza.getTaytteet()} </textarea>
+													<textarea disabled class="pizza_taytteet" name="taytteet" required> ${pizza.getTaytteet()} </textarea>
 												</div>
 												<!--  view tila napit -->
 												<div class="muokkaa_con">
@@ -109,9 +109,9 @@
 			<!-- LISÄÄ PIZZA -->
 			<div id="uusiPizza">
 				<form method=post action=lisaa>
-					<input name="nimi" placeholder="pizzan nimi" />
+					<input name="nimi" placeholder="pizzan nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" />
 					<input name="kuvaus" placeholder="kuvaus" />
-					<input name="hinta" placeholder="hinta" />
+					<input name="hinta" placeholder="hinta" pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx" />
 					<textarea name="taytteet" placeholder="taytteet"></textarea>
 					<button type=submit> lisaa </button>
 				</form>

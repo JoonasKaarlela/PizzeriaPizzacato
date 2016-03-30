@@ -18,25 +18,15 @@ import Pizzacato.model.dao.PizzaDAO;
 public class NaytaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		
-		
-		
-	}
-
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
 		
-		String naytettava_id = request.getParameter("id");
+		String naytettavan_id = request.getParameter("id");
 		
 		PizzaDAO pizzadao = new PizzaDAO();
 		try {
-			pizzadao.naytaListalla(naytettava_id);
+			pizzadao.naytaListalla(naytettavan_id);
 		} catch (SQLException e) {
 			System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
 			e.printStackTrace();

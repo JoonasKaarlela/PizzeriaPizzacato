@@ -18,14 +18,11 @@ import Pizzacato.model.dao.PizzaDAO;
 public class PiilotapizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		try{
-		
+			
 		String piilotettavan_id = request.getParameter("id");
-		
+
 		PizzaDAO pizzadao = new PizzaDAO();
 		pizzadao.piilotaListalla(piilotettavan_id);
 		

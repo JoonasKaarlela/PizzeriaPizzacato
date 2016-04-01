@@ -21,6 +21,9 @@ public class poistaKoristaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String pizza_id = request.getParameter("id");
+		
+		
+		
 		Pizza pizza = new Pizza();
 		
 		PizzaDAO pizzadao = new PizzaDAO();

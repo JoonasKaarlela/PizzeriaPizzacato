@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import Pizzacato.model.Pizza;
 import Pizzacato.model.Tayte;
 import Pizzacato.model.dao.PizzaDAO;
+import Pizzacato.model.dao.TayteDAO;
 
 /**
  * Marianne
@@ -27,7 +28,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 
 		String id = request.getParameter("id");
 		String nimi = request.getParameter("nimi");
-		ArrayList<Tayte> taytteet = new ArrayList<>(); // request.getParameter("taytteet");
+		ArrayList<Tayte> taytteet = haeTaytteet(request.getParameterValues("taytteet"));
 		String kuvaus = request.getParameter("kuvaus");
 		boolean listalla = listalla(request.getParameter("piilossa"));
 		Double hinta = Double.parseDouble(request.getParameter("hinta"));
@@ -40,12 +41,32 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	}
 	
 	
+	public ArrayList<Tayte> haeTaytteet(String[] taytteet){
+		ArrayList<Tayte> pizzan_taytteet = new ArrayList<>();
+		TayteDAO taytedao = new TayteDAO();
+		try{
+			ArrayList<Tayte> kaikki_taytteet = taytedao.haeTaytteet();
+			for(Tayte tayte : kaikki_taytteet){
+				for(String tayte_id : taytteet){
+					if(tayte.getTayte_id().equals(tayte_id)){
+						pizzan_taytteet.add(tayte);
+					}
+				}
+			}
+		} catch( SQLException e){
+			System.out.println(e.getMessage());
+		}
+		return pizzan_taytteet;
+	}
+	
+	
 	public boolean listalla(String listalla){
 		if(listalla != null){
 			return true;
 		}
 		return false;
 	}
+	
 	
 	public void muokkaaPizzaa(Pizza pizza){
 		PizzaDAO pizzadao = new PizzaDAO();

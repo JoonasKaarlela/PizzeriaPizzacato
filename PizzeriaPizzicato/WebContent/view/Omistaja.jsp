@@ -107,15 +107,32 @@
 			</div><!-- MENU LOPPUU -->
 			
 			<!-- LISÄÄ PIZZA -->
-			<div id="uusiPizza">
-				<form method=post action=lisaa>
-					<input name="nimi" placeholder="pizzan nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" />
-					<input name="kuvaus" placeholder="kuvaus" />
-					<input name="hinta" placeholder="hinta" pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx" />
-					<textarea name="taytteet" placeholder="taytteet"></textarea>
-					<button type=submit> lisaa </button>
-				</form>
+
+			<div id="apanel">
+		        <div id="apanelwrapper">
+		            <div id="apanelcontent">
+		                <h1>Omistajapaneeli</h1>
+		                
+		                <button>Lisää ja muokkaa täytteitä</button>
+		                
+		                <h2>Lisää pizza</h2>
+		                
+		                <!-- LISÄÄ PIZZA -->
+		                <div>
+		                    <form method="post" action="lisaa">
+		                        <label>Pizzannimi</label><input name="nimi" placeholder="pizzan nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" />
+		                        <label>Pizzan kuvaus</label><input name="kuvaus" placeholder="kuvaus" />
+		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx" />
+		                        <label>Täyte1</label><select><option>Salami</option><option>kinkku</option></select>
+		                        <br />
+		                        <button type="submit"> Lisää Pizza </button>
+		                    </form>
+		                </div>
+		                
+		            </div>
+		        </div>
 			</div>
+			
 			
 		</div><!-- CONTENT LOPPUU -->
 		

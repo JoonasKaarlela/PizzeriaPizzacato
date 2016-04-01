@@ -254,8 +254,39 @@ button{
 	border:2px solid white;
 }
 
+
 /* OMISTAJA LOPPUU */
 
+/* ADMIN PANEL */
+	
+	#apanel {
+		position:fixed;
+		right: 20px;
+		top: 20px;
+	}
+	
+	#apanelwrapper {
+		width:270px;
+		background:#222;
+		color: #FFF;
+		padding:20px;
+		border: 1px solid #555;
+		opacity: 0.8;
+		font-size: 12px;
+	}
+	
+	#apanel h1 {
+		margin: 0px 0px 20px 0px;
+	}
+	#apanel label {
+		width: 90px;
+		display:inline-block;
+	}
+	
+	#apanelcontent {
+	}
+	
+/* ADMIN PANEL */
 
 /* RESPONSIVE */
 

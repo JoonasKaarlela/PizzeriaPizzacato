@@ -29,25 +29,32 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		String nimi = request.getParameter("nimi");
 		ArrayList<Tayte> taytteet = new ArrayList<>(); // request.getParameter("taytteet");
 		String kuvaus = request.getParameter("kuvaus");
-	
-		String listallaSTRING = request.getParameter("piilossa");
-		Boolean listalla = false;
-		if(listallaSTRING != null){
-			listalla = true;
-		}
-	
+		boolean listalla = listalla(request.getParameter("piilossa"));
 		Double hinta = Double.parseDouble(request.getParameter("hinta"));
 		String kuva = "pizza1.png";
 		
-		PizzaDAO pizzadao = new PizzaDAO();
-		
 		Pizza pizza = new Pizza(id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
+		muokkaaPizzaa(pizza);
 		
+		response.sendRedirect("Menu");
+	}
+	
+	
+	public boolean listalla(String listalla){
+		if(listalla != null){
+			return true;
+		}
+		return false;
+	}
+	
+	public void muokkaaPizzaa(Pizza pizza){
+		PizzaDAO pizzadao = new PizzaDAO();
 		try{
 			pizzadao.muokkaaPizzaa(pizza);
-			response.sendRedirect("Menu");
 		} catch(SQLException e){
 			System.out.println("ERROR: " + e.getMessage());
 		}
 	}
+	
+	
 }

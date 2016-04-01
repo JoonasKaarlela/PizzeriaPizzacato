@@ -18,18 +18,20 @@ public class PoistaPizzaServlet extends HttpServlet {
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String poistettava_id = request.getParameter("id");
+		String id = request.getParameter("id");
+		poistaPizza(id);
 		
+		response.sendRedirect("Menu");
+	}
+	
+	public void poistaPizza(String id){
 		PizzaDAO pizzadao = new PizzaDAO();
-		
 		try {
-			pizzadao.poistaPizza(poistettava_id);
+			pizzadao.poistaPizza(id);
 		} catch (SQLException e) {
-			System.out.println("Sovelluksessa tapahtui virhe "+ e.getMessage());
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
-
-		response.sendRedirect("Menu");
 	}
 
 }

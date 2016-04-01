@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Pizzacato.model.Pizza;
 import Pizzacato.model.dao.PizzaDAO;
@@ -20,34 +21,43 @@ public class poistaKoristaServlet extends HttpServlet {
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String pizza_id = request.getParameter("id");
+		String id = request.getParameter("id");
 		
+		Pizza pizza = haePizza(id);
+		poistaPizza(pizza, request.getSession());
 		
-		
-		Pizza pizza = new Pizza();
-		
+		response.sendRedirect("Menu");
+	}
+	
+	
+	
+	public Pizza haePizza(String id){
+		Pizza pizza = null;
 		PizzaDAO pizzadao = new PizzaDAO();
 		try{
-			pizza = pizzadao.haePizza(pizza_id);
+			pizza = pizzadao.haePizza(id);
 		}catch(SQLException e){
 			System.out.println(e.getMessage());
 		}
-		
+		return pizza;
+	}
+	
+	
+	public void poistaPizza(Pizza pizza, HttpSession session){
 		if(pizza != null){
-			if(request.getSession(false).getAttribute("ostoskori") == null){
-				System.out.println("Tehdään uusi ostoskori...");
+			if(session.getAttribute("ostoskori") == null){
 				ArrayList<Pizza> ostoskori = new ArrayList<>();
 				ostoskori.remove(pizza);
-				request.getSession(false).setAttribute("ostoskori", ostoskori);
+				session.setAttribute("ostoskori", ostoskori);
 			} else {
 				@SuppressWarnings("unchecked")
-				ArrayList<Pizza> ostoskori = (ArrayList<Pizza>) request.getSession(false).getAttribute("ostoskori");
+				ArrayList<Pizza> ostoskori = (ArrayList<Pizza>) session.getAttribute("ostoskori");
 				ostoskori.remove(pizza);
-				request.getSession(false).setAttribute("ostoskori", ostoskori);
+				session.setAttribute("ostoskori", ostoskori);
 			}
-		} else {
-			System.out.println("Pizzaa ei löytynyt");
 		}
-		
 	}
+	
+	
+	
 }

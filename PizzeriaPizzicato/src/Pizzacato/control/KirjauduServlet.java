@@ -20,33 +20,30 @@ public class KirjauduServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// HAE JSP SIVULTA KAYTTAJA TIEDOT
 		String kayttajatunnus = request.getParameter("kayttajatunnus");
 		String salasana = request.getParameter("salasana");
+
+		kirjaudu(request, kayttajatunnus, salasana);
 		
-		KayttajaDAO kayttajadao = new KayttajaDAO();
-		
-		// LUO TYHJÄ KÄYTTÄJÄ
-		Kayttaja kayttaja = null;
-		
-		// KOKEILE KIRJAUTUA SISÄÄN.
-		try{
-			kayttaja = (Kayttaja) kayttajadao.haeKayttaja(kayttajatunnus, salasana);
-		} catch(SQLException e){
-			request.getSession().setAttribute("error", "Kirjautuminen epäonnistui!");
-			System.out.println("Kirjautuminen epäonnistui");
-			System.out.println(e.getMessage());
-		}
-		
-		// TSEKATAAN LÖYTYIKÖ KÄYTTÄJÄ
-		// JOS OK => TALLENNA TALLENNA UUTEEN "SESSIOON"
-		if( kayttaja != null){
-			request.getSession(true).setAttribute("kayttaja", kayttaja);
-		} else {
-			request.getSession().setAttribute("error", "Kirjautuminen epäonnistui!");
-		}
-		// OHJAA MENU SIVULLE
 		response.sendRedirect("Menu");
 	}
 
+	public boolean kirjaudu(HttpServletRequest request, String kayttajatunnus, String salasana){
+		KayttajaDAO kayttajadao = new KayttajaDAO();
+		try{
+			Kayttaja kayttaja = (Kayttaja) kayttajadao.haeKayttaja(kayttajatunnus, salasana);
+			if( kayttaja != null){
+				request.getSession(true).setAttribute("kayttaja", kayttaja);
+				return true;
+			} else {
+				request.getSession().setAttribute("error", "Kirjautuminen epäonnistui!");
+				return false;
+			}
+		} catch(SQLException e){
+			request.getSession().setAttribute("error", "Kirjautuminen epäonnistui!");
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+	
 }

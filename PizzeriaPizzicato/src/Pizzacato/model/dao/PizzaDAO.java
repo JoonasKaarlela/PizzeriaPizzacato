@@ -45,6 +45,27 @@ public class PizzaDAO extends DataAccessObject{
 	}
 	
 
+	public Pizza haePizza(String id) throws SQLException{
+		Connection conn = getConnection();
+		Pizza pizza = new Pizza();
+		
+		String query = "SELECT * FROM PIZZA WHERE pizza_id" + id;
+		Statement statement = conn.createStatement();
+		ResultSet results = statement.executeQuery(query);
+		
+		while(results.next()){
+			String pizza_id = results.getString(1);
+			String nimi = results.getString(2);
+			ArrayList<Tayte> taytteet = new PizzanTayteDAO().haePizzanTaytteet(pizza_id);
+			String kuvaus = results.getString(4);
+			boolean listalla = results.getBoolean(5);
+			double hinta = results.getDouble(6);
+			String kuva = results.getString(7);
+			pizza = new Pizza(pizza_id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
+		}
+		
+		return pizza;
+	}
 	
 
 	public void lisaaPizza(Pizza pizza) throws SQLException{

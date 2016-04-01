@@ -12,12 +12,15 @@ import Pizzacato.model.Tayte;
 
 public class PizzanTayteDAO extends DataAccessObject {
 
-	public ArrayList<Tayte> haePizzanTaytteet(String tayte_id) throws SQLException{
+	public ArrayList<Tayte> haePizzanTaytteet(String pizza_id) throws SQLException{
 		ArrayList<Tayte> taytteet = new ArrayList<>();
 		
 		Connection conn = getConnection();
 
-		String query = "SELECT * FROM TAYTE WHERE pizzan_id=" + tayte_id;
+		String query = "SELECT * FROM TAYTE"
+							+ " INNER JOIN PIZZANTAYTE ON TAYTE.tayte_id=PIZZANTAYTE.tayte_id"
+							+ " AND PIZZANTAYTE.pizza_id=" + pizza_id;
+		
 		Statement statement = conn.createStatement();
 		ResultSet results = statement.executeQuery(query);
 		
@@ -30,9 +33,6 @@ public class PizzanTayteDAO extends DataAccessObject {
 			Tayte tayte = new Tayte(id, nimi, alkupera, kuvaus, hinta);
 			taytteet.add(tayte);
 		}
-		
-		TayteDAO taytedao = new TayteDAO();
-		taytedao.haeTaytteet();
 		
 		return taytteet;
 	}
@@ -84,13 +84,12 @@ public class PizzanTayteDAO extends DataAccessObject {
 				Connection conn = getConnection();
 				
 				//PAIVITA LAUSE
-				String query = "UPDATE TAYTE SET tayte_id=? nimi=? alkupera=? kuvaus=? hinta=? WHERE tayte_id=?";
+				String query = "UPDATE TAYTE SET nimi=? alkupera=? kuvaus=? hinta=? WHERE tayte_id=?";
 				PreparedStatement statement = conn.prepareStatement(query);
-				statement.setString(1, tayte.getTayte_id());
-				statement.setString(2, tayte.getNimi());
-				statement.setString(3,  tayte.getAlkupera());
-				statement.setString(4, tayte.getKuvaus());
-				statement.setDouble(5, tayte.getHinta());
+				statement.setString(1, tayte.getNimi());
+				statement.setString(2,  tayte.getAlkupera());
+				statement.setString(3, tayte.getKuvaus());
+				statement.setDouble(4, tayte.getHinta());
 				
 				//EXECUTE
 				int paivitettiin = statement.executeUpdate();

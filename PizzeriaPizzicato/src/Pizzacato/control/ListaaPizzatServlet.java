@@ -30,26 +30,18 @@ public class ListaaPizzatServlet extends HttpServlet {
 		
 		Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");
 		
-		try{
-			if(kirjautunut(request.getSession()) && kayttaja.isOmistaja()){
+		if( kayttaja != null){
+			if(kirjautunut(request.getSession()) && kayttaja.isOmistaja() && kayttaja != null){
 				sivu = "/view/Omistaja.jsp";
 			}
-			
-			ArrayList<Pizza> pizzat = haePizzat();
-			request.setAttribute("pizzat", pizzat);
-		
-			RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
-			dp.forward(request, response);
-			
-		} catch(NullPointerException e){
-			
-			ArrayList<Pizza> pizzat = haePizzat();
-			request.setAttribute("pizzat", pizzat);
-		
-			RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
-			dp.forward(request, response);
-			
 		}
+		
+		ArrayList<Pizza> pizzat = haePizzat();
+		request.setAttribute("pizzat", pizzat);
+		
+		RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
+		dp.forward(request, response);
+			
 	}
 	
 	

@@ -31,7 +31,7 @@ public class ListaaPizzatServlet extends HttpServlet {
 		Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");
 		
 		if( kayttaja != null){
-			if(kirjautunut(request.getSession()) && kayttaja.isOmistaja()){
+			if( onKirjautunut(request.getSession()) && kayttaja.isOmistaja() ){
 				sivu = "/view/Omistaja.jsp";
 			}
 		}
@@ -58,9 +58,9 @@ public class ListaaPizzatServlet extends HttpServlet {
 	}
 
 	
-	
-	public boolean kirjautunut(HttpSession session){
+	public boolean onKirjautunut(HttpSession session){
 		try{
+			@SuppressWarnings("unused")
 			Kayttaja kayttaja = (Kayttaja) session.getAttribute("kayttaja");
 			return true;
 		} catch(NullPointerException e){
@@ -68,7 +68,6 @@ public class ListaaPizzatServlet extends HttpServlet {
 			return false;
 		}
 	}
-	
 	
 	
 	public void hoidaErrorit(HttpServletRequest request){

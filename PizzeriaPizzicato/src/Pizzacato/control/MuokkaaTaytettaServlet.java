@@ -10,45 +10,40 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Pizzacato.model.Tayte;
-import Pizzacato.model.Utils;
 import Pizzacato.model.dao.TayteDAO;
 
-@WebServlet("/lisaaTayte")
-public class LisaaTayteServlet extends HttpServlet {
+/**
+ * Servlet implementation class MuokkaaTayteServlet
+ */
+@WebServlet("/MuokkaaTaytetta")
+public class MuokkaaTaytettaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		
-	}
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String tayte_id = new Utils().generate(5);
-		String nimi = request.getParameter ("nimi");
+		String tayte_id = request.getParameter("tayte_id");
+		String nimi = request.getParameter("nimi");
 		String alkupera = request.getParameter("alkupera");
 		String kuvaus = request.getParameter("kuvaus");
-		double hinta = Double.parseDouble(request.getParameter("hinta"));
-		 
+		Double hinta = Double.parseDouble(request.getParameter("hinta"));
+		
 		Tayte tayte = new Tayte(tayte_id, nimi, alkupera, kuvaus, hinta);
-		lisaaTayte(tayte);
+		muokkaaTaytetta(tayte);
 		
 		response.sendRedirect("taytteet");
-	}
 		
-	public void lisaaTayte(Tayte tayte){
+	}
+	
+	public void muokkaaTaytetta(Tayte tayte){
 		TayteDAO taytedao = new TayteDAO();
 		try{
-			taytedao.lisaaTayte(tayte);
-		} catch(SQLException e){
-			System.out.println(e.getMessage());
-			
+			taytedao.muokkaaTaytetta(tayte);
+		} catch (SQLException e){
+			System.out.println("ERROR: " + e.getMessage());
 		}
 	}
+	
 	
 
 }

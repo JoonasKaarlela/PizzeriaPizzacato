@@ -39,6 +39,9 @@ public class ListaaPizzatServlet extends HttpServlet {
 		ArrayList<Pizza> pizzat = haePizzat();
 		request.setAttribute("pizzat", pizzat);
 		
+		ArrayList<Tayte> taytteet = haeTaytteet();
+		request.setAttribute("taytteet", taytteet);
+		
 		RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
 		dp.forward(request, response);
 			
@@ -57,6 +60,18 @@ public class ListaaPizzatServlet extends HttpServlet {
 		return pizzat;
 	}
 
+	
+	public ArrayList<Tayte> haeTaytteet(){
+		ArrayList<Tayte> taytteet = new ArrayList<>();
+		TayteDAO taytedao = new TayteDAO();
+			try{
+				taytteet = taytedao.haeTaytteet();
+			} catch(SQLException e){
+				System.out.println(e.getMessage());
+			}
+		return taytteet;	
+	}
+	
 	
 	public boolean onKirjautunut(HttpSession session){
 		try{

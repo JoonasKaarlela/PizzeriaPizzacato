@@ -57,7 +57,7 @@
 	                    	
 	                    	<form method=post action=muokkaa>
 		                        <table id="pizzat">
-		                       
+	
 		                        	<tr class='pizza'>
 		                                <td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" style="width:150px;height:125px;" /></div></td>
 		                               	<td valign="top">
@@ -72,11 +72,11 @@
 													<input type="text" class="pizza_input" value="${pizza.getHinta()}" name="hinta" disabled required pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx"/>
 												</div>
 												<div class="pizzantayte">
-													<textarea disabled class="pizza_taytteet" name="taytteet" required> 
+													<div>
 														<c:forEach items="${pizza.getTaytteet()}" var="tayte">
 															 ${tayte.getNimi()}
 														</c:forEach>
-													 </textarea>
+													</div>
 												</div>
 												<!--  view tila napit -->
 												<div class="muokkaa_con">
@@ -84,6 +84,11 @@
 												</div>	
 												<!--  muokkaus tila napit -->
 												<div class="muokkaus hidden">
+													<select multiple name="taytteet" value="taytteet">
+														<c:forEach items="${taytteet}" var="tayte">
+															<option value="${tayte.getTayte_id()}"> ${tayte.getNimi()}  </option>
+														</c:forEach>
+													</select>
 													<button type="submit" value="tallenna" class="tallenna"> Tallenna </button>
                                                 	<button type="button" value="poista" class='poista'>Poista</button>
                                                 	<button type="button" value="peruuta" class='peruuta'> Peruuta </button>

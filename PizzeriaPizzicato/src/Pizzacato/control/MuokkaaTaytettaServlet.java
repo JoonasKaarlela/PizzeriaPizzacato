@@ -31,7 +31,7 @@ public class MuokkaaTaytettaServlet extends HttpServlet {
 		Tayte tayte = new Tayte(tayte_id, nimi, alkupera, kuvaus, hinta);
 		muokkaaTaytetta(tayte);
 		
-		response.sendRedirect("taytteet");
+		response.sendRedirect("Taytteet");
 		
 	}
 	

@@ -32,10 +32,10 @@ public class PizzaDAO extends DataAccessObject{
 			String id = results.getString(1);
 			String nimi = results.getString(2);
 			ArrayList<Tayte> taytteet = new PizzanTayteDAO().haePizzanTaytteet(id);
-			String kuvaus = results.getString(4);
-			boolean listalla = results.getBoolean(5);
-			double hinta = results.getDouble(6);
-			String kuva = results.getString(7);
+			String kuvaus = results.getString(3);
+			boolean listalla = results.getBoolean(4);
+			double hinta = results.getDouble(5);
+			String kuva = results.getString(6);
 			Pizza pizza = new Pizza(id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
 			pizzat.add(pizza);
 		}
@@ -49,7 +49,7 @@ public class PizzaDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		Pizza pizza = new Pizza();
 		
-		String query = "SELECT * FROM PIZZA WHERE pizza_id" + id;
+		String query = "SELECT * FROM PIZZA WHERE pizza_id=" + id;
 		Statement statement = conn.createStatement();
 		ResultSet results = statement.executeQuery(query);
 		
@@ -57,10 +57,10 @@ public class PizzaDAO extends DataAccessObject{
 			String pizza_id = results.getString(1);
 			String nimi = results.getString(2);
 			ArrayList<Tayte> taytteet = new PizzanTayteDAO().haePizzanTaytteet(pizza_id);
-			String kuvaus = results.getString(4);
-			boolean listalla = results.getBoolean(5);
-			double hinta = results.getDouble(6);
-			String kuva = results.getString(7);
+			String kuvaus = results.getString(3);
+			boolean listalla = results.getBoolean(4);
+			double hinta = results.getDouble(5);
+			String kuva = results.getString(6);
 			pizza = new Pizza(pizza_id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
 		}
 		

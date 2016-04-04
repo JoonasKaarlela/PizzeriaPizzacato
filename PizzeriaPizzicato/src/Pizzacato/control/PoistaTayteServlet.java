@@ -20,7 +20,7 @@ public class PoistaTayteServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		poistaTayte(id);
 
-		response.sendRedirect("taytteet");
+		response.sendRedirect("Taytteet");
 	}
 
 	public void poistaTayte(String id) {

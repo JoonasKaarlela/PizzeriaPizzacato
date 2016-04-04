@@ -132,7 +132,11 @@
 		                        <label>Pizzannimi</label><input name="nimi" placeholder="pizzan nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" />
 		                        <label>Pizzan kuvaus</label><input name="kuvaus" placeholder="kuvaus" />
 		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx" />
-		                        <label>Täyte1</label><select><option>Salami</option><option>kinkku</option></select>
+		                        <select>
+		                        	<c:forEach items="${taytteet}" var="tayte" varStatus="current">
+		                        		<label> Täyte ${current.index} </label><option value="${tayte.getTayte_Id()}"> ${tayte.getNimi()} </option>
+		                        	</c:forEach>
+		                        </select>
 		                        <br />
 		                        <button type="submit"> Lisää Pizza </button>
 		                    </form>

@@ -28,6 +28,10 @@ function muokkaa(pizza_id, index){
 			$(this).removeClass('hidden');
 		});
 		
+		$('.pizzantayte', $('.pizzainfo')[index]).each(function(){
+			$(this).addClass('hidden');
+		});
+		
 		// Rekisteröi poista pizza funktio
 		$('.poista', $('.pizzainfo')[index]).each(function(){
 			$(this).removeClass('hidden');

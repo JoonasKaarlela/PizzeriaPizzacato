@@ -5,7 +5,7 @@ public class Utils {
 	public String generate(int length){
 		String code = "";
 		for (int i = 0; i < length; i++) {
-			code += "" + new Random().nextInt(0 - 9 + 1);
+			code += "" + new Random().nextInt(9);
 		}
 		return code;
 	}

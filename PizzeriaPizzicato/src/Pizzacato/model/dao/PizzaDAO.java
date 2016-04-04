@@ -111,15 +111,23 @@ public class PizzaDAO extends DataAccessObject{
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, id);
 		
-		
-		// TODO: POISTA MYÖS TÄYTTEET TÄLLE PIZZALLE!
-		
+		// POISTA PIZZANTÄYTTEET PIZZALLE
+		String query2 = "DELETE FROM PIZZANTAYTE WHERE pizza_id=?";
+		PreparedStatement statement2 =  conn.prepareStatement(query2);
+		statement.setString(1, id);
 		
 		// EXECUTE
-		int poistettiin = statement.executeUpdate();
-		if( poistettiin > 0){
+		int pizzoja_poistettiin = statement.executeUpdate();
+		if( pizzoja_poistettiin > 0){
 			System.out.println("pizza " + id + " poistettiin tietokannasta...");
 		}
+		
+		// EXECUTE
+		int pizzantaytteita_poistettiin = statement.executeUpdate();
+		if( pizzantaytteita_poistettiin > 0){
+			System.out.println("pizzantaytteita poistettiin " + pizzantaytteita_poistettiin);
+		}
+		
 	}
 	
 	public void piilotaListalla(String id) throws SQLException{

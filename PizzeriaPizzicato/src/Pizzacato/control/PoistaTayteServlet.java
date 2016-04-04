@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Pizzacato.model.dao.TayteDAO;
 
-@WebServlet("/PoistaTayteServlet")
+@WebServlet("/PoistaTayte")
 public class PoistaTayteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

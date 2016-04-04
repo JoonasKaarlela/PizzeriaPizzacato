@@ -20,7 +20,7 @@ public class LisaaKoriinServlet extends HttpServlet {
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String id = request.getParameter("id");
+		String id = request.getParameter("pizza_id");
 		Pizza pizza = haePizza(id);
 		lisaaKoriin(pizza, request.getSession());
 		

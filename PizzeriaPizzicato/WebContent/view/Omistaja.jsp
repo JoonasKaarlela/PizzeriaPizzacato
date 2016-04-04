@@ -74,7 +74,7 @@
 												<div class="pizzantayte">
 													<textarea disabled class="pizza_taytteet" name="taytteet" required> 
 														<c:forEach items="${pizza.getTaytteet()}" var="tayte">
-															 ${tayte.getNimi()},
+															 ${tayte.getNimi()}
 														</c:forEach>
 													 </textarea>
 												</div>

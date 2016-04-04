@@ -49,7 +49,7 @@ public class PizzaDAO extends DataAccessObject{
 		Connection conn = getConnection();
 		Pizza pizza = new Pizza();
 		
-		String query = "SELECT * FROM PIZZA WHERE pizza_id" + id;
+		String query = "SELECT * FROM PIZZA WHERE pizza_id=" + id;
 		Statement statement = conn.createStatement();
 		ResultSet results = statement.executeQuery(query);
 		

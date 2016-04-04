@@ -78,7 +78,7 @@
                         <div class="menuitemwrap">
                    			<div class="menuitem">
 	                    	
-	                    	<form method=post action=lisaaOstoskoriin>
+	                    	<form method=post action=lisaaKoriin>
 		                        <table>
 		                       
 		                        	<tr>

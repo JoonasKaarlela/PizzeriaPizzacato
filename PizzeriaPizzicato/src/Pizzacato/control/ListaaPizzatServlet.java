@@ -31,7 +31,7 @@ public class ListaaPizzatServlet extends HttpServlet {
 		Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");
 		
 		if( kayttaja != null){
-			if(kirjautunut(request.getSession()) && kayttaja.isOmistaja() && kayttaja != null){
+			if(kirjautunut(request.getSession()) && kayttaja.isOmistaja()){
 				sivu = "/view/Omistaja.jsp";
 			}
 		}

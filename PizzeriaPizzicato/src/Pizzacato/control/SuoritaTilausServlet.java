@@ -3,6 +3,7 @@ package Pizzacato.control;
 import java.io.IOException;
 
 import Pizzacato.model.Pizza;
+import Pizzacato.model.dao.TilausDAO;
 
 import java.util.*;
 
@@ -23,6 +24,8 @@ public class SuoritaTilausServlet extends HttpServlet {
 			ArrayList<Pizza> ostoskori = (ArrayList<Pizza>) request.getSession().getAttribute("ostoskori");
 			
 			// SUORITA TILAUS
+			TilausDAO tilausdao = new TilausDAO();
+			tilausdao.asetaTilaus(ostoskori);
 		
 	}
 }

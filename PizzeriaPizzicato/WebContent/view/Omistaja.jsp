@@ -86,6 +86,7 @@
 												<div class="muokkaus hidden">
 													<button type="submit" value="tallenna" class="tallenna"> Tallenna </button>
                                                 	<button type="button" value="poista" class='poista'>Poista</button>
+                                                	<button type="button" value="peruuta" class='peruuta'> Peruuta </button>
                                                 </div>
                                                 <div class="listalla hidden">
                                                 	<label for="piilossa"> listalla </label>
@@ -110,8 +111,7 @@
 				
 			</div><!-- MENU LOPPUU -->
 			
-			<!-- LISÄÄ PIZZA -->
-
+			<!--OMISTJA PANEELI! -->
 			<div id="apanel">
 		        <div id="apanelwrapper">
 		            <div id="apanelcontent">

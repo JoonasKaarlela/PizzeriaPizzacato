@@ -37,6 +37,14 @@ function muokkaa(pizza_id, index){
 					});
 				});
 		});
+
+		// Peruuta muokkaus
+		$('.peruuta', $('.pizzainfo')[index]).each(function(){
+			$(this).removeClass('hidden');
+			$(this).click(function(){
+				location.reload();
+			});
+		});
 }
 
 

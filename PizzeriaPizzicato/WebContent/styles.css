@@ -286,7 +286,52 @@ button{
 	#apanelcontent {
 	}
 	
-/* ADMIN PANEL */
+/* ADMIN PANEL LOPPUU */
+
+/* TAYTTEET */
+	#taytelista {
+		margin:auto;
+	}
+	#taytelista li {
+		list-style:none;
+		font-size: 12px;
+		padding:10px;
+		color:#FFF;
+	}
+	#taytelista label {
+		width: 100px;
+		display:inline-block;
+	}
+	#taytelista li:first-of-type {
+	}
+	#taytelista li:nth-child(odd) {
+		background-color:#444444;
+	}
+	#taytelista li:nth-child(even) {
+		background-color:#656565;
+	}
+	
+		#taytelista table {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		border-spacing:0;
+	}
+	#taytelista td {
+		font-size: 12px;
+		padding:10px;
+		color:#FFF;
+	}
+	#taytelista tr:first-of-type {
+	}
+	#taytelista tr:nth-child(odd) {
+		background-color:#444444;
+	}
+	#taytelista tr:nth-child(even) {
+		background-color:#656565;
+	}
+	
+/* TAYTTEET LOPPUU */
 
 /* RESPONSIVE */
 

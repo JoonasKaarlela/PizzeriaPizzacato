@@ -24,20 +24,32 @@ public class ListaaPizzatServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String sivu = "Menu.jsp";
+		String sivu = "/view/Menu.jsp";
 		
 		hoidaErrorit(request);
 		
 		Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");
-		if(kirjautunut(request.getSession()) && kayttaja.isOmistaja()){
-			sivu = "Omistaja.jsp";
-		}
 		
-		ArrayList<Pizza> pizzat = haePizzat();
-		request.setAttribute("pizzat", pizzat);
-	
-		RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
-		dp.forward(request, response);
+		try{
+			if(kirjautunut(request.getSession()) && kayttaja.isOmistaja()){
+				sivu = "/view/Omistaja.jsp";
+			}
+			
+			ArrayList<Pizza> pizzat = haePizzat();
+			request.setAttribute("pizzat", pizzat);
+		
+			RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
+			dp.forward(request, response);
+			
+		} catch(NullPointerException e){
+			
+			ArrayList<Pizza> pizzat = haePizzat();
+			request.setAttribute("pizzat", pizzat);
+		
+			RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
+			dp.forward(request, response);
+			
+		}
 	}
 	
 	

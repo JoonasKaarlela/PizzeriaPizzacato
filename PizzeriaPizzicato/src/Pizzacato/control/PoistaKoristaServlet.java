@@ -16,7 +16,7 @@ import Pizzacato.model.dao.PizzaDAO;
 
 
 @WebServlet("/poistaKorista")
-public class poistaKoristaServlet extends HttpServlet {
+public class PoistaKoristaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -14,7 +14,7 @@ import Pizzacato.model.Tayte;
 import Pizzacato.model.Utils;
 import Pizzacato.model.dao.TayteDAO;
 
-@WebServlet("/taytte")
+@WebServlet("/tayte")
 public class LisaaTayteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

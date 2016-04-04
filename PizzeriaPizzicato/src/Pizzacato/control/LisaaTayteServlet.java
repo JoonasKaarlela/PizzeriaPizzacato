@@ -37,7 +37,7 @@ public class LisaaTayteServlet extends HttpServlet {
 		Tayte tayte = new Tayte(tayte_id, nimi, alkupera, kuvaus, hinta);
 		lisaaTayte(tayte);
 		
-		response.sendRedirect("taytteet");
+		response.sendRedirect("Taytteet");
 	}
 		
 	public void lisaaTayte(Tayte tayte){

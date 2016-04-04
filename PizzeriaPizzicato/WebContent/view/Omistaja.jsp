@@ -72,7 +72,11 @@
 													<input type="text" class="pizza_input" value="${pizza.getHinta()}" name="hinta" disabled required pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx"/>
 												</div>
 												<div class="pizzantayte">
-													<textarea disabled class="pizza_taytteet" name="taytteet" required> ${pizza.getTaytteet()} </textarea>
+													<textarea disabled class="pizza_taytteet" name="taytteet" required> 
+														<c:forEach items="${pizza.getTaytteet()}" var="tayte">
+															 ${tayte.getNimi()},
+														</c:forEach>
+													 </textarea>
 												</div>
 												<!--  view tila napit -->
 												<div class="muokkaa_con">

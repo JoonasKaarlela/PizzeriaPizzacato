@@ -3,7 +3,6 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,68 +13,61 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Pizzacato.model.Kayttaja;
-import Pizzacato.model.Pizza;
-import Pizzacato.model.Tayte;
-import Pizzacato.model.dao.PizzaDAO;
 import Pizzacato.model.dao.TayteDAO;
+import Pizzacato.model.Tayte;
 
-@WebServlet("/Menu")
-public class ListaaPizzatServlet extends HttpServlet {
+
+@WebServlet("/Taytteet")
+public class ListaaTaytteetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String sivu = "/view/Menu.jsp";
 		
-		hoidaErrorit(request);
+		String sivu = "/view/Taytteet.jsp";
 		
 		Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");
 		
-		if( kayttaja != null){
-			if( onKirjautunut(request.getSession()) && kayttaja.isOmistaja() ){
-				sivu = "/view/Omistaja.jsp";
+		try{
+			if(kirjautunut(request.getSession()) != kayttaja.isOmistaja()){
+				response.sendRedirect("/Menu");
 			}
-		}
-		
-		ArrayList<Pizza> pizzat = haePizzat();
-		request.setAttribute("pizzat", pizzat);
-		
-		ArrayList<Tayte> taytteet = haeTaytteet();
-		request.setAttribute("taytteet", taytteet);
-		
-		RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
-		dp.forward(request, response);
 			
-	}
-	
-	
-	
-	public ArrayList<Pizza> haePizzat(){
-		ArrayList<Pizza> pizzat = new ArrayList<>();
-		PizzaDAO pizzadao = new PizzaDAO();
-				try {
-					pizzat = pizzadao.haePizzat();
-				} catch (SQLException e) {
-					System.out.println(e.getMessage());
-				}
-		return pizzat;
+			ArrayList<Tayte> taytteet = haeTaytteet();
+			request.setAttribute("taytteet", taytteet);
+		
+			RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
+			dp.forward(request, response);
+			
+		} catch(NullPointerException e){
+			
+			ArrayList<Tayte> taytteet = haeTaytteet();
+			request.setAttribute("taytteet", taytteet);
+		
+			RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
+			dp.forward(request, response);
+			
+		}
+
+		
 	}
 
 	
-	public ArrayList<Tayte> haeTaytteet(){
+	public ArrayList<Tayte> haeTaytteet() {
 		ArrayList<Tayte> taytteet = new ArrayList<>();
 		TayteDAO taytedao = new TayteDAO();
-			try{
+			try {
 				taytteet = taytedao.haeTaytteet();
-			} catch(SQLException e){
+			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
-		return taytteet;	
+		return taytteet;
 	}
+
 	
-	
-	public boolean onKirjautunut(HttpSession session){
+	public boolean kirjautunut(HttpSession session){
 		try{
-			@SuppressWarnings("unused")
 			Kayttaja kayttaja = (Kayttaja) session.getAttribute("kayttaja");
 			return true;
 		} catch(NullPointerException e){
@@ -84,11 +76,9 @@ public class ListaaPizzatServlet extends HttpServlet {
 		}
 	}
 	
-	
 	public void hoidaErrorit(HttpServletRequest request){
 		request.removeAttribute("error");
 		request.setAttribute("error", (String) request.getSession().getAttribute("error"));
 	}
-	
 
 }

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import Pizzacato.model.dao.PizzaDAO;
 
 @WebServlet("/piilota")
-public class PiilotapizzaServlet extends HttpServlet {
+public class PiilotaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

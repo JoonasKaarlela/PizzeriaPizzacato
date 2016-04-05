@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Pizzacato.model.Pizza;
 import Pizzacato.model.Tayte;
+import Pizzacato.model.Utils;
 import Pizzacato.model.dao.PizzaDAO;
 import Pizzacato.model.dao.TayteDAO;
 
@@ -22,7 +23,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = generate(5);
+		String id = new Utils().generate(5);
 		String nimi = request.getParameter("nimi");
 		ArrayList<Tayte> taytteet = haeTaytteet(request.getParameterValues("taytteet"));
 		String kuvaus = request.getParameter("kuvaus");
@@ -66,17 +67,6 @@ public class LisaaPizzaServlet extends HttpServlet {
 			System.out.println(e.getMessage());
 		}
 	}
-	
-	
-	
-	public String generate(int length){
-		String code = "";
-		for (int i = 0; i < length; i++) {
-			code += "" + new Random().nextInt(0 - 9 + 1);
-		}
-		return code;
-	}
-
 }
 
 

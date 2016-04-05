@@ -78,7 +78,7 @@
                         <div class="menuitemwrap">
                    			<div class="menuitem">
 	                    	
-	                    	<form method=post action=lisaaOstoskoriin>
+	                    	<form method=post action=lisaaKoriin>
 		                        <table>
 		                       
 		                        	<tr>
@@ -88,7 +88,11 @@
 			                                	<div class="pizzanimi"> ${pizza.getNimi()} </div>
 			                                    <div class="pizzakuvaus"> ${pizza.getKuvaus()}</div>                                     
 												<div class="pizzahinta"> ${pizza.getHinta()}€</div>
-												<div class="pizzantayte"> ${pizza.getTaytteet()} </div>
+												<div class="pizzantayte">
+													<c:forEach items="${pizza.getTaytteet()}" var="tayte">
+														${tayte.getNimi()} 
+													</c:forEach>
+												</div>
 												<button type=submit value="Lisää">Lisää ostoskoriin</button>
 		                                    </div>
 											<input type=hidden name=pizza_id value="${pizza}" />

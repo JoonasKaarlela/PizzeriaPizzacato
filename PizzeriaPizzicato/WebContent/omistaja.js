@@ -28,6 +28,10 @@ function muokkaa(id, index){
 			$(this).removeClass('hidden');
 		});
 		
+		$('.pizzantayte', $('.pizzainfo')[index]).each(function(){
+			$(this).addClass('hidden');
+		});
+		
 		// Rekisteröi poista pizza funktio
 		$('.poista', $('.pizzainfo')[index]).each(function(){
 			$(this).removeClass('hidden');
@@ -36,6 +40,14 @@ function muokkaa(id, index){
 						location.reload();
 					});
 				});
+		});
+
+		// Peruuta muokkaus
+		$('.peruuta', $('.pizzainfo')[index]).each(function(){
+			$(this).removeClass('hidden');
+			$(this).click(function(){
+				location.reload();
+			});
 		});
 }
 

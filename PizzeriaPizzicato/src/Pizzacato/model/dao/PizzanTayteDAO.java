@@ -28,8 +28,8 @@ public class PizzanTayteDAO extends DataAccessObject {
 			String id  = results.getString(1);
 			String nimi = results.getString(2);
 			String alkupera = results.getString(3);
-			double hinta = results.getDouble(4);
-			String kuvaus = results.getString(5);
+			String kuvaus = results.getString(4);
+			double hinta = results.getDouble(5);
 			Tayte tayte = new Tayte(id, nimi, alkupera, kuvaus, hinta);
 			taytteet.add(tayte);
 		}

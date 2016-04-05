@@ -1,6 +1,6 @@
-function muokkaa(pizza_id, index){
+function muokkaa(id, index){
 		// Aktivoi "input" kentät
-		$('input', $(".pizza")[index]).each(function(){
+		$('input, textarea', $(".pizza")[index]).each(function(){
 			$(this).removeAttr('disabled');
 		});
 		
@@ -32,7 +32,7 @@ function muokkaa(pizza_id, index){
 		$('.poista', $('.pizzainfo')[index]).each(function(){
 			$(this).removeClass('hidden');
 			$(this).click(function(){
-					$.post("poista", {id:pizza_id}, function(){
+					$.post("poista", {id:id}, function(){
 						location.reload();
 					});
 				});

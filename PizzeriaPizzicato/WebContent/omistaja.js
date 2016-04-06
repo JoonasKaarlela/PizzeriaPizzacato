@@ -1,54 +1,56 @@
-function muokkaa(id, index){
-		// Aktivoi "input" kentät
-		$('input, textarea', $(".pizza")[index]).each(function(){
-			$(this).removeAttr('disabled');
+(function(){
+	
+	// Lisää elementille luokka.
+	Element.prototype.addClass = function(className){
+		var current = this.className.split(" ");
+		if(this.className.search(className) != -1){
+			current.push(className);
+		}
+		this.className = current.join(" ");
+		return this.className;
+	};
+	
+	// Poista elementiltä luokka.
+	Element.prototype.removeClass = function(className){
+		var current = this.className.split(" ");
+		current.filter(function(name, index){
+			return name != className;
 		});
-		
-		// Aktivoi "textarea" kenttä
-		$('textarea', $(".pizza")[index]).each(function(){
-			$(this).removeAttr('disabled');
-		});
-		
-		// Muuta button tyyppi ja teksti
-		$('.muokkaa', $('.pizza')[index]).each(function(){
-			$(this).addClass('hidden');
-		});
-		
-		$('.muokkaus', $('.pizza')[index]).each(function(){
-			$(this).removeClass('hidden');
-		});
-		
-		// Tallenna nappi näkyviin
-		$('.tallenna', $('.pizzainfo')[index]).each(function(){
-			$(this).removeClass('hidden');
-		});
-		
-		// Listalla nappi näkyviin
-		$('.listalla', $('.pizzainfo')[index]).each(function(){
-			$(this).removeClass('hidden');
-		});
-		
-		$('.pizzantayte', $('.pizzainfo')[index]).each(function(){
-			$(this).addClass('hidden');
-		});
-		
-		// Rekisteröi poista pizza funktio
-		$('.poista', $('.pizzainfo')[index]).each(function(){
-			$(this).removeClass('hidden');
-			$(this).click(function(){
-					$.post("poista", {id:id}, function(){
-						location.reload();
-					});
-				});
-		});
-
-		// Peruuta muokkaus
-		$('.peruuta', $('.pizzainfo')[index]).each(function(){
-			$(this).removeClass('hidden');
-			$(this).click(function(){
-				location.reload();
+		this.className = current.join(" ");
+		return this.className;
+	};
+	
+	// Tarkista onko elementillä jokin luokka.
+	Element.prototype.hasClass = function(className){
+		return this.className.search(className) != -1 ? true : false;
+	};
+	
+	// Rekisteröi useampi event
+	Element.prototype.on = function(events, cb){
+		var events = Array.prototype.split(" ");
+		events.map(function(event, index){
+			event.addEventListener(event, function(){
+				cb();
 			});
 		});
-}
+	};
+	
+	// Funktiot
+	muokkaa(index){
+
+		var nakyma = document.querySelectorAll(".nakyma")[index];
+		var muokkaus = document.querySelectorAll(".muokkaus")[index];
+		
+		if(!muokkaus.hasClass("hidden")){
+			nakyma.addClass("hidden");
+			muokkaus.removeClass("hidden");
+		} else {
+			nakyma.removeClass("hidden");
+			muokkaus.addClass("hidden");
+		}
+	};
+	
+	
+})();
 
 

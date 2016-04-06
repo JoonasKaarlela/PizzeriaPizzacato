@@ -7,20 +7,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title> Omistaja </title>
 <link href="styles.css" rel="stylesheet" type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script type="text/javascript" src="omistaja.js"></script>
 </head>
 <body>
 
 
 <div id="wrapper">
-		
 		<div id="header">
 			<div id="logo"><img src="pizzerialogo-lapinakyva.png" width="50" />PizzeriaPizzicato</div>
 			
 			<!-- KIRJAUDU -->
 			<div id="kirjaudu">
-				<h1> Tervetuloa, <c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out></h1>
+				<h1> Tervetuloa, <c:out value="${sessionScope.kayttaja.getKayttajatunnus()"></c:out></h1>
 				<a href="kirjauduUlos"> kirjaudu ulos </a>
 			</div>
 			
@@ -47,76 +45,69 @@
 		<div id="content">
 			<div class="menu">
 				
-
-                        <!--  LOOPPAA PIZZAT -->
-                        <c:forEach items="${pizzat}" var="pizza" varStatus="current">
-
-                        	<!--  JOS PIZZA LISTALLA=TRUE, NÄYTÄ PIZZA -->
-                        <div class="menuitemwrap">
-                   			<div class="menuitem">
-	                    	
-	                    	<form method=post action=muokkaa>
-		                        <table id="pizzat">
-	
-		                        	<tr class='pizza'>
-		                                <td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" style="width:150px;height:125px;" /></div></td>
-		                               	<td valign="top">
-		                                	<div class="pizzainfo">
-			                                	<div class="pizzanimi">
-			                                		<input class="pizza_input" type="text" value="${pizza.getNimi()}" name="nimi" disabled required pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä"/> 
-			                                	</div>
-			                                    <div class="pizzakuvaus" >
-			                                    	<textarea disabled class="pizza_input" name="kuvaus" required>${pizza.getKuvaus()}</textarea>
-			                                    </div>                                     
-												<div class="pizzahinta">
-													<input type="text" class="pizza_input" value="${pizza.getHinta()}" name="hinta" disabled required pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx"/>
-												</div>
-												<div class="pizzantayte">
-													<div>
-														<c:forEach items="${pizza.getTaytteet()}" var="tayte">
-															 ${tayte.getNimi()}
-														</c:forEach>
-													</div>
-												</div>
-												<!--  view tila napit -->
-												<div class="muokkaa_con">
-													<button type="button" class="muokkaa" value="muokkaa" onClick="muokkaa('${pizza.getPizza_id()}', '${current.index}'); return false;">Muokkaa</button>
-												</div>	
-												<!--  muokkaus tila napit -->
-												<div class="muokkaus hidden">
-													<select multiple name="taytteet" value="taytteet">
-														<c:forEach items="${taytteet}" var="tayte">
-															<option value="${tayte.getTayte_id()}"> ${tayte.getNimi()}  </option>
-														</c:forEach>
-													</select>
-													<button type="submit" value="tallenna" class="tallenna"> Tallenna </button>
-                                                	<button type="button" value="poista" class='poista'>Poista</button>
-                                                	<button type="button" value="peruuta" class='peruuta'> Peruuta </button>
-                                                </div>
-                                                <div class="listalla hidden">
-                                                	<label for="piilossa"> listalla </label>
-                                                	<input type="checkbox" value="piilota" name="piilossa" id="piilossa" />
-                                                </div>
-		                                    </div>
-											<input type=hidden name=id value="${pizza.getPizza_id()}" class="hidden" />
-		                                </td>
-		                        	</tr>
-		                        
-		                        </table>
-	                        </form>
-                        
-                        	</div><!-- MENUITEM LOPPUU -->
-                		</div><!-- MENUITEMWRAP LOPPUU -->       
-                                        	
-                        </c:forEach>
-
-                
-				<div class="clear"></div>
-				
+              <!-- PIZZAT -->
+              <c:forEach items="${pizzat}" var="pizza" varStatus="current">
+              	<div class="menuitemwrap">
+                   <div class="menuitem">
+	                 <form method=post action=muokkaa>
+		               <table id="pizzat">
+		                 <tr class='pizza'>
+		                   <td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" style="width:150px;height:125px;" /></div></td>
+		                   <td valign="top">
+		                     <div class="pizzainfo">
+			                 	<div class="nakyma">
+	                 				<div class="pizzanimi"> ${pizza.getNimi()} </div>
+	                 				<div class="pizzakuvaus"> ${pizza.getKuvaus()} </div>
+	                 				<div class="pizzahinta"> ${pizza.getHinta()} </div>
+	                 				<div class="pizzatayte">
+	                 					<c:forEach items="${pizza.getTaytteet()}" var="tayte" varStatus="status">
+											${tayte.getNimi()} <c:if test="${status.index != pizza.getTaytteet().size()}">,</c:if>
+										</c:forEach>
+	                 				</div>
+	                 				<div class="pizzamuokkaa">
+	                 					<button type="button" onClick="muokkaa('${current.index}'); return false;"> <b> muokkaa </b </button>
+	                 				</div>
+	                 			</div>
+	                 			<div class="muokkaus hidden">
+	                 				<div class="pizzanimi">
+	                 					<input class="pizza_input" type="text" value="${pizza.getNimi()}" name="nimi" required pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä"/> 
+	                 				</div>
+	                 				<div class="pizzakuvaus">
+	                 					<textarea disabled class="pizza_input" name="kuvaus" required>${pizza.getKuvaus()}</textarea>
+	                 				</div>
+	                 				<div class="pizzahinta">
+	                 					<input type="text" class="pizza_input" value="${pizza.getHinta()}" name="hinta" required pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx"/>
+	                 				</div>
+	                 				<div class="pizzatayte">
+	                 					<select multiple name="taytteet">
+											<c:forEach items="${taytteet}" var="tayte">
+												<option value="${tayte.getTayte_id()}"> ${tayte.getNimi()}  </option>
+											</c:forEach>
+										</select>
+	                 				</div>
+	                 				<div class="pizzamuokkaa">
+	                 					<button type="submit" value="tallenna" class="tallenna"> Tallenna </button>
+                            			<a href="poista?id='${pizza.getPizza_id()}'"> poista </a>
+                            			<button type="button" value="peruuta" class='peruuta'> Peruuta </button>
+                            			<label for="piilossa"> listalla </label>
+                           				<input type="checkbox" value="piilota" name="piilossa" id="piilossa" />
+	                 				</div>
+	                 			</div>
+	                 		</div>
+							<input type=hidden name=id value="${pizza.getPizza_id()}" class="hidden" />
+		                  </td>
+		                 </tr>      
+		                </table>
+	                  </form>
+					</div>
+               	</div>     
+			</c:forEach>
+			
+			<div class="clear"></div>
 				
 			</div><!-- MENU LOPPUU -->
 			
-			<!--OMISTJA PANEELI! -->
+			<!--OMISTAJA PANEELI! -->
 			<div id="apanel">
 		        <div id="apanelwrapper">
 		            <div id="apanelcontent">

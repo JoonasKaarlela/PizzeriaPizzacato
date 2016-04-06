@@ -178,8 +178,6 @@ public class PizzaDAO extends DataAccessObject{
 		statement.setDouble(4, pizza.getHinta());
 		statement.setString(5, pizza.getPizza_id());
 		
-		// TODO: PÄIVITÄ MYÖS TÄYTTEET TÄLLE PIZZALLE!
-		
 		//EXECUTE
 		int paivitettiin = statement.executeUpdate();
 		if(paivitettiin > 0){

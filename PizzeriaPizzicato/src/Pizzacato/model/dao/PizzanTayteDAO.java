@@ -80,26 +80,7 @@ public class PizzanTayteDAO extends DataAccessObject {
 			}
 			
 			
-			public void muokkaaPizzanTaytetta(Pizza pizza, Tayte tayte) throws SQLException{
-				// TALLENNA UUDET TIEDOT
-				
-				//YHTEYS
-				Connection conn = getConnection();
-				
-				//PAIVITA LAUSE
-				String query = "UPDATE TAYTE SET nimi=? alkupera=? kuvaus=? hinta=? WHERE tayte_id=?";
-				PreparedStatement statement = conn.prepareStatement(query);
-				statement.setString(1, tayte.getNimi());
-				statement.setString(2,  tayte.getAlkupera());
-				statement.setString(3, tayte.getKuvaus());
-				statement.setDouble(4, tayte.getHinta());
-				
-				//EXECUTE
-				int paivitettiin = statement.executeUpdate();
-				if(paivitettiin > 0){
-					System.out.println("PizzanTayte paivitettiin: " + paivitettiin + " attribuuttia päivitettiin");
-				}
-			}
+
 			
 
 

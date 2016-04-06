@@ -73,7 +73,7 @@
 	                 					<input class="pizza_input" type="text" value="${pizza.getNimi()}" name="nimi" required pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä"/> 
 	                 				</div>
 	                 				<div class="pizzakuvaus">
-	                 					<textarea disabled class="pizza_input" name="kuvaus" required>${pizza.getKuvaus()}</textarea>
+	                 					<textarea  class="pizza_input" name="kuvaus" required>${pizza.getKuvaus()}</textarea>
 	                 				</div>
 	                 				<div class="pizzahinta">
 	                 					<input type="text" class="pizza_input" value="${pizza.getHinta()}" name="hinta" required pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx"/>
@@ -113,7 +113,7 @@
 		            <div id="apanelcontent">
 		                <h1>Omistajapaneeli</h1>
 		                
-		                <button>Lisää ja muokkaa täytteitä</button>
+		             	<a href="taytteidenhallinta"> Muokkaa ja poista täytteitä  </a>
 		                
 		                <h2>Lisää pizza</h2>
 		                

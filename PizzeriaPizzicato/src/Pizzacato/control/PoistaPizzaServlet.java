@@ -16,9 +16,12 @@ import Pizzacato.model.dao.PizzaDAO;
 public class PoistaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("id");
+		
+		System.out.println(id);
+		
 		poistaPizza(id);
 		
 		response.sendRedirect("Menu");

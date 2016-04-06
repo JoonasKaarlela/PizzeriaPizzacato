@@ -87,7 +87,7 @@
 	                 				</div>
 	                 				<div class="pizzamuokkaa">
 	                 					<button type="submit" value="tallenna" class="tallenna"> Tallenna </button>
-                            			<a href="poista?id='${pizza.getPizza_id()}'"> poista </a>
+                            			<a href="poista?id=${pizza.getPizza_id()}"> poista </a>
                             			<button type="button" value="peruuta" class='peruuta' onClick="muokkaa('${current.index}'); return false;"> Peruuta </button>
                             			<label for="piilossa"> listalla </label>
                            				<input type="checkbox" value="piilota" name="piilossa" id="piilossa" />
@@ -123,7 +123,7 @@
 		                        <label>Pizzannimi</label><input name="nimi" placeholder="pizzan nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" />
 		                        <label>Pizzan kuvaus</label><input name="kuvaus" placeholder="kuvaus" />
 		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx" />
-		                        <select>
+		                        <select multiple name="taytteet">
 		                        	<c:forEach items="${taytteet}" var="tayte" varStatus="current">
 		                        		<label> Täyte ${current.index} </label><option value="${tayte.getTayte_id()}"> ${tayte.getNimi()} </option>
 		                        	</c:forEach>

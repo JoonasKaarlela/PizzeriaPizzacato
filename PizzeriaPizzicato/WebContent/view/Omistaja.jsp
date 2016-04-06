@@ -65,7 +65,7 @@
 										</c:forEach>
 	                 				</div>
 	                 				<div class="pizzamuokkaa">
-	                 					<button type="button" onClick="muokkaa('${current.index}'); return false;"> <b> muokkaa </b </button>
+	                 					<button type="button" onClick="muokkaa('${current.index}'); return false;"> <b> muokkaa </b> </button>
 	                 				</div>
 	                 			</div>
 	                 			<div class="muokkaus hidden">

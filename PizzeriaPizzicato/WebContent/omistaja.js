@@ -1,11 +1,7 @@
-(function(){
-	
 	// Lisää elementille luokka.
 	Element.prototype.addClass = function(className){
 		var current = this.className.split(" ");
-		if(this.className.search(className) != -1){
-			current.push(className);
-		}
+		current.push(className);
 		this.className = current.join(" ");
 		return this.className;
 	};
@@ -13,10 +9,10 @@
 	// Poista elementiltä luokka.
 	Element.prototype.removeClass = function(className){
 		var current = this.className.split(" ");
-		current.filter(function(name, index){
+		var updated = current.filter(function(name, index){
 			return name != className;
 		});
-		this.className = current.join(" ");
+		this.className = updated.join(" ");
 		return this.className;
 	};
 	
@@ -36,21 +32,21 @@
 	};
 	
 	// Funktiot
-	muokkaa(index){
-
+	function muokkaa(index){
 		var nakyma = document.querySelectorAll(".nakyma")[index];
-		var muokkaus = document.querySelectorAll(".muokkaus")[index];
+		console.log(nakyma);
 		
-		if(!muokkaus.hasClass("hidden")){
+		var muokkaus = document.querySelectorAll(".muokkaus")[index];
+		console.log(muokkaus);
+		
+		if(muokkaus.hasClass("hidden")){
+			console.log("muokkaus");
 			nakyma.addClass("hidden");
 			muokkaus.removeClass("hidden");
 		} else {
+			console.log("nakyma");
 			nakyma.removeClass("hidden");
 			muokkaus.addClass("hidden");
 		}
 	};
 	
-	
-})();
-
-

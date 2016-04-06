@@ -89,8 +89,8 @@
 			                                    <div class="pizzakuvaus"> ${pizza.getKuvaus()}</div>                                     
 												<div class="pizzahinta"> ${pizza.getHinta()}€</div>
 												<div class="pizzantayte">
-													<c:forEach items="${pizza.getTaytteet()}" var="tayte">
-														${tayte.getNimi()} 
+													<c:forEach items="${pizza.getTaytteet()}" var="tayte" varStatus="status">
+														${tayte.getNimi()}
 													</c:forEach>
 												</div>
 												<button type=submit value="Lisää">Lisää ostoskoriin</button>

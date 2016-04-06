@@ -18,7 +18,7 @@
 			
 			<!-- KIRJAUDU -->
 			<div id="kirjaudu">
-				<h1> Tervetuloa, <c:out value="${sessionScope.kayttaja.getKayttajatunnus()"></c:out></h1>
+				<h1> Tervetuloa, <c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out></h1>
 				<a href="kirjauduUlos"> kirjaudu ulos </a>
 			</div>
 			
@@ -61,7 +61,7 @@
 	                 				<div class="pizzahinta"> ${pizza.getHinta()} </div>
 	                 				<div class="pizzatayte">
 	                 					<c:forEach items="${pizza.getTaytteet()}" var="tayte" varStatus="status">
-											${tayte.getNimi()} <c:if test="${status.index != pizza.getTaytteet().size()}">,</c:if>
+	                 						${tayte.getNimi()}
 										</c:forEach>
 	                 				</div>
 	                 				<div class="pizzamuokkaa">
@@ -88,7 +88,7 @@
 	                 				<div class="pizzamuokkaa">
 	                 					<button type="submit" value="tallenna" class="tallenna"> Tallenna </button>
                             			<a href="poista?id='${pizza.getPizza_id()}'"> poista </a>
-                            			<button type="button" value="peruuta" class='peruuta'> Peruuta </button>
+                            			<button type="button" value="peruuta" class='peruuta' onClick="muokkaa('${current.index}'); return false;"> Peruuta </button>
                             			<label for="piilossa"> listalla </label>
                            				<input type="checkbox" value="piilota" name="piilossa" id="piilossa" />
 	                 				</div>
@@ -125,7 +125,7 @@
 		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx" />
 		                        <select>
 		                        	<c:forEach items="${taytteet}" var="tayte" varStatus="current">
-		                        		<label> Täyte ${current.index} </label><option value="${tayte.getTayte_Id()}"> ${tayte.getNimi()} </option>
+		                        		<label> Täyte ${current.index} </label><option value="${tayte.getTayte_id()}"> ${tayte.getNimi()} </option>
 		                        	</c:forEach>
 		                        </select>
 		                        <br />
@@ -141,6 +141,7 @@
 		</div><!-- CONTENT LOPPUU -->
 		
 	</div>
-
+	
+<script type="text/javascript" src="omistaja.js"></script>
 </body>
 </html>

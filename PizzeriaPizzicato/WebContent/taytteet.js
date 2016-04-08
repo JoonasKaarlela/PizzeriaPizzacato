@@ -1,6 +1,6 @@
 function muokkaaTayte(index){
-		$('.muokkaabtn').addClass('hidden');
-		$('.tallennabtn').removeClass('hidden');
-		$('.tayteform :input').removeAttr('disabled');
+		$($('.muokkaabtn')[index]).addClass('hidden');
+		$($('.tallennabtn')[index]).removeClass('hidden');
+		$('.tayteform :input').prop("disabled", false);
 };
 	

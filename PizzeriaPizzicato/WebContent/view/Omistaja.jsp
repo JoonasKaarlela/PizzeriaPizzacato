@@ -42,6 +42,37 @@
 			<div class="bannertxt">Pizzaa</div>
 		</div>
         
+        <!--OMISTAJA PANEELI! -->
+			<div id="apanel">
+		        <div id="apanelwrapper">
+		            <div id="apanelcontent">
+		                <h1>Omistajapaneeli</h1>
+		                
+		             	<a href="taytteidenhallinta"> Muokkaa ja poista täytteitä  </a>
+		                
+		                <h2>Lisää pizza</h2>
+		                
+		                <!-- LISÄÄ PIZZA -->
+		                <div>
+		                    <form method="post" action="lisaa">
+		                        <label>Pizzannimi</label><input name="nimi" placeholder="pizzan nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" />
+		                        <label>Pizzan kuvaus</label><input name="kuvaus" placeholder="kuvaus" />
+		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx" />
+		                        <select multiple name="taytteet">
+		                        	<c:forEach items="${taytteet}" var="tayte" varStatus="current">
+		                        		<label> Täyte ${current.index} </label><option value="${tayte.getTayte_id()}"> ${tayte.getNimi()} </option>
+		                        	</c:forEach>
+		                        </select>
+		                        <br />
+		                        <button type="submit"> Lisää Pizza </button>
+		                    </form>
+		                </div>
+		                
+		            </div>
+		        </div>
+			</div>
+		<!-- OMISTAJA PANEELI LOPPUU -->
+        
         <!--  PIZZA MENU ALKAA -->
 		<div id="content">
 			<div class="menu">
@@ -107,37 +138,6 @@
 			<div class="clear"></div>
 				
 			</div><!-- MENU LOPPUU -->
-			
-			<!--OMISTAJA PANEELI! -->
-			<div id="apanel">
-		        <div id="apanelwrapper">
-		            <div id="apanelcontent">
-		                <h1>Omistajapaneeli</h1>
-		                
-		             	<a href="taytteidenhallinta"> Muokkaa ja poista täytteitä  </a>
-		                
-		                <h2>Lisää pizza</h2>
-		                
-		                <!-- LISÄÄ PIZZA -->
-		                <div>
-		                    <form method="post" action="lisaa">
-		                        <label>Pizzannimi</label><input name="nimi" placeholder="pizzan nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" />
-		                        <label>Pizzan kuvaus</label><input name="kuvaus" placeholder="kuvaus" />
-		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx" />
-		                        <select multiple name="taytteet">
-		                        	<c:forEach items="${taytteet}" var="tayte" varStatus="current">
-		                        		<label> Täyte ${current.index} </label><option value="${tayte.getTayte_id()}"> ${tayte.getNimi()} </option>
-		                        	</c:forEach>
-		                        </select>
-		                        <br />
-		                        <button type="submit"> Lisää Pizza </button>
-		                    </form>
-		                </div>
-		                
-		            </div>
-		        </div>
-			</div>
-			
 			
 		</div><!-- CONTENT LOPPUU -->
 		

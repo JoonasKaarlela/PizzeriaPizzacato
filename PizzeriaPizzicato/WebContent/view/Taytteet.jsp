@@ -68,7 +68,7 @@
 		                <td>
 		                <button class="muokkaabtn" type="button" onClick="muokkaaTayte('${current.index}'); return false;">Muokkaa</button>
 		                <button class="tallennabtn hidden" type="submit" value="tallenna">Tallenna</button>
-		                <button>Poista</button>
+		                <a href="PoistaTayte?id=${tayte.getTayte_id()}">Poista</a>
 		                </td>
 	                </tr>
 	                </table>

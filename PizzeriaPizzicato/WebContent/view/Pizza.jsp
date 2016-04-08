@@ -64,7 +64,7 @@
 				</div>
 			</div>
 			
-			<form id="pizza_oikea" method=POST action="lisaa">
+			<form id="pizza_oikea" method=POST action="lisaaKoriin">
 				<div>  <h3> Muokkaa täytteitä </h3> </div>
 				<div>
 					<div>

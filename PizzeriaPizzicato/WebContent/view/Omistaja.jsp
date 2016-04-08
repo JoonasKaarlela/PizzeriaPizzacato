@@ -48,7 +48,7 @@
 		            <div id="apanelcontent">
 		                <h1>Omistajapaneeli</h1>
 		                
-		             	<a href="taytteidenhallinta"> Muokkaa ja poista täytteitä  </a>
+		             	<a href="Taytteet"> Muokkaa ja poista täytteitä  </a>
 		                
 		                <h2>Lisää pizza</h2>
 		                

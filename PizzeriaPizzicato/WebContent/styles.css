@@ -147,7 +147,7 @@ button{
 
 /* MENU ALKAA */
 .menu {
-	padding:0px 20px 0px 20px
+	padding:0px 20px 0px 20px;
 }
 
 .menuitemwrap {
@@ -302,16 +302,8 @@ button{
 		width: 100px;
 		display:inline-block;
 	}
-	#taytelista li:first-of-type {
-	}
-	#taytelista li:nth-child(odd) {
-		background-color:#444444;
-	}
-	#taytelista li:nth-child(even) {
-		background-color:#656565;
-	}
 	
-		#taytelista table {
+	#taytelista table {
 		margin: 0;
 		padding: 0;
 		border: 0;
@@ -319,13 +311,19 @@ button{
 	}
 	#taytelista td {
 		font-size: 12px;
-		padding:10px;
+		padding:5px;
 		color:#FFF;
 	}
 	#taytelista tr:first-of-type {
 	}
 	#taytelista tr:nth-child(odd) {
 		background-color:#444444;
+	}
+	#taytelista > table > tbody > tr:nth-child(odd) > td > form > table > tbody > tr {
+		background-color:#444444;
+	}
+	#taytelista > table > tbody > tr:nth-child(even) > td > form > table > tbody > tr {
+		background-color:#656565;
 	}
 	#taytelista tr:nth-child(even) {
 		background-color:#656565;

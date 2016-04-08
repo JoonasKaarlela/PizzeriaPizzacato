@@ -93,6 +93,7 @@ public class TayteDAO extends DataAccessObject{
 			statement.setString(2, tayte.getAlkupera());
 			statement.setString(3,  tayte.getKuvaus());
 			statement.setDouble(4,  tayte.getHinta());
+			statement.setString(5, tayte.getTayte_id());
 			
 			//EXECUTE
 			int paivitettiin = statement.executeUpdate();

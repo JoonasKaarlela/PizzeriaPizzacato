@@ -10,9 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import Pizzacato.model.Kayttaja;
 import Pizzacato.model.dao.TayteDAO;
 import Pizzacato.model.Tayte;
 
@@ -27,13 +25,8 @@ public class ListaaTaytteetServlet extends HttpServlet {
 		
 		String sivu = "/view/Taytteet.jsp";
 		
-		Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");
 		
 		try{
-			if(kirjautunut(request.getSession()) != kayttaja.isOmistaja()){
-				response.sendRedirect("/Menu");
-			}
-			
 			ArrayList<Tayte> taytteet = haeTaytteet();
 			request.setAttribute("taytteet", taytteet);
 		
@@ -66,15 +59,7 @@ public class ListaaTaytteetServlet extends HttpServlet {
 	}
 
 	
-	public boolean kirjautunut(HttpSession session){
-		try{
-			Kayttaja kayttaja = (Kayttaja) session.getAttribute("kayttaja");
-			return true;
-		} catch(NullPointerException e){
-			System.out.println(e.getMessage());
-			return false;
-		}
-	}
+
 	
 	public void hoidaErrorit(HttpServletRequest request){
 		request.removeAttribute("error");

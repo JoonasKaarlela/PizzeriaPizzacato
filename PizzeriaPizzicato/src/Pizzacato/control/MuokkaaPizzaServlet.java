@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import Pizzacato.model.Pizza;
 import Pizzacato.model.Tayte;
 import Pizzacato.model.dao.PizzaDAO;
+import Pizzacato.model.dao.PizzanTayteDAO;
 import Pizzacato.model.dao.TayteDAO;
 
 /**
@@ -71,7 +72,12 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	public void muokkaaPizzaa(Pizza pizza){
 		PizzaDAO pizzadao = new PizzaDAO();
 		try{
+			PizzanTayteDAO pizzantaytedao = new PizzanTayteDAO();
 			pizzadao.muokkaaPizzaa(pizza);
+			for(Tayte tayte : pizza.getTaytteet()){
+				pizzantaytedao.poistaPizzanTayte(pizza, tayte);
+				pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
+			}
 		} catch(SQLException e){
 			System.out.println("ERROR: " + e.getMessage());
 		}

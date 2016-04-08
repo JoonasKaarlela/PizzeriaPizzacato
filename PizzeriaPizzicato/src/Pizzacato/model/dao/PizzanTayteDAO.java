@@ -1,6 +1,8 @@
 package Pizzacato.model.dao;
 
 import Pizzacato.model.Pizza;
+import Pizzacato.model.Utils;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,11 +47,11 @@ public class PizzanTayteDAO extends DataAccessObject {
 			Connection conn = getConnection();
 			
 			// LISAYS LAUSE
-			String query = "INSERT INTO PIZZANTAYTE(id, tayte_id, pizzan_id) VALUES(?, ?, ?)";
+			String query = "INSERT INTO PIZZANTAYTE(id, pizza_id, tayte_id) VALUES(?, ?, ?)";
 			PreparedStatement statement = conn.prepareStatement(query);
-			statement.setString(1, ""+Math.random()*1000000);
-			statement.setString(2, tayte.getTayte_id());
-			statement.setString(3, pizza.getPizza_id());
+			statement.setString(1, new Utils().generate(5));
+			statement.setString(2, pizza.getPizza_id());
+			statement.setString(3, tayte.getTayte_id());
 
 			// EXECUTE
 			int syotettiin = statement.executeUpdate();
@@ -77,26 +79,8 @@ public class PizzanTayteDAO extends DataAccessObject {
 				}
 			}
 			
-			public void muokkaaPizzanTaytetta(Pizza pizza, Tayte tayte) throws SQLException{
-				// TALLENNA UUDET TIEDOT
-				
-				//YHTEYS
-				Connection conn = getConnection();
-				
-				//PAIVITA LAUSE
-				String query = "UPDATE TAYTE SET nimi=? alkupera=? kuvaus=? hinta=? WHERE tayte_id=?";
-				PreparedStatement statement = conn.prepareStatement(query);
-				statement.setString(1, tayte.getNimi());
-				statement.setString(2,  tayte.getAlkupera());
-				statement.setString(3, tayte.getKuvaus());
-				statement.setDouble(4, tayte.getHinta());
-				
-				//EXECUTE
-				int paivitettiin = statement.executeUpdate();
-				if(paivitettiin > 0){
-					System.out.println("PizzanTayte paivitettiin: " + paivitettiin + " attribuuttia päivitettiin");
-				}
-			}
+			
+
 			
 
 

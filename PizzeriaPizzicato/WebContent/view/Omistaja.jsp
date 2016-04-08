@@ -18,7 +18,7 @@
 			
 			<!-- KIRJAUDU -->
 			<div id="kirjaudu">
-				<h1> Tervetuloa, <c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out></h1>
+				<h1> <c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out></h1>
 				<a href="kirjauduUlos"> kirjaudu ulos </a>
 			</div>
 			
@@ -73,7 +73,7 @@
 	                 					<input class="pizza_input" type="text" value="${pizza.getNimi()}" name="nimi" required pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä"/> 
 	                 				</div>
 	                 				<div class="pizzakuvaus">
-	                 					<textarea disabled class="pizza_input" name="kuvaus" required>${pizza.getKuvaus()}</textarea>
+	                 					<textarea  class="pizza_input" name="kuvaus" required>${pizza.getKuvaus()}</textarea>
 	                 				</div>
 	                 				<div class="pizzahinta">
 	                 					<input type="text" class="pizza_input" value="${pizza.getHinta()}" name="hinta" required pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx"/>
@@ -87,7 +87,7 @@
 	                 				</div>
 	                 				<div class="pizzamuokkaa">
 	                 					<button type="submit" value="tallenna" class="tallenna"> Tallenna </button>
-                            			<a href="poista?id='${pizza.getPizza_id()}'"> poista </a>
+                            			<a href="poista?id=${pizza.getPizza_id()}"> poista </a>
                             			<button type="button" value="peruuta" class='peruuta' onClick="muokkaa('${current.index}'); return false;"> Peruuta </button>
                             			<label for="piilossa"> listalla </label>
                            				<input type="checkbox" value="piilota" name="piilossa" id="piilossa" />
@@ -113,7 +113,7 @@
 		            <div id="apanelcontent">
 		                <h1>Omistajapaneeli</h1>
 		                
-		                <button>Lisää ja muokkaa täytteitä</button>
+		             	<a href="taytteidenhallinta"> Muokkaa ja poista täytteitä  </a>
 		                
 		                <h2>Lisää pizza</h2>
 		                
@@ -123,7 +123,7 @@
 		                        <label>Pizzannimi</label><input name="nimi" placeholder="pizzan nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" />
 		                        <label>Pizzan kuvaus</label><input name="kuvaus" placeholder="kuvaus" />
 		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx" />
-		                        <select>
+		                        <select multiple name="taytteet">
 		                        	<c:forEach items="${taytteet}" var="tayte" varStatus="current">
 		                        		<label> Täyte ${current.index} </label><option value="${tayte.getTayte_id()}"> ${tayte.getNimi()} </option>
 		                        	</c:forEach>

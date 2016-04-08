@@ -95,6 +95,7 @@ public class PizzaDAO extends DataAccessObject{
 				PizzanTayteDAO pizzantaytedao = new PizzanTayteDAO();
 				pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
 			}
+			
 		System.out.println("pizza lisättiin!");
 		
 	}
@@ -106,26 +107,22 @@ public class PizzaDAO extends DataAccessObject{
 		// YHTEYS
 		Connection conn = getConnection();
 		
-		// POISTO LAUSE
+		// POISTA PIZZANTAYTTEET
+		Pizza pizza = haePizza(id);
+		PizzanTayteDAO pizzantaytedao =  new PizzanTayteDAO();
+		for(Tayte tayte : pizza.getTaytteet()){
+			pizzantaytedao.poistaPizzanTayte(pizza, tayte);
+		}
+		
+		// POISTA PIZZA
 		String query = "DELETE FROM PIZZA WHERE pizza_id=?";
 		PreparedStatement statement = conn.prepareStatement(query);
-		statement.setString(1, id);
-		
-		// POISTA PIZZANTÄYTTEET PIZZALLE
-		String query2 = "DELETE FROM PIZZANTAYTE WHERE pizza_id=?";
-		PreparedStatement statement2 =  conn.prepareStatement(query2);
 		statement.setString(1, id);
 		
 		// EXECUTE
 		int pizzoja_poistettiin = statement.executeUpdate();
 		if( pizzoja_poistettiin > 0){
 			System.out.println("pizza " + id + " poistettiin tietokannasta...");
-		}
-		
-		// EXECUTE
-		int pizzantaytteita_poistettiin = statement.executeUpdate();
-		if( pizzantaytteita_poistettiin > 0){
-			System.out.println("pizzantaytteita poistettiin " + pizzantaytteita_poistettiin);
 		}
 		
 	}
@@ -180,8 +177,6 @@ public class PizzaDAO extends DataAccessObject{
 		statement.setBoolean(3, pizza.getListalla());
 		statement.setDouble(4, pizza.getHinta());
 		statement.setString(5, pizza.getPizza_id());
-		
-		// TODO: PÄIVITÄ MYÖS TÄYTTEET TÄLLE PIZZALLE!
 		
 		//EXECUTE
 		int paivitettiin = statement.executeUpdate();

@@ -1,18 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="styles.css" rel="stylesheet" type="text/css">
-<title>Valitse</title>
+<title>Insert title here</title>
 </head>
 <body>
-	
+
 	<div id="wrapper">
+		
 		<div id="header">
 			<div id="logo"><img src="pizzerialogo-lapinakyva.png" width="50" />PizzeriaPizzicato</div>
 			
+			<!--  JOS KIRJAUTUNUT SISÄÄN NÄYTÄ KIRAJUDU ULOS, JOS EI NIIN NÄYTÄ KIRJAUTUMIS LOMAKE -->
 			<div id="kirjaudu">
 					<c:choose>
 					
@@ -40,7 +43,6 @@
 						
 					</c:choose>
 			</div>
-			
 
 			<!--  NAVIGOINTI -->
             <div class="clear"></div>
@@ -54,41 +56,52 @@
 			</div><!-- NAV LOPPUU -->
 		</div>
 		
-		
-		<div id="valitse_pizza_container">
-			
-			<div id="pizza_vasen">
-				<div> <h1> ${pizza.getNimi()} </h1>  </div>
-				<div>
-					<img id="pizza_kuva" src="${pizza.getKuva()}" />
-				</div>
-			</div>
-			
-			<form id="pizza_oikea" method=POST action="lisaa">
-				<div>  <h3> Muokkaa täytteitä </h3> </div>
-				<div>
-					<div>
-						<c:forEach items="${pizza.getTaytteet()}" var="tayte">
-							<strong> ${tayte.getNimi()} </strong>
-						</c:forEach>
-					</div>
-					<div>
-						<div> <p> lisää </p> </div>
-						<select multiple name="taytteet">
-							<c:forEach items="${taytteet}" var="tayte">
-								<option value="${tayte.getTayte_id()}"> ${tayte.getNimi()} </option>
-							</c:forEach>
-						</select>
-					</div>
-				</div>
-				<div>
-					<button type="submit"> lisää koriin </button>
-				</div>
-			</form>
-			
-		</div>
-		
-	</div>
-	
+        <div class="clear"></div>
+        
+        
+        
+        <div id="ostoskori">
+        	<form method=post action=suoritaTilaus>
+        		<div>
+        			
+        			<c:choose>
+        			
+        				<c:when test="${sessionScope.ostoskori != null && !sessionScope.ostoskori.isEmpty()}">
+        				
+        					<h1> PIZZOJA LÖYTYI </h1>
+        				
+        					<ul>
+        						<c:forEach items="${sessionScope.ostoskori}" var="pizza"> 
+        							<li>
+										<div> <strong> ${pizza.getNimi()} </strong> </div>
+										<div> ${pizza.getHinta()} </div>
+										<div>
+											<c:forEach items="${pizza.getTaytteet()}" var="tayte">
+												${tayte.getNimi()}
+											</c:forEach>
+										</div>
+										<div>
+											<a href="poistaKorista?id=${pizza.getPizza_id()}"> <b style="color:crimson"> poista </b> </a>
+										</div>   					
+        							</li>
+        						</c:forEach>
+        						<div>
+        							<button type=submit> Tilaa </button>
+        						</div>     
+        					</ul>
+        				</c:when>
+        			
+        				<c:otherwise>
+        					<p> Ostorkorisi on tyhjä! :( </p>
+        				</c:otherwise>
+        			
+        			</c:choose>
+        		
+        			
+        		</div>
+        	</form>
+        </div>
+       </div>
+
 </body>
 </html>

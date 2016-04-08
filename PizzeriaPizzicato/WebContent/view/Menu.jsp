@@ -51,6 +51,7 @@
 					<li><a href="#">Etusivu</a></li>
 					<li><a href="#">Menu</a></li>
 					<li><a href="#">Yhteystiedot</a></li>
+					<li><a href="Ostoskori">Ostoskori</a></li>
 				</ul>
 			</div><!-- NAV LOPPUU -->
 		</div>
@@ -118,6 +119,7 @@
 		</div><!-- CONTENT LOPPUU -->
 		
 	</div>
+
 
 </body>
 </html>

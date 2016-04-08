@@ -6,24 +6,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Täytteet</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="taytteet.js"></script>
 </head>
 <body>
 
 <div id="wrapper">	
+
     <h1>Täytteiden muokkaus</h1>
-    <h3>Palaa sivustolle</h3>
+    <h3><a href="Menu">Palaa sivustolle</a></h3>
 
     <div id="taytelista">
         <table>
         	<tr>
             	<td colspan="5">
                 Lisää täyte
-                <form>
-                    <label>Täytteen nimi</label><input type="text"><br />
-                    <label>Täytteen alkuperä</label><input type="text"><br />
-                    <label>Täytteen kuvaus</label><input type="text"><br />
-                    <label>Täytteen hinta/kg</label><input type="text">
-                    <button>Lisää</button>
+                <form class="testi" method="post" action="lisaaTayte">
+                    <label>Täytteen nimi</label><input name="nimi" type="text"><br />
+                    <label>Täytteen alkuperä</label><input name="alkupera" type="text"><br />
+                    <label>Täytteen kuvaus</label><input name="kuvaus" type="text"><br />
+                    <label>Täytteen hinta/kg</label><input name="hinta" type="text">
+                    <button type="submit">Lisää</button>
                 </form>
                 </td>
             </tr>
@@ -43,22 +46,33 @@
                 <td>
                 </td>
            	</tr>
-			<c:forEach items="${taytteet}" var="tayte">
+			<c:forEach items="${taytteet}" var="tayte" varStatus="current">
             <tr>
-            	<td>
-				<input disabled type="text" placeholder="${tayte.getNimi()}">
-                </td>
-            	<td>
-	            <input disabled type="text" placeholder="${tayte.getAlkupera()}">
-                </td>
-          		<td>
-	            <input disabled type="text" placeholder="${tayte.getKuvaus()}">
-	            </td>
-                <td>
-                <input disabled type="text" placeholder="${tayte.getHinta()}">
-	            </td>
-                <td>
-                <button>Muokkaa</button><button>Poista</button>
+            	<td colspan="5">
+            	<form class="tayteform" method="post" action="MuokkaaTaytetta">
+	            	<table class="taytetbl">
+	            	<tr>
+		            	<td>
+						<input disabled type="text" value="${tayte.getNimi()}" name="nimi">
+		                </td>
+		            	<td>
+			            <input disabled type="text" value="${tayte.getAlkupera()}" name="alkupera">
+		                </td>
+		          		<td>
+			            <input disabled type="text" value="${tayte.getKuvaus()}" name="kuvaus">
+			            </td>
+		                <td>
+		                <input disabled type="text" value="${tayte.getHinta()}" name="hinta">
+			            <input type="hidden" name="tayte_id" value="${tayte.getTayte_id()}" class="hidden" />
+			            </td>
+		                <td>
+		                <button class="muokkaabtn" type="button" onClick="muokkaaTayte('${current.index}'); return false;">Muokkaa</button>
+		                <button class="tallennabtn hidden" type="submit" value="tallenna">Tallenna</button>
+		                <button>Poista</button>
+		                </td>
+	                </tr>
+	                </table>
+	            </form>
         		</td>
          	</tr>
 			</c:forEach>

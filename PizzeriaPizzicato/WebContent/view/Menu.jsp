@@ -20,7 +20,7 @@
 					<c:choose>
 					
 						<c:when test="${sessionScope.kayttaja != null}">
-							<h1> Hei, <c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out> </h1>
+							<h1> <c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out> </h1>
 							<div> <a href="kirjauduUlos"> kirjaudu ulos </a> </div>
 						</c:when>
 						
@@ -93,7 +93,7 @@
 														${tayte.getNimi()}
 													</c:forEach>
 												</div>
-												<button type=submit value="Lisää">Lisää ostoskoriin</button>
+												<a href="valitse?id=${pizza.getPizza_id()}"> <strong> valitse </strong> </a>
 		                                    </div>
 											<input type=hidden name=pizza_id value="${pizza}" />
 		                                </td>

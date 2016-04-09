@@ -20,7 +20,7 @@ public class PoistaKoristaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
+		String id = request.getParameter("pizza_id");
 		Pizza pizza = haePizza(id);
 		poistaKorista(pizza, request.getSession());
 		response.sendRedirect("Ostoskori");
@@ -43,7 +43,13 @@ public class PoistaKoristaServlet extends HttpServlet {
 	public void poistaKorista(Pizza pizza, HttpSession session){
 		if(pizza != null){
 			ArrayList<Pizza> ostoskori = (ArrayList<Pizza>) session.getAttribute("ostoskori");
-			ostoskori.remove(pizza);
+			ArrayList<Pizza> uusikori = new ArrayList<>();
+			for(Pizza korin_pizza : ostoskori){
+				if(!korin_pizza.getPizza_id().equals(pizza.getPizza_id())){
+					uusikori.add(korin_pizza);
+				}
+			}
+			session.setAttribute("ostoskori", uusikori);
 		}
 	}
 	

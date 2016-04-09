@@ -65,7 +65,6 @@
 			</div>
 			
 			<form id="pizza_oikea" method=POST action="lisaaKoriin">
-				<div>  <h3> Muokkaa täytteitä </h3> </div>
 				<div>
 					<div>
 						<c:forEach items="${pizza.getTaytteet()}" var="tayte">
@@ -84,6 +83,7 @@
 				<div>
 					<button type="submit"> lisää koriin </button>
 				</div>
+				<input type="hidden" name="pizza_id" value="${pizza.getPizza_id()}" />
 			</form>
 			
 		</div>

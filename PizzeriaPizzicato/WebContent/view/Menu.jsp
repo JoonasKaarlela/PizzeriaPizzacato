@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Menu</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css" />
 </head>
 <body>
 	
@@ -78,8 +79,6 @@
                         
                         <div class="menuitemwrap">
                    			<div class="menuitem">
-	                    	
-	                    	<form method=post action=lisaaKoriin>
 		                        <table>
 		                       
 		                        	<tr>
@@ -94,14 +93,13 @@
 														${tayte.getNimi()}
 													</c:forEach>
 												</div>
-												<a href="valitse?id=${pizza.getPizza_id()}"> <strong> valitse </strong> </a>
+												<a href="valitse?pizza_id=${pizza.getPizza_id()}"> <strong> valitse </strong> </a>
 		                                    </div>
 											<input type=hidden name=pizza_id value="${pizza}" />
 		                                </td>
 		                        	</tr>
 		                        
 		                        </table>
-	                        </form>
                         
                         	</div><!-- MENUITEM LOPPUU -->
                 		</div><!-- MENUITEMWRAP LOPPUU -->

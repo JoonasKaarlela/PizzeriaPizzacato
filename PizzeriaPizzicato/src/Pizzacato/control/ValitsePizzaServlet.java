@@ -23,7 +23,7 @@ public class ValitsePizzaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dp = request.getServletContext().getRequestDispatcher("/view/Pizza.jsp");
 		
-		String id = request.getParameter("id");
+		String id = request.getParameter("pizza_id");
 		
 		PizzaDAO pizzadao = new PizzaDAO();
 		TayteDAO taytedao = new TayteDAO();

@@ -68,7 +68,7 @@
         			
         				<c:when test="${sessionScope.ostoskori != null && !sessionScope.ostoskori.isEmpty()}">
         				
-        					<h1> PIZZOJA LÖYTYI </h1>
+        					<h1> Valitsemasi pizzat </h1>
         				
         					<ul>
         						<c:forEach items="${sessionScope.ostoskori}" var="pizza"> 
@@ -81,7 +81,7 @@
 											</c:forEach>
 										</div>
 										<div>
-											<a href="poistaKorista?id=${pizza.getPizza_id()}"> <b style="color:crimson"> poista </b> </a>
+											<a href="poistaKorista?pizza_id=${pizza.getPizza_id()}"> <b style="color:crimson"> poista </b> </a>
 										</div>   					
         							</li>
         						</c:forEach>

@@ -23,9 +23,13 @@ public class LisaaKoriinServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("pizza_id");
-		ArrayList<Tayte> lisaTaytteet = haeTaytteet(request.getParameterValues("taytteet"));
 		Pizza pizza = haePizza(id);
-		pizza.getTaytteet().addAll(lisaTaytteet);
+		
+		if(request.getParameterValues("taytteet") != null){
+			ArrayList<Tayte> lisaTaytteet = haeTaytteet(request.getParameterValues("taytteet"));
+			pizza.getTaytteet().addAll(lisaTaytteet);
+		}
+
 		lisaaKoriin(pizza, request.getSession());
 		
 		response.sendRedirect("Menu");
@@ -62,7 +66,7 @@ public class LisaaKoriinServlet extends HttpServlet {
 		return pizzan_taytteet;
 	}
 	
-	
+	@SuppressWarnings("unchecked")
 	public void lisaaKoriin(Pizza pizza, HttpSession session){
 		if(pizza != null){
 			if(session.getAttribute("ostoskori") == null){
@@ -70,7 +74,6 @@ public class LisaaKoriinServlet extends HttpServlet {
 				ostoskori.add(pizza);
 				session.setAttribute("ostoskori", ostoskori);
 			} else {
-				@SuppressWarnings("unchecked")
 				ArrayList<Pizza> ostoskori = (ArrayList<Pizza>) session.getAttribute("ostoskori");
 				ostoskori.add(pizza);
 				session.setAttribute("ostoskori", ostoskori);

@@ -44,11 +44,15 @@ public class PoistaKoristaServlet extends HttpServlet {
 		if(pizza != null){
 			ArrayList<Pizza> ostoskori = (ArrayList<Pizza>) session.getAttribute("ostoskori");
 			ArrayList<Pizza> uusikori = new ArrayList<>();
-			for(Pizza korin_pizza : ostoskori){
-				if(!korin_pizza.getPizza_id().equals(pizza.getPizza_id())){
+			boolean match = false;
+			for(Pizza korin_pizza : ostoskori){	
+				if(!korin_pizza.getPizza_id().equals(pizza.getPizza_id()) || match){
 					uusikori.add(korin_pizza);
+				}else{
+					match = true;
 				}
 			}
+			
 			session.setAttribute("ostoskori", uusikori);
 		}
 	}

@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Menu</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css" />
 </head>
 <body>
 	
@@ -49,9 +48,9 @@
             <div class="clear"></div>
 			<div id="nav">
 				<ul>
-					<li><a href="#">Etusivu</a></li>
-					<li><a href="#">Menu</a></li>
-					<li><a href="#">Yhteystiedot</a></li>
+					<li><a href="Menu">Etusivu</a></li>
+					<li><a href="Menu">Menu</a></li>
+					<li><a href="Menu">Yhteystiedot</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>
 				</ul>
 			</div><!-- NAV LOPPUU -->

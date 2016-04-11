@@ -11,8 +11,8 @@ import Pizzacato.model.Tayte;
 
 public class TayteDAO extends DataAccessObject{
 	
+	//HAETAAN KAIKKI TAYTTEET
 	public ArrayList<Tayte> haeTaytteet() throws SQLException{
-		//HAETAAN KAIKKI TAYTTEET
 		
 		// YHTEYS
 		Connection conn = getConnection();
@@ -37,11 +37,12 @@ public class TayteDAO extends DataAccessObject{
 		}
 		
 		// PALAUTA TAYTTEET
+		conn.close();
 		return taytteet;
 	}
 	
+	// LISAA UUSI TAYTE TIETOKANTAAN.
 	public void lisaaTayte(Tayte tayte) throws SQLException{
-		// LISAA UUSI TAYTE TIETOKANTAAN.
 		
 		// YHTEYS
 		Connection conn = getConnection();
@@ -60,10 +61,11 @@ public class TayteDAO extends DataAccessObject{
 		if(syotettiin > 0){
 			System.out.println("uusi tayte: " + tayte.getTayte_id() + " lisattiin tietokantaan...");
 		}
+		conn.close();
 	}
 		
+	// POISTA KYSEINEN TAYTE TIETOKANNASTA
 		public void poistaTayte(String tayte_id) throws SQLException{
-			// POISTA KYSEINEN TAYTE TIETOKANNASTA
 			
 			// YHTEYS
 			Connection conn = getConnection();
@@ -78,10 +80,11 @@ public class TayteDAO extends DataAccessObject{
 			if( poistettiin > 0){
 				System.out.println("tayte " + tayte_id + " poistettiin tietokannasta...");
 			}
+			conn.close();
 		}
 		
+		// TALLENNA UUDET TIEDOT
 		public void muokkaaTaytetta(Tayte tayte) throws SQLException{
-			// TALLENNA UUDET TIEDOT
 
 			//YHTEYS
 			Connection conn = getConnection();
@@ -100,6 +103,7 @@ public class TayteDAO extends DataAccessObject{
 			if(paivitettiin > 0){
 				System.out.println("Paivitettiin: " + paivitettiin + " attribuuttia");
 			}
+			conn.close();
 		}
 		
 		

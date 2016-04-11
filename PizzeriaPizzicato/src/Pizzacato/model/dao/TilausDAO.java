@@ -8,13 +8,19 @@ import Pizzacato.model.Pizza;
 public class TilausDAO extends DataAccessObject {
 	
 	public void asetaTilaus(ArrayList<Pizza> pizzat){
-		Connection conn = getConnection();
-		// LUO TILAUKSENPIZZAT
+		
+		/*	TODO:
+		 *   
+		 *  1. LUO UUSI TILAUS KANTAAN
+		 *  
+		 *  2. LUO UUSI TILAUKSENPIZZA JOKAISESTA pizzat LISTAN pizza oliosta JUURI LUODUN TILAUKSEN tilauksen_id:llä
+		 *  
+		 */
+		
 	}
 	
 	public void haeTilauksenPizzat(String id){
-		Connection conn = getConnection();
-		// HAE TIETYN TILAUKSEN PIZZAT
+		// TODO: HAE TILAUKSEN PIZZAT JOISSA tilauksen_id=id
 	}
 	
 }

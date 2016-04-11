@@ -5,6 +5,7 @@ import java.io.IOException;
 import Pizzacato.model.Pizza;
 import Pizzacato.model.dao.TilausDAO;
 
+import java.sql.SQLException;
 import java.util.*;
 
 import javax.servlet.ServletException;
@@ -25,7 +26,12 @@ public class SuoritaTilausServlet extends HttpServlet {
 			
 			// SUORITA TILAUS
 			TilausDAO tilausdao = new TilausDAO();
-			tilausdao.asetaTilaus(ostoskori);
+			
+			try{
+				tilausdao.asetaTilaus(ostoskori);
+			}catch(SQLException e){
+				System.out.println(e.getMessage());
+			}
 		
 	}
 }

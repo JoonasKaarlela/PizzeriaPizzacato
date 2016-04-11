@@ -23,6 +23,8 @@ public class LisaaKoriinServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("pizza_id");
+		int maara = Integer.parseInt(request.getParameter("maara"));
+
 		Pizza pizza = haePizza(id);
 		
 		if(request.getParameterValues("taytteet") != null){
@@ -30,7 +32,9 @@ public class LisaaKoriinServlet extends HttpServlet {
 			pizza.getTaytteet().addAll(lisaTaytteet);
 		}
 
-		lisaaKoriin(pizza, request.getSession());
+		for (int i = 0; i < maara; i++) {
+			lisaaKoriin(pizza, request.getSession());
+		}
 		
 		response.sendRedirect("Menu");
 	}

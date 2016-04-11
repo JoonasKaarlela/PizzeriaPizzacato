@@ -78,8 +78,8 @@
                         
                         <div class="menuitemwrap">
                    			<div class="menuitem">
+                   			<form action="lisaaKoriin" method="post">
 		                        <table>
-		                       
 		                        	<tr>
 		                                <td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" style="width:150px;height:125px;" /></div></td>
 		                               	<td valign="top">
@@ -92,13 +92,22 @@
 														${tayte.getNimi()}
 													</c:forEach>
 												</div>
-												<a href="valitse?pizza_id=${pizza.getPizza_id()}"> <strong> valitse </strong> </a>
+												<div style="display:inline-block;">
+													<button type=submit> <strong> valitse </strong> </button>
+													<select name="maara">
+														<option value=1> 1 </option>
+														<option value=2> 2 </option>
+														<option value=3> 3 </option>
+														<option value=4> 4 </option>
+														<option value=5> 5 </option>
+													</select>
+												</div>
 		                                    </div>
-											<input type=hidden name=pizza_id value="${pizza}" />
+											<input type=hidden name=pizza_id value="${pizza.getPizza_id()}" />
 		                                </td>
 		                        	</tr>
-		                        
 		                        </table>
+		                     </form>
                         
                         	</div><!-- MENUITEM LOPPUU -->
                 		</div><!-- MENUITEMWRAP LOPPUU -->

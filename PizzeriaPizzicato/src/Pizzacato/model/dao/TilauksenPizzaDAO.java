@@ -1,9 +1,12 @@
 package Pizzacato.model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import Pizzacato.model.Pizza;
+import Pizzacato.model.Tayte;
 import Pizzacato.model.Utils;
 
 public class TilauksenPizzaDAO extends DataAccessObject {
@@ -26,6 +29,33 @@ public class TilauksenPizzaDAO extends DataAccessObject {
 		}
 		
 		conn.close();
+	}
+	
+	public ArrayList<Pizza> HaeTilauksenPizzat(String tilaus_id) throws SQLException{
+		Connection conn = getConnection();
+		
+		ArrayList<Pizza> pizzat = new ArrayList<>();
+		
+		String query = "SELECT * FROM PIZZA INNER JOIN TILAUKSENPIZZA ON PIZZA.pizza_id=TILAUKSENPIZZA.pizza_id WHERE TILAUKSENPIZZA.tilaus_id=?";
+		
+		PreparedStatement statement = conn.prepareStatement(query);
+		statement.setString(1, tilaus_id);
+		ResultSet results = statement.executeQuery();
+		
+		while(results.next()){
+			String pizza_id = results.getString(1);
+			String nimi = results.getString(2);
+			ArrayList<Tayte> taytteet = new PizzanTayteDAO().haePizzanTaytteet(pizza_id);
+			String kuvaus = results.getString(3);
+			boolean listalla = results.getBoolean(4) ;
+			double hinta = results.getDouble(5);
+			String kuva = "pizza1.png";
+			Pizza pizza = new Pizza(pizza_id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
+			pizzat.add(pizza);
+		}
+		
+		conn.close();
+		return pizzat;
 	}
 	
 }

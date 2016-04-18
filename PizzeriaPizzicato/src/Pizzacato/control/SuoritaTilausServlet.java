@@ -32,6 +32,14 @@ public class SuoritaTilausServlet extends HttpServlet {
 			}catch(SQLException e){
 				System.out.println(e.getMessage());
 			}
-		
+			
+			
+			// TYHJENNÄ KORI
+			request.getSession(false).removeAttribute("ostoskori");
+			
+			
+			// OHJAA MENUUN
+			response.sendRedirect("Menu");
+			
 	}
 }

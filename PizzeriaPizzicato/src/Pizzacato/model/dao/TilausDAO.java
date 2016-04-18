@@ -52,8 +52,5 @@ public class TilausDAO extends DataAccessObject {
 		conn.close();
 	}
 	
-	public void haeTilauksenPizzat(String id){
-		// TODO: HAE TILAUKSEN PIZZAT JOISSA tilauksen_id=id
-	}
 	
 }

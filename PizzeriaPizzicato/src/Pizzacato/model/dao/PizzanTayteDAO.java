@@ -21,9 +21,10 @@ public class PizzanTayteDAO extends DataAccessObject {
 
 		String query = "SELECT * FROM TAYTE"
 							+ " INNER JOIN PIZZANTAYTE ON TAYTE.tayte_id=PIZZANTAYTE.tayte_id"
-							+ " AND PIZZANTAYTE.pizza_id=" + pizza_id;
+							+ " AND PIZZANTAYTE.pizza_id=?";
 		
-		Statement statement = conn.createStatement();
+		PreparedStatement statement = conn.prepareStatement(query);
+		statement.setString(1, pizza_id);
 		ResultSet results = statement.executeQuery(query);
 		
 		while(results.next()){

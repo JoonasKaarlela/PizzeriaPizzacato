@@ -16,16 +16,7 @@ import Pizzacato.model.dao.TayteDAO;
 @WebServlet("/lisaaTayte")
 public class LisaaTayteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-
-
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
-	}
-
-
+      
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String tayte_id = new Utils().generate(5);
@@ -35,19 +26,23 @@ public class LisaaTayteServlet extends HttpServlet {
 		double hinta = Double.parseDouble(request.getParameter("hinta"));
 		 
 		Tayte tayte = new Tayte(tayte_id, nimi, alkupera, kuvaus, hinta);
-		lisaaTayte(tayte);
+		if(lisaaTayte(tayte)){
+			request.getSession(false).setAttribute("notification", tayte.getNimi() + " lisättiin!");
+		}
 		
 		response.sendRedirect("Taytteet");
 	}
 		
-	public void lisaaTayte(Tayte tayte){
+	public boolean lisaaTayte(Tayte tayte){
 		TayteDAO taytedao = new TayteDAO();
 		try{
 			taytedao.lisaaTayte(tayte);
+			return true;
 		} catch(SQLException e){
 			System.out.println(e.getMessage());
 			
 		}
+		return false;
 	}
 	
 

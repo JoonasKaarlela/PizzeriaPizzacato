@@ -34,7 +34,9 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		String kuva = "pizza1.png";
 		
 		Pizza pizza = new Pizza(id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
-		muokkaaPizzaa(pizza);
+		if(muokkaaPizzaa(pizza)){
+			request.getSession().setAttribute("notification", pizza.getNimi() + " tallennettu!");
+		}
 		
 		response.sendRedirect("Menu");
 	}
@@ -70,7 +72,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	}
 	
 	
-	public void muokkaaPizzaa(Pizza pizza){
+	public boolean muokkaaPizzaa(Pizza pizza){
 		PizzaDAO pizzadao = new PizzaDAO();
 		try{
 			PizzanTayteDAO pizzantaytedao = new PizzanTayteDAO();
@@ -79,9 +81,11 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 				pizzantaytedao.poistaPizzanTayte(pizza, tayte);
 				pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
 			}
+			return true;
 		} catch(SQLException e){
 			System.out.println("ERROR: " + e.getMessage());
 		}
+		return false;
 	}
 	
 	

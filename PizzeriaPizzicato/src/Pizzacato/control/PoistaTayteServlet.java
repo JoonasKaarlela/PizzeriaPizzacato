@@ -17,18 +17,23 @@ public class PoistaTayteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-		poistaTayte(id);
+		
+		if(poistaTayte(id)){
+			request.getSession(false).setAttribute("notification", "tayte " + id + " poistettiin!");
+		}
 
 		response.sendRedirect("Taytteet");
 	}
 
-	public void poistaTayte(String id) {
+	public boolean poistaTayte(String id) {
 		TayteDAO taytedao = new TayteDAO();
 		try {
 			taytedao.poistaTayte(id);
+			return true;
 		}catch (SQLException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
+		return false;
 	}
 }

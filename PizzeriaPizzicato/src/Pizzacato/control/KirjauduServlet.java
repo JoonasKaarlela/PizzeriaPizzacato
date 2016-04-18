@@ -23,7 +23,9 @@ public class KirjauduServlet extends HttpServlet {
 		String kayttajatunnus = request.getParameter("kayttajatunnus");
 		String salasana = request.getParameter("salasana");
 
-		kirjaudu(request, kayttajatunnus, salasana);
+		if(kirjaudu(request, kayttajatunnus, salasana)){
+			request.getSession().setAttribute("notification", "Tervetuloa!");
+		}
 		
 		response.sendRedirect("Menu");
 	}

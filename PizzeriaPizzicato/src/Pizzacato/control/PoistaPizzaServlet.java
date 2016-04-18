@@ -22,19 +22,23 @@ public class PoistaPizzaServlet extends HttpServlet {
 		
 		System.out.println(id);
 		
-		poistaPizza(id);
+		if(poistaPizza(id)){
+			request.getSession(false).setAttribute("notification", "pizza " + id + " poistettiin!");
+		}
 		
 		response.sendRedirect("Menu");
 	}
 	
-	public void poistaPizza(String id){
+	public boolean poistaPizza(String id){
 		PizzaDAO pizzadao = new PizzaDAO();
 		try {
 			pizzadao.poistaPizza(id);
+			return true;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
+		return false;
 	}
 
 }

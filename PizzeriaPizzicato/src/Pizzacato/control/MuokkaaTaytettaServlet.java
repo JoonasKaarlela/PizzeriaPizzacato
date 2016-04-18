@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import Pizzacato.model.Tayte;
 import Pizzacato.model.dao.TayteDAO;
 
-/**
- * Servlet implementation class MuokkaaTayteServlet
- */
+
 @WebServlet("/MuokkaaTaytetta")
 public class MuokkaaTaytettaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,19 +27,23 @@ public class MuokkaaTaytettaServlet extends HttpServlet {
 		Double hinta = Double.parseDouble(request.getParameter("hinta"));
 		
 		Tayte tayte = new Tayte(tayte_id, nimi, alkupera, kuvaus, hinta);
-		muokkaaTaytetta(tayte);
+		if(muokkaaTaytetta(tayte)){
+			request.getSession(false).setAttribute("notification", tayte.getNimi() + " tallennettiin!");
+		}
 		
 		response.sendRedirect("Taytteet");
 		
 	}
 	
-	public void muokkaaTaytetta(Tayte tayte){
+	public boolean muokkaaTaytetta(Tayte tayte){
 		TayteDAO taytedao = new TayteDAO();
 		try{
 			taytedao.muokkaaTaytetta(tayte);
+			return true;
 		} catch (SQLException e){
 			System.out.println("ERROR: " + e.getMessage());
 		}
+		return false;
 	}
 	
 	

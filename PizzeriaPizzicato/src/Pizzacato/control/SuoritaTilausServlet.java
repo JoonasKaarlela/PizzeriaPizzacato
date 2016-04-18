@@ -29,14 +29,13 @@ public class SuoritaTilausServlet extends HttpServlet {
 
 			try{
 				tilausdao.asetaTilaus(pizzat);
+				request.getSession(false).setAttribute("notification", "Kiitos tilauksesta! :)");
 			}catch(SQLException e){
 				System.out.println(e.getMessage());
 			}
 			
-			
 			// TYHJENNÄ KORI
 			request.getSession(false).removeAttribute("ostoskori");
-			
 			
 			// OHJAA MENUUN
 			response.sendRedirect("Menu");

@@ -33,7 +33,9 @@ public class LisaaPizzaServlet extends HttpServlet {
 		String kuva = "pizza1.png";
 		
 		Pizza pizza = new Pizza(id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
-		lisaaPizza(pizza);
+		if(lisaaPizza(pizza)){
+			request.getSession(false).setAttribute("notification", pizza.getNimi() + " lisättiin!");
+		}
 		
 		response.sendRedirect("Menu");
 	}
@@ -60,13 +62,15 @@ public class LisaaPizzaServlet extends HttpServlet {
 	
 	
 	
-	public void lisaaPizza(Pizza pizza){
+	public boolean lisaaPizza(Pizza pizza){
 		PizzaDAO dao = new PizzaDAO();
 		try{
 			dao.lisaaPizza(pizza);
+			return true;
 		} catch(SQLException e){
 			System.out.println(e.getMessage());
 		}
+		return false;
 	}
 }
 

@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import Pizzacato.model.Pizza;
@@ -36,11 +37,10 @@ public class TilauksenPizzaDAO extends DataAccessObject {
 		
 		ArrayList<Pizza> pizzat = new ArrayList<>();
 		
-		String query = "SELECT * FROM PIZZA INNER JOIN TILAUKSENPIZZA ON PIZZA.pizza_id=TILAUKSENPIZZA.pizza_id WHERE TILAUKSENPIZZA.tilaus_id=?";
+		String query = "SELECT * FROM PIZZA INNER JOIN TILAUKSENPIZZA ON PIZZA.pizza_id=TILAUKSENPIZZA.pizza_id WHERE TILAUKSENPIZZA.tilaus_id=" + tilaus_id;
 		
-		PreparedStatement statement = conn.prepareStatement(query);
-		statement.setString(1, tilaus_id);
-		ResultSet results = statement.executeQuery();
+		Statement statement = conn.createStatement();
+		ResultSet results = statement.executeQuery(query);
 		
 		while(results.next()){
 			String pizza_id = results.getString(1);

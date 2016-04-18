@@ -93,7 +93,12 @@
         							</c:choose>
         						</c:forEach>
         						<c:if test="${!sessionScope.ostoskori.isEmpty}">
-        							<button type=submit> Tilaa </button>
+        							<div>
+        								<button type=submit> Tilaa </button>
+        							</div>
+        							<div>
+        								<strong> ${requestScope.summa} € </strong>
+        							</div>
         						</c:if>
         					</ul>
         				</c:when>

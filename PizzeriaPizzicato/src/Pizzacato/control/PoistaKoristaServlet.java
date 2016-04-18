@@ -48,7 +48,10 @@ public class PoistaKoristaServlet extends HttpServlet {
 			
 			for(String key : ostoskori.keySet()){
 				if(key.equals(pizza.getPizza_id())){
-					System.out.println(ostoskori.get(key).remove(0));
+					ostoskori.get(key).remove(0);
+					if(ostoskori.get(key).isEmpty()){
+						ostoskori.remove(key);
+					}
 					break;
 				}
 			}

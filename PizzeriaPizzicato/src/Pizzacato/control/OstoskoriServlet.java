@@ -20,6 +20,19 @@ public class OstoskoriServlet extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dp = request.getServletContext().getRequestDispatcher("/view/Ostoskori.jsp");
+		
+		// Laske yhteissumma
+		HashMap<String, ArrayList<Pizza>> pizzat = (HashMap<String, ArrayList<Pizza>>) request.getSession().getAttribute("ostoskori");
+		double summa = 0;
+		
+		for(String key : pizzat.keySet()){
+			for(Pizza pizza : pizzat.get(key)){
+				summa += pizza.getHinta();
+			}
+		}
+		
+		request.setAttribute("summa", summa);
+		
 		dp.forward(request, response);
 	}
 }

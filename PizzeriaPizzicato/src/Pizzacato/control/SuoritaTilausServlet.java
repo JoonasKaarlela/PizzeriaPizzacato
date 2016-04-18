@@ -22,13 +22,13 @@ public class SuoritaTilausServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 			@SuppressWarnings("unchecked")
-			ArrayList<Pizza> ostoskori = (ArrayList<Pizza>) request.getSession().getAttribute("ostoskori");
+			HashMap<String, ArrayList<Pizza>> pizzat = (HashMap<String, ArrayList<Pizza>>) request.getSession().getAttribute("ostoskori");
 			
 			// SUORITA TILAUS
 			TilausDAO tilausdao = new TilausDAO();
-			
+
 			try{
-				tilausdao.asetaTilaus(ostoskori);
+				tilausdao.asetaTilaus(pizzat);
 			}catch(SQLException e){
 				System.out.println(e.getMessage());
 			}

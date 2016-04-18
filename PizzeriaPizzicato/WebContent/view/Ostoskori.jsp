@@ -71,18 +71,20 @@
         					<h1> Valitsemasi pizzat </h1>
         				
         					<ul>
-        						<c:forEach items="${sessionScope.ostoskori}" var="pizza"> 
+        						<c:forEach items="${sessionScope.ostoskori}" var="item"> 
         							<li>
-										<div> <strong> ${pizza.getNimi()} </strong> </div>
-										<div> ${pizza.getHinta()} </div>
+        								<div> ${item.key} </div>
+										<div> <strong> ${item.value.get(0).getNimi()} </strong> </div>
+										<div> ${item.value.get(0).getHinta()} </div>
 										<div>
-											<c:forEach items="${pizza.getTaytteet()}" var="tayte">
+											<c:forEach items="${item.value.get(0).getTaytteet()}" var="tayte">
 												${tayte.getNimi()}
 											</c:forEach>
 										</div>
 										<div>
-											<a href="poistaKorista?pizza_id=${pizza.getPizza_id()}"> <b style="color:crimson"> poista </b> </a>
-										</div>   					
+											<a href="poistaKorista?pizza_id=${item.key}"> <b style="color:crimson"> poista </b> </a>
+										</div> 
+										<div> ${item.value.size()} </div>  					
         							</li>
         						</c:forEach>
         						<div>
@@ -92,7 +94,9 @@
         				</c:when>
         			
         				<c:otherwise>
-        					<p> Ostorkorisi on tyhjä! :( </p>
+        					<div>
+        						<h3>Ostoskorisi on tyhjä!</h3>
+        					</div>
         				</c:otherwise>
         			
         			</c:choose>

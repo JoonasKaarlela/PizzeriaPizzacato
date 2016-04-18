@@ -7,9 +7,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Random;
 
+
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
 public class Utils {
+	
 	public String generate(int length){
 		String code = "";
 		for (int i = 0; i < length; i++) {
@@ -32,4 +34,5 @@ public class Utils {
 	    Object decoded = (Object) objectinputstream.readObject(); 
 		return decoded;
 	}
+
 }

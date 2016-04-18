@@ -3,6 +3,7 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,18 +43,13 @@ public class PoistaKoristaServlet extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	public void poistaKorista(Pizza pizza, HttpSession session){
 		if(pizza != null){
-			ArrayList<Pizza> ostoskori = (ArrayList<Pizza>) session.getAttribute("ostoskori");
-			ArrayList<Pizza> uusikori = new ArrayList<>();
-			boolean match = false;
-			for(Pizza korin_pizza : ostoskori){	
-				if(!korin_pizza.getPizza_id().equals(pizza.getPizza_id()) || match){
-					uusikori.add(korin_pizza);
-				}else{
-					match = true;
+			HashMap<String, ArrayList<Pizza>> ostoskori = (HashMap<String, ArrayList<Pizza>>) session.getAttribute("ostoskori");
+			for(String id : ostoskori.keySet()){
+				if(id.equals(pizza.getPizza_id())){
+					int last = ostoskori.get(id).size();
+					ostoskori.get(id).remove(last);
 				}
-			}
-			
-			session.setAttribute("ostoskori", uusikori);
+			}	
 		}
 	}
 	

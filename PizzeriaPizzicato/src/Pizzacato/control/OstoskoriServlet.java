@@ -25,11 +25,14 @@ public class OstoskoriServlet extends HttpServlet {
 		HashMap<String, ArrayList<Pizza>> pizzat = (HashMap<String, ArrayList<Pizza>>) request.getSession().getAttribute("ostoskori");
 		double summa = 0;
 		
-		for(String key : pizzat.keySet()){
-			for(Pizza pizza : pizzat.get(key)){
-				summa += pizza.getHinta();
+		if(pizzat != null){
+			for(String key : pizzat.keySet()){
+				for(Pizza pizza : pizzat.get(key)){
+					summa += pizza.getHinta();
+				}
 			}
 		}
+		
 		
 		request.setAttribute("summa", summa);
 		

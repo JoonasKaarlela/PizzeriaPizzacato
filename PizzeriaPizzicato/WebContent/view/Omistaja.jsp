@@ -14,6 +14,13 @@
 
 
 <div id="wrapper">
+
+		<div class="notification">
+			<c:if test="${sessionScope.notification != null}">
+				<strong>${sessionScope.notification}</strong>
+			</c:if>
+		</div>
+
 		<div id="header">
 			<div id="logo"><img src="pizzerialogo-lapinakyva.png" width="50" />PizzeriaPizzicato</div>
 			

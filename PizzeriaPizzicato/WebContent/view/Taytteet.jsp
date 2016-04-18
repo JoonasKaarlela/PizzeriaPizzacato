@@ -14,6 +14,12 @@
 
 <div id="wrapper">	
 
+	<div class="notification">
+		<c:if test="${sessionScope.notification != null}">
+			<strong>${sessionScope.notification}</strong>
+		</c:if>
+	</div>
+
     <h1>Täytteiden muokkaus</h1>
     <h3><a href="Menu">Palaa sivustolle</a></h3>
 

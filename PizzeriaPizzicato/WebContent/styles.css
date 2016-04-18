@@ -11,11 +11,11 @@ body, html {
 .notification{
 	display:absolute;
 	top:0;
-	left:0;
+	left:5%;
 	height:65px;
-	width:100%;
-	background:darkgrey;
-	color:ligthgreen;
+	width:250px;
+	background:grey;
+	color:white;
 }
 
 .hidden{

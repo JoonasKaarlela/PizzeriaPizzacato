@@ -3,6 +3,7 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,7 +21,7 @@ public class PoistaKoristaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
+		String id = request.getParameter("pizza_id");
 		Pizza pizza = haePizza(id);
 		poistaKorista(pizza, request.getSession());
 		response.sendRedirect("Ostoskori");
@@ -42,8 +43,13 @@ public class PoistaKoristaServlet extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	public void poistaKorista(Pizza pizza, HttpSession session){
 		if(pizza != null){
-			ArrayList<Pizza> ostoskori = (ArrayList<Pizza>) session.getAttribute("ostoskori");
-			ostoskori.remove(pizza);
+			HashMap<String, ArrayList<Pizza>> ostoskori = (HashMap<String, ArrayList<Pizza>>) session.getAttribute("ostoskori");
+			for(String id : ostoskori.keySet()){
+				if(id.equals(pizza.getPizza_id())){
+					int last = ostoskori.get(id).size() - 1;
+					ostoskori.get(id).remove(last);
+				}
+			}	
 		}
 	}
 	

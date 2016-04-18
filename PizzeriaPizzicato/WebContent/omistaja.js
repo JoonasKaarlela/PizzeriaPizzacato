@@ -1,4 +1,5 @@
-	// Lisää elementille luokka.
+	
+// Lisää elementille luokka.
 	Element.prototype.addClass = function(className){
 		var current = this.className.split(" ");
 		current.push(className);
@@ -33,18 +34,18 @@
 	
 	// Funktiot
 	function muokkaa(index){
+		
+		// Valitse muokattava näkymä
 		var nakyma = document.querySelectorAll(".nakyma")[index];
-		console.log(nakyma);
 		
+		// Valitse muokattavan näkymän muokkaus container
 		var muokkaus = document.querySelectorAll(".muokkaus")[index];
-		console.log(muokkaus);
 		
+		// Toggle	
 		if(muokkaus.hasClass("hidden")){
-			console.log("muokkaus");
 			nakyma.addClass("hidden");
 			muokkaus.removeClass("hidden");
 		} else {
-			console.log("nakyma");
 			nakyma.removeClass("hidden");
 			muokkaus.addClass("hidden");
 		}

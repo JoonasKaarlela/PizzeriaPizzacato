@@ -16,7 +16,6 @@ public class KayttajaDAO extends DataAccessObject {
 		// YHTEYS TIETOKANTAAN
 		Connection conn = getConnection();
 		
-		
 		// HAKU LAUSE
 		String query = "SELECT * FROM KAYTTAJA WHERE kayttajatunnus=\"" + kayttajatunnus + "\" AND salasana=\"" + salasana + "\"";
 		Statement statement = conn.createStatement();
@@ -37,6 +36,7 @@ public class KayttajaDAO extends DataAccessObject {
 			kayttaja = new Kayttaja(id, kayttaja_tunnus, kayttaja_salasana, osoite, sposti, omistaja);
 		}
 		
+		conn.close();
 		return kayttaja;
 		
 	}

@@ -46,9 +46,9 @@
             <div class="clear"></div>
 			<div id="nav">
 				<ul>
-					<li><a href="#">Etusivu</a></li>
-					<li><a href="#">Menu</a></li>
-					<li><a href="#">Yhteystiedot</a></li>
+					<li><a href="Menu">Etusivu</a></li>
+					<li><a href="Menu">Menu</a></li>
+					<li><a href="Menu">Yhteystiedot</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>
 				</ul>
 			</div><!-- NAV LOPPUU -->
@@ -64,8 +64,7 @@
 				</div>
 			</div>
 			
-			<form id="pizza_oikea" method=POST action="lisaa">
-				<div>  <h3> Muokkaa täytteitä </h3> </div>
+			<form id="pizza_oikea" method=POST action="lisaaKoriin">
 				<div>
 					<div>
 						<c:forEach items="${pizza.getTaytteet()}" var="tayte">
@@ -79,11 +78,13 @@
 								<option value="${tayte.getTayte_id()}"> ${tayte.getNimi()} </option>
 							</c:forEach>
 						</select>
+						<input type="text" placeholder="maara" name="maara" />
 					</div>
 				</div>
 				<div>
 					<button type="submit"> lisää koriin </button>
 				</div>
+				<input type="hidden" name="pizza_id" value="${pizza.getPizza_id()}" />
 			</form>
 			
 		</div>

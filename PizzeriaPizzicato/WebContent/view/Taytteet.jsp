@@ -22,10 +22,10 @@
             	<td colspan="5">
                 Lisää täyte
                 <form class="testi" method="post" action="lisaaTayte">
-                    <label>Täytteen nimi</label><input name="nimi" type="text"><br />
-                    <label>Täytteen alkuperä</label><input name="alkupera" type="text"><br />
-                    <label>Täytteen kuvaus</label><input name="kuvaus" type="text"><br />
-                    <label>Täytteen hinta/kg</label><input name="hinta" type="text">
+                    <label>Täytteen nimi</label><input name="nimi" type="text" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä"><br />
+                    <label>Täytteen alkuperä</label><input name="alkupera" type="text" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä"><br />
+                    <label>Täytteen kuvaus</label><input name="kuvaus" type="text" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä"><br />
+                    <label>Täytteen hinta/kg</label><input name="hinta" type="text" pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx">
                     <button type="submit">Lisää</button>
                 </form>
                 </td>
@@ -53,16 +53,16 @@
 	            	<table class="taytetbl">
 	            	<tr>
 		            	<td>
-						<input disabled type="text" value="${tayte.getNimi()}" name="nimi">
+						<input disabled type="text" value="${tayte.getNimi()}" name="nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä">
 		                </td>
 		            	<td>
-			            <input disabled type="text" value="${tayte.getAlkupera()}" name="alkupera">
+			            <input disabled type="text" value="${tayte.getAlkupera()}" name="alkupera" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä">
 		                </td>
 		          		<td>
-			            <input disabled type="text" value="${tayte.getKuvaus()}" name="kuvaus">
+			            <input disabled type="text" value="${tayte.getKuvaus()}" name="kuvaus" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä">
 			            </td>
 		                <td>
-		                <input disabled type="text" value="${tayte.getHinta()}" name="hinta">
+		                <input disabled type="text" value="${tayte.getHinta()}" name="hinta" pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx">
 			            <input type="hidden" name="tayte_id" value="${tayte.getTayte_id()}" class="hidden" />
 			            </td>
 		                <td>

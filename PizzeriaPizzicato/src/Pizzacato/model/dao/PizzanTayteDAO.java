@@ -36,6 +36,7 @@ public class PizzanTayteDAO extends DataAccessObject {
 			taytteet.add(tayte);
 		}
 		
+		conn.close();
 		return taytteet;
 	}
 		
@@ -58,6 +59,7 @@ public class PizzanTayteDAO extends DataAccessObject {
 			if(syotettiin > 0){
 				System.out.println("uusi täyte " + tayte.getNimi() + " lisattiin tietokantaan...");
 			}
+			conn.close();
 		}
 			
 			public void poistaPizzanTayte(Pizza pizza, Tayte tayte) throws SQLException{
@@ -77,6 +79,7 @@ public class PizzanTayteDAO extends DataAccessObject {
 				if( poistettiin > 0){
 					System.out.println("tayte "  + tayte.getNimi() + " poistettiin pizzalta " + pizza.getNimi() );
 				}
+				conn.close();
 			}
 			
 			

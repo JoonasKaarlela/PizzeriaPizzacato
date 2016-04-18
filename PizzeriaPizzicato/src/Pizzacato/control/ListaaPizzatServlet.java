@@ -26,12 +26,14 @@ public class ListaaPizzatServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sivu = "/view/Menu.jsp";
 		
-		hoidaErrorit(request);
+		// Hae mahdolliset virheilmoitukset käyttäjälle
+		tarkistaVirheet(request);
 		
+		// Hae kayttaja sessionista.
 		Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");
 		
-		if( kayttaja != null){
-			if( onKirjautunut(request.getSession()) && kayttaja.isOmistaja() ){
+		if(kayttaja != null){
+			if(onKirjautunut(request.getSession()) && kayttaja.isOmistaja()){
 				sivu = "/view/Omistaja.jsp";
 			}
 		}
@@ -42,7 +44,7 @@ public class ListaaPizzatServlet extends HttpServlet {
 		ArrayList<Tayte> taytteet = haeTaytteet();
 		request.setAttribute("taytteet", taytteet);
 		
-		RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
+		RequestDispatcher dp = getServletContext().getRequestDispatcher(sivu);
 		dp.forward(request, response);
 			
 	}
@@ -85,7 +87,7 @@ public class ListaaPizzatServlet extends HttpServlet {
 	}
 	
 	
-	public void hoidaErrorit(HttpServletRequest request){
+	public void tarkistaVirheet(HttpServletRequest request){
 		request.removeAttribute("error");
 		request.setAttribute("error", (String) request.getSession().getAttribute("error"));
 	}

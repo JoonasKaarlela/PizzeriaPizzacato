@@ -3,6 +3,7 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,10 +24,13 @@ public class LisaaKoriinServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("pizza_id");
-		ArrayList<Tayte> lisaTaytteet = haeTaytteet(request.getParameterValues("taytteet"));
+		int maara = Integer.parseInt(request.getParameter("maara"));
+
 		Pizza pizza = haePizza(id);
-		pizza.getTaytteet().addAll(lisaTaytteet);
-		lisaaKoriin(pizza, request.getSession());
+
+		for (int i = 0; i < maara; i++) {
+			lisaaKoriin(pizza, request.getSession());
+		}
 		
 		response.sendRedirect("Menu");
 	}
@@ -44,35 +48,30 @@ public class LisaaKoriinServlet extends HttpServlet {
 		}
 	}
 	
-	public ArrayList<Tayte> haeTaytteet(String[] taytteet){
-		ArrayList<Tayte> pizzan_taytteet = new ArrayList<>();
-		TayteDAO taytedao = new TayteDAO();
-		try{
-			ArrayList<Tayte> kaikki_taytteet = taytedao.haeTaytteet();
-			for(Tayte tayte : kaikki_taytteet){
-				for(String tayte_id : taytteet){
-					if(tayte.getTayte_id().equals(tayte_id)){
-						pizzan_taytteet.add(tayte);
-					}
-				}
-			}
-		} catch( SQLException e){
-			System.out.println(e.getMessage());
-		}
-		return pizzan_taytteet;
-	}
 	
-	
+	@SuppressWarnings("unchecked")
 	public void lisaaKoriin(Pizza pizza, HttpSession session){
 		if(pizza != null){
 			if(session.getAttribute("ostoskori") == null){
-				ArrayList<Pizza> ostoskori = new ArrayList<>();
-				ostoskori.add(pizza);
+				HashMap<String, ArrayList<Pizza>> ostoskori = new HashMap<>();				
+				ArrayList<Pizza> pizzat = new ArrayList<>();
+				pizzat.add(pizza);
+				ostoskori.put(pizza.getPizza_id(), pizzat);			
 				session.setAttribute("ostoskori", ostoskori);
 			} else {
-				@SuppressWarnings("unchecked")
-				ArrayList<Pizza> ostoskori = (ArrayList<Pizza>) session.getAttribute("ostoskori");
-				ostoskori.add(pizza);
+				HashMap<String, ArrayList<Pizza>> ostoskori = (HashMap<String, ArrayList<Pizza>>) session.getAttribute("ostoskori");
+				boolean match = false;
+				for(String id : ostoskori.keySet()){
+					if(id.equals(pizza.getPizza_id())){
+						ostoskori.get(id).add(pizza);
+						match = true;
+					}
+				}
+				if(!match){
+					ArrayList<Pizza> uusi_tyyppi = new ArrayList<>();
+					uusi_tyyppi.add(pizza);
+					ostoskori.put(pizza.getPizza_id(), uusi_tyyppi);
+				}
 				session.setAttribute("ostoskori", ostoskori);
 			}
 		}

@@ -41,6 +41,7 @@ public class PizzaDAO extends DataAccessObject{
 		}
 		
 		// PALAUTA PIZZAT
+		conn.close();
 		return pizzat;
 	}
 	
@@ -64,6 +65,7 @@ public class PizzaDAO extends DataAccessObject{
 			pizza = new Pizza(pizza_id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
 		}
 		
+		conn.close();
 		return pizza;
 	}
 	
@@ -96,6 +98,7 @@ public class PizzaDAO extends DataAccessObject{
 				pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
 			}
 			
+		conn.close();
 		System.out.println("pizza lisättiin!");
 		
 	}
@@ -125,6 +128,8 @@ public class PizzaDAO extends DataAccessObject{
 			System.out.println("pizza " + id + " poistettiin tietokannasta...");
 		}
 		
+		conn.close();
+		
 	}
 	
 	public void piilotaListalla(String id) throws SQLException{
@@ -143,10 +148,12 @@ public class PizzaDAO extends DataAccessObject{
 		if(piilotettiin > 0){
 			System.out.println("pizza " + id + " piilotettiin listalta");
 		}
+		
+		conn.close();
 	}
 	
 	public void naytaListalla(String id) throws SQLException{
-		// Nï¿½YTï¿½ KYSEINEN PIZZA LISTALLA
+		// NAYTA KYSEINEN PIZZA LISTALLA
 		
 		// YHTEYS
 		Connection conn = getConnection();
@@ -161,6 +168,7 @@ public class PizzaDAO extends DataAccessObject{
 		if(asetettiin_nakyviin > 0){
 			System.out.println("pizza " + id + " asetettiin nï¿½kyviin listalle");
 		}
+		conn.close();
 	}
 	
 	public void muokkaaPizzaa(Pizza pizza) throws SQLException{
@@ -183,6 +191,7 @@ public class PizzaDAO extends DataAccessObject{
 		if(paivitettiin > 0){
 			System.out.println("Paivitettiin: " + paivitettiin + " attribuuttia");
 		}
+		conn.close();
 	}
 	
 	

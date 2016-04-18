@@ -46,7 +46,7 @@ public class PoistaKoristaServlet extends HttpServlet {
 			HashMap<String, ArrayList<Pizza>> ostoskori = (HashMap<String, ArrayList<Pizza>>) session.getAttribute("ostoskori");
 			for(String id : ostoskori.keySet()){
 				if(id.equals(pizza.getPizza_id())){
-					int last = ostoskori.get(id).size();
+					int last = ostoskori.get(id).size() - 1;
 					ostoskori.get(id).remove(last);
 				}
 			}	

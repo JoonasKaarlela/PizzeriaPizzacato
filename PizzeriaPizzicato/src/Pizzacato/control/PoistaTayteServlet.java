@@ -15,8 +15,7 @@ import Pizzacato.model.dao.TayteDAO;
 public class PoistaTayteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		poistaTayte(id);
 
@@ -27,7 +26,7 @@ public class PoistaTayteServlet extends HttpServlet {
 		TayteDAO taytedao = new TayteDAO();
 		try {
 			taytedao.poistaTayte(id);
-		} catch (SQLException e) {
+		}catch (SQLException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}

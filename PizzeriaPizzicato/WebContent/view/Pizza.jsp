@@ -78,7 +78,7 @@
 								<option value="${tayte.getTayte_id()}"> ${tayte.getNimi()} </option>
 							</c:forEach>
 						</select>
-						<input type="number" min="1" max="10" name="maara" />
+						<input type="text" placeholder="maara" name="maara" />
 					</div>
 				</div>
 				<div>

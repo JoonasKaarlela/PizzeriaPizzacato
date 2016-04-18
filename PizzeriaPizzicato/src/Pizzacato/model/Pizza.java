@@ -90,6 +90,8 @@ public class Pizza implements Comparable<Pizza> {
 		this.kuva = kuva;
 	}
 	
+	
+	
 
 	@Override
 	public int compareTo(Pizza pizza) {	

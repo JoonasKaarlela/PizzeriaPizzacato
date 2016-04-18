@@ -14,19 +14,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import Pizzacato.model.Kayttaja;
 
-@WebFilter(urlPatterns={"/taytteidenhallinta", "/PoistaTayte", "/poista", "/nayta", "/MuokkaaTaytetta", "/muokkaa", "/Taytteet", "/lisaaTayte", "lisaa"})
+@WebFilter(urlPatterns={"/taytteidenhallinta", "/PoistaTayte", "/poista", "/nayta", "/MuokkaaTaytetta", "/muokkaa", "/Taytteet", "/lisaaTayte", "/lisaa"})
 public class AuthenticateFilter implements Filter {
 
 
     public AuthenticateFilter() {
-        // TODO Auto-generated constructor stub
+       
     }
 
 	public void destroy() {
-		// TODO Auto-generated method stub
+		System.out.println("Filter done");
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		
@@ -40,7 +41,7 @@ public class AuthenticateFilter implements Filter {
 
 
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+		System.out.println("Filtering...");
 	}
 
 }

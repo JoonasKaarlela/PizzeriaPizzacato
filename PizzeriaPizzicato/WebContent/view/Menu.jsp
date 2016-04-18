@@ -66,60 +66,49 @@
         <!--  PIZZA MENU ALKAA -->
 		<div id="content">
 			<div class="menu">
-				
-                
-
-                        <!--  LOOPPAA PIZZAT -->
-                        <c:forEach items="${pizzat}" var="pizza">
-
-                        	<!--  JOS PIZZA LISTALLA=TRUE, NÄYTÄ PIZZA -->
-                        <c:choose>
-                        <c:when test="${pizza.getListalla()}">
-                        
-                        <div class="menuitemwrap">
-                   			<div class="menuitem">
+                        <!-- PIZZAT -->
+               <c:forEach items="${pizzat}" var="pizza">
+                 <c:choose>
+                   <c:when test="${pizza.getListalla()}">
+                      <div class="menuitemwrap">
+                   		<div class="menuitem">
                    			<form action="lisaaKoriin" method="post">
-		                        <table>
-		                        	<tr>
-		                                <td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" style="width:150px;height:125px;" /></div></td>
-		                               	<td valign="top">
-		                                	<div class="pizzainfo">
-			                                	<div class="pizzanimi"> ${pizza.getNimi()} </div>
-			                                    <div class="pizzakuvaus"> ${pizza.getKuvaus()}</div>                                     
-												<div class="pizzahinta"> ${pizza.getHinta()}€</div>
-												<div class="pizzantayte">
-													<c:forEach items="${pizza.getTaytteet()}" var="tayte" varStatus="status">
-														${tayte.getNimi()}
-													</c:forEach>
-												</div>
-												<div style="display:inline-block;">
-													<button type=submit> <strong> valitse </strong> </button>
-													<select name="maara">
-														<option value=1> 1 </option>
-														<option value=2> 2 </option>
-														<option value=3> 3 </option>
-														<option value=4> 4 </option>
-														<option value=5> 5 </option>
-													</select>
-												</div>
-		                                    </div>
+		                      <table>
+		                        <tr>
+		                           <td valign="middle"><div class="pizzakuva"><img src="${pizza.getKuva()}" style="width:150px;height:125px;" /></div></td>
+		                           <td valign="top">
+		                              <div class="pizzainfo">
+			                            <div class="pizzanimi"> ${pizza.getNimi()} </div>
+			                            <div class="pizzakuvaus"> ${pizza.getKuvaus()}</div>                                     
+										<div class="pizzahinta"> ${pizza.getHinta()}€</div>
+										<div class="pizzantayte">
+											<c:forEach items="${pizza.getTaytteet()}" var="tayte" varStatus="status">
+												${tayte.getNimi()}
+											</c:forEach>
+										</div>
+										<div style="display:inline-block;">
+										<button type=submit> <strong> valitse </strong> </button>
+											<select name="maara">
+												<option value=1> 1 </option>
+												<option value=2> 2 </option>
+												<option value=3> 3 </option>
+												<option value=4> 4 </option>
+												<option value=5> 5 </option>
+											</select>
+										</div>
+		                               </div>
 											<input type=hidden name=pizza_id value="${pizza.getPizza_id()}" />
-		                                </td>
-		                        	</tr>
-		                        </table>
+		                            </td>
+		                        </tr>
+		                       </table>
 		                     </form>
-                        
                         	</div><!-- MENUITEM LOPPUU -->
                 		</div><!-- MENUITEMWRAP LOPPUU -->
-                        
-                        </c:when>
-                        </c:choose>
-                                        	
-                        </c:forEach>
+                      </c:when>
+                   </c:choose>              	
+                </c:forEach>
 
-                
 				<div class="clear"></div>
-				
 				
 			</div><!-- MENU LOPPUU -->
 		</div><!-- CONTENT LOPPUU -->

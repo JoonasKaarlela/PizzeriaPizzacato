@@ -3,6 +3,7 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -52,12 +53,16 @@ public class LisaaKoriinServlet extends HttpServlet {
 	public void lisaaKoriin(Pizza pizza, HttpSession session){
 		if(pizza != null){
 			if(session.getAttribute("ostoskori") == null){
-				ArrayList<Pizza> ostoskori = new ArrayList<>();
-				ostoskori.add(pizza);
+				HashMap<String, ArrayList<Pizza>> ostoskori = new HashMap<>();
+				ostoskori.put(pizza.getPizza_id(), new ArrayList<>());
 				session.setAttribute("ostoskori", ostoskori);
 			} else {
-				ArrayList<Pizza> ostoskori = (ArrayList<Pizza>) session.getAttribute("ostoskori");
-				ostoskori.add(pizza);
+				HashMap<String, ArrayList<Pizza>> ostoskori = (HashMap<String, ArrayList<Pizza>>) session.getAttribute("ostoskori");
+				for(String id : ostoskori.keySet()){
+					if(id.equals(pizza.getPizza_id())){
+						ostoskori.get(id).add(pizza);
+					}
+				}
 				session.setAttribute("ostoskori", ostoskori);
 			}
 		}

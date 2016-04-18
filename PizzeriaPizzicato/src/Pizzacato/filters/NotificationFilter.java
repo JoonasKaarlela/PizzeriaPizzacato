@@ -32,6 +32,7 @@ public class NotificationFilter implements Filter {
 		
 		req.removeAttribute("notification");
 		req.setAttribute("notification", (String) req.getSession().getAttribute("notification"));
+		req.getSession().removeAttribute("notification");
 		
 		chain.doFilter(request, response);
 	}

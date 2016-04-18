@@ -58,10 +58,17 @@ public class LisaaKoriinServlet extends HttpServlet {
 				session.setAttribute("ostoskori", ostoskori);
 			} else {
 				HashMap<String, ArrayList<Pizza>> ostoskori = (HashMap<String, ArrayList<Pizza>>) session.getAttribute("ostoskori");
+				boolean match = false;
 				for(String id : ostoskori.keySet()){
 					if(id.equals(pizza.getPizza_id())){
 						ostoskori.get(id).add(pizza);
+						match = true;
 					}
+				}
+				if(!match){
+					ArrayList<Pizza> uusi_tyyppi = new ArrayList<>();
+					uusi_tyyppi.add(pizza);
+					ostoskori.put(pizza.getPizza_id(), uusi_tyyppi);
 				}
 				session.setAttribute("ostoskori", ostoskori);
 			}

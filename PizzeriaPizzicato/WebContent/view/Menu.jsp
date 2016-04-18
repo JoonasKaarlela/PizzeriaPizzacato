@@ -7,10 +7,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Menu</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="notification.js"></script>
 </head>
 <body>
 	
 	<div id="wrapper">
+	
+		<div class="notification">
+			<c:if test="${sessionScope.notification != null}">
+				<strong>${sessionScope.notification}</strong>
+			</c:if>
+		</div>
 		
 		<div id="header">
 			<div id="logo"><img src="pizzerialogo-lapinakyva.png" width="50" />PizzeriaPizzicato</div>

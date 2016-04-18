@@ -8,6 +8,7 @@
 <link href="styles.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script type="text/javascript" src="taytteet.js"></script>
+<script type="text/javascript" src="notification.js"></script>
 </head>
 <body>
 

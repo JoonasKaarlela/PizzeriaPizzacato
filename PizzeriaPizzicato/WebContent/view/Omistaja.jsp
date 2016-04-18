@@ -8,6 +8,7 @@
 <title> Omistaja </title>
 <link href="styles.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="omistaja.js"></script>
+<script type="text/javascript" src="notification.js"></script>
 </head>
 <body>
 

@@ -39,9 +39,18 @@
 						<div class="error">
 							<p style="color:crimson"> <c:out value="${error}"></c:out></p>
 						</div>
+					
 						</c:otherwise>
 						
 					</c:choose>
+					<div id="yhteystiedot">
+					<p><b>Yhteystiedot</b><br>
+					Pasilanraitio 10 D92<br>
+					00240 Helsinki <br>
+					040 840 0987<br>
+					</p>
+					
+					</div>
 			</div>
 
 			<!--  NAVIGOINTI -->

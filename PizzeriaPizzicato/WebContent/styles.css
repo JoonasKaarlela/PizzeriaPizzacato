@@ -11,10 +11,9 @@ body, html {
 .notification{
 	display:absolute;
 	top:0;
-	left:5%;
+	left:0;
 	height:65px;
 	width:250px;
-	background:grey;
 	color:white;
 }
 

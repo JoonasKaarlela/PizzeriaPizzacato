@@ -15,8 +15,8 @@
 <div id="wrapper">	
 
 	<div class="notification">
-		<c:if test="${sessionScope.notification != null}">
-			<strong>${sessionScope.notification}</strong>
+		<c:if test="${requestScope.notification != null}">
+			<strong>${requestScope.notification}</strong>
 		</c:if>
 	</div>
 

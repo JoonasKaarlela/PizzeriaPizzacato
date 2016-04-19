@@ -6,17 +6,27 @@ public class Kayttaja {
 		private String salasana;
 		private String osoite;
 		private String sahkoposti;
+		private String puh;
 		private boolean omistaja;
 
 
-public Kayttaja(String kayttaja_id, String kayttajatunnus, String salasana, String osoite, String sahkoposti, boolean omistaja){
+public Kayttaja(String kayttaja_id, String kayttajatunnus, String salasana, String osoite, String sahkoposti, String puh, boolean omistaja){
 		this.kayttaja_id = kayttaja_id;
 		this.kayttajatunnus = kayttajatunnus;
 		this.salasana = salasana;
 		this.osoite = osoite;
 		this.sahkoposti = sahkoposti;
+		this.puh = puh;
 		this.omistaja = omistaja;
 		
+}
+
+public String getPuh() {
+	return puh;
+}
+
+public void setPuh(String puh) {
+	this.puh = puh;
 }
 
 public Kayttaja(){

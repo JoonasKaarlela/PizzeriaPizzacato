@@ -27,8 +27,10 @@ public class RekisteroidyServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// Kerää data
+		// TODO:
+		// Kerää data jsp sivulta
 		// Rekisteröidy KayttajaDAO:n rekisteroidy metodilla...
+		// Jos ok, tallenna kayttaja sessioon -> request.getSession().setAttribute("kayttaja", kayttaja);
 		
 	}
 

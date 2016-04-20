@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.mariadb.jdbc.internal.common.query.parameters.DoubleParameter;
-
 import Pizzacato.model.Tayte;
 import Pizzacato.model.dao.TayteDAO;
 

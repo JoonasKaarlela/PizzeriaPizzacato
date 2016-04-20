@@ -39,8 +39,9 @@
 							<div id="salasana"> 
 								<div> <input placeholder=salasana name=salasana type=password required /> </div>
 							</div>
-							<div id="submit"> 
+							<div id="submit" style="display:inline-block"> 
 								<div> <button type=submit> kirjaudu </button> </div>
+								<div> <a href="Rekisterointi"> rekisteroidy </a> </div>
 							</div> 
 						</form>
 						<div class="error">

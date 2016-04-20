@@ -1,0 +1,15 @@
+#rekisterointi{
+	margin:auto;
+	width:400px;
+}
+
+#rekisterointi_form{
+	height:80%;
+	margin:auto;
+}
+
+input{
+	width:100%;
+	display:block;
+	margin-bottom:25px;
+}

@@ -57,7 +57,7 @@ public class PizzanTayteDAO extends DataAccessObject {
 			// EXECUTE
 			int syotettiin = statement.executeUpdate();
 			if(syotettiin > 0){
-				System.out.println("uusi täyte " + tayte.getNimi() + " lisattiin tietokantaan...");
+				System.out.println("uusi täyte " + tayte.getNimi() + " lisättiin tietokantaan...");
 			}
 			conn.close();
 		}

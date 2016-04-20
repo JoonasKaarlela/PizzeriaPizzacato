@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Pizzacato.model.Pizza;
-import Pizzacato.model.Tayte;
 import Pizzacato.model.dao.PizzaDAO;
-import Pizzacato.model.dao.TayteDAO;
 
 @WebServlet("/lisaaKoriin")
 public class LisaaKoriinServlet extends HttpServlet {

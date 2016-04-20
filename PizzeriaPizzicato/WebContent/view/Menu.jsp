@@ -10,15 +10,15 @@
 <script type="text/javascript" src="notification.js"></script>
 </head>
 <body>
+
+<div class="notification">
+	<c:if test="${requestScope.notification != null}">
+		<strong>${requestScope.notification}</strong>
+	</c:if>
+</div>
 	
 	<div id="wrapper">
-	
-		<div class="notification">
-			<c:if test="${requestScope.notification != null}">
-				<strong>${requestScope.notification}</strong>
-			</c:if>
-		</div>
-		
+
 		<div id="header">
 			<div id="logo"><img src="pizzerialogo-lapinakyva.png" width="50" />PizzeriaPizzicato</div>
 			

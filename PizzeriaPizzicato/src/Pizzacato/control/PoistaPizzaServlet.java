@@ -19,9 +19,7 @@ public class PoistaPizzaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("id");
-		
-		System.out.println(id);
-		
+
 		if(poistaPizza(id)){
 			request.getSession(false).setAttribute("notification", "pizza " + id + " poistettiin!");
 		}

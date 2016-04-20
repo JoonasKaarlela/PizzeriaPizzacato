@@ -12,13 +12,13 @@
 </head>
 <body>
 
-<div id="wrapper">	
+<div class="notification">
+	<c:if test="${requestScope.notification != null}">
+		<strong>${requestScope.notification}</strong>
+	</c:if>
+</div>
 
-	<div class="notification">
-		<c:if test="${requestScope.notification != null}">
-			<strong>${requestScope.notification}</strong>
-		</c:if>
-	</div>
+<div id="wrapper">	
 
     <h1>Täytteiden muokkaus</h1>
     <h3><a href="Menu">Palaa sivustolle</a></h3>

@@ -28,9 +28,10 @@ public class ErrorFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
 		HttpServletRequest req = (HttpServletRequest) request;
-		
+
 		req.removeAttribute("error");
 		req.setAttribute("error", (String) req.getSession().getAttribute("error"));
+		req.getSession().removeAttribute("error");
 		
 		chain.doFilter(request, response);
 	}

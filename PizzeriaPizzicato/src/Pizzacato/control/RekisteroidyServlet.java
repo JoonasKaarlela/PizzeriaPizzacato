@@ -35,28 +35,29 @@ public class RekisteroidyServlet extends HttpServlet {
 		String puh = request.getParameter("puh_rek");
 		String sahkoposti = request.getParameter("sahkoposti_rek");
 		
-		
-		if(rekisteroidy(request, kayttajatunnus, salasana, osoite, sahkoposti, puh)){
-			request.getSession().setAttribute("notification", "Tervetuloa");
+		Kayttaja kayttaja = rekisteroidy(request, kayttajatunnus, salasana, osoite, sahkoposti, puh);
+		if(kayttaja != null){
+			request.getSession().setAttribute("notification", "Tervetuloa " + kayttaja.getKayttajatunnus() + "!");
 		}else{
 			request.getSession().setAttribute("notification", "Rekisteröityminen epäonnisui!");
 		}
 		
+		response.sendRedirect("Menu");
 		
 	}
 	
-	boolean rekisteroidy(HttpServletRequest request, String kayttajatunnus, String salasana, String osoite, String sahkoposti, String puh){
+	public Kayttaja rekisteroidy(HttpServletRequest request, String kayttajatunnus, String salasana, String osoite, String sahkoposti, String puh){
 		KayttajaDAO kayttajadao = new KayttajaDAO();
+		Kayttaja kayttaja = null;
 		try{
-			Kayttaja kayttaja = (Kayttaja) kayttajadao.rekisteroidy(kayttajatunnus, salasana, osoite, sahkoposti, puh);
-			if(kayttaja == null) return false;
-			request.getSession(true).setAttribute("kayttaja", kayttaja);
-			return true;
+			kayttaja = (Kayttaja) kayttajadao.rekisteroidy(kayttajatunnus, salasana, osoite, sahkoposti, puh);
+			if(kayttaja != null){
+				request.getSession(true).setAttribute("kayttaja", kayttaja);
+			}
 		}catch(SQLException e){
 			System.out.println(e.getMessage());
-			return false;
 		}
-		
+		return kayttaja;
 	}
 
 }

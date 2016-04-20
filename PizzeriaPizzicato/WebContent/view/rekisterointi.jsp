@@ -72,7 +72,7 @@
 		</div>
 		
 		<div id="rekisterointi">
-			<form action=rekisterointi method=post onSubmit="validoi()" id="rekisterointi_form">
+			<form action=Rekisterointi method=post onSubmit="validoi()" id="rekisterointi_form">
 				<h2> Rekisteröidy </h2>
 				<strong class="error" style="color:crimson;"></strong>
 				<input name="kayttajatunnus_rek" maxlength="25" required placeholder="kayttajatunnus" />

@@ -12,7 +12,7 @@ import Pizzacato.model.Utils;
 public class KayttajaDAO extends DataAccessObject {
 	
 	/*
-} else if(BCrypt.checkpw(salasana, results.getString(3))){
+
 */
 
 	public Kayttaja haeKayttaja(String kayttajatunnus, String salasana) throws SQLException{
@@ -60,13 +60,13 @@ public class KayttajaDAO extends DataAccessObject {
 		select.setString(1, kayttajatunnus);
 		ResultSet results = select.executeQuery();
 		
-		if(!results.last()){
+		if(results.next()){
 			System.out.println("Käyttäjä on jo olemassa!");
 			return kayttaja;
-		}else{
+		}else if(BCrypt.checkpw(salasana, results.getString(3))){
 			// Luo käyttäjä
 			String hashed = BCrypt.hashpw(salasana, BCrypt.gensalt());
-			String INSERT = "INSERT INTO KAYTTAJA(kayttaja_id, kayttajatunnus, salasana, osoite, sahkoposti, puh) VALUES(?, ?, ?, ?, ?, ?)";
+			String INSERT = "INSERT INTO KAYTTAJA(kayttaja_id, kayttajatunnus, salasana, osoite, sahkoposti, puhelinnumero, omistaja) VALUES(?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement insert = conn.prepareStatement(INSERT);
 			insert.setString(1, id);
 			insert.setString(2, kayttajatunnus);
@@ -74,12 +74,14 @@ public class KayttajaDAO extends DataAccessObject {
 			insert.setString(4, osoite);
 			insert.setString(5, sahkoposti);
 			insert.setString(6, puh);
+			insert.setBoolean(7, false);
 			
 			int updated = insert.executeUpdate();
 			if(updated < 1){
 				System.out.println("Sinua ei voitu kirjata");
 				return kayttaja;
 			}else{
+				System.out.println("OK!");
 				kayttaja = new Kayttaja(id, kayttajatunnus, salasana, osoite, sahkoposti, puh, false);
 			}
 		}

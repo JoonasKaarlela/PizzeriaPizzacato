@@ -11,6 +11,9 @@ import Pizzacato.model.Utils;
 
 public class KayttajaDAO extends DataAccessObject {
 	
+	/*
+} else if(BCrypt.checkpw(salasana, results.getString(3))){
+*/
 
 	public Kayttaja haeKayttaja(String kayttajatunnus, String salasana) throws SQLException{
 		
@@ -22,14 +25,12 @@ public class KayttajaDAO extends DataAccessObject {
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, kayttajatunnus);
 		statement.setString(2, salasana);
-		ResultSet results = statement.executeQuery(query);
+		ResultSet results = statement.executeQuery();
 		
 		Kayttaja kayttaja = null;
 		if(!results.next()){
 			System.out.println("KAYTTAJÄÄ EI LÖYTYNYT");
-			/*
-		} else if(BCrypt.checkpw(salasana, results.getString(3))){
-		*/
+		}else{
 			String id = results.getString(1);
 			String kayttaja_tunnus = results.getString(2);
 			String kayttaja_salasana = results.getString(3);

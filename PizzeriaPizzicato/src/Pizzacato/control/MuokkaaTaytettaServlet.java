@@ -26,9 +26,10 @@ public class MuokkaaTaytettaServlet extends HttpServlet {
 		String nimi = request.getParameter("nimi");
 		String alkupera = request.getParameter("alkupera");
 		String kuvaus = request.getParameter("kuvaus");
+		double hinta = 0.00;
 		
 		try{
-			Double hinta = Double.parseDouble(request.getParameter("hinta"));
+			hinta = Double.parseDouble(request.getParameter("hinta"));
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 		}

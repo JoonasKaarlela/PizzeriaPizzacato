@@ -128,6 +128,20 @@ button{
 }
 /* HEADER LOPPUU */
 
+/* YHTEYSTIEDOT JA AUKIOLOAJAT */
+
+#yhteystiedot {
+	float:right;
+	
+}
+
+#aukioloajat {
+	float:right;
+	margin-right:50px;
+	
+}
+
+/* YHTEYSTIEDOT JA AUKIOLOAJAT LOPPUU */
 
 /* BANNER ALKAA */
 #banner {

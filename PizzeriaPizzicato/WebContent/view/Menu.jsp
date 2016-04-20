@@ -47,9 +47,15 @@
 					<p><b>Yhteystiedot</b><br>
 					Pasilanraitio 10 D92<br>
 					00240 Helsinki <br>
-					040 840 0987<br>
+					040 840 0987</p>
+					</div>
+					<div id="aukioloajat">
+					<p><b>Aukioloajat</b><br>
+					Ma-To 09:00 - 22:30<br>
+					Pe 09:00 - 02:00<br>
+					La 09:00 - 02:00<br>
+					Su 10:00 - 22:30
 					</p>
-					
 					</div>
 			</div>
 

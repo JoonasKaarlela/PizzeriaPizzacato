@@ -1,5 +1,8 @@
 package Pizzacato.model.dao;
 
+import Pizzacato.model.Pizza;
+import Pizzacato.model.Utils;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,11 +10,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Pizzacato.model.Pizza;
+import Pizzacato.model.Mauste;
 
 public class PizzanMausteDAO extends DataAccessObject {
 
-	public Arraylist<Mauste> haePizzanMausteet(String pizza_id)
+	public ArrayList<Mauste> haePizzanMausteet(String pizza_id)
 			throws SQLException {
 		ArrayList<Mauste> mausteet = new ArrayList<>();
 
@@ -25,18 +28,18 @@ public class PizzanMausteDAO extends DataAccessObject {
 		ResultSet results = statement.executeQuery(query);
 
 		while (results.next()) {
-			String id = results.getString(1);
+			String mauste_id = results.getString(1);
 			String nimi = results.getString(2);
-			Mauste mauste = new Mauste(id, nimi, hinta);
-
+			Double hinta = results.getDouble(3);
+			Mauste mauste = new Mauste(mauste_id, nimi, hinta);
+			mausteet.add(mauste);
 		}
 
 		conn.close();
 		return mausteet;
 	}
 
-	public void lisaaPizzanMauste(Pizza pizza, Mauste mauste)
-			throws SQLExeption {
+	public void lisaaPizzanMauste(Pizza pizza, Mauste mauste) throws SQLException {
 
 		Connection conn = getConnection();
 

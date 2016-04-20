@@ -39,7 +39,8 @@ public class PizzanMausteDAO extends DataAccessObject {
 		return mausteet;
 	}
 
-	public void lisaaPizzanMauste(Pizza pizza, Mauste mauste) throws SQLException {
+	public void lisaaPizzanMauste(Pizza pizza, Mauste mauste)
+			throws SQLException {
 
 		Connection conn = getConnection();
 

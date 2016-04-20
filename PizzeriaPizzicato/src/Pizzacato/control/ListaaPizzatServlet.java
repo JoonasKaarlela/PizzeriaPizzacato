@@ -3,7 +3,6 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,7 +43,6 @@ public class ListaaPizzatServlet extends HttpServlet {
 		dp.forward(request, response);
 			
 	}
-	
 	
 	
 	public ArrayList<Pizza> haePizzat(){

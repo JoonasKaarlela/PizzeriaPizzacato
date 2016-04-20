@@ -10,12 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.owasp.encoder.Encode;
-
 import Pizzacato.model.Kayttaja;
 import Pizzacato.model.dao.KayttajaDAO;
 
-import com.sun.xml.internal.bind.v2.runtime.output.Encoded;
 
 
 @WebServlet("/Rekisterointi")

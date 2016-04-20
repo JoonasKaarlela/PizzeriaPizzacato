@@ -13,7 +13,7 @@ import Pizzacato.model.Mauste;
 import Pizzacato.model.Utils;
 import Pizzacato.model.dao.MausteDAO;
 
-@WebServlet("/lisaaTayte")
+@WebServlet("/lisaaMauste")
 public class LisaaMausteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       

@@ -21,16 +21,15 @@ public class KayttajaDAO extends DataAccessObject {
 		Connection conn = getConnection();
 		
 		// HAKU LAUSE
-		String query = "SELECT * FROM KAYTTAJA WHERE kayttajatunnus=? AND salasana=?";
+		String query = "SELECT * FROM KAYTTAJA WHERE kayttajatunnus=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, kayttajatunnus);
-		statement.setString(2, salasana);
 		ResultSet results = statement.executeQuery();
 		
 		Kayttaja kayttaja = null;
 		if(!results.next()){
 			System.out.println("KAYTTAJÄÄ EI LÖYTYNYT");
-		}else{
+		}else if(BCrypt.checkpw(salasana, results.getString(3))){
 			String id = results.getString(1);
 			String kayttaja_tunnus = results.getString(2);
 			String kayttaja_salasana = results.getString(3);
@@ -63,8 +62,8 @@ public class KayttajaDAO extends DataAccessObject {
 		if(results.next()){
 			System.out.println("Käyttäjä on jo olemassa!");
 			return kayttaja;
-		}else if(BCrypt.checkpw(salasana, results.getString(3))){
-			// Luo käyttäjä
+		}
+		
 			String hashed = BCrypt.hashpw(salasana, BCrypt.gensalt());
 			String INSERT = "INSERT INTO KAYTTAJA(kayttaja_id, kayttajatunnus, salasana, osoite, sahkoposti, puhelinnumero, omistaja) VALUES(?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement insert = conn.prepareStatement(INSERT);
@@ -84,7 +83,6 @@ public class KayttajaDAO extends DataAccessObject {
 				System.out.println("OK!");
 				kayttaja = new Kayttaja(id, kayttajatunnus, salasana, osoite, sahkoposti, puh, false);
 			}
-		}
 		return kayttaja;
 	}
 	

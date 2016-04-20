@@ -27,7 +27,9 @@ public class KayttajaDAO extends DataAccessObject {
 		Kayttaja kayttaja = null;
 		if(!results.next()){
 			System.out.println("KAYTTAJÄÄ EI LÖYTYNYT");
+			/*
 		} else if(BCrypt.checkpw(salasana, results.getString(3))){
+		*/
 			String id = results.getString(1);
 			String kayttaja_tunnus = results.getString(2);
 			String kayttaja_salasana = results.getString(3);

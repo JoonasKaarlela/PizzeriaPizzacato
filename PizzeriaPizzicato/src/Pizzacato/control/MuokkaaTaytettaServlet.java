@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.mariadb.jdbc.internal.common.query.parameters.DoubleParameter;
+
 import Pizzacato.model.Tayte;
 import Pizzacato.model.dao.TayteDAO;
 
@@ -24,7 +26,12 @@ public class MuokkaaTaytettaServlet extends HttpServlet {
 		String nimi = request.getParameter("nimi");
 		String alkupera = request.getParameter("alkupera");
 		String kuvaus = request.getParameter("kuvaus");
-		Double hinta = Double.parseDouble(request.getParameter("hinta"));
+		
+		try{
+			Double hinta = Double.parseDouble(request.getParameter("hinta"));
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+		}
 		
 		Tayte tayte = new Tayte(tayte_id, nimi, alkupera, kuvaus, hinta);
 		if(muokkaaTaytetta(tayte)){

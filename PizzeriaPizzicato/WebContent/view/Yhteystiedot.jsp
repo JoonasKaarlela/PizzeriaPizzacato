@@ -65,7 +65,6 @@
             <div class="clear"></div>
 			<div id="nav">
 				<ul>
-					<li><a href="Menu">Etusivu</a></li>
 					<li><a href="Menu">Menu</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>
@@ -79,12 +78,14 @@
 		<div id="banner">
 			<div class="bannertxt">Yhteystiedot</div>
 		</div>
+		
 		<!-- YHTEYSTIEDOT -->
         <div id="ytiedot">
         <p><b>Yhteystiedot</b><br>
 		Pasilanraitio 10 D92<br>
 		00240 Helsinki <br>
 		040 840 0987<br><br>
+		
 		<b>Aukioloajat</b><br>
 		Ma-To 09:00 - 22:30<br>
 		Pe 09:00 - 02:00<br>

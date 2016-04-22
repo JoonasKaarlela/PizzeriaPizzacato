@@ -53,7 +53,7 @@ public class PizzaDAO extends DataAccessObject{
 		String query = "SELECT * FROM PIZZA WHERE pizza_id=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, id);
-		ResultSet results = statement.executeQuery(query);
+		ResultSet results = statement.executeQuery();
 		
 		while(results.next()){
 			String pizza_id = results.getString(1);

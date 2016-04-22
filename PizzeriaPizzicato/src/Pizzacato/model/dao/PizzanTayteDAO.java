@@ -21,10 +21,11 @@ public class PizzanTayteDAO extends DataAccessObject {
 
 		String query = "SELECT * FROM TAYTE"
 							+ " INNER JOIN PIZZANTAYTE ON TAYTE.tayte_id=PIZZANTAYTE.tayte_id"
-							+ " AND PIZZANTAYTE.pizza_id=" + pizza_id;
+							+ " AND PIZZANTAYTE.pizza_id=?";
 		
-		Statement statement = conn.createStatement();
-		ResultSet results = statement.executeQuery(query);
+		PreparedStatement statement = conn.prepareStatement(query);
+		statement.setString(1, pizza_id);
+		ResultSet results = statement.executeQuery();
 		
 		while(results.next()){
 			String id  = results.getString(1);
@@ -41,46 +42,58 @@ public class PizzanTayteDAO extends DataAccessObject {
 	}
 		
 		
-		public void lisaaPizzanTayte(Pizza pizza, Tayte tayte) throws SQLException{
-			// LISAA UUSI TAYTE TIETOKANTAAN.
-			
-			// YHTEYS
-			Connection conn = getConnection();
-			
-			// LISAYS LAUSE
-			String query = "INSERT INTO PIZZANTAYTE(id, pizza_id, tayte_id) VALUES(?, ?, ?)";
-			PreparedStatement statement = conn.prepareStatement(query);
-			statement.setString(1, new Utils().generate(5));
-			statement.setString(2, pizza.getPizza_id());
-			statement.setString(3, tayte.getTayte_id());
+	public void lisaaPizzanTayte(Pizza pizza, Tayte tayte) throws SQLException{
+		// LISAA UUSI TAYTE TIETOKANTAAN.
+		
+		// YHTEYS
+		Connection conn = getConnection();
+		
+		// Tsekkaa onko täyte jo pizzalla.
+		String SELECT = "SELECT * FROM PIZZANTAYTE WHERE pizza_id=? AND tayte_id=?";
+		PreparedStatement SELECT_statement = conn.prepareStatement(SELECT);
+		SELECT_statement.setString(1, pizza.getPizza_id());
+		SELECT_statement.setString(2, tayte.getTayte_id());
+		ResultSet results = SELECT_statement.executeQuery();
+		
+		if(!results.next()){
+
+			String INSERT = "INSERT INTO PIZZANTAYTE(id, pizza_id, tayte_id) VALUES(?, ?, ?)";
+			PreparedStatement INSERT_statement = conn.prepareStatement(INSERT);
+			INSERT_statement.setString(1, new Utils().generate(5));
+			INSERT_statement.setString(2, pizza.getPizza_id());
+			INSERT_statement.setString(3, tayte.getTayte_id());
 
 			// EXECUTE
-			int syotettiin = statement.executeUpdate();
-			if(syotettiin > 0){
-				System.out.println("uusi täyte " + tayte.getNimi() + " lisättiin tietokantaan...");
+			int lisattiin = INSERT_statement.executeUpdate();
+			if(lisattiin > 0){
+				System.out.println("uusi täyte " + tayte.getNimi() + " lisättiin");
 			}
-			conn.close();
+		}else{
+			System.out.println("Tayte on jo pizzalla " + pizza.getPizza_id());
 		}
+		
+		conn.close();
+	}
 			
-			public void poistaPizzanTayte(Pizza pizza, Tayte tayte) throws SQLException{
-				// POISTA KYSEINEN TAYTE TIETOKANNASTA
+	public void poistaPizzanTayte(Pizza pizza, Tayte tayte) throws SQLException{
+		// POISTA KYSEINEN TAYTE TIETOKANNASTA
 				
-				// YHTEYS
-				Connection conn = getConnection();
-				
-				// POISTO LAUSE
-				String query = "DELETE FROM PIZZANTAYTE WHERE pizza_id=? AND tayte_id=?";
-				PreparedStatement statement = conn.prepareStatement(query);
-				statement.setString(1, pizza.getPizza_id());
-				statement.setString(2, tayte.getTayte_id());
-				
-				// EXECUTE
-				int poistettiin = statement.executeUpdate();
-				if( poistettiin > 0){
-					System.out.println("tayte "  + tayte.getNimi() + " poistettiin pizzalta " + pizza.getNimi() );
-				}
-				conn.close();
-			}
+		// YHTEYS
+		Connection conn = getConnection();
+		
+		// POISTO LAUSE
+		String query = "DELETE FROM PIZZANTAYTE WHERE pizza_id=? AND tayte_id=?";
+		PreparedStatement statement = conn.prepareStatement(query);
+		statement.setString(1, pizza.getPizza_id());
+		statement.setString(2, tayte.getTayte_id());
+			
+		// EXECUTE
+		int poistettiin = statement.executeUpdate();
+		if( poistettiin > 0){
+			System.out.println("tayte "  + tayte.getNimi() + " poistettiin pizzalta " + pizza.getNimi() );
+		}
+		conn.close();
+	}
 			
 			
 

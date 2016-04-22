@@ -54,7 +54,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 						}
 					}
 				}
-			} catch( SQLException e){
+			} catch(SQLException e){
 				System.out.println(e.getMessage());
 			}
 			return pizzan_taytteet;
@@ -64,22 +64,14 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	
 	
 	public boolean listalla(String listalla){
-		if(listalla != null){
-			return true;
-		}
-		return false;
+		return listalla != null ? true : false;
 	}
 	
 	
 	public boolean muokkaaPizzaa(Pizza pizza){
 		PizzaDAO pizzadao = new PizzaDAO();
 		try{
-			PizzanTayteDAO pizzantaytedao = new PizzanTayteDAO();
 			pizzadao.muokkaaPizzaa(pizza);
-			for(Tayte tayte : pizza.getTaytteet()){
-				pizzantaytedao.poistaPizzanTayte(pizza, tayte);
-				pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
-			}
 			return true;
 		} catch(SQLException e){
 			System.out.println("ERROR: " + e.getMessage());

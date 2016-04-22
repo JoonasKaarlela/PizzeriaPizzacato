@@ -24,12 +24,13 @@
 		<div id="header">
 			<div id="logo"><img src="pizzerialogo-lapinakyva.png" width="50" />PizzeriaPizzicato</div>
 			
-			<!--  JOS KIRJAUTUNUT SISÄÄN NÄYTÄ KIRAJUDU ULOS, JOS EI NIIN NÄYTÄ KIRJAUTUMIS LOMAKE -->
 			<div id="kirjaudu">
+					
+					<!-- KIRJAUDU || KÄYTTÄJÄNIMI -->
 					<c:choose>
 					
 						<c:when test="${sessionScope.kayttaja != null}">
-							<h1> <c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out> </h1>
+							<h3> ${sessionScope.kayttaja.getKayttajatunnus()} </h3>
 							<div> <a href="kirjauduUlos"> kirjaudu ulos </a> </div>
 						</c:when>
 						
@@ -41,7 +42,7 @@
 							<div id="salasana"> 
 								<div> <input placeholder=salasana name=salasana type=password required /> </div>
 							</div>
-							<div id="submit" style="display:inline-block"> 
+							<div id="submit" style="display:inline-block;"> 
 								<div> <button type=submit> kirjaudu </button> </div>
 								<div> <a href="Rekisterointi"> rekisteroidy </a> </div>
 							</div> 
@@ -70,8 +71,10 @@
         
         
         <div id="ostoskori">
+        	
+        	<!--  PIZZAT || ILMOITUS -->
       		<c:choose>
-        		<c:when test="${!requestScope.tyhja}">
+        		<c:when test="${requestScope.tyhja == null}">
         			
         			<h1> Valitsemasi pizzat </h1>
         			
@@ -123,7 +126,7 @@
 							
         					
         			<div id="ostoskori_tilaus">
-        				<c:if test="${!requestScope.tyhja}">
+        				<c:if test="${requestScope.tyhja == null}">
         					<strong style="font-size:100px;"> ${requestScope.summa} € </strong>
         				</c:if>
         			</div>	

@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import Pizzacato.model.Kayttaja;
+
+import Pizzacato.model.Tilaus;
+
 import Pizzacato.model.Utils;
 import Pizzacato.model.Pizza;
 
@@ -52,6 +55,24 @@ public class TilausDAO extends DataAccessObject {
 		}
 		
 		conn.close();
+	}
+
+	public void naytaTilaus(String id) {
+		// TODO Auto-generated method stub
+	}
+	
+	
+	public ArrayList<Tilaus> haeTilaukset(Kayttaja kayttaja){
+		
+		ArrayList<Tilaus> tilaukset = new ArrayList<>();
+		
+		Connection conn = getConnection();
+		
+		
+		
+		
+		return tilaukset;
+		
 	}
 	
 	

@@ -4,15 +4,25 @@ import java.util.Date;
 
 public class Tilaus {
 	private String tilaus_id;
+	private Kayttaja kayttaja;
 	private Date tilausaika;
 	private double hinta;
 	private String tila;
 	
-	public Tilaus(String tilaus_id, Date tilausaika, double hinta, String tila){
+	public Tilaus(String tilaus_id, Kayttaja kayttaja, Date tilausaika, double hinta, String tila){
 		this.tilaus_id = tilaus_id;
+		this.kayttaja = kayttaja;
 		this.tilausaika = tilausaika;
 		this.hinta = hinta;
 		this.tila = tila;
+	}
+
+	public Kayttaja getKayttaja() {
+		return kayttaja;
+	}
+
+	public void setKayttaja(Kayttaja kayttaja) {
+		this.kayttaja = kayttaja;
 	}
 
 	public String getTilaus_id() {

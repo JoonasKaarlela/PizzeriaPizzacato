@@ -20,7 +20,7 @@ public class Pizza implements Comparable<Pizza> {
 		this.listalla = listalla;
 		this.hinta = hinta;
 		this.kuva = kuva;
-		}
+	}
 	
 
 	public Pizza(){

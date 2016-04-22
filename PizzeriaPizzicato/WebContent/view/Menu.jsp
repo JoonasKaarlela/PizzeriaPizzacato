@@ -65,7 +65,7 @@
 				<ul>
 					<li><a href="Menu">Etusivu</a></li>
 					<li><a href="Menu">Menu</a></li>
-					<li><a href="Menu">Yhteystiedot</a></li>
+					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>
 				</ul>
 			</div><!-- NAV LOPPUU -->

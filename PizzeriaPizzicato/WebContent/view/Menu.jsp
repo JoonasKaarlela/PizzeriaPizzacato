@@ -61,7 +61,7 @@
 					<li><a href="Ostoskori">Ostoskori</a></li>
 					
 					<c:if test="${sessionScope.kayttaja != null}">
-						<li><a href="Menu">Tilaukset</a></li>
+						<li><a href="NaytaTilaus">Tilaukset</a></li>
 					</c:if>
 					
 				</ul>

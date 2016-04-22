@@ -8,6 +8,10 @@ body, html {
 	background-repeat:no-repeat;
 }
 
+button:hover{
+	cursor:pointer !important;
+}
+
 .notification{
 	position:absolute;
 	top:0;

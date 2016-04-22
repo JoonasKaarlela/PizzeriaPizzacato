@@ -8,13 +8,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import Pizzacato.model.Kayttaja;
+
 import Pizzacato.model.Tilaus;
+
 import Pizzacato.model.Utils;
 import Pizzacato.model.Pizza;
 
 public class TilausDAO extends DataAccessObject {
 	
-	public void asetaTilaus(HashMap<String, ArrayList<Pizza>> ostoskori) throws SQLException{
+	public void asetaTilaus(HashMap<String, ArrayList<Pizza>> ostoskori, Kayttaja kayttaja) throws SQLException{
 		
 		Connection conn = getConnection();
 		
@@ -30,12 +32,13 @@ public class TilausDAO extends DataAccessObject {
 			}
 		}
 			
-		String query = "INSERT INTO TILAUS(tilaus_id, tilausaika, hinta, tila) VALUES(?, ?, ?, ?)";
+		String query = "INSERT INTO TILAUS(tilaus_id, tilausaika, hinta, tila, kayttaja_id) VALUES(?, ?, ?, ?, ?)";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, tilaus_id);
 		statement.setDate(2, tilausaika);
 		statement.setDouble(3, hinta);
 		statement.setString(4, tila);
+		statement.setString(5, kayttaja.getKayttaja_id());
 			
 		int syotettiin = statement.executeUpdate();
 		if(syotettiin > 0){

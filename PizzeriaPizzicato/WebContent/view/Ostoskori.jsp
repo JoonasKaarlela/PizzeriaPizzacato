@@ -7,6 +7,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="styles.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="notification.js"></script>
+<script type="text/javascript" src="rekisterointi.js"></script>
+<link href="ostoskori.css" rel="stylesheet" type="text/css">
 <title>Ostoskori</title>
 </head>
 <body>
@@ -68,59 +70,72 @@
         
         
         <div id="ostoskori">
-        	<form method=post action=suoritaTilaus>
-        		<div>
+      		<c:choose>
+        		<c:when test="${!requestScope.tyhja}">
         			
-        			<c:choose>
+        			<h1> Valitsemasi pizzat </h1>
         			
-        				<c:when test="${sessionScope.ostoskori != null || !sessionScope.ostoskori.isEmpty()}">
-        				
-        					<h1> Valitsemasi pizzat </h1>
-        				
-        					<ul>
-        						<c:forEach items="${sessionScope.ostoskori}" var="item"> 
-        							<c:choose>
-        								<c:when test="${item.key == null || item.value == null || item.value.isEmpty()}"></c:when>
-        								<c:otherwise>
-        									<li>
-        										<div> ${item.key} </div>
-												<div> <strong> ${item.value.get(0).getNimi()} </strong> </div>
-												<div> ${item.value.get(0).getHinta()} </div>
-												<div>
-													<c:forEach items="${item.value.get(0).getTaytteet()}" var="tayte">
-														${tayte.getNimi()}
-													</c:forEach>
-												</div>
-												<div>
-													<a href="poistaKorista?pizza_id=${item.key}"> <b style="color:crimson"> poista </b> </a>
-												</div> 
-												<div> x ${item.value.size()} </div>  					
-        									</li>
-        								</c:otherwise>
-        							</c:choose>
-        						</c:forEach>
-        						<c:if test="${!sessionScope.ostoskori.isEmpty}">
-        							<div>
-        								<button type=submit> Tilaa </button>
-        							</div>
-        							<div>
-        								<strong> ${requestScope.summa} € </strong>
-        							</div>
-        						</c:if>
-        					</ul>
-        				</c:when>
+        			<div id="ostoskori_middle">
+        			<ul id="ostoskori_pizzat">
+        				<c:forEach items="${sessionScope.ostoskori}" var="item"> 
+        					<c:choose>
+        						<c:when test="${item.key == null || item.value == null || item.value.isEmpty()}"></c:when>
+        						<c:otherwise>
+        							<li class="ostoskori_pizza">
+        								<div class="center"> 
+        									<div><img src="${item.value.get(0).getKuva()}" style="height:50px; width:50px; object-fit:fill" /> </div>
+        								</div>
+										<div class="center"> 
+											<strong> ${item.value.get(0).getNimi()} </strong> 
+										</div>
+										<div class="center">  
+											<div> ${item.value.get(0).getHinta()} </div>
+										</div>
+										<div class="center"> 
+											<div>
+											<c:forEach items="${item.value.get(0).getTaytteet()}" var="tayte">
+												${tayte.getNimi()}
+											</c:forEach>
+											</div>
+										</div>
+										<div class="center"> 
+											<div><a href="poistaKorista?pizza_id=${item.key}"> <b style="color:crimson"> poista </b> </a> </div>
+										</div> 
+										<div class="center"> 
+											<div> x ${item.value.size()} </div> 
+										</div> 					
+        							</li>
+        						</c:otherwise>
+        					</c:choose>
+        				</c:forEach>	
+        			</ul>
+        					
+        			<form action=suoritaTilaus method=post onSubmit="validoi()" id="ostoskori_lomake">
+						<h2>Osoite tiedot</h2>
+						<strong class="error" style="color:crimson;"></strong>
+						<input name="kayttajatunnus_rek" maxlength="25" required placeholder="kayttajatunnus" value="${sessionScope.kayttaja.getKayttajatunnus()}" />
+						<input name="osoite_rek"  maxlength="50" required placeholder="osoite" value="${sessionScope.kayttaja.getOsoite()}" />
+						<input name="puh_rek" type="tel" maxlength="25" placeholder="puh" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" required value="${sessionScope.kayttaja.getPuh()}" />
+						<input name="sahkoposti_rek" type="email" maxlength="30" required placeholder="sähköposti" value="${sessionScope.kayttaja.getSahkoposti()}" />
+						<c:if test="${!sessionScope.ostoskori.isEmpty()}"> <button type=submit id="ostoskori_tilaus_button"> Tilaa </button> </c:if>
+					</form>
+					</div>
+							
+        					
+        			<div id="ostoskori_tilaus">
+        				<c:if test="${!requestScope.tyhja}">
+        					<strong style="font-size:100px;"> ${requestScope.summa} € </strong>
+        				</c:if>
+        			</div>	
+        		</c:when>
         			
-        				<c:otherwise>
-        					<div>
-        						<h3>Ostoskorisi on tyhjä!</h3>
-        					</div>
-        				</c:otherwise>
-        			
-        			</c:choose>
+        		<c:otherwise>
+        			<div>
+        				<h3> Et ole valinnut tuotteita. </h3>
+        			</div>
+        		</c:otherwise>
         		
-        			
-        		</div>
-        	</form>
+        	</c:choose>
         </div>
        </div>
 

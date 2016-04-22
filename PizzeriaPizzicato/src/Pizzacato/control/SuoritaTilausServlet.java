@@ -2,6 +2,7 @@ package Pizzacato.control;
 
 import java.io.IOException;
 
+import Pizzacato.model.Kayttaja;
 import Pizzacato.model.Pizza;
 import Pizzacato.model.dao.TilausDAO;
 
@@ -28,7 +29,7 @@ public class SuoritaTilausServlet extends HttpServlet {
 			TilausDAO tilausdao = new TilausDAO();
 
 			try{
-				tilausdao.asetaTilaus(pizzat);
+				tilausdao.asetaTilaus(pizzat, (Kayttaja) request.getSession().getAttribute("kayttaja"));
 				request.getSession(false).setAttribute("notification", "Kiitos tilauksesta! :)");
 			}catch(SQLException e){
 				System.out.println(e.getMessage());

@@ -159,6 +159,25 @@ button{
 }
 /* BANNER LOPPUU */
 
+/* YTIEDOT JA MAP ALKAA*/
+#ytiedot {
+	float:left;
+	margin-left:100px;
+	margin-top:20px;
+	margin-right:0px;
+	padding:1%;
+}
+
+#map {
+	float:right;
+	margin-top:-215px;
+	margin-right:100px;
+	margin-left:20px;
+	margin-bottom:20px;
+	padding:1%;
+}
+/* YTIEDOT JA MAP LOPPUU*/
+
 /* MENU ALKAA */
 .menu {
 	padding:0px 20px 0px 20px;

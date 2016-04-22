@@ -33,7 +33,7 @@
 						</c:when>
 						
 						<c:otherwise>
-						<form method=post action="Kirjaudu" id="kirjaudu_form" >
+						<form method=post action="Kirjaudu" id="kirjaudu_form">
 							<div id="kayttajatunnus">
 								<div> <input placeholder=kayttajatunnus name=kayttajatunnus required /> </div>
 							</div>

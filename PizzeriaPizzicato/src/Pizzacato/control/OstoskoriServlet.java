@@ -23,8 +23,19 @@ public class OstoskoriServlet extends HttpServlet {
 		
 		// Laske yhteissumma
 		HashMap<String, ArrayList<Pizza>> pizzat = (HashMap<String, ArrayList<Pizza>>) request.getSession().getAttribute("ostoskori");
-		double summa = 0;
 		
+		// Onko tyhjä?
+		try{
+		ArrayList<Pizza> test = new ArrayList<>();
+		for(String key : pizzat.keySet()){
+			for(Pizza pizza : pizzat.get(key)){
+				if(pizza != null){
+					test.add(pizza);
+				}
+			}
+		}
+		
+		double summa = 0;
 		if(pizzat != null){
 			for(String key : pizzat.keySet()){
 				for(Pizza pizza : pizzat.get(key)){
@@ -33,8 +44,11 @@ public class OstoskoriServlet extends HttpServlet {
 			}
 		}
 		
+		request.setAttribute("summa", String.format("%.2f", Math.floor(summa)));
 		
-		request.setAttribute("summa", summa);
+		}catch(NullPointerException e){
+			request.setAttribute("tyhja", true);
+		}
 		
 		dp.forward(request, response);
 	}

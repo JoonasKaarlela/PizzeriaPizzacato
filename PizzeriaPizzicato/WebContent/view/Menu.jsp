@@ -7,11 +7,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Menu</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="notification.js"></script>
 </head>
 <body>
+
+<div class="notification">
+	<c:if test="${requestScope.notification != null}">
+		<strong>${requestScope.notification}</strong>
+	</c:if>
+</div>
 	
 	<div id="wrapper">
-		
+
 		<div id="header">
 			<div id="logo"><img src="pizzerialogo-lapinakyva.png" width="50" />PizzeriaPizzicato</div>
 			
@@ -32,8 +39,9 @@
 							<div id="salasana"> 
 								<div> <input placeholder=salasana name=salasana type=password required /> </div>
 							</div>
-							<div id="submit"> 
+							<div id="submit" style="display:inline-block"> 
 								<div> <button type=submit> kirjaudu </button> </div>
+								<div> <a href="Rekisterointi"> rekisteroidy </a> </div>
 							</div> 
 						</form>
 						<div class="error">
@@ -63,7 +71,6 @@
             <div class="clear"></div>
 			<div id="nav">
 				<ul>
-					<li><a href="Menu">Etusivu</a></li>
 					<li><a href="Menu">Menu</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>

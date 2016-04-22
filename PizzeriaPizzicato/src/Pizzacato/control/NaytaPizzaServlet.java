@@ -17,6 +17,7 @@ public class NaytaPizzaServlet extends HttpServlet {
  
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
+		
 		naytaPizza(id);
 	
 		response.sendRedirect("Menu");

@@ -8,13 +8,31 @@ body, html {
 	background-repeat:no-repeat;
 }
 
+button:hover{
+	cursor:pointer !important;
+}
 
+.notification{
+	position:absolute;
+	top:0;
+	left:0;
+	height:65px;
+	width:250px;
+	color:white;
+	z-index:1;
+	display:flex;
+	flex:nowrap row;
+	justify-content:center;
+	align-items:center;
+}
 
 .hidden{
 	display:none !important;
 }
 
 #wrapper {
+	position:relative;
+	z-index:0;
 	margin:auto;
 	padding-top:20px;
 	max-width: 1024px;

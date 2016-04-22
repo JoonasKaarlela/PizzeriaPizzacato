@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Pizzacato.model.Pizza;
-import Pizzacato.model.Tayte;
 import Pizzacato.model.dao.PizzaDAO;
-import Pizzacato.model.dao.TayteDAO;
 
 @WebServlet("/lisaaKoriin")
 public class LisaaKoriinServlet extends HttpServlet {
@@ -29,7 +27,11 @@ public class LisaaKoriinServlet extends HttpServlet {
 		Pizza pizza = haePizza(id);
 
 		for (int i = 0; i < maara; i++) {
-			lisaaKoriin(pizza, request.getSession());
+			if(lisaaKoriin(pizza, request.getSession())){
+				String prefix = "";
+				if(maara > 1){ prefix += maara + "x "; }
+				request.getSession(false).setAttribute("notification", prefix + pizza.getNimi() + " lisättiin koriin!" );
+			}
 		}
 		
 		response.sendRedirect("Menu");
@@ -50,7 +52,7 @@ public class LisaaKoriinServlet extends HttpServlet {
 	
 	
 	@SuppressWarnings("unchecked")
-	public void lisaaKoriin(Pizza pizza, HttpSession session){
+	public boolean lisaaKoriin(Pizza pizza, HttpSession session){
 		if(pizza != null){
 			if(session.getAttribute("ostoskori") == null){
 				HashMap<String, ArrayList<Pizza>> ostoskori = new HashMap<>();				
@@ -74,7 +76,9 @@ public class LisaaKoriinServlet extends HttpServlet {
 				}
 				session.setAttribute("ostoskori", ostoskori);
 			}
+			return true;
 		}
+		return false;
 	}
 	
 }

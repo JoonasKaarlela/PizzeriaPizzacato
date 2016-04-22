@@ -20,6 +20,36 @@ public class OstoskoriServlet extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dp = request.getServletContext().getRequestDispatcher("/view/Ostoskori.jsp");
+		
+		// Laske yhteissumma
+		HashMap<String, ArrayList<Pizza>> pizzat = (HashMap<String, ArrayList<Pizza>>) request.getSession().getAttribute("ostoskori");
+		
+		// Onko tyhjä?
+		try{
+		ArrayList<Pizza> test = new ArrayList<>();
+		for(String key : pizzat.keySet()){
+			for(Pizza pizza : pizzat.get(key)){
+				if(pizza != null){
+					test.add(pizza);
+				}
+			}
+		}
+		
+		double summa = 0;
+		if(pizzat != null){
+			for(String key : pizzat.keySet()){
+				for(Pizza pizza : pizzat.get(key)){
+					summa += pizza.getHinta();
+				}
+			}
+		}
+		
+		request.setAttribute("summa", String.format("%.2f", Math.floor(summa)));
+		
+		}catch(NullPointerException e){
+			request.setAttribute("tyhja", true);
+		}
+		
 		dp.forward(request, response);
 	}
 }

@@ -19,22 +19,24 @@ public class PoistaPizzaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("id");
-		
-		System.out.println(id);
-		
-		poistaPizza(id);
+
+		if(poistaPizza(id)){
+			request.getSession(false).setAttribute("notification", "pizza " + id + " poistettiin!");
+		}
 		
 		response.sendRedirect("Menu");
 	}
 	
-	public void poistaPizza(String id){
+	public boolean poistaPizza(String id){
 		PizzaDAO pizzadao = new PizzaDAO();
 		try {
 			pizzadao.poistaPizza(id);
+			return true;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
+		return false;
 	}
 
 }

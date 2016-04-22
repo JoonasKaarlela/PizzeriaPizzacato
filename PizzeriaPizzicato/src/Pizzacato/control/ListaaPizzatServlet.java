@@ -3,7 +3,6 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,10 +25,6 @@ public class ListaaPizzatServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sivu = "/view/Menu.jsp";
 		
-		// Hae mahdolliset virheilmoitukset käyttäjälle
-		tarkistaVirheet(request);
-		
-		// Hae kayttaja sessionista.
 		Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");
 		
 		if(kayttaja != null){
@@ -48,7 +43,6 @@ public class ListaaPizzatServlet extends HttpServlet {
 		dp.forward(request, response);
 			
 	}
-	
 	
 	
 	public ArrayList<Pizza> haePizzat(){
@@ -86,11 +80,6 @@ public class ListaaPizzatServlet extends HttpServlet {
 		}
 	}
 	
-	
-	public void tarkistaVirheet(HttpServletRequest request){
-		request.removeAttribute("error");
-		request.setAttribute("error", (String) request.getSession().getAttribute("error"));
-	}
 	
 
 }

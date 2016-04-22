@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +23,9 @@ public class PoistaKoristaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("pizza_id");
 		Pizza pizza = haePizza(id);
-		poistaKorista(pizza, request.getSession());
+		if(poistaKorista(pizza, request.getSession())){
+			request.getSession(false).setAttribute("notification", pizza.getNimi() + " poistettiin korista!");
+		}
 		response.sendRedirect("Ostoskori");
 	}
 
@@ -42,19 +43,23 @@ public class PoistaKoristaServlet extends HttpServlet {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void poistaKorista(Pizza pizza, HttpSession session){
+	public boolean poistaKorista(Pizza pizza, HttpSession session){
 		if(pizza != null){
 			HashMap<String, ArrayList<Pizza>> ostoskori = (HashMap<String, ArrayList<Pizza>>) session.getAttribute("ostoskori");
 			
 			for(String key : ostoskori.keySet()){
 				if(key.equals(pizza.getPizza_id())){
-					System.out.println(ostoskori.get(key).remove(0));
+					ostoskori.get(key).remove(0);
+					if(ostoskori.get(key).isEmpty()){
+						ostoskori.remove(key);
+					}
 					break;
 				}
 			}
-			
 			session.setAttribute("ostoskori", ostoskori);
+			return true;
 		}
+		return false;
 	}
 	
 }

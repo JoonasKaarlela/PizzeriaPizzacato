@@ -8,8 +8,15 @@
 <link href="styles.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script type="text/javascript" src="taytteet.js"></script>
+<script type="text/javascript" src="notification.js"></script>
 </head>
 <body>
+
+<div class="notification">
+	<c:if test="${requestScope.notification != null}">
+		<strong>${requestScope.notification}</strong>
+	</c:if>
+</div>
 
 <div id="wrapper">	
 
@@ -25,7 +32,7 @@
                     <label>Täytteen nimi</label><input name="nimi" type="text" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä"><br />
                     <label>Täytteen alkuperä</label><input name="alkupera" type="text" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä"><br />
                     <label>Täytteen kuvaus</label><input name="kuvaus" type="text" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä"><br />
-                    <label>Täytteen hinta/kg</label><input name="hinta" type="text" pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx">
+                    <label>Täytteen hinta/kg</label><input name="hinta" type="text" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina">
                     <button type="submit">Lisää</button>
                 </form>
                 </td>
@@ -62,7 +69,7 @@
 			            <input disabled type="text" value="${tayte.getKuvaus()}" name="kuvaus" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä">
 			            </td>
 		                <td>
-		                <input disabled type="text" value="${tayte.getHinta()}" name="hinta" pattern="^\d+(\.|\,)\d{2}$" title="Anna hinta numeroina muodossa x.xx">
+		                <input disabled type="text" value="${tayte.getHinta()}" name="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina">
 			            <input type="hidden" name="tayte_id" value="${tayte.getTayte_id()}" class="hidden" />
 			            </td>
 		                <td>

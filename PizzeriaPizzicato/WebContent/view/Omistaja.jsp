@@ -8,9 +8,15 @@
 <title> Omistaja </title>
 <link href="styles.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="omistaja.js"></script>
+<script type="text/javascript" src="notification.js"></script>
 </head>
 <body>
 
+<div class="notification">
+	<c:if test="${requestScope.notification != null}">
+		<strong>${requestScope.notification}</strong>
+	</c:if>
+</div>
 
 <div id="wrapper">
 		<div id="header">

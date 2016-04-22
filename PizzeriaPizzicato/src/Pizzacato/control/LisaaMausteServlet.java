@@ -9,34 +9,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Pizzacato.model.Tayte;
+import Pizzacato.model.Mauste;
 import Pizzacato.model.Utils;
-import Pizzacato.model.dao.TayteDAO;
+import Pizzacato.model.dao.MausteDAO;
 
-@WebServlet("/lisaaTayte")
-public class LisaaTayteServlet extends HttpServlet {
+@WebServlet("/lisaaMauste")
+public class LisaaMausteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String tayte_id = new Utils().generate(5);
+		String mauste_id = new Utils().generate(5);
 		String nimi = request.getParameter ("nimi");
-		String alkupera = request.getParameter("alkupera");
-		String kuvaus = request.getParameter("kuvaus");
 		double hinta = Double.parseDouble(request.getParameter("hinta"));
 		 
-		Tayte tayte = new Tayte(tayte_id, nimi, alkupera, kuvaus, hinta);
-		if(lisaaTayte(tayte)){
-			request.getSession(false).setAttribute("notification", tayte.getNimi() + " lisättiin!");
+		Mauste mauste = new Mauste(mauste_id, nimi, hinta);
+		if(lisaaMauste(mauste)){
+			request.getSession(false).setAttribute("notification", mauste.getNimi() + " lisättiin!");
 		}
 		
-		response.sendRedirect("Taytteet");
+		response.sendRedirect("Mausteet");
 	}
 		
-	public boolean lisaaTayte(Tayte tayte){
-		TayteDAO taytedao = new TayteDAO();
+	public boolean lisaaMauste(Mauste mauste){
+		MausteDAO maustedao = new MausteDAO();
 		try{
-			taytedao.lisaaTayte(tayte);
+			maustedao.lisaaMauste(mauste);
 			return true;
 		} catch(SQLException e){
 			System.out.println(e.getMessage());
@@ -45,5 +43,4 @@ public class LisaaTayteServlet extends HttpServlet {
 		return false;
 	}
 	
-
 }

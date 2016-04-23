@@ -1,15 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@ page import="java.util.ArrayList, Pizzacato.model.Pizza"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Menu</title>
+<meta http-equiv="Content-Type" content="text/html; UTF-8">
 <link href="styles.css" rel="stylesheet" type="text/css">
+<link href="rekisterointi.css" rel="stylesheet" type="text/css">
+<script src="rekisterointi.js"></script>
+<script src="notification.js"> </script>
+<title>Rekisterointi</title>
 </head>
 <body>
+
+	<div class="notification">
+		<c:if test="${requestScope.notification != null}">
+			<strong>${requestScope.notification}</strong>
+		</c:if>
+	</div>
 
 	<div id="wrapper">
 
@@ -44,9 +52,12 @@
 										required />
 								</div>
 							</div>
-							<div id="submit">
+							<div id="submit" style="display: inline-block">
 								<div>
 									<button type=submit>kirjaudu</button>
+								</div>
+								<div>
+									<a href="Rekisterointi"> rekisteroidy </a>
 								</div>
 							</div>
 						</form>
@@ -55,24 +66,9 @@
 								<c:out value="${error}"></c:out>
 							</p>
 						</div>
-
 					</c:otherwise>
 
 				</c:choose>
-
-				<div class="clear"></div>
-				<div id="yhteystiedot">
-					<p>
-						<b>Yhteystiedot</b><br> Pasilanraitio 10 D92<br> 00240
-						Helsinki <br> 040 840 0987
-					</p>
-				</div>
-				<div id="aukioloajat">
-					<p>
-						<b>Aukioloajat</b><br> Ma-To 09:00 - 22:30<br> Pe 09:00
-						- 02:00<br> La 09:00 - 02:00<br> Su 10:00 - 22:30
-					</p>
-				</div>
 			</div>
 
 			<!--  NAVIGOINTI -->
@@ -91,30 +87,33 @@
 
 		<!--  BANNERI -->
 		<div id="banner">
-			<div class="bannertxt">Yhteystiedot</div>
+			<div class="bannertxt">Pizzaa</div>
 		</div>
 
-		<!-- YHTEYSTIEDOT -->
-		<div id="ytiedot">
-			<p>
-				<b>Yhteystiedot</b><br> Pasilanraitio 10 D92<br> 00240
-				Helsinki <br> 040 840 0987<br>
-				<br> <b>Aukioloajat</b><br> Ma-To 09:00 - 22:30<br>
-				Pe 09:00 - 02:00<br> La 09:00 - 02:00<br> Su 10:00 - 22:30
-			</p>
+		<div id="rekisterointi">
+			<form action=Rekisterointi method=post onSubmit="validoi()"
+				id="rekisterointi_form">
+				<h2>Rekisteröidy</h2>
+				<strong class="error" style="color: crimson;"></strong> <input
+					name="kayttajatunnus_rek" maxlength="25" required
+					placeholder="kayttajatunnus" /> <input name="salasana_rek"
+					type=password required placeholder="salasana" /> <input
+					name="salasana2_rek" type=password required
+					placeholder="salasana (uudestaan)" /> <input name="osoite_rek"
+					maxlength="50" required placeholder="osoite" /> <input
+					name="puh_rek" type="tel" maxlength="25" placeholder="puh"
+					pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$"
+					required /> <input name="sahkoposti_rek" type="email"
+					maxlength="30" required placeholder="sähköposti" />
+				<button type=submit>submit</button>
+			</form>
 		</div>
-		<div class="clear"></div>
-		<!-- KARTTA -->
-		<div id="map">
-			<iframe
-				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1982.8179552658996!2d24.92329671623021!3d60.20029554792549!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4692098d73352fcd%3A0x85ff6f3804dbe019!2sPasilanraitio+10%2C+00101+Helsinki!5e0!3m2!1sfi!2sfi!4v1461155879337"
-				width="600" height="450" frameborder="0" style="border: 0"
-				allowfullscreen></iframe>
-		</div>
+
+
+
+
+
 
 	</div>
-	<!--  WRAPPER LOPPUU -->
-
-
 </body>
 </html>

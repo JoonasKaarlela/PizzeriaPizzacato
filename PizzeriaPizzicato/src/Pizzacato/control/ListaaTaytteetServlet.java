@@ -27,37 +27,15 @@ public class ListaaTaytteetServlet extends HttpServlet {
 		
 		String sivu = "/view/Taytteet.jsp";
 		
-		hoidaErrorit(request);
-		
 		Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");
-		
-		if( kayttaja != null){
-			if( onKirjautunut(request.getSession()) && kayttaja.isOmistaja() ){
-				sivu = "/view/Taytteet.jsp";
-			
-			} 
-		} else {
-			sivu = "/Menu";
-		}
-		
-		try{
-			ArrayList<Tayte> taytteet = haeTaytteet();
-			request.setAttribute("taytteet", taytteet);
-		
-			RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
-			dp.forward(request, response);
-			
-		} catch(NullPointerException e){
-			
-			ArrayList<Tayte> taytteet = haeTaytteet();
-			request.setAttribute("taytteet", taytteet);
-		
-			RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
-			dp.forward(request, response);
-			
-		}
 
+		ArrayList<Tayte> taytteet = haeTaytteet();
+		request.setAttribute("taytteet", taytteet);
 		
+		RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
+		dp.forward(request, response);
+
+
 	}
 
 	
@@ -71,23 +49,6 @@ public class ListaaTaytteetServlet extends HttpServlet {
 			}
 		return taytteet;
 	}
-	
-	public boolean onKirjautunut(HttpSession session){
-		try{
-			@SuppressWarnings("unused")
-			Kayttaja kayttaja = (Kayttaja) session.getAttribute("kayttaja");
-			return true;
-		} catch(NullPointerException e){
-			System.out.println(e.getMessage());
-			return false;
-		}
-	}
-	
 
-	
-	public void hoidaErrorit(HttpServletRequest request){
-		request.removeAttribute("error");
-		request.setAttribute("error", (String) request.getSession().getAttribute("error"));
-	}
 
 }

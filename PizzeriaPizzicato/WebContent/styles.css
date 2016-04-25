@@ -337,28 +337,29 @@ button {
 }
 
 #taytelista li {
-	list-style: none;
+	list-style:none;
 	font-size: 12px;
-	padding: 10px;
-	color: #FFF;
+	padding:10px;
+	color:#FFF;
+	width:20%;
 }
-
 #taytelista label {
 	width: 100px;
-	display: inline-block;
+	display:inline-block;
 }
-
+	
 #taytelista table {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	border-spacing: 0;
+	border-spacing:0;
+	width:100%;
 }
-
 #taytelista td {
 	font-size: 12px;
-	padding: 5px;
-	color: #FFF;
+	padding:5px 0px;
+	color:#FFF;
+	width:20%;
 }
 
 #taytelista tr:first-of-type {
@@ -412,11 +413,64 @@ button {
 	object-position: 50% 50%;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	#hallintanav li {
+		display:block;
+		float:left;
+		padding: 5px 10px;
+		background-color:#333333;
+		border: 1px solid #555;
+		border-left: 0;
+		border-bottom: 0;
+	}
+	.aktiivinen {
+		border:1px solid #999 !important;
+		border-bottom: 0 !important;
+		background-color:#444444 !important;
+	}
+	#hallintanav ul {
+		padding: 0;
+		margin: 0;
+	}
+
 /* RESPONSIVE */
 @media only screen and (max-width: 1024px) {
 	.menuitemwrap {
 		max-width: 100%;
 		width: 100%;
 	}
+	
+	
+	.menu {
+		padding: 0;
+	}
+	
+	img {
+		width: 100%;
+		height: auto;
+	}
+	
+	#apanel {
+		position: static;
+	}
+	
+	#apanelwrapper {
+		width:100%;
+		padding: 0;
+	}
+	
 }
 /* RESPONSIVE LOPPUU */

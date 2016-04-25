@@ -21,8 +21,15 @@ public class TilausDAO extends DataAccessObject {
 		
 		// ASETA TILAUS
 		String tilaus_id = new Utils().generate(5);
-		Date tilausaika = null;
+		String tilausaika = new Utils().getDate();
 		String tila = "";
+		
+		String kayttaja_id = "";
+		if(kayttaja != null){
+			kayttaja_id = kayttaja.getKayttaja_id();
+		}else{
+			kayttaja_id = new Utils().generate(5);
+		}
 		
 		double hinta = 0;
 		for(String key : ostoskori.keySet()){
@@ -34,10 +41,10 @@ public class TilausDAO extends DataAccessObject {
 		String query = "INSERT INTO TILAUS(tilaus_id, tilausaika, hinta, tila, kayttaja_id) VALUES(?, ?, ?, ?, ?)";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, tilaus_id);
-		statement.setDate(2, tilausaika);
+		statement.setString(2, tilausaika);
 		statement.setDouble(3, hinta);
 		statement.setString(4, tila);
-		statement.setString(5, kayttaja.getKayttaja_id());
+		statement.setString(5, kayttaja_id);
 			
 		int syotettiin = statement.executeUpdate();
 		if(syotettiin > 0){
@@ -56,10 +63,6 @@ public class TilausDAO extends DataAccessObject {
 		conn.close();
 	}
 
-	public void naytaTilaus(String id) {
-		// TODO Auto-generated method stub
-	}
-	
 	
 	public ArrayList<Tilaus> haeTilaukset(Kayttaja kayttaja) throws SQLException{
 		

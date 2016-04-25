@@ -76,6 +76,7 @@
 					<li><a href="Menu">Menu</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>
+					<li><a href="Tilaukset">Tilaukset</a></li>
 				</ul>
 			</div>
 			<!-- NAV LOPPUU -->

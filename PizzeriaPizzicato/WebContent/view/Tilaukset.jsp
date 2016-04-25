@@ -91,11 +91,11 @@
 								</tr>
 							</thead>
 							
-							<tbody>
+						<tbody>
 							<c:forEach items="${sessionScope.ostoskori}" var="item">
 								<c:choose>
 									<c:when test="${item.key != null || item.value != null || !item.value.isEmpty()}">
-										<tr class="ostoskori_pizza">
+										<tr class="tilaukset_pizza">
 										  <td> <img style="width:50px; height:50px; object-fit:fill;" src="${item.value.get(0).getKuva()}" /> </td>
 										  <td> ${item.value.get(0).getNimi()} </td>
 										  <td> ${item.value.get(0).getHinta()}€ </td>
@@ -110,11 +110,9 @@
 										  	 </c:forEach>
 										  </td>
 										  <td> x${item.value.size()} </td>
-										  <td> <a href="poistaKorista?pizza_id=${item.key}"> <b style="color: crimson"> poista </b> </a> </td>
 										</tr>
 									</c:when>
 								</c:choose>
 							</c:forEach>
 						</tbody>
 						</table>
-

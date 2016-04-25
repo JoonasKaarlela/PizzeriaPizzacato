@@ -47,20 +47,30 @@ public class TayteDAO extends DataAccessObject{
 		// YHTEYS
 		Connection conn = getConnection();
 		
-		// LISAYS LAUSE
-		String query = "INSERT INTO TAYTE(tayte_id, nimi, alkupera, kuvaus, hinta) VALUES(?, ?, ?, ?, ?)";
-		PreparedStatement statement = conn.prepareStatement(query);
-		statement.setString(1, tayte.getTayte_id());
-		statement.setString(2, tayte.getNimi());
-		statement.setString(3, tayte.getAlkupera());
-		statement.setString(4, tayte.getKuvaus());
-		statement.setDouble(5, tayte.getHinta());
+		String SELECT = "SELECT * FROM TAYTE WHERE nimi=?";
+		PreparedStatement stmt = conn.prepareStatement(SELECT);
+		ResultSet results = stmt.executeQuery();
+		
+		if(!results.next()){
+			// LISAYS LAUSE
+			String query = "INSERT INTO TAYTE(tayte_id, nimi, alkupera, kuvaus, hinta) VALUES(?, ?, ?, ?, ?)";
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, tayte.getTayte_id());
+			statement.setString(2, tayte.getNimi());
+			statement.setString(3, tayte.getAlkupera());
+			statement.setString(4, tayte.getKuvaus());
+			statement.setDouble(5, tayte.getHinta());
 
-		// EXECUTE
-		int syotettiin = statement.executeUpdate();
-		if(syotettiin > 0){
-			System.out.println("uusi tayte: " + tayte.getTayte_id() + " lisattiin tietokantaan...");
+			// EXECUTE
+			int syotettiin = statement.executeUpdate();
+			if(syotettiin > 0){
+				System.out.println("uusi tayte: " + tayte.getTayte_id() + " lisattiin tietokantaan...");
+			}
+		} else {
+			System.out.println("Täyte on jo lisätty");
 		}
+		
+		
 		conn.close();
 	}
 		

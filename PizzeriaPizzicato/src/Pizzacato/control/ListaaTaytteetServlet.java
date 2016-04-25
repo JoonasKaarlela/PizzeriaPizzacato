@@ -10,8 +10,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Pizzacato.model.dao.TayteDAO;
+import Pizzacato.model.Kayttaja;
 import Pizzacato.model.Tayte;
 
 
@@ -24,26 +26,14 @@ public class ListaaTaytteetServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String sivu = "/view/Taytteet.jsp";
-		
-		
-		try{
-			ArrayList<Tayte> taytteet = haeTaytteet();
-			request.setAttribute("taytteet", taytteet);
-		
-			RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
-			dp.forward(request, response);
-			
-		} catch(NullPointerException e){
-			
-			ArrayList<Tayte> taytteet = haeTaytteet();
-			request.setAttribute("taytteet", taytteet);
-		
-			RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
-			dp.forward(request, response);
-			
-		}
 
+		ArrayList<Tayte> taytteet = haeTaytteet();
+		request.setAttribute("taytteet", taytteet);
 		
+		RequestDispatcher dp  = getServletContext().getRequestDispatcher(sivu);
+		dp.forward(request, response);
+
+
 	}
 
 	
@@ -58,12 +48,5 @@ public class ListaaTaytteetServlet extends HttpServlet {
 		return taytteet;
 	}
 
-	
-
-	
-	public void hoidaErrorit(HttpServletRequest request){
-		request.removeAttribute("error");
-		request.setAttribute("error", (String) request.getSession().getAttribute("error"));
-	}
 
 }

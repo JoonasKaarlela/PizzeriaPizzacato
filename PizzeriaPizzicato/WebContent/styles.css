@@ -1,49 +1,49 @@
 body, html {
-	margin:0;
+	margin: 0;
 	padding: 0;
-	background-color:#222;
-	color:#FFF;
-	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	background-size:cover;
-	background-repeat:no-repeat;
+	background-color: #222;
+	color: #FFF;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
-button:hover{
-	cursor:pointer !important;
+button:hover {
+	cursor: pointer !important;
 }
 
-.notification{
-	position:absolute;
-	top:0;
-	left:0;
-	height:65px;
-	width:250px;
-	color:white;
-	z-index:1;
-	display:flex;
-	flex:nowrap row;
-	justify-content:center;
-	align-items:center;
+.notification {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 65px;
+	width: 250px;
+	color: white;
+	z-index: 1;
+	display: flex;
+	flex: nowrap row;
+	justify-content: center;
+	align-items: center;
 }
 
-.hidden{
-	display:none !important;
+.hidden {
+	display: none !important;
 }
 
 #wrapper {
-	position:relative;
-	z-index:0;
-	margin:auto;
-	padding-top:20px;
+	position: relative;
+	z-index: 0;
+	margin: auto;
+	padding-top: 20px;
 	max-width: 1024px;
 	width: 100%;
 }
 
-input{
-	border:none;
-	border-bottom:1px solid white;
-	color:lightgreen;
-	background:transparent;
+input {
+	border: none;
+	border-bottom: 1px solid white;
+	color: lightgreen;
+	background: transparent;
 }
 
 a {
@@ -57,70 +57,67 @@ a:hover {
 
 /* HEADER ALKAA*/
 #header {
-	width:100%;
+	width: 100%;
 }
 
 #logo {
-	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size:40px;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 40px;
 	float: left;
-	height:100px;
+	height: 100px;
 }
 
 #logo img {
-		max-width: 50px;
+	max-width: 50px;
 }
-
 
 #kirjaudu {
-	float:right;
+	float: right;
 }
 
-#kirjaudu_form{
-	width:100%;
-	height:100%;
-	display:flex;
-	flex:nowrap row;
+#kirjaudu_form {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex: nowrap row;
 }
 
-#kayttajatunnus{
-	width:40%;
-	height:100%;
-	display:flex;
-	justify-content:center;
-	align-items:center;
+#kayttajatunnus {
+	width: 40%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-#salasana{
-	width:40%;
-	height:100%;
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	padding-left:10px;
+#salasana {
+	width: 40%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-left: 10px;
 }
 
-button{
-	border:1px solid white;
-	border-radius:20px;
-	font-family:Arial;
-	background:transparent;
-	color:white;
+button {
+	border: 1px solid white;
+	border-radius: 20px;
+	font-family: Arial;
+	background: transparent;
+	color: white;
 }
 
-#submit{
-	width:20%;
-	height:100%;
-	display:flex;
-	justify-content:center;
-	align-items:center;
+#submit {
+	width: 20%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-
-
 
 #nav {
 	width: 100%;
-	padding:0;
+	padding: 0;
 	background: #CCC;
 }
 
@@ -130,15 +127,14 @@ button{
 }
 
 #nav ul li {
-	display:inline-block;
+	display: inline-block;
 	padding: 10px 20px;
 	border-top: 1px solid #CCC;
 	border-right: 1px solid #CCC;
 	border-right: 1px solid #CCC;
-	border-left:0;
-	margin:0;
-	float:left;
-	
+	border-left: 0;
+	margin: 0;
+	float: left;
 }
 
 #nav ul li:first-child {
@@ -146,12 +142,23 @@ button{
 }
 /* HEADER LOPPUU */
 
+/* YHTEYSTIEDOT JA AUKIOLOAJAT */
+#yhteystiedot {
+	float: right;
+}
+
+#aukioloajat {
+	float: right;
+	margin-right: 50px;
+}
+
+/* YHTEYSTIEDOT JA AUKIOLOAJAT LOPPUU */
 
 /* BANNER ALKAA */
 #banner {
-	height:300px;
-	background:url(banner.jpg);
-	background-repeat:no-repeat;
+	height: 300px;
+	background: url(banner.jpg);
+	background-repeat: no-repeat;
 }
 
 .bannertxt {
@@ -163,13 +170,32 @@ button{
 }
 /* BANNER LOPPUU */
 
+/* YTIEDOT JA MAP ALKAA*/
+#ytiedot {
+	float: left;
+	margin-left: 100px;
+	margin-top: 20px;
+	margin-right: 0px;
+	padding: 1%;
+}
+
+#map {
+	float: right;
+	margin-top: -215px;
+	margin-right: 100px;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	padding: 1%;
+}
+/* YTIEDOT JA MAP LOPPUU*/
+
 /* MENU ALKAA */
 .menu {
-	padding:0px 20px 0px 20px;
+	padding: 0px 20px 0px 20px;
 }
 
 .menuitemwrap {
-	width:472px;
+	width: 472px;
 	float: left;
 	margin: 10px;
 }
@@ -189,52 +215,51 @@ button{
 }
 
 .pizzamenu {
-	margin:0;
-	padding:0;
-
+	margin: 0;
+	padding: 0;
 }
 
 .pizzamenu li {
 	width: 45%;
-	padding:1%;
+	padding: 1%;
 	margin: 10px 1%;
 	background-color: #333;
-	float:left;
+	float: left;
 	opacity: 0.8;
 	border: 1px solid #CCC;
 	display: inline-block;
 }
+
 .pizzakuva {
-	float:left;
+	float: left;
 }
 
 .pizzainfo {
-	padding-right:20px;
+	padding-right: 20px;
 }
 
 .pizzanimi {
-	font-weight:bold;
+	font-weight: bold;
 }
 
 .pizzahinta button {
 	float: right;
-	margin-right:20px;
+	margin-right: 20px;
 }
 
 .pizzakuvaus {
+	
 }
 /* MENU LOPPUU */
-
 .listalla {
 	display: inline;
 }
 
 .clear {
-	clear:both;
+	clear: both;
 }
 
 /* OMISTAJA */
-
 .menuitem textarea {
 	resize: none;
 	width: 98%;
@@ -267,132 +292,131 @@ button{
 	color: #333 !important;
 }
 
-#uusiPizza{
-	height:150px;
-	border:2px solid white;
+#uusiPizza {
+	height: 150px;
+	border: 2px solid white;
 }
-
 
 /* OMISTAJA LOPPUU */
 
 /* ADMIN PANEL */
+#apanel {
+	position: fixed;
+	right: 20px;
+	top: 20px;
+}
+
+#apanelwrapper {
+	width: 270px;
+	background: #222;
+	color: #FFF;
+	padding: 20px;
+	border: 1px solid #555;
+	opacity: 0.8;
+	font-size: 12px;
+}
+
+#apanel h1 {
+	margin: 0px 0px 20px 0px;
+}
+
+#apanel label {
+	width: 90px;
+	display: inline-block;
+}
+
+#apanelcontent {
 	
-	#apanel {
-		position:fixed;
-		right: 20px;
-		top: 20px;
-	}
-	
-	#apanelwrapper {
-		width:270px;
-		background:#222;
-		color: #FFF;
-		padding:20px;
-		border: 1px solid #555;
-		opacity: 0.8;
-		font-size: 12px;
-	}
-	
-	#apanel h1 {
-		margin: 0px 0px 20px 0px;
-	}
-	#apanel label {
-		width: 90px;
-		display:inline-block;
-	}
-	
-	#apanelcontent {
-	}
-	
+}
+
 /* ADMIN PANEL LOPPUU */
 
 /* TAYTTEET */
-	#taytelista {
-		margin:auto;
-	}
-	#taytelista li {
-		list-style:none;
-		font-size: 12px;
-		padding:10px;
-		color:#FFF;
-	}
-	#taytelista label {
-		width: 100px;
-		display:inline-block;
-	}
+#taytelista {
+	margin: auto;
+}
+
+#taytelista li {
+	list-style: none;
+	font-size: 12px;
+	padding: 10px;
+	color: #FFF;
+}
+
+#taytelista label {
+	width: 100px;
+	display: inline-block;
+}
+
+#taytelista table {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-spacing: 0;
+}
+
+#taytelista td {
+	font-size: 12px;
+	padding: 5px;
+	color: #FFF;
+}
+
+#taytelista tr:first-of-type {
 	
-	#taytelista table {
-		margin: 0;
-		padding: 0;
-		border: 0;
-		border-spacing:0;
-	}
-	#taytelista td {
-		font-size: 12px;
-		padding:5px;
-		color:#FFF;
-	}
-	#taytelista tr:first-of-type {
-	}
-	#taytelista tr:nth-child(odd) {
-		background-color:#444444;
-	}
-	#taytelista > table > tbody > tr:nth-child(odd) > td > form > table > tbody > tr {
-		background-color:#444444;
-	}
-	#taytelista > table > tbody > tr:nth-child(even) > td > form > table > tbody > tr {
-		background-color:#656565;
-	}
-	#taytelista tr:nth-child(even) {
-		background-color:#656565;
-	}
-	
+}
+
+#taytelista tr:nth-child(odd) {
+	background-color: #444444;
+}
+
+#taytelista>table>tbody>tr:nth-child(odd)>td>form>table>tbody>tr {
+	background-color: #444444;
+}
+
+#taytelista>table>tbody>tr:nth-child(even)>td>form>table>tbody>tr {
+	background-color: #656565;
+}
+
+#taytelista tr:nth-child(even) {
+	background-color: #656565;
+}
+
 /* TAYTTEET LOPPUU */
-
-
 
 /*
 	MUOKKAA VALITTUA PIZZAA NÄKYMÄ
 */
-
-#valitse_pizza_container{
-	width:800px;
-	height:800px;
-	margin:auto;
-	margin-top:200px;
-	
+#valitse_pizza_container {
+	width: 800px;
+	height: 800px;
+	margin: auto;
+	margin-top: 200px;
 }
 
-#pizza_vasen{
-	width:500px;
-	height:800px;
-	float:left;
+#pizza_vasen {
+	width: 500px;
+	height: 800px;
+	float: left;
 }
 
-#pizza_oikea{
-	width:300px;
-	height:800px;
-	margin-left:auto;
+#pizza_oikea {
+	width: 300px;
+	height: 800px;
+	margin-left: auto;
 }
 
-#pizza_kuva{
-	width:100%;
-	height:100%;
-	object-fit:fill;
-	object-position:50% 50%;
+#pizza_kuva {
+	width: 100%;
+	height: 100%;
+	object-fit: fill;
+	object-position: 50% 50%;
 }
-
-
 
 /* RESPONSIVE */
-
 @media only screen and (max-width: 1024px) {
 	.menuitemwrap {
 		max-width: 100%;
 		width: 100%;
 	}
-	
-	
-	
 }
 /* RESPONSIVE LOPPUU */

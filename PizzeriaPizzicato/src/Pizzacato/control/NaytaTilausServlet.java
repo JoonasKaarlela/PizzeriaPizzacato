@@ -40,6 +40,7 @@ public class NaytaTilausServlet extends HttpServlet {
 		
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/Tilaukset.jsp");
 			rd.forward(request, response);
+
 	}
 
 	public void naytaTilaus(String id) {

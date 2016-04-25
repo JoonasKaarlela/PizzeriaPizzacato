@@ -1,77 +1,56 @@
-.center{
-	display:flex;
-	justify-content:center;
-	align-items:center;
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-#ostoskori{
-	width:800px;
-	height:600px;
+#ostoskori {
+	width: 800px;
+	height: 600px;
 }
 
-
-#ostoskori_tilaus_button{
-	border:2px solid white;
-	height:30px;
-	width:100%;
-	font-size:20px;
-	border-radius:0;
+#ostoskori_tilaus_button {
+	border: 2px solid white;
+	height: 30px;
+	width: 100%;
+	font-size: 20px;
+	border-radius: 0;
 }
 
-
-
-
-#ostoskori_middle{
-	height:60%;
-	display:flex;
-	flex:1;
-	flex-direction:row;
-	flex-wrap:nowrap;
-	justify-content:space-between;
+#ostoskori_middle {
+	height: 60%;
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
 }
 
-
-
-
-
-
-#ostoskori_pizzat{
-	width:60%;
-	margin:0;
-	padding:0;
-	overflow-x:hidden;
-	overflow-y:auto;
+#ostoskori_pizzat {
+	width: 60%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
-.ostoskori_pizza{
-	display:flex;
-	height:75px;
-	flex-direction:row;
-	flex:1;
-	justify-content:space-between;
-	margin:0;
-	padding:10px;
+.ostoskori_pizza {
+	height: 75px;
+	padding: 10px;
 }
 
-
-
-
-
-
-
-
-#ostoskori_lomake{
+#ostoskori_lomake {
 	width: 30%;
 }
 
-#ostoskori_tilaus{
-	height:20%;
-	display:flex;
-	justify-content:flex-end;
+#ostoskori_tilaus {
+	height: 20%;
+	display: flex;
+	justify-content: flex-end;
 }
 
-input{
-	width:100%;
-	display:block;
-	margin-bottom:25px;
+input {
+	width: 100%;
+	display: block;
+	margin-bottom: 25px;
 }

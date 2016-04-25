@@ -1,5 +1,5 @@
 package Pizzacato.control;
-
+import Pizzacato.model.dao.MausteDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Pizzacato.model.Mauste;
 import Pizzacato.model.Pizza;
 import Pizzacato.model.dao.PizzaDAO;
 
@@ -23,8 +24,10 @@ public class LisaaKoriinServlet extends HttpServlet {
 		
 		String id = request.getParameter("pizza_id");
 		int maara = Integer.parseInt(request.getParameter("maara"));
+		ArrayList<Mauste> mausteet = haeMausteet(request.getParameterValues("mausteet"));
 
 		Pizza pizza = haePizza(id);
+		pizza.setMausteet(mausteet);
 
 		for (int i = 0; i < maara; i++) {
 			if(lisaaKoriin(pizza, request.getSession())){
@@ -50,6 +53,24 @@ public class LisaaKoriinServlet extends HttpServlet {
 		}
 	}
 	
+	public ArrayList<Mauste> haeMausteet(String[] valitut_mausteet){
+		ArrayList<Mauste> mausteet = new ArrayList<>();
+		if(valitut_mausteet != null){
+			try{
+				ArrayList<Mauste> kaikki_mausteet = new MausteDAO().haeMausteet();
+				for(Mauste x : kaikki_mausteet){
+					for(String y : valitut_mausteet){
+						if(x.getMauste_id().equals(y)){
+							mausteet.add(x);
+						}
+					}
+				}
+			}catch(SQLException e){
+				System.out.println(e.getMessage());
+			}
+		}
+		return mausteet;
+	}
 	
 	@SuppressWarnings("unchecked")
 	public boolean lisaaKoriin(Pizza pizza, HttpSession session){

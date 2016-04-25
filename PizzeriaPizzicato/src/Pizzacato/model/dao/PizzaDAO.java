@@ -192,6 +192,13 @@ public class PizzaDAO extends DataAccessObject{
 		if(paivitettiin > 0){
 			System.out.println("Paivitettiin: " + paivitettiin + " attribuuttia");
 		}
+		
+		PizzanTayteDAO pizzantaytedao = new PizzanTayteDAO();
+		for(Tayte tayte : pizza.getTaytteet()){
+			pizzantaytedao.poistaPizzanTayte(pizza, tayte);
+			pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
+		}
+		
 		conn.close();
 	}
 	

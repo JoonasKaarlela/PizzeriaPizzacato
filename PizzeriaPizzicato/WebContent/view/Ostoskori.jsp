@@ -103,7 +103,6 @@
 									<th> Taytteet </th>
 									<th> Mausteet </th>
 									<th> lkm </th>
-									<th> poista </th>
 								</tr>
 							</thead>
 							

@@ -5,7 +5,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Date;
 import java.util.Random;
+
 
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
@@ -19,6 +21,12 @@ public class Utils {
 		}
 		return code;
 	}
+	
+	public String getDate(){
+		String date = new Date().toGMTString();
+		return date;
+	}
+	
 	public String objectToString(Object obj) throws IOException{
 		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
 		ObjectOutputStream objectOutputStream = new ObjectOutputStream(bytearrayoutputstream);

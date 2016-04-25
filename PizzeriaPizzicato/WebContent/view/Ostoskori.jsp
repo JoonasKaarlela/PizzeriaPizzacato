@@ -100,6 +100,7 @@
 									<th> Nimi </th>
 									<th> Hinta</th>
 									<th> Taytteet </th>
+									<th> Mausteet </th>
 									<th> lkm </th>
 									<th> poista </th>
 								</tr>
@@ -117,6 +118,11 @@
 										  	 <c:forEach items="${item.value.get(0).getTaytteet()}" var="tayte">
 										    	${tayte.getNimi()}
 										     </c:forEach>
+										  </td>
+										  <td>
+										  	 <c:forEach items="${item.value.get(0).getMausteet()}" var="mauste">
+										  	 	${mauste.getNimi()}
+										  	 </c:forEach>
 										  </td>
 										  <td> x${item.value.size()} </td>
 										  <td> <a href="poistaKorista?pizza_id=${item.key}"> <b style="color: crimson"> poista </b> </a> </td>

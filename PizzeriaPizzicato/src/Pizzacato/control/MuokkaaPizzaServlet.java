@@ -16,7 +16,6 @@ import Pizzacato.model.dao.PizzaDAO;
 import Pizzacato.model.dao.PizzanTayteDAO;
 import Pizzacato.model.dao.TayteDAO;
 
-
 @WebServlet("/muokkaa")
 public class MuokkaaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -57,7 +56,6 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 			} catch(SQLException e){
 				System.out.println(e.getMessage());
 			}
-			return pizzan_taytteet;
 		}
 		return pizzan_taytteet;
 	}

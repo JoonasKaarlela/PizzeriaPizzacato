@@ -26,8 +26,6 @@ public class ListaaTaytteetServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String sivu = "/view/Taytteet.jsp";
-		
-		Kayttaja kayttaja = (Kayttaja) request.getSession().getAttribute("kayttaja");
 
 		ArrayList<Tayte> taytteet = haeTaytteet();
 		request.setAttribute("taytteet", taytteet);

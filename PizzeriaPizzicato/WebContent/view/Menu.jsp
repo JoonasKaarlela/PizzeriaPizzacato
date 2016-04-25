@@ -1,15 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.util.ArrayList, Pizzacato.model.Pizza"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Menu</title>
-<link href="styles.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="notification.js"></script>
-</head>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Menu</title>
+		<link href="styles.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="notification.js"></script>
+	</head>
 <body>
 
 	<div class="notification">
@@ -25,10 +24,10 @@
 				<img src="pizzerialogo-lapinakyva.png" width="50" />PizzeriaPizzicato
 			</div>
 
-			<!--  JOS KIRJAUTUNUT SISÄÄN NÄYTÄ KIRAJUDU ULOS, JOS EI NIIN NÄYTÄ KIRJAUTUMIS LOMAKE -->
 			<div id="kirjaudu">
 				<c:choose>
-
+					
+					<!-- Kirjautunut -->
 					<c:when test="${sessionScope.kayttaja != null}">
 						<h1>
 							<c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out>
@@ -37,7 +36,8 @@
 							<a href="kirjauduUlos"> kirjaudu ulos </a>
 						</div>
 					</c:when>
-
+					
+					<!-- Ei kirjautunut -->
 					<c:otherwise>
 						<form method=post action="Kirjaudu" id="kirjaudu_form">
 							<div id="kayttajatunnus">
@@ -65,10 +65,10 @@
 								<c:out value="${error}"></c:out>
 							</p>
 						</div>
-
 					</c:otherwise>
 
 				</c:choose>
+				
 				<div id="yhteystiedot">
 					<p>
 						<b>Yhteystiedot</b><br> Pasilanraitio 10 D92<br> 00240
@@ -81,6 +81,7 @@
 						- 02:00<br> La 09:00 - 02:00<br> Su 10:00 - 22:30
 					</p>
 				</div>
+				
 			</div>
 
 			<!--  NAVIGOINTI -->
@@ -148,6 +149,13 @@
 														</div>
 													</div> <input type=hidden name=pizza_id
 													value="${pizza.getPizza_id()}" />
+												</td>
+												<td>
+													<select multiple>
+													<c:forEach items="${mausteet}" var="mauste">
+														<option value="${mauste.getMauste_id()}"> ${mauste.getNimi()} (${mauste.getHinta()}€) </option>
+													</c:forEach>
+													</select>
 												</td>
 											</tr>
 										</table>

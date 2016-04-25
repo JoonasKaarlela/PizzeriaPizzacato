@@ -1,0 +1,15 @@
+#tilaukset{
+	width:90%;
+	height:500px;
+	margin: 100px auto;
+}
+
+#tilaukset_poyta{
+	width:100%;
+	text-align:center;
+}
+
+.tilaus{
+	min-height:75px;
+	border-bottom:1px solid white;
+}

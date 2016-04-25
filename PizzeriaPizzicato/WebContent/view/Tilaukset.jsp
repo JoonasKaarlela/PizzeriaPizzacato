@@ -7,7 +7,7 @@
 <link href="styles.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="notification.js"></script>
 <script type="text/javascript" src="rekisterointi.js"></script>
-<link href="ostoskori.css" rel="stylesheet" type="text/css">
+<link href="tilaukset.css" rel="stylesheet" type="text/css">
 <title>Tilaukset</title>
 </head>
 <body>
@@ -67,52 +67,31 @@
 		</div>
 		
 		
-		<div>
-			<c:forEach items="${tilaukset}" var="tilaus">
-				${tilaus.getTilausId()}
-			</c:forEach>
+		<div id="tilaukset">
+			<table id="tilaukset_poyta">
+				<thead>
+					<tr>
+						<th> Tilaustunnus </th>
+						<th> Asiakas </th>
+						<th> Tilausaika </th>
+						<th> Hinta </th>
+						<th> Tila </th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${tilaukset}" var="tilaus">
+						<tr class="tilaus">
+							<td>${tilaus.getTilaus_id()}</td>
+							<td>${tilaus.getKayttaja().getKayttajatunnus()}</td>
+							<td>${tilaus.getTilausaika()}</td>
+							<td>${tilaus.getHinta()}</td>
+							<td>${tilaus.getTila()}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 		</div>
 		
 	</div>
-					<h1>Tehdyt tilaukset</h1>
-
-					<div id="ostoskori_middle">
-						<table id="ostoskori_pizzat">
-						
-							<thead>
-								<tr>
-									<th> Tilausaika </th>
-									<th> Kuva </th>
-									<th> Nimi </th>
-									<th> Hinta</th>
-									<th> Taytteet </th>
-									<th> lkm </th>
-								</tr>
-							</thead>
-							
-									<tbody>
-							<c:forEach items="${sessionScope.ostoskori}" var="item">
-								<c:choose>
-									<c:when test="${item.key != null || item.value != null || !item.value.isEmpty()}">
-										<tr class="ostoskori_pizza">
-										  <td> <img style="width:50px; height:50px; object-fit:fill;" src="${item.value.get(0).getKuva()}" /> </td>
-										  <td> ${item.value.get(0).getNimi()} </td>
-										  <td> ${item.value.get(0).getHinta()}€ </td>
-										  <td>
-										  	 <c:forEach items="${item.value.get(0).getTaytteet()}" var="tayte">
-										    	${tayte.getNimi()}
-										     </c:forEach>
-										  </td>
-										  <td>
-										  	 <c:forEach items="${item.value.get(0).getMausteet()}" var="mauste">
-										  	 	${mauste.getNimi()}
-										  	 </c:forEach>
-										  </td>
-										  <td> x${item.value.size()} </td>
-										  <td> <a href="poistaKorista?pizza_id=${item.key}"> <b style="color: crimson"> poista </b> </a> </td>
-										</tr>
-									</c:when>
-								</c:choose>
-							</c:forEach>
-						</tbody>
-						</table>
+</body>
+</html>

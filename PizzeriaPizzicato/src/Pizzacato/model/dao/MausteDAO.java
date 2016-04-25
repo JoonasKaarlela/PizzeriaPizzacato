@@ -38,6 +38,27 @@ public class MausteDAO extends DataAccessObject {
 		conn.close();
 		return mausteet;
 	}
+	
+	
+	public Mauste haeMauste(String id) throws SQLException{
+		
+		Connection conn = getConnection();
+		
+		Mauste mauste = null;
+		String SELECT = "SELECT * FROM MAUSTE WHERE mauste_id=?";
+		PreparedStatement statement = conn.prepareStatement(SELECT);
+		statement.setString(1, id);
+		ResultSet results = statement.executeQuery(); 
+				
+		if(results.next()){
+			String mauste_id = results.getString(1);
+			String nimi = results.getString(2);
+			double hinta = results.getDouble(3);
+			mauste = new Mauste(mauste_id, nimi, hinta);
+		}
+		
+		return mauste;
+	}
 
 	// LISAA UUSI MAUSTE TIETOKANTAAN.
 	public void lisaaMauste(Mauste mauste) throws SQLException {

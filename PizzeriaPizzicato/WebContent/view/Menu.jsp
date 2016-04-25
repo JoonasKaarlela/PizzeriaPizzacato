@@ -26,8 +26,7 @@
 
 			<div id="kirjaudu">
 				<c:choose>
-					
-					<!-- Kirjautunut -->
+
 					<c:when test="${sessionScope.kayttaja != null}">
 						<h1>
 							<c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out>
@@ -37,7 +36,7 @@
 						</div>
 					</c:when>
 					
-					<!-- Ei kirjautunut -->
+
 					<c:otherwise>
 						<form method=post action="Kirjaudu" id="kirjaudu_form">
 							<div id="kayttajatunnus">

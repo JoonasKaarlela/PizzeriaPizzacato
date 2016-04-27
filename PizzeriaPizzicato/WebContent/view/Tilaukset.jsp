@@ -85,7 +85,6 @@
 									<th> Kuva </th>
 									<th> Nimi </th>
 									<th> Hinta</th>
-									<th> Taytteet </th>
 									<th> lkm </th>
 								</tr>
 							</thead>
@@ -94,15 +93,10 @@
 							<c:forEach items="${sessionScope.ostoskori}" var="item">
 								<c:choose>
 									<c:when test="${item.key != null || item.value != null || !item.value.isEmpty()}">
-										<tr class="ostoskori_pizza">
+										<tr class="tilaukset_pizza">
 										  <td> <img style="width:50px; height:50px; object-fit:fill;" src="${item.value.get(0).getKuva()}" /> </td>
 										  <td> ${item.value.get(0).getNimi()} </td>
 										  <td> ${item.value.get(0).getHinta()}€ </td>
-										  <td>
-										  	 <c:forEach items="${item.value.get(0).getTaytteet()}" var="tayte">
-										    	${tayte.getNimi()}
-										     </c:forEach>
-										  </td>
 										  <td>
 										  	 <c:forEach items="${item.value.get(0).getMausteet()}" var="mauste">
 										  	 	${mauste.getNimi()}

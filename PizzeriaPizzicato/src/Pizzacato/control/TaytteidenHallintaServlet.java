@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/taytteidenhallinta")
+@WebServlet("/TaytteidenHallinta")
 public class TaytteidenHallintaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

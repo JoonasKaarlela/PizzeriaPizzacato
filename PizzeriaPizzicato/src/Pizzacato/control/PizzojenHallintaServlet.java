@@ -15,7 +15,7 @@ import Pizzacato.model.dao.PizzaDAO;
 import Pizzacato.model.Pizza;
 
 
-@WebServlet("/Pizzat")
+@WebServlet("/PizzojenHallinta")
 public class PizzojenHallintaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

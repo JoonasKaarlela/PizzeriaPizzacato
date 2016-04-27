@@ -101,11 +101,13 @@ a:hover {
 }
 
 button {
-	border: 1px solid white;
-	border-radius: 20px;
+	border: 2px solid white;
+	border-radius: 0px;
 	font-family: Arial;
 	background: transparent;
 	color: white;
+	width:75px;
+	height:25px;
 }
 
 #submit {
@@ -418,6 +420,16 @@ button {
 }
 
 
+#valitut_taytteet{
+	display:'inline-block';
+	marign:0;
+	padding:0;	
+}
+
+.tayte{
+	padding:0;
+	margin:0;
+}
 
 
 

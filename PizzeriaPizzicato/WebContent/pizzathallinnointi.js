@@ -32,25 +32,7 @@
 	};
 
 
-function valitse(valittu){
-	var nykyiset_taytteet = document.querySelector("#valitut_taytteet");
-	var tayte = document.createElement('li');
-	tayte.className = 'tayte';
-	
-	tayte.addEventListener('click', function(){	
-		var update = document.createElement("ul");
-		var value = this.innerText;
-		Array.from(nykyiset_taytteet.children).forEach(function(li){
-			if(li.innerText == value){
-				update.appendChild(li);
-			}
-		});
-		nykyiset_taytteet = update;
-	});
-	
-	tayte.innerHTML = valittu.value + " <i class='fa fa-times'></i>";
-	nykyiset_taytteet.appendChild(tayte);
-}
+
 
 
 function muokkaa(id, index){

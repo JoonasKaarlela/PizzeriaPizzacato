@@ -73,6 +73,7 @@ a:hover {
 
 #kirjaudu {
 	float: right;
+	text-align: right;
 }
 
 #kirjaudu_form {
@@ -145,11 +146,13 @@ button {
 /* YHTEYSTIEDOT JA AUKIOLOAJAT */
 #yhteystiedot {
 	float: right;
+	font-size: 14px;
 }
 
 #aukioloajat {
 	float: right;
-	margin-right: 50px;
+	margin-right: 35px;
+	font-size:14px;
 }
 
 /* YHTEYSTIEDOT JA AUKIOLOAJAT LOPPUU */
@@ -203,6 +206,7 @@ button {
 .menuitem {
 	border: 1px solid #CCC;
 	padding: 10px;
+	font-size: 14px;
 }
 
 .menuitem table {

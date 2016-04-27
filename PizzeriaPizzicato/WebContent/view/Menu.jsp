@@ -127,7 +127,7 @@
 														<img src="${pizza.getKuva()}"
 															style="width: 150px; height: 125px;" />
 													</div></td>
-												<td valign="top">
+												<td valign="middle">
 													<div class="pizzainfo">
 														<div class="pizzanimi">${pizza.getNimi()}</div>
 														<div class="pizzakuvaus">${pizza.getKuvaus()}</div>

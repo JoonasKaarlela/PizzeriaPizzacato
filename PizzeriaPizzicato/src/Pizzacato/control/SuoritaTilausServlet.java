@@ -27,6 +27,7 @@ public class SuoritaTilausServlet extends HttpServlet {
 			
 			// SUORITA TILAUS
 			TilausDAO tilausdao = new TilausDAO();
+			
 
 			try{
 				tilausdao.asetaTilaus(pizzat, (Kayttaja) request.getSession().getAttribute("kayttaja"));

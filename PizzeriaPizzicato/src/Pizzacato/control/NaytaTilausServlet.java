@@ -42,13 +42,4 @@ public class NaytaTilausServlet extends HttpServlet {
 			rd.forward(request, response);
 
 	}
-
-	public void naytaTilaus(String id) {
-
-		TilausDAO tilausdao = new TilausDAO();
-
-		tilausdao.naytaTilaus(id);
-
-}
-
 } 

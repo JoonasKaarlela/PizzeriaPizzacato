@@ -16,7 +16,7 @@ import Pizzacato.model.Pizza;
 
 
 @WebServlet("/Pizzat")
-public class HallintasivuPizzatServlet extends HttpServlet {
+public class PizzojenHallintaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 

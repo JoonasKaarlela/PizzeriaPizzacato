@@ -130,7 +130,7 @@
 	                            </td>
 	                            <td>
 	                        		<select name="taytteet">
-	                        			<c:forEach items="${pizza.getTaytteet()}" var="tayte" varStatus="status">
+	                        			<c:forEach items="${taytteet}" var="tayte" varStatus="status">
 	                        				<option value="${tayte.getNimi()}">${tayte.getNimi()}</option>
 	                        			</c:forEach>
 	                        		</select>

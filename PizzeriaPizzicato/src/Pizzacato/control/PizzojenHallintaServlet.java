@@ -29,7 +29,7 @@ public class PizzojenHallintaServlet extends HttpServlet {
 		ArrayList<Pizza> pizzat = haePizzat();
 		request.setAttribute("pizzat", pizzat);
 		
-		/*
+		/* MENEE JOSTAIN SYYSTÄ RIKKI???
 		ArrayList<Tayte> taytteet = haeTaytteet();
 		request.setAttribute("taytteet", taytteet);
 		*/
@@ -51,7 +51,6 @@ public class PizzojenHallintaServlet extends HttpServlet {
 		return pizzat;
 	}
 
-	/*
 	public ArrayList<Tayte> haeTaytteet(){
 		ArrayList<Tayte> taytteet = new ArrayList<>();
 		TayteDAO taytedao = new TayteDAO();
@@ -62,6 +61,5 @@ public class PizzojenHallintaServlet extends HttpServlet {
 		}
 		return taytteet;
 	}
-	*/
 
 }

@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Hallintasivu - Pizzat</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <script type="text/javascript" src="pizzathallinnointi.js"></script>
 <script type="text/javascript" src="taytteet.js"></script>
 
@@ -77,42 +78,95 @@
            	<c:forEach items="${pizzat}" var="pizza" varStatus="current">
             <tr>
             	<td colspan="5">
-                    <form class="pizzaform" method="post" action="">
+                    <form class="pizzaform" id="pizzaform" method="post" action="muokkaa" onSubmit="validoi(event)">
+                    <div class="error"></div>
+                   	<div class="pizza">
                     	<table>
-                        <tr>
-                        	<td>
-                            	<input type="hidden" value="${pizza.getPizza_id()}" name="pizza_id">
-                            	<input disabled type="text" value="${pizza.getNimi()}" name="nimi">
-                            </td>
-                            <td>
-                            	<input disabled type="text" value="${pizza.getKuvaus()}" name="kuvaus">
-                            </td>
-                            <td>
-                            	<input disabled type="text" value="${pizza.getHinta()}" name="hinta">
-                            </td>
-                            <td>
-                            	<input disabled type="text" value="${pizza.getListalla()}" name="listalla">
-                            </td>
-                            <td rowspan="2" align="right">
-                            	<button type="submit" value="muokkaa">Muokkaa</button><button value="poista">Poista</button>
-                            </td>
-                        </tr>
-                        <tr>
-                        	<td colspan="5">
-                        	
-                        		<ul id="valitut_taytteet">
-                        			<!-- Valitut täytteet -->
-                        		</ul>
-                        		
-                        		<select onchange='valitse(this)'>
-                        			<c:forEach items="${pizza.getTaytteet()}" var="tayte" varStatus="status">
-                        				<option value="${tayte.getNimi()}">${tayte.getNimi()}</option>
-                        			</c:forEach>
-                        		</select>
-                        		
-                        	</td>
-                        </tr>
+	                        <tr>
+	                        	<td>
+	                            	<input type="hidden" value="${pizza.getPizza_id()}" name="pizza_id">
+	                            	<input disabled type="text" value="${pizza.getNimi()}" name="nimi">
+	                            </td>
+	                            <td>
+	                            	<input disabled type="text" value="${pizza.getKuvaus()}" name="kuvaus">
+	                            </td>
+	                            <td>
+	                            	<input disabled type="text" value="${pizza.getHinta()}" name="hinta">
+	                            </td>
+	                            <td>
+	                            	<label for="listalla"> Listalla </label>
+	                            	<input disabled type="checkbox" checked="${pizza.getListalla()}" value="${pizza.getListalla()}" name="listalla">
+	                            </td>
+	                            
+	                            <td rowspan="2" align="right">
+	                            	<button onClick="muokkaa('${pizza.getPizza_id()}', '${current.index}'); return false;"> Muokkaa</button>
+	                            </td>
+	                            
+	                            <td class='hidden'>
+	                            	<button type=submit> Tallenna </button>
+	                            </td>
+	                            
+	                        </tr>
+	                        <tr>
+	                        	<td colspan="5">
+	                        	
+	                        		<ul id="valitut_taytteet">
+	                        			<!-- Valitut täytteet -->
+	                        		</ul>
+	                        		
+	                        		<select onchange='valitse(this)'>
+	                        			<c:forEach items="${pizza.getTaytteet()}" var="tayte" varStatus="status">
+	                        				<option value="${tayte.getNimi()}">${tayte.getNimi()}</option>
+	                        			</c:forEach>
+	                        		</select>
+	                        		
+	                        	</td>
+	                        </tr>                       	
                         </table>
+                        </div>
+                        
+                        <div class="muokkaus">
+                        <table>
+	                        <tr>
+	                        	<td>
+	                            	<input type="hidden" value="${pizza.getPizza_id()}" name="pizza_id">
+	                            	<input  type="text" value="${pizza.getNimi()}" name="nimi">
+	                            </td>
+	                            <td>
+	                            	<input  type="text" value="${pizza.getKuvaus()}" name="kuvaus">
+	                            </td>
+	                            <td>
+	                            	<input type="text" value="${pizza.getHinta()}" name="hinta">
+	                            </td>
+	                            <td>
+	                            	<label for="listalla"> Listalla </label>
+	                            	<input type="checkbox" checked="${pizza.getListalla()}" value="${pizza.getListalla()}" name="listalla">
+	                            </td>
+	                            
+	                            <td rowspan="2" align="right">
+	                            	<button type="submit"> Tallenna</button>
+	                            	<a href="poista?id=${pizza.getPizza_id()}"> Poista </a>
+	                            </td>
+
+	                        </tr>
+	                        <tr>
+	                        	<td colspan="5">
+	                        	
+	                        		<ul id="valitut_taytteet">
+	                        			<!-- Valitut täytteet -->
+	                        		</ul>
+	                        		
+	                        		<select onchange='valitse(this)'>
+	                        			<c:forEach items="${pizza.getTaytteet()}" var="tayte" varStatus="status">
+	                        				<option value="${tayte.getNimi()}">${tayte.getNimi()}</option>
+	                        			</c:forEach>
+	                        		</select>
+	                        		
+	                        	</td>
+	                        </tr>                       	
+                        </table>
+                        </div>
+                        
                     </form>
                 </td>
             </tr>
@@ -121,5 +175,6 @@
     </div>
 </div>
 
+<script type="text/javascript" src="pizzathallinnointi.js"></script>
 </body>
 </html>

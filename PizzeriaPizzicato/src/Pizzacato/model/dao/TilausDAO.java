@@ -78,6 +78,8 @@ public class TilausDAO extends DataAccessObject {
 			Date tilaus_aika = results.getDate(2);
 			double hinta = results.getDouble(3);
 			String tila = results.getString(4);
+			
+			// ?
 			String kayttaja_id = results.getString(5);
 			
 			Tilaus tilaus = new Tilaus(tilaus_id, kayttaja, tilaus_aika, hinta, tila);

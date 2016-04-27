@@ -96,7 +96,7 @@
 					</c:if>
 					
 					<c:if test="${sessionScope.kayttaja.isOmistaja()}">
-						<li><a href="HallinnoiPizzoja"> Hallinnoi </a> </li>
+						<li><a href="PizzojenHallinta"> Hallinnoi </a> </li>
 					</c:if>
 
 				</ul>

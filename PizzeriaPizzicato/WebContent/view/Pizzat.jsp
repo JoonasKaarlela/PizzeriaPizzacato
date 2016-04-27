@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Hallintasivu - Pizzat</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="pizzathallinnointi.js"></script>
 <script type="text/javascript" src="taytteet.js"></script>
 
 </head>
@@ -19,13 +19,16 @@
 	<div id="hallintanav">
     	<ul>
         	<li>
-            	<a href="Taytteet">Täytteet</a>
+            	<a href="TaytteidenHallinta">Täytteet</a>
         	</li>
             <li class="aktiivinen">
-            	<a href="Pizzat">Pizzat</a>
+            	<a href="PizzojenHallinta">Pizzat</a>
             </li>
             <li>	
-            	<a href="#">Tilaukset</a>
+            	<a href="TilaustenHallinta">Tilaukset</a>
+            </li>
+            <li>
+            	<a href="MausteidenHallinta"> Mausteet </a>
             </li>
     	</ul>
     </div>
@@ -96,13 +99,17 @@
                         </tr>
                         <tr>
                         	<td colspan="5">
-                        		Täyte 1
-                        		<select>
-                        			<option value="" selected>Valitse täyte</option>
+                        	
+                        		<ul id="valitut_taytteet">
+                        			<!-- Valitut täytteet -->
+                        		</ul>
+                        		
+                        		<select onchange='valitse(this)'>
                         			<c:forEach items="${pizza.getTaytteet()}" var="tayte" varStatus="status">
-                        			<option>${tayte.getNimi()}</option>
+                        				<option value="${tayte.getNimi()}">${tayte.getNimi()}</option>
                         			</c:forEach>
                         		</select>
+                        		
                         	</td>
                         </tr>
                         </table>

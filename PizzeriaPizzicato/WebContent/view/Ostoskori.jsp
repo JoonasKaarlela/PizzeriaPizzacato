@@ -132,14 +132,14 @@
 							</c:forEach>
 						</tbody>
 						</table>
+					</div>
 
+					<div id="ostoskori_bottom">
 						<form action=suoritaTilaus method=post onSubmit="validoi()"
 							id="ostoskori_lomake">
 							<h2>Osoite tiedot</h2>
-							<strong class="error" style="color: crimson;"></strong> <input
-								name="kayttajatunnus_rek" maxlength="25" required
-								placeholder="kayttajatunnus"
-								value="${sessionScope.kayttaja.getKayttajatunnus()}" /> <input
+							<strong class="error" style="color: crimson;"></strong> 
+								<input
 								name="osoite_rek" maxlength="50" required placeholder="osoite"
 								value="${sessionScope.kayttaja.getOsoite()}" /> <input
 								name="puh_rek" type="tel" maxlength="25" placeholder="puh"
@@ -153,17 +153,15 @@
 								</button>
 							</c:if>
 						</form>
-					</div>
 
-
-					<div id="ostoskori_tilaus">
-						<c:if test="${requestScope.tyhja == null}">
-							<strong style="font-size: 100px;"> ${requestScope.summa}
-								€ </strong>
-						</c:if>
+						<div id="ostoskori_tilaus">
+							<c:if test="${requestScope.tyhja == null}">
+								<div> <strong style="font-size: 100px;"> ${requestScope.summa}€ </strong>  </div>
+							</c:if>
+						</div>
 					</div>
 				</c:when>
-
+					
 				<c:otherwise>
 					<div>
 						<h3>Et ole valinnut tuotteita.</h3>

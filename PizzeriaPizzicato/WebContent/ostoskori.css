@@ -5,7 +5,8 @@
 }
 
 #ostoskori {
-	width: 800px;
+	margin:50px auto;
+	width: 90%;
 	height: 600px;
 }
 
@@ -13,12 +14,12 @@
 	border: 2px solid white;
 	height: 30px;
 	width: 100%;
-	font-size: 20px;
+	font-size: 15px;
 	border-radius: 0;
 }
 
 #ostoskori_middle {
-	height: 60%;
+	height: 50%;
 	display: flex;
 	flex: 1;
 	flex-direction: row;
@@ -27,26 +28,39 @@
 }
 
 #ostoskori_pizzat {
-	width: 60%;
+	width: 100%;
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
 	overflow-y: auto;
+	text-align:center;
 }
 
 .ostoskori_pizza {
 	height: 75px;
 	padding: 10px;
+	font-size:80%;
+}
+
+#ostoskori_bottom{
+	height:250px;
+	width:100%;
+	display:flex;
+	flex:nowrap row;
+	justify-content:space-between;
 }
 
 #ostoskori_lomake {
 	width: 30%;
+	height:100%;
 }
 
 #ostoskori_tilaus {
-	height: 20%;
-	display: flex;
-	justify-content: flex-end;
+	height: 100%;
+	width:30%;
+	display:flex;
+	justify-content:center;
+	align-items:center;
 }
 
 input {

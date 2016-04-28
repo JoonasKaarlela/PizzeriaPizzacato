@@ -16,6 +16,15 @@ public class Tilaus {
 		this.hinta = hinta;
 		this.tila = tila;
 	}
+	
+	public Tilaus(String tilaus_id, Date tilausaika, double hinta, String tila){
+		this.tilaus_id = tilaus_id;
+		this.kayttaja = null;
+		this.tilausaika = tilausaika;
+		this.hinta = hinta;
+		this.tila = tila;
+	}
+	
 
 	public Kayttaja getKayttaja() {
 		return kayttaja;

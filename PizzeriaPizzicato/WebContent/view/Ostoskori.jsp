@@ -82,7 +82,7 @@
 					</c:if>
 					
 					<c:if test="${sessionScope.kayttaja != null && sessionScope.kayttaja.isOmistaja()}">
-						<li><a href="Tilaukset">Hallinnoi</a></li>
+						<li><a href="PizzojenHallinta">Hallinnoi</a></li>
 					</c:if>
 					
 				</ul>
@@ -92,7 +92,12 @@
 
 		<div class="clear"></div>
 
-
+		<!--  BANNERI -->
+		<div id="banner">
+			<div class="bannertxt">Ostoskori</div>
+		</div>
+		
+		
 		<div id="ostoskori">
 			<!--  PIZZAT || ILMOITUS -->
 			<c:choose>

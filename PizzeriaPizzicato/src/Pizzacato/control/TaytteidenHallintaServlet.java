@@ -1,5 +1,11 @@
 package Pizzacato.control;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import Pizzacato.model.Tayte;
+import Pizzacato.model.dao.TayteDAO;
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -16,6 +22,20 @@ public class TaytteidenHallintaServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dp = request.getServletContext().getRequestDispatcher("/view/Taytteet.jsp");
+		
+		ArrayList<Tayte> taytteet = haeTaytteet();
+		request.setAttribute("taytteet", taytteet);
+		
 		dp.forward(request, response);
+	}
+
+	public ArrayList<Tayte> haeTaytteet() {
+		ArrayList<Tayte> taytteet = new ArrayList<>();
+		try{
+			taytteet = new TayteDAO().haeTaytteet();
+		}catch(SQLException e){
+			System.out.println(e.getMessage());
+		}
+		return taytteet;
 	}
 }

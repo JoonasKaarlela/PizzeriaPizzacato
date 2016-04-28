@@ -92,7 +92,7 @@
 					<li><a href="Ostoskori">Ostoskori</a> </li>
 
 					<c:if test="${sessionScope.kayttaja != null}">
-						<li><a href="NaytaTilaus">Tilaukset</a></li>
+						<li><a href="Tilaukset">Tilaukset</a></li>
 					</c:if>
 					
 					<c:if test="${sessionScope.kayttaja.isOmistaja()}">
@@ -152,13 +152,6 @@
 														</div>
 													</div> <input type=hidden name=pizza_id
 													value="${pizza.getPizza_id()}" />
-												</td>
-												<td>
-													<select multiple>
-													<c:forEach items="${mausteet}" var="mauste">
-														<option value="${mauste.getMauste_id()}"> ${mauste.getNimi()} (${mauste.getHinta()}€) </option>
-													</c:forEach>
-													</select>
 												</td>
 											</tr>
 										</table>

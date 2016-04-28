@@ -20,7 +20,7 @@ public class TilaustenHallintaServlet extends HttpServlet {
        
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String sivu = "/view/Admintilaukset.jsp";
+		String sivu = "/view/Tilaukset.jsp";
 		
 		ArrayList<Tilaus> tilaukset = haeTilaukset();
 		request.setAttribute("tilaukset", tilaukset);
@@ -35,7 +35,7 @@ public class TilaustenHallintaServlet extends HttpServlet {
 			ArrayList<Tilaus> tilaukset = new ArrayList<>();
 			TilausDAO tilausdao = new TilausDAO ();
 			try {
-				tilaukset = tilausdao.haeTilaukset(null);
+				tilaukset = tilausdao.haeTilaukset();
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}

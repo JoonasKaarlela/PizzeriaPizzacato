@@ -16,7 +16,7 @@
 <div id="wrapper">	
 
     <h1>Hallintasivu</h1>
-    <h3><a href="Menu">Palaa pääsivulle</a></h3>
+    <h3><a href="Menu">  <i class="fa fa-arrow-left"></i> Takaisin</a></h3>
 	<div id="hallintanav">
     	<ul>
         	<li>

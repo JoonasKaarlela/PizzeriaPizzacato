@@ -29,10 +29,9 @@ public class PizzojenHallintaServlet extends HttpServlet {
 		ArrayList<Pizza> pizzat = haePizzat();
 		request.setAttribute("pizzat", pizzat);
 		
-		/* MENEE JOSTAIN SYYSTÄ RIKKI???
 		ArrayList<Tayte> taytteet = haeTaytteet();
 		request.setAttribute("taytteet", taytteet);
-		*/
+		
 		
 		RequestDispatcher dp = getServletContext().getRequestDispatcher(sivu);
 		dp.forward(request, response);

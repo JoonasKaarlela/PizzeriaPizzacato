@@ -16,7 +16,7 @@ public class PoistaTayteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
+		String id = request.getParameter("tayte_id");
 		
 		if(poistaTayte(id)){
 			request.getSession(false).setAttribute("notification", "tayte " + id + " poistettiin!");

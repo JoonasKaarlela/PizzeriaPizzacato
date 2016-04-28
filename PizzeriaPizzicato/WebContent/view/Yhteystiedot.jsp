@@ -81,8 +81,15 @@
 				<ul>
 					<li><a href="Menu">Menu</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
-					<li><a href="Ostoskori">Ostoskori</a></li>
-					<li><a href="Tilaukset">Tilaukset</a></li>
+					<li><a href="Ostoskori">Ostoskori</a> </li>
+
+					<c:if test="${sessionScope.kayttaja != null}">
+						<li><a href="NaytaTilaus">Tilaukset</a></li>
+					</c:if>
+					
+					<c:if test="${sessionScope.kayttaja.isOmistaja()}">
+						<li><a href="PizzojenHallinta"> Hallinnoi </a> </li>
+					</c:if>
 				</ul>
 			</div>
 			<!-- NAV LOPPUU -->

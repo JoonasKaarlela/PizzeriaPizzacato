@@ -76,7 +76,15 @@
 					<li><a href="Menu">Menu</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
 					<li><a href="Ostoskori">Ostoskori</a></li>
-					<li><a href="Tilaukset">Tilaukset</a></li>
+					
+					<c:if test="${sessionScope.kayttaja != null}">
+						<li><a href="Tilaukset">Tilaukset</a></li>
+					</c:if>
+					
+					<c:if test="${sessionScope.kayttaja != null && sessionScope.kayttaja.isOmistaja()}">
+						<li><a href="Tilaukset">Hallinnoi</a></li>
+					</c:if>
+					
 				</ul>
 			</div>
 			<!-- NAV LOPPUU -->

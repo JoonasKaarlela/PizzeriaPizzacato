@@ -16,7 +16,7 @@
 <div id="wrapper">	
 
     <h1>Hallintasivu</h1>
-    <h3><a href="Menu">Palaa pääsivulle</a></h3>
+    <h3><a href="Menu"> <i class="fa fa-arrow-left"></i> Takaisin </a></h3>
 	<div id="hallintanav">
     	<ul>
         	<li>
@@ -42,7 +42,7 @@
 		                
 		                <!-- LISÄÄ PIZZA -->
 		                <div>
-		                    <form method="post" action="lisaa">
+		                    <form method="post" action="LisaaPizza">
 		                        <label>Pizzannimi</label><input name="nimi" placeholder="pizzan nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" /><br />
 		                        <label>Pizzan kuvaus</label><input name="kuvaus" placeholder="kuvaus" /><br />
 		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" /><br />
@@ -81,20 +81,19 @@
            	<c:forEach items="${pizzat}" var="pizza" varStatus="current">
             <tr>
             	<td colspan="5">
-                    <form class="pizzaform" id="pizzaform" method="post" action="muokkaa" onSubmit="validoi(event)">
+                    <form class="pizzaform" id="pizzaform" method="post" action="MuokkaaPizzaa" onSubmit="validoi(event)">
                     <div class="error"></div>
                    	<div class="pizza">
                     	<table>
 	                        <tr>
 	                        	<td>
-	                            	<input type="hidden" value="${pizza.getPizza_id()}" name="pizza_id">
-	                            	<input disabled type="text" value="${pizza.getNimi()}" name="nimi">
+	                            	${pizza.getNimi()}
 	                            </td>
 	                            <td>
-	                            	<input disabled type="text" value="${pizza.getKuvaus()}" name="kuvaus">
+	                            	${pizza.getKuvaus()}
 	                            </td>
 	                            <td>
-	                            	<input disabled type="text" value="${pizza.getHinta()}" name="hinta">
+	                            	${pizza.getHinta()}
 	                            </td>
 	                            <td>
 	                            	<c:forEach items="${pizza.getTaytteet()}" var="tayte">
@@ -103,11 +102,11 @@
 	                            </td>
 	                            <td>
 	                            	<label for="listalla"> Listalla </label>
-	                            	<input disabled type="checkbox" checked="${pizza.getListalla()}" value="${pizza.getListalla()}" name="listalla">
+	                            	<input readonly="readonly" type="checkbox" checked="${pizza.getListalla()}">
 	                            </td>
 	                            
 	                            <td rowspan="2" align="right">
-	                            	<button onClick="muokkaa('${pizza.getPizza_id()}', '${current.index}'); return false;"> Muokkaa</button>
+	                            	<button onClick="muokkaa('${current.index}'); return false;"> Muokkaa</button>
 	                            </td>
 
 	                            
@@ -142,7 +141,7 @@
 	                            
 	                            <td rowspan="2" align="right">
 	                            	<button type="submit"> Tallenna</button>
-	                            	<a href="poista?id=${pizza.getPizza_id()}"> Poista </a>
+	                            	<a href="PoistaPizza?id=${pizza.getPizza_id()}"> Poista </a>
 	                            </td>
 
 	                        </tr>                    	

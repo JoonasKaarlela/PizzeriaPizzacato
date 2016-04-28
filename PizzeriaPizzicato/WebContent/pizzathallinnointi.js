@@ -35,7 +35,7 @@
 
 
 
-function muokkaa(id, index){
+function muokkaa(index){
 	var pizza = document.querySelectorAll(".pizza")[index];
 	var muokkaa = document.querySelectorAll(".muokkaus")[index];
 	

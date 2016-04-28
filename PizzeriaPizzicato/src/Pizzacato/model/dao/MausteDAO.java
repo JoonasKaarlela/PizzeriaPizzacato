@@ -67,7 +67,7 @@ public class MausteDAO extends DataAccessObject {
 		Connection conn = getConnection();
 
 		// LISAYS LAUSE
-		String query = "INSERT INTO MAUSTE(mauste_id, nimi) VALUES(?, ?, ?)";
+		String query = "INSERT INTO MAUSTE(mauste_id, nimi, hinta) VALUES(?, ?, ?)";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, mauste.getMauste_id());
 		statement.setString(2, mauste.getNimi());

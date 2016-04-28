@@ -38,7 +38,7 @@ public class NaytaTilausServlet extends HttpServlet {
 				System.out.println(error.getMessage());
 			}
 		
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/Tilaukset.jsp");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/OmatTilaukset.jsp");
 			rd.forward(request, response);
 
 	}

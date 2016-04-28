@@ -28,7 +28,7 @@ public class LisaaMausteServlet extends HttpServlet {
 			request.getSession(false).setAttribute("notification", mauste.getNimi() + " lisättiin!");
 		}
 		
-		response.sendRedirect("Mausteet");
+		response.sendRedirect("MausteidenHallinta");
 	}
 		
 	public boolean lisaaMauste(Mauste mauste){

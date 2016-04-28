@@ -101,8 +101,7 @@
 	                            	</c:forEach>
 	                            </td>
 	                            <td>
-	                            	<label for="listalla"> Listalla </label>
-	                            	<input readonly="readonly" type="checkbox" checked="${pizza.getListalla()}">
+	                            	<input disabled type="checkbox" checked="${pizza.getListalla()}">
 	                            </td>
 	                            
 	                            <td rowspan="2" align="right">
@@ -135,7 +134,6 @@
 	                        		</select>
 	                            </td>
 	                            <td>
-	                            	<label for="listalla"> Listalla </label>
 	                            	<input type="checkbox" checked="${pizza.getListalla()}" value="${pizza.getListalla()}" name="listalla">
 	                            </td>
 	                            

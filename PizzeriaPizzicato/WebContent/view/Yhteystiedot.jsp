@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Menu</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -18,18 +19,18 @@
 				<img src="pizzerialogo-lapinakyva.png" width="50" />PizzeriaPizzicato
 			</div>
 
-			<!--  JOS KIRJAUTUNUT SISÄÄN NÄYTÄ KIRAJUDU ULOS, JOS EI NIIN NÄYTÄ KIRJAUTUMIS LOMAKE -->
 			<div id="kirjaudu">
 				<c:choose>
 
 					<c:when test="${sessionScope.kayttaja != null}">
-						<h1>
-							<c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out>
-						</h1>
+						<p>
+							<strong> <i class="fa fa-user"></i> ${sessionScope.kayttaja.getKayttajatunnus()} </strong>
+						</p>
 						<div>
 							<a href="kirjauduUlos"> kirjaudu ulos </a>
 						</div>
 					</c:when>
+					
 
 					<c:otherwise>
 						<form method=post action="Kirjaudu" id="kirjaudu_form">
@@ -44,9 +45,12 @@
 										required />
 								</div>
 							</div>
-							<div id="submit">
+							<div id="submit" style="display: inline-block;">
 								<div>
 									<button type=submit>kirjaudu</button>
+								</div>
+								<div>
+									<a href="Rekisterointi"> rekisteroidy </a>
 								</div>
 							</div>
 						</form>
@@ -55,12 +59,10 @@
 								<c:out value="${error}"></c:out>
 							</p>
 						</div>
-
 					</c:otherwise>
 
 				</c:choose>
-
-				<div class="clear"></div>
+				
 				<div id="yhteystiedot">
 					<p>
 						<b>Yhteystiedot</b><br> Pasilanraitio 10 D92<br> 00240
@@ -73,6 +75,7 @@
 						- 02:00<br> La 09:00 - 02:00<br> Su 10:00 - 22:30
 					</p>
 				</div>
+				
 			</div>
 
 			<!--  NAVIGOINTI -->
@@ -90,6 +93,7 @@
 					<c:if test="${sessionScope.kayttaja.isOmistaja()}">
 						<li><a href="PizzojenHallinta"> Hallinnoi </a> </li>
 					</c:if>
+
 				</ul>
 			</div>
 			<!-- NAV LOPPUU -->

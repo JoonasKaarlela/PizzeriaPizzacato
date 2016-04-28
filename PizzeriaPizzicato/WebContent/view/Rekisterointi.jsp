@@ -31,9 +31,9 @@
 				<c:choose>
 
 					<c:when test="${sessionScope.kayttaja != null}">
-						<h1>
-							<c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out>
-						</h1>
+						<p>
+							${sessionScope.kayttaja.getKayttajatunnus()}
+						</p>
 						<div>
 							<a href="kirjauduUlos"> kirjaudu ulos </a>
 						</div>
@@ -53,7 +53,7 @@
 										required />
 								</div>
 							</div>
-							<div id="submit" style="display: inline-block">
+							<div id="submit" style="display: inline-block;">
 								<div>
 									<button type=submit>kirjaudu</button>
 								</div>
@@ -92,7 +92,7 @@
 				<ul>
 					<li><a href="Menu">Menu</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
-					<li><a href="Ostoskori">Ostoskori</a></li>
+					<li><a href="Ostoskori">Ostoskori</a> </li>
 
 					<c:if test="${sessionScope.kayttaja != null}">
 						<li><a href="Tilaukset">Tilaukset</a></li>

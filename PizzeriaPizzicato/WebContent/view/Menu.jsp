@@ -7,6 +7,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Menu</title>
 		<link href="styles.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 		<script type="text/javascript" src="notification.js"></script>
 	</head>
 <body>
@@ -28,9 +29,9 @@
 				<c:choose>
 
 					<c:when test="${sessionScope.kayttaja != null}">
-						<h1>
-							<c:out value="${sessionScope.kayttaja.getKayttajatunnus()}"></c:out>
-						</h1>
+						<p>
+							<strong> <i class="fa fa-user"></i> ${sessionScope.kayttaja.getKayttajatunnus()} </strong>
+						</p>
 						<div>
 							<a href="kirjauduUlos"> kirjaudu ulos </a>
 						</div>
@@ -50,7 +51,7 @@
 										required />
 								</div>
 							</div>
-							<div id="submit" style="display: inline-block">
+							<div id="submit" style="display: inline-block;">
 								<div>
 									<button type=submit>kirjaudu</button>
 								</div>
@@ -129,19 +130,18 @@
 													</div></td>
 												<td valign="middle">
 													<div class="pizzainfo">
-														<div class="pizzanimi">${pizza.getNimi()}</div>
-														<div class="pizzakuvaus">${pizza.getKuvaus()}</div>
-														<div class="pizzahinta">${pizza.getHinta()}€</div>
+														<div class="pizzanimi"> <h2> ${pizza.getNimi()} </h2> </div>
+														<div class="pizzakuvaus">  ${pizza.getKuvaus()} </div>
+														<div class="pizzahinta"> ${pizza.getHinta()}€ </div>
 														<div class="pizzantayte">
-															<c:forEach items="${pizza.getTaytteet()}" var="tayte"
-																varStatus="status">
-												${tayte.getNimi()}
-											</c:forEach>
+															<p>
+																<c:forEach items="${pizza.getTaytteet()}" var="tayte" varStatus="status">
+																	${tayte.getNimi()}
+																</c:forEach>
+															</p>
 														</div>
-														<div style="display: inline-block;">
-															<button type=submit>
-																<strong> valitse </strong>
-															</button>
+														<div style="display:'inline-block'">
+															<button type=submit> <strong> valitse </strong> </button>
 															<select name="maara">
 																<option value=1>1</option>
 																<option value=2>2</option>
@@ -150,8 +150,9 @@
 																<option value=5>5</option>
 															</select>
 														</div>
-													</div> <input type=hidden name=pizza_id
-													value="${pizza.getPizza_id()}" />
+															
+														</div>
+													<input type=hidden name=pizza_id value="${pizza.getPizza_id()}" />
 												</td>
 											</tr>
 										</table>

@@ -26,6 +26,10 @@ public class PoistaMausteSerlvet extends HttpServlet {
 		}catch(SQLException e){
 			System.out.println(e.getMessage());
 		}
+		
+		
+		response.sendRedirect("MausteidenHallinta");
+		
 	}
 
 

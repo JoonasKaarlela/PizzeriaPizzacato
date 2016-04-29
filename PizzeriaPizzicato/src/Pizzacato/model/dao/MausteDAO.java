@@ -89,7 +89,7 @@ public class MausteDAO extends DataAccessObject {
 		Connection conn = getConnection();
 
 		// POISTO LAUSE
-		String query = "DELETE FROM MAUSTE WHERE tayte_id=?";
+		String query = "DELETE FROM MAUSTE WHERE mauste_id=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, mauste_id);
 

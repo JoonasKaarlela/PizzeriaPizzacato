@@ -119,17 +119,17 @@
 		
 			<form id="rekisterointi_form">
 				<label for=kayttajatunnus_rek> kayttaja </label>
-				<input name="kayttajatunnus_rek" placeholder="kayttajatunnus" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" />
+				<input name="kayttajatunnus_rek" placeholder="kayttajatunnus" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" size="15"/>
 				<label for=salasana_rek> salasana </label>
-				<input name="salasana_rek" placeholder="(vähintään 8 merkkiä)" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" />
+				<input name="salasana_rek" placeholder="(vähintään 8 merkkiä)" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" size="20" />
 				<label for=salasana_rek2> salasana(uudestaan) </label>
-				<input name="salasana2_rek" placeholder="(vähintään 8 merkkiä)" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" />
+				<input name="salasana2_rek" placeholder="(vähintään 8 merkkiä)" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" size="20" />
 				<label for=osoite_rek> osoite </label>
-				<input name="osoite_rek" placeholder="asiakastie123" />
+				<input name="osoite_rek" placeholder="asiakastie123" size="20"/>
 				<label for=puh> puhelin </label>
-				<input name="puh" placeholder="0400123123" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" />
+				<input name="puh" placeholder="0400123123" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" size="20" />
 				<label for=sahkoposti> sahkoposti </label>
-				<input name="sahkoposti" placeholder="asiakas@domain.fi" />
+				<input name="sahkoposti" placeholder="asiakas@domain.fi" size="20" />
 				<button type="submit"> Tallenna </button>
 			</form>
 		

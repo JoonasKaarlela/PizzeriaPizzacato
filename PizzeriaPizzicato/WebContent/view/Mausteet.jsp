@@ -43,8 +43,8 @@
 		                <!-- LISÄÄ PIZZA -->
 		                <div>
 		                    <form method="post" action="LisaaMauste">
-		                        <label>Nimi</label><input name="nimi" placeholder="mausteen nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" /><br />
-		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" /><br />
+		                        <label>Nimi</label><input name="nimi" placeholder="mausteen nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="15" />
+		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4" /><br />
 		                        <button type="submit"> Lisää </button>
 		                    </form>
 		                </div>
@@ -93,10 +93,10 @@
 			                        <tr>
 			                        	<td>
 			                            	<input type="hidden" value="${mauste.getMauste_id()}" name="id">
-			                            	<input type="text" value="${mauste.getNimi()}" name="nimi">
+			                            	<input type="text" value="${mauste.getNimi()}" name="nimi" size="20">
 			                            </td>
 			                            <td>
-			                            	<input type="text" value="${mauste.getHinta()}" name="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx">
+			                            	<input type="text" value="${mauste.getHinta()}" name="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4">
 			                            </td>
 			                            
 			                            <td rowspan="2" align="right">

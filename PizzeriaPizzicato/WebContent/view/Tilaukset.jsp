@@ -103,19 +103,19 @@
 	                        <table>
 		                        <tr>
 		                        	<td>
-		                            	<input value="${tilaus.getTilaus_id()}" name="tilaus_id">
+		                            	<input disabled value="${tilaus.getTilaus_id()}" name="tilaus_id">
 		                            </td>
 		                            
 		                            <td>
-		                            	<input  value="${tilaus.getKayttaja().getKayttajatunnus()}" name="kayttajatunnus">
+		                            	<input disabled  value="${tilaus.getKayttaja().getKayttajatunnus()}" name="kayttajatunnus">
 		                            </td>
 		                            
 		                            <td>
-		                            	<input  value="${tilaus.getTilausaika()}" name="tilausaika">
+		                            	<input disabled value="${tilaus.getTilausaika()}" name="tilausaika">
 		                            </td>
 		                            
 		                            <td>
-		                            	<input value="${tilaus.getHinta()}" name="hinta">
+		                            	<input disabled value="${tilaus.getHinta()}" name="hinta">
 		                            </td>
 		        
 		        					<td>

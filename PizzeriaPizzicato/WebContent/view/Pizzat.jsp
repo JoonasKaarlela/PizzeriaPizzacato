@@ -43,9 +43,9 @@
 		                <!-- LISÄÄ PIZZA -->
 		                <div>
 		                    <form method="post" action="LisaaPizza">
-		                        <label>Pizzannimi</label><input name="nimi" placeholder="pizzan nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" /><br />
-		                        <label>Pizzan kuvaus</label><input name="kuvaus" placeholder="kuvaus" /><br />
-		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" /><br />
+		                        <label>Pizzannimi</label><input name="nimi" placeholder="pizzan nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="15" /><br />
+		                        <label>Pizzan kuvaus</label><input name="kuvaus" placeholder="kuvaus" size="30" /><br />
+		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4" /><br />
 		                        <label>Pizzan täytteet</label><select multiple name="taytteet">
 		                        	<c:forEach items="${taytteet}" var="tayte" varStatus="current">
 		                        		<label> Täyte ${current.index} </label><option value="${tayte.getTayte_id()}"> ${tayte.getNimi()} </option>

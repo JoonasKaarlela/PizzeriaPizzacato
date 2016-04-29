@@ -27,7 +27,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		String nimi = request.getParameter("nimi");
 		ArrayList<Tayte> taytteet = haeTaytteet(request.getParameterValues("taytteet"));
 		String kuvaus = request.getParameter("kuvaus");
-		boolean listalla = listalla(request.getParameter("piilossa"));
+		boolean listalla = listalla(request.getParameter("listalla"));
 		Double hinta = Double.parseDouble(request.getParameter("hinta"));
 		String kuva = "pizza1.png";
 		
@@ -57,12 +57,21 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 				System.out.println(e.getMessage());
 			}
 		}
+		for(Tayte tayte : pizzan_taytteet){
+			System.out.println(tayte.getNimi());
+		}
 		return pizzan_taytteet;
 	}
 	
 	
 	public boolean listalla(String listalla){
-		return listalla != null ? true : false;
+		if(listalla != null){
+			System.out.println("ok");
+			return true;
+		} else {
+			System.out.println("null");
+			return false;
+		}
 	}
 	
 	
@@ -72,6 +81,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 			pizzadao.muokkaaPizzaa(pizza);
 			return true;
 		} catch(SQLException e){
+			System.out.println("EI VOITU MUOKATA PIZZAA");
 			System.out.println("ERROR: " + e.getMessage());
 		}
 		return false;

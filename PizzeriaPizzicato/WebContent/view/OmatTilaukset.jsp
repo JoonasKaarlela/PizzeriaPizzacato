@@ -114,8 +114,10 @@
 
 		<!--  PIZZA MENU ALKAA -->
 		<div id="content">
+			<c:choose>
 			
-			<table style="width:90%; height:auto; text-align:center; margin: 50px auto;">
+				<c:when test="${!tilaukset.isEmpty() && tilaukset != null}">
+					<table style="width:90%; height:auto; text-align:center; margin: 50px auto;">
 				
 				<thead>
 					<tr style="height:75px;">
@@ -145,6 +147,13 @@
 					</c:forEach>
 				</tbody>
 			</table>
+		</c:when>
+		<c:otherwise>
+			<h1> Et ole tehnyt tilauksia. </h1>
+		</c:otherwise>
+			
+		</c:choose>
+			
 			
 		</div>
 		<!-- CONTENT LOPPUU -->

@@ -108,7 +108,7 @@ button {
 	font-family: Arial;
 	background: transparent;
 	color: white;
-	width: 75px;
+	min-width: 75px;
 	height: 25px;
 }
 
@@ -208,6 +208,10 @@ button {
 	margin: 10px;
 }
 
+.menuitemwrap p {
+    margin: 5px 0;
+}
+
 .menuitem {
 	border: 1px solid #CCC;
 	padding: 10px;
@@ -250,6 +254,10 @@ button {
 
 .pizzanimi {
 	font-weight: bold;
+}
+
+.pizzanimi h2 {
+    line-height: 5px;
 }
 
 .pizzahinta button {
@@ -477,7 +485,7 @@ button {
 		width: 100%;
 		padding: 0;
 	}
-	#nav {
+	/*#nav {
 		display: block;
 		width: 40px;
 		height: 40px;
@@ -494,6 +502,6 @@ button {
 		padding: 10px 5px;
 		border: 0;
 		background: #DDD;
-	}
+	}*/
 }
 /* RESPONSIVE LOPPUU */

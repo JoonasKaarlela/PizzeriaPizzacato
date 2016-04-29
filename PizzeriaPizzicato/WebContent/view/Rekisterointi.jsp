@@ -111,7 +111,7 @@
 
 		<!--  BANNERI -->
 		<div id="banner">
-			<div class="bannertxt">Pizzaa</div>
+			<img src="banner-rekisterointi">
 		</div>
 		
 		

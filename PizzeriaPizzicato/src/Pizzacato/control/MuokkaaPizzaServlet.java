@@ -36,7 +36,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 			request.getSession().setAttribute("notification", pizza.getNimi() + " tallennettu!");
 		}
 		
-		response.sendRedirect("Menu");
+		response.sendRedirect("PizzojenHallinta");
 	}
 	
 	

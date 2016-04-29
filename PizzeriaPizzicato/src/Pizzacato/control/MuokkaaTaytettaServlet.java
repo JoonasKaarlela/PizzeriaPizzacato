@@ -37,7 +37,7 @@ public class MuokkaaTaytettaServlet extends HttpServlet {
 			request.getSession(false).setAttribute("notification", tayte.getNimi() + " tallennettiin!");
 		}
 		
-		response.sendRedirect("Taytteet");
+		response.sendRedirect("TaytteidenHallinta");
 		
 	}
 	

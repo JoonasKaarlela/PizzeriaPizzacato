@@ -24,7 +24,7 @@ public class PoistaPizzaServlet extends HttpServlet {
 			request.getSession(false).setAttribute("notification", "pizza " + id + " poistettiin!");
 		}
 		
-		response.sendRedirect("Menu");
+		response.sendRedirect("PizzojenHallinta");
 	}
 	
 	public boolean poistaPizza(String id){

@@ -22,7 +22,7 @@ public class PoistaTayteServlet extends HttpServlet {
 			request.getSession(false).setAttribute("notification", "tayte " + id + " poistettiin!");
 		}
 
-		response.sendRedirect("Taytteet");
+		response.sendRedirect("TaytteidenHallinta");
 	}
 
 	public boolean poistaTayte(String id) {

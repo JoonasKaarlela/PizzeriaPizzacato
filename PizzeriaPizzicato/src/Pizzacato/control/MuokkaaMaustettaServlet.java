@@ -30,7 +30,7 @@ public class MuokkaaMaustettaServlet extends HttpServlet {
 			request.getSession().setAttribute("notification", "Maustetta ei voitu muokata");
 		}
 	
-		response.sendRedirect("MuokkaaMaustetta");
+		response.sendRedirect("MausteidenHallinta");
 		
 	}
 

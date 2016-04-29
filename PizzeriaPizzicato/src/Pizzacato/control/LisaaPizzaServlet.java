@@ -36,7 +36,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 			request.getSession(false).setAttribute("notification", pizza.getNimi() + " lisättiin!");
 		}
 		
-		response.sendRedirect("Menu");
+		response.sendRedirect("PizzojenHallinta");
 	}
 	
 	

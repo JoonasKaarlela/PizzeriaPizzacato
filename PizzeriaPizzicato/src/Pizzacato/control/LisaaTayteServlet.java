@@ -30,7 +30,7 @@ public class LisaaTayteServlet extends HttpServlet {
 			request.getSession(false).setAttribute("notification", tayte.getNimi() + " lisättiin!");
 		}
 		
-		response.sendRedirect("Taytteet");
+		response.sendRedirect("TaytteidenHallinta");
 	}
 		
 	public boolean lisaaTayte(Tayte tayte){

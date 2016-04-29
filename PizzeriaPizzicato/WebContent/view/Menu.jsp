@@ -71,14 +71,14 @@
 				
 				<div id="yhteystiedot">
 					<p>
-						<b>Yhteystiedot</b><br> Pasilanraitio 10 D92<br> 00240
-						Helsinki <br> 040 840 0987
+						<b>Yhteystiedot</b><br> Kuusitie 6<br> 00270
+						Helsinki <br> 040 123 456
 					</p>
 				</div>
 				<div id="aukioloajat">
 					<p>
-						<b>Aukioloajat</b><br> Ma-To 09:00 - 22:30<br> Pe 09:00
-						- 02:00<br> La 09:00 - 02:00<br> Su 10:00 - 22:30
+						<b>Aukioloajat</b><br> Ma-To 11:00 - 21:00<br> Pe-La 11:00
+						- 22:00<br> Su 12:00 - 19:00
 					</p>
 				</div>
 				

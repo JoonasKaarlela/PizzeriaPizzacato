@@ -52,11 +52,13 @@
 								</div>
 							</div>
 							<div id="submit" style="display: inline-block;">
-								<div>
+								<div style="float:left; margin: 0 5px;">
 									<button type=submit>kirjaudu</button>
 								</div>
-								<div>
+								<div style="float:left;">
+									<button>
 									<a href="Rekisterointi"> rekisteroidy </a>
+									</button>
 								</div>
 							</div>
 						</form>

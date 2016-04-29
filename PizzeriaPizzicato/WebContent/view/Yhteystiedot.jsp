@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Menu</title>
+<title>Yhteystiedot</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 </head>
@@ -46,11 +46,13 @@
 								</div>
 							</div>
 							<div id="submit" style="display: inline-block;">
-								<div>
+								<div style="float:left; margin: 0 5px;">
 									<button type=submit>kirjaudu</button>
 								</div>
-								<div>
+								<div style="float:left;">
+									<button>
 									<a href="Rekisterointi"> rekisteroidy </a>
+									</button>
 								</div>
 							</div>
 						</form>

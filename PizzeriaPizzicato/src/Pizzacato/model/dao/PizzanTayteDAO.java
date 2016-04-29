@@ -55,8 +55,10 @@ public class PizzanTayteDAO extends DataAccessObject {
 		SELECT_statement.setString(2, tayte.getTayte_id());
 		ResultSet results = SELECT_statement.executeQuery();
 		
+		System.out.println("katsotaanko voidaanko lisätä...");
+		
 		if(!results.next()){
-
+			System.out.println("Täyte voidaan lisätä");
 			String INSERT = "INSERT INTO PIZZANTAYTE(id, pizza_id, tayte_id) VALUES(?, ?, ?)";
 			PreparedStatement INSERT_statement = conn.prepareStatement(INSERT);
 			INSERT_statement.setString(1, new Utils().generate(5));
@@ -82,6 +84,7 @@ public class PizzanTayteDAO extends DataAccessObject {
 		Connection conn = getConnection();
 		
 		// POISTO LAUSE
+		System.out.println("poistetaan pizzantäyte");
 		String query = "DELETE FROM PIZZANTAYTE WHERE pizza_id=? AND tayte_id=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, pizza.getPizza_id());

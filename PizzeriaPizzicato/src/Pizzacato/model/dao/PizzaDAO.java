@@ -93,7 +93,7 @@ public class PizzaDAO extends DataAccessObject{
 			System.out.println("uusi pizza: " + pizza.getNimi() + " lisattiin tietokantaan...");
 		}
 		
-		//  LISAA PIZZANTÄYTE PÖYTÄÄN
+		// LISAA PIZZANTÄYTE PÖYTÄÄN
 			for(Tayte tayte : pizza.getTaytteet()){
 				PizzanTayteDAO pizzantaytedao = new PizzanTayteDAO();
 				pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
@@ -133,70 +133,46 @@ public class PizzaDAO extends DataAccessObject{
 		
 	}
 	
-	public void piilotaListalla(String id) throws SQLException{
-		// PIILOTA KYSEINEN PIZZA LISTALLA
-		
-		// YHTEYS
-		Connection conn = getConnection();
-		
-		// PIILOTA LAUSE
-		String query = "UPDATE PIZZA SET listalla=false WHERE pizza_id=?";
-		PreparedStatement statement = conn.prepareStatement(query);
-		statement.setString(1, id);
-		
-		//EXECUTE
-		int piilotettiin = statement.executeUpdate();
-		if(piilotettiin > 0){
-			System.out.println("pizza " + id + " piilotettiin listalta");
-		}
-		
-		conn.close();
-	}
-	
-	public void naytaListalla(String id) throws SQLException{
-		// NAYTA KYSEINEN PIZZA LISTALLA
-		
-		// YHTEYS
-		Connection conn = getConnection();
-		
-		// NAYTA LAUSE
-		String query = "UPDATE PIZZA SET listalla=true WHERE pizza_id=?";
-		PreparedStatement statement = conn.prepareStatement(query);
-		statement.setString(1, id);
-		
-		// EXECUTE
-		int asetettiin_nakyviin = statement.executeUpdate();
-		if(asetettiin_nakyviin > 0){
-			System.out.println("pizza " + id + " asetettiin nï¿½kyviin listalle");
-		}
-		conn.close();
-	}
-	
 	public void muokkaaPizzaa(Pizza pizza) throws SQLException{
 		// TALLENNA UUDET TIEDOT
+		
+		System.out.println("MUOKATAAAN = " + pizza.getNimi());
 		
 		//YHTEYS
 		Connection conn = getConnection();
 		
 		//PAIVITA LAUSE
-		String query = "UPDATE PIZZA SET nimi=?, kuvaus=?, listalla=?, hinta=? WHERE pizza_id=?";
+		String query = "UPDATE PIZZA SET nimi=?, kuvaus=?, listalla=?, hinta=?, kuva=? WHERE pizza_id=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, pizza.getNimi());
 		statement.setString(2, pizza.getKuvaus());
 		statement.setBoolean(3, pizza.getListalla());
 		statement.setDouble(4, pizza.getHinta());
-		statement.setString(5, pizza.getPizza_id());
+		statement.setString(5, pizza.getKuva());
+		statement.setString(6, pizza.getPizza_id());
+		
+		System.out.println("** UUDET TIEDOT **");
+		System.out.println(pizza.getNimi());
+		System.out.println(pizza.getKuvaus());
+		System.out.println(pizza.getListalla());
+		System.out.println(pizza.getHinta());
+		System.out.println(pizza.getKuva());
+		System.out.println(pizza.getPizza_id());
 		
 		//EXECUTE
 		int paivitettiin = statement.executeUpdate();
 		if(paivitettiin > 0){
-			System.out.println("Paivitettiin: " + paivitettiin + " attribuuttia");
-		}
-		
-		PizzanTayteDAO pizzantaytedao = new PizzanTayteDAO();
-		for(Tayte tayte : pizza.getTaytteet()){
-			pizzantaytedao.poistaPizzanTayte(pizza, tayte);
-			pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
+			System.out.println("PÄIVITYS ONNISTUI, poistetaan pizzantäytteitä");
+			
+			PizzanTayteDAO pizzantaytedao = new PizzanTayteDAO();
+
+			for(Tayte tayte : pizza.getTaytteet()){
+				pizzantaytedao.poistaPizzanTayte(pizza, tayte);
+			}
+			
+			for(Tayte tayte : pizza.getTaytteet()){
+				pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
+			}
 		}
 		
 		conn.close();

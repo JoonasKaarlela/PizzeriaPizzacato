@@ -51,6 +51,8 @@
 		                        		<label> Täyte ${current.index} </label><option value="${tayte.getTayte_id()}"> ${tayte.getNimi()} </option>
 		                        	</c:forEach>
 		                        </select>
+		                        <label for="listalla"> Listalla </label>
+		                        <input type=checkbox name="listalla" />
 		                        <button type="submit"> Lisää </button>
 		                    </form>
 		                </div>
@@ -101,7 +103,15 @@
 	                            	</c:forEach>
 	                            </td>
 	                            <td>
-	                            	<input disabled type="checkbox" checked="${pizza.getListalla()}">
+	                            	<c:choose>
+	                            		<c:when test="${pizza.getListalla()}">
+	                            			<input disabled type="checkbox" name="listalla" checked="checked">
+	                            		</c:when>
+	                            		<c:otherwise>
+	                            			<input disabled type="checkbox" name="listalla">
+	                            		</c:otherwise>
+	                            	</c:choose>
+	                            	
 	                            </td>
 	                            
 	                            <td rowspan="2" align="right">
@@ -117,7 +127,7 @@
                         <table>
 	                        <tr>
 	                        	<td>
-	                            	<input type="hidden" value="${pizza.getPizza_id()}" name="pizza_id">
+	                            	<input type="hidden" value="${pizza.getPizza_id()}" name="id">
 	                            	<input  type="text" value="${pizza.getNimi()}" name="nimi">
 	                            </td>
 	                            <td>
@@ -134,7 +144,14 @@
 	                        		</select>
 	                            </td>
 	                            <td>
-	                            	<input type="checkbox" checked="${pizza.getListalla()}" value="${pizza.getListalla()}" name="listalla">
+	                            	<c:choose>
+	                            		<c:when test="${pizza.getListalla()}">
+	                            			<input  type="checkbox" name="listalla" checked="checked">
+	                            		</c:when>
+	                            		<c:otherwise>
+	                            			<input  type="checkbox" name="listalla">
+	                            		</c:otherwise>
+	                            	</c:choose>
 	                            </td>
 	                            
 	                            <td rowspan="2" align="right">

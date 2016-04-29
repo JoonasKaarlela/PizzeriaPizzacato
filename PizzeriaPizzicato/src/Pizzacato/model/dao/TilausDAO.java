@@ -137,7 +137,7 @@ public class TilausDAO extends DataAccessObject {
 
 	}
 	
-	public void PeruutaTilaus(String id) throws SQLException{
+	public void poistaTilaus(String id) throws SQLException{
 		
 		Connection conn = getConnection();
 		
@@ -156,9 +156,17 @@ public class TilausDAO extends DataAccessObject {
 	
 	public void muokkaaTilausta(Tilaus tilaus) throws SQLException{
 		
-		// TODO: muokkaa tilauksen tilaa.
+		Connection conn = getConnection();
 		
+		String UPDATE = "UPDATE TILAUS SET tila=? WHERE tilaus_id=?";
+		PreparedStatement statement = conn.prepareStatement(UPDATE);
+		statement.setString(1, tilaus.getTila());
+		statement.setString(2, tilaus.getTilaus_id());
+		int paivitettiin = statement.executeUpdate();
 		
+		if(paivitettiin > 0){
+			System.out.println("Tilauksen " + tilaus.getTilaus_id() + " on nyt tilassa " + tilaus.getTila());
+		}
 		
 	}
 	

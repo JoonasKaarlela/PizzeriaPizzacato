@@ -49,6 +49,7 @@ public class TayteDAO extends DataAccessObject{
 		
 		String SELECT = "SELECT * FROM TAYTE WHERE nimi=?";
 		PreparedStatement stmt = conn.prepareStatement(SELECT);
+		stmt.setString(1, tayte.getNimi());
 		ResultSet results = stmt.executeQuery();
 		
 		if(!results.next()){

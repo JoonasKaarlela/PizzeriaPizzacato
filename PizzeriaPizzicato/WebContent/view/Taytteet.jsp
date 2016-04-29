@@ -83,7 +83,7 @@
 	                            	${tayte.getNimi()}
 	                            </td>
 	                             <td>
-	                            	${tayte.getKuvaus()}"
+	                            	${tayte.getAlkupera()}
 	                            </td>
 	                            <td>
 	                            	${tayte.getKuvaus()}
@@ -108,7 +108,7 @@
 		                            	<input type="text" value="${tayte.getNimi()}" name="nimi">
 		                            </td>
 		                             <td>
-		                            	<input  type="text" value="${tayte.getKuvaus()}" name="kuvaus">
+		                            	<input  type="text" value="${tayte.getAlkupera()}" name="alkupera">
 		                            </td>
 		                            <td>
 		                            	<input type="text" value="${tayte.getKuvaus()}" name="kuvaus">

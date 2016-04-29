@@ -84,7 +84,8 @@ a:hover {
 }
 
 #kayttajatunnus {
-	width: 40%;
+	/*width: 40%;*/
+	width: auto;
 	height: 100%;
 	display: flex;
 	justify-content: center;
@@ -92,7 +93,8 @@ a:hover {
 }
 
 #salasana {
-	width: 40%;
+	/*width: 40%;*/
+	width: auto;
 	height: 100%;
 	display: flex;
 	justify-content: center;
@@ -106,12 +108,13 @@ button {
 	font-family: Arial;
 	background: transparent;
 	color: white;
-	width:75px;
-	height:25px;
+	width: 75px;
+	height: 25px;
 }
 
 #submit {
-	width: 20%;
+	/*width: 20%;*/
+	width: auto;
 	height: 100%;
 	display: flex;
 	justify-content: center;
@@ -154,7 +157,7 @@ button {
 #aukioloajat {
 	float: right;
 	margin-right: 35px;
-	font-size:14px;
+	font-size: 14px;
 }
 
 /* YHTEYSTIEDOT JA AUKIOLOAJAT LOPPUU */
@@ -209,6 +212,7 @@ button {
 	border: 1px solid #CCC;
 	padding: 10px;
 	font-size: 14px;
+	height: 200px;
 }
 
 .menuitem table {
@@ -343,29 +347,31 @@ button {
 }
 
 #taytelista li {
-	list-style:none;
+	list-style: none;
 	font-size: 12px;
-	padding:10px;
-	color:#FFF;
-	width:20%;
+	padding: 10px;
+	color: #FFF;
+	width: 20%;
 }
+
 #taytelista label {
 	width: 100px;
-	display:inline-block;
+	display: inline-block;
 }
-	
+
 #taytelista table {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	border-spacing:0;
-	width:100%;
+	border-spacing: 0;
+	width: 100%;
 }
+
 #taytelista td {
 	font-size: 12px;
-	padding:5px 0px;
-	color:#FFF;
-	width:20%;
+	padding: 5px 0px;
+	color: #FFF;
+	width: 20%;
 }
 
 #taytelista tr:first-of-type {
@@ -419,6 +425,21 @@ button {
 	object-position: 50% 50%;
 }
 
+#hallintanav li {
+	display: block;
+	float: left;
+	padding: 5px 10px;
+	background-color: #333333;
+	border: 1px solid #555;
+	border-left: 0;
+	border-bottom: 0;
+}
+
+.aktiivinen {
+	border: 1px solid #999 !important;
+	border-bottom: 0 !important;
+	background-color: #444444 !important;
+}
 
 #valitut_taytteet{
 	display:'inline-block';
@@ -431,36 +452,10 @@ button {
 	margin:0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-	#hallintanav li {
-		display:block;
-		float:left;
-		padding: 5px 10px;
-		background-color:#333333;
-		border: 1px solid #555;
-		border-left: 0;
-		border-bottom: 0;
-	}
-	.aktiivinen {
-		border:1px solid #999 !important;
-		border-bottom: 0 !important;
-		background-color:#444444 !important;
-	}
-	#hallintanav ul {
-		padding: 0;
-		margin: 0;
-	}
+#hallintanav ul {
+	padding: 0;
+	margin: 0;
+}
 
 /* RESPONSIVE */
 @media only screen and (max-width: 1024px) {
@@ -468,25 +463,37 @@ button {
 		max-width: 100%;
 		width: 100%;
 	}
-	
-	
 	.menu {
 		padding: 0;
 	}
-	
 	img {
 		width: 100%;
 		height: auto;
 	}
-	
 	#apanel {
 		position: static;
 	}
-	
 	#apanelwrapper {
-		width:100%;
+		width: 100%;
 		padding: 0;
 	}
-	
+	#nav {
+		display: block;
+		width: 40px;
+		height: 40px;
+	}
+	#nav:hover ul {
+		display: block;
+	}
+	#nav ul {
+		display: none;
+	}
+	#nav ul li {
+		display: inline-block;
+		width: 150px;
+		padding: 10px 5px;
+		border: 0;
+		background: #DDD;
+	}
 }
 /* RESPONSIVE LOPPUU */

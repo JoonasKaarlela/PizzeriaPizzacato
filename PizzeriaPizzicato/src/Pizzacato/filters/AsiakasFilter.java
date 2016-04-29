@@ -14,11 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import Pizzacato.model.Kayttaja;
 
-@WebFilter(urlPatterns={"/taytteidenhallinta", "/PoistaTayte", "/poista", "/nayta", "/MuokkaaTaytetta", "/muokkaa", "/Taytteet", "/lisaaTayte", "/lisaa"})
-public class AuthenticateFilter implements Filter {
+@WebFilter(urlPatterns={
+		"/Tilaukset"
+})
+public class AsiakasFilter implements Filter {
 
 
-    public AuthenticateFilter() {
+    public AsiakasFilter() {
        
     }
 
@@ -32,7 +34,7 @@ public class AuthenticateFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		
 		Kayttaja kayttaja = (Kayttaja) req.getSession(false).getAttribute("kayttaja");
-		if(kayttaja == null || !kayttaja.isOmistaja()){
+		if(kayttaja == null){
 			res.sendRedirect("Menu");
 		}else{
 			chain.doFilter(request, response);

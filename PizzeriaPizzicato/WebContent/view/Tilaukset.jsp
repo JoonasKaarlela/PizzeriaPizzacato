@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+ <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -119,7 +119,11 @@
 		                            </td>
 		        
 		        					<td>
-		                            	<input value="${tilaus.getTila()}" name="tila">
+		                            	<select name="tila">
+		                            		<option value="vastaanotettu">vastaanotettu</option>
+		                            		<option value="toimituksessa">toimituksessa</option>
+		                            		<option value="valmis">valmis</option>
+		                            	</select>
 		                            </td>
 		                            
 		                            <td rowspan="2" align="right">

@@ -76,7 +76,7 @@ public class TilausDAO extends DataAccessObject {
 		
 		while(results.next()){
 			String tilaus_id = results.getString(1);
-			Date tilaus_aika = results.getDate(2);
+			String tilaus_aika = results.getString(2);
 			double hinta = results.getDouble(3);
 			String tila = results.getString(4);
 
@@ -102,7 +102,7 @@ public class TilausDAO extends DataAccessObject {
 		
 		while(results.next()){
 			String tilaus_id = results.getString(1);
-			Date tilausaika = results.getDate(2);
+			String tilausaika = results.getString(2);
 			double hinta = results.getDouble(3);
 			String tila = results.getString(4);
 			String kayttaja_id = results.getString(5);
@@ -140,16 +140,24 @@ public class TilausDAO extends DataAccessObject {
 	public void poistaTilaus(String id) throws SQLException{
 		
 		Connection conn = getConnection();
+			
+		// TODO: poista TilauksenPizzat
+		String query = "DELETE FROM TILAUKSENPIZZA WHERE tilaus_id=?";
+		PreparedStatement stmt = conn.prepareStatement(query);
+		stmt.setString(1, id);
+		int removed = stmt.executeUpdate();
 		
-		String DELETE = "DELETE FROM TILAUS WHERE tilaus_id=?";
-		PreparedStatement statement = conn.prepareStatement(DELETE);
-		statement.setString(1, id);
-		
-		int poistettiin = statement.executeUpdate();
-		if(poistettiin > 1){
-			System.out.println("Tilaus " + id + " poistettiin");
+		if(removed > 0){
+			String DELETE = "DELETE FROM TILAUS WHERE tilaus_id=?";
+			PreparedStatement statement = conn.prepareStatement(DELETE);
+			statement.setString(1, id);
+			
+			int poistettiin = statement.executeUpdate();
+			if(poistettiin > 1){
+				System.out.println("Tilaus " + id + " ja sen pizzat poistettiin");
+			}
 		}
-		
+
 		conn.close();
 		
 	}

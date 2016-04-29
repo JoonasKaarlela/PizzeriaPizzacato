@@ -96,7 +96,7 @@
 			                            	<input type="text" value="${mauste.getNimi()}" name="nimi">
 			                            </td>
 			                            <td>
-			                            	<input type="text" value="${mauste.getHinta()}" name="hinta">
+			                            	<input type="text" value="${mauste.getHinta()}" name="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx">
 			                            </td>
 			                            
 			                            <td rowspan="2" align="right">

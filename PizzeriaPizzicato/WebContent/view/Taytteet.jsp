@@ -114,7 +114,7 @@
 		                            	<input type="text" value="${tayte.getKuvaus()}" name="kuvaus">
 		                            </td>
 		                            <td>
-		                            	<input type="text" value="${tayte.getHinta()}" name="hinta">
+		                            	<input type="text" value="${tayte.getHinta()}" name="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx">
 		                            </td>
 		                            
 		                            <td rowspan="2" align="right">

@@ -5,11 +5,11 @@ import java.util.Date;
 public class Tilaus {
 	private String tilaus_id;
 	private Kayttaja kayttaja;
-	private Date tilausaika;
+	private String tilausaika;
 	private double hinta;
 	private String tila;
 	
-	public Tilaus(String tilaus_id, Kayttaja kayttaja, Date tilausaika, double hinta, String tila){
+	public Tilaus(String tilaus_id, Kayttaja kayttaja, String tilausaika, double hinta, String tila){
 		this.tilaus_id = tilaus_id;
 		this.kayttaja = kayttaja;
 		this.tilausaika = tilausaika;
@@ -17,7 +17,7 @@ public class Tilaus {
 		this.tila = tila;
 	}
 	
-	public Tilaus(String tilaus_id, Date tilausaika, double hinta, String tila){
+	public Tilaus(String tilaus_id, String tilausaika, double hinta, String tila){
 		this.tilaus_id = tilaus_id;
 		this.kayttaja = null;
 		this.tilausaika = tilausaika;
@@ -42,11 +42,11 @@ public class Tilaus {
 		this.tilaus_id = tilaus_id;
 	}
 
-	public Date getTilausaika() {
+	public String getTilausaika() {
 		return tilausaika;
 	}
 
-	public void setTilausaika(Date tilausaika) {
+	public void setTilausaika(String tilausaika) {
 		this.tilausaika = tilausaika;
 	}
 
@@ -65,4 +65,13 @@ public class Tilaus {
 	public void setTila(String tila) {
 		this.tila = tila;
 	}
+	
+	public boolean voidaanPeruuttaa(){
+		if(!this.tila.equals("valmis") || !this.tila.equals("matkalla")){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 }

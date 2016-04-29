@@ -127,7 +127,7 @@
 	                            	<input type="text" value="${pizza.getHinta()}" name="hinta">
 	                            </td>
 	                            <td>
-	                        		<select name="taytteet">
+	                        		<select multiple name="taytteet">
 	                        			<c:forEach items="${taytteet}" var="tayte" varStatus="status">
 	                        				<option value="${tayte.getNimi()}">${tayte.getNimi()}</option>
 	                        			</c:forEach>

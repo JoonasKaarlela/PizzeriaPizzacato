@@ -102,7 +102,7 @@
 
 		<!--  BANNERI -->
 		<div id="banner">
-			<div class="bannertxt">Yhteystiedot</div>
+			<img src="banner-yhttiedot.jpg">
 		</div>
 
 		<!-- YHTEYSTIEDOT -->

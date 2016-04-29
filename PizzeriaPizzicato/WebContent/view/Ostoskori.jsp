@@ -111,7 +111,7 @@
 
 		<!--  BANNERI -->
 		<div id="banner">
-			<div class="bannertxt">Ostoskori</div>
+			<img src="banner-ostoskori.jpg">
 		</div>
 		
 		

@@ -27,7 +27,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 		String nimi = request.getParameter("nimi");
 		ArrayList<Tayte> taytteet = haeTaytteet(request.getParameterValues("taytteet"));
 		String kuvaus = request.getParameter("kuvaus");
-		boolean listalla = false;
+		boolean listalla = listalla(request.getParameter("listalla"));
 		double hinta = Double.parseDouble(request.getParameter("hinta"));
 		String kuva = "pizza1.png";
 		
@@ -59,7 +59,13 @@ public class LisaaPizzaServlet extends HttpServlet {
 		return pizzan_taytteet;
 	}
 	
-	
+	public boolean listalla(String checked){
+		if(checked != null){
+			return true;
+		}else{
+			return false;
+		}
+	}
 	
 	public boolean lisaaPizza(Pizza pizza){
 		PizzaDAO dao = new PizzaDAO();

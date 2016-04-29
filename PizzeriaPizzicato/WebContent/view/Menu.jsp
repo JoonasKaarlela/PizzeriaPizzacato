@@ -109,7 +109,7 @@
 
 		<!--  BANNERI -->
 		<div id="banner">
-			<div class="bannertxt">Pizzaa</div>
+			<img src="banner-menu.jpg">
 		</div>
 
 		<!--  PIZZA MENU ALKAA -->

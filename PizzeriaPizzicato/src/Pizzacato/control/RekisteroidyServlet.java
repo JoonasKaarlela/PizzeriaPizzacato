@@ -21,7 +21,7 @@ public class RekisteroidyServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rp = request.getServletContext().getRequestDispatcher("/view/rekisterointi.jsp");
+		RequestDispatcher rp = request.getServletContext().getRequestDispatcher("/view/Rekisterointi.jsp");
 		rp.forward(request, response);
 	}
 

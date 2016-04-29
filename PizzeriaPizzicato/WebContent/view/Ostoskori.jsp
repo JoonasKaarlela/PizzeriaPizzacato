@@ -9,6 +9,7 @@
 <script type="text/javascript" src="notification.js"></script>
 <script type="text/javascript" src="rekisterointi.js"></script>
 <link href="ostoskori.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <title>Ostoskori</title>
 </head>
 <body>
@@ -27,16 +28,17 @@
 			</div>
 
 			<div id="kirjaudu">
-
-				<!-- KIRJAUDU || KÄYTTÄJÄNIMI -->
 				<c:choose>
 
 					<c:when test="${sessionScope.kayttaja != null}">
-						<h3>${sessionScope.kayttaja.getKayttajatunnus()}</h3>
+						<p>
+							<strong> <i class="fa fa-user"></i> ${sessionScope.kayttaja.getKayttajatunnus()} </strong>
+						</p>
 						<div>
 							<a href="kirjauduUlos"> kirjaudu ulos </a>
 						</div>
 					</c:when>
+					
 
 					<c:otherwise>
 						<form method=post action="Kirjaudu" id="kirjaudu_form">
@@ -47,7 +49,8 @@
 							</div>
 							<div id="salasana">
 								<div>
-									<input placeholder=salasana name=salasana type=password required />
+									<input placeholder=salasana name=salasana type=password
+										required />
 								</div>
 							</div>
 							<div id="submit" style="display: inline-block;">
@@ -67,6 +70,20 @@
 					</c:otherwise>
 
 				</c:choose>
+				
+				<div id="yhteystiedot">
+					<p>
+						<b>Yhteystiedot</b><br> Pasilanraitio 10 D92<br> 00240
+						Helsinki <br> 040 840 0987
+					</p>
+				</div>
+				<div id="aukioloajat">
+					<p>
+						<b>Aukioloajat</b><br> Ma-To 09:00 - 22:30<br> Pe 09:00
+						- 02:00<br> La 09:00 - 02:00<br> Su 10:00 - 22:30
+					</p>
+				</div>
+				
 			</div>
 
 			<!--  NAVIGOINTI -->
@@ -75,8 +92,16 @@
 				<ul>
 					<li><a href="Menu">Menu</a></li>
 					<li><a href="Yhteystiedot">Yhteystiedot</a></li>
-					<li><a href="Ostoskori">Ostoskori</a></li>
-					<li><a href="Tilaukset">Tilaukset</a></li>
+					<li><a href="Ostoskori">Ostoskori</a> </li>
+
+					<c:if test="${sessionScope.kayttaja != null}">
+						<li><a href="Tilaukset">Tilaukset</a></li>
+					</c:if>
+					
+					<c:if test="${sessionScope.kayttaja.isOmistaja()}">
+						<li><a href="PizzojenHallinta"> Hallinnoi </a> </li>
+					</c:if>
+
 				</ul>
 			</div>
 			<!-- NAV LOPPUU -->
@@ -84,7 +109,12 @@
 
 		<div class="clear"></div>
 
-
+		<!--  BANNERI -->
+		<div id="banner">
+			<div class="bannertxt">Ostoskori</div>
+		</div>
+		
+		
 		<div id="ostoskori">
 			<!--  PIZZAT || ILMOITUS -->
 			<c:choose>

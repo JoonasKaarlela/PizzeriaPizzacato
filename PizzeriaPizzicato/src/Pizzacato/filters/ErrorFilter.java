@@ -16,12 +16,12 @@ public class ErrorFilter implements Filter {
 
 
     public ErrorFilter() {
-        // TODO Auto-generated constructor stub
+        
     }
 
 
 	public void destroy() {
-		// TODO Auto-generated method stub
+	
 	}
 
 

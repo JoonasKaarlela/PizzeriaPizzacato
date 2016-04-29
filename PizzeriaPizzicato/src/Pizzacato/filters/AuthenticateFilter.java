@@ -23,7 +23,7 @@ public class AuthenticateFilter implements Filter {
     }
 
 	public void destroy() {
-		System.out.println("Filter done");
+		
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -41,7 +41,7 @@ public class AuthenticateFilter implements Filter {
 
 
 	public void init(FilterConfig fConfig) throws ServletException {
-		System.out.println("Filtering...");
+		
 	}
 
 }

@@ -13,7 +13,7 @@ import Pizzacato.model.Mauste;
 import Pizzacato.model.Utils;
 import Pizzacato.model.dao.MausteDAO;
 
-@WebServlet("/lisaaMauste")
+@WebServlet("/LisaaMauste")
 public class LisaaMausteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
@@ -28,7 +28,7 @@ public class LisaaMausteServlet extends HttpServlet {
 			request.getSession(false).setAttribute("notification", mauste.getNimi() + " lisättiin!");
 		}
 		
-		response.sendRedirect("Mausteet");
+		response.sendRedirect("MausteidenHallinta");
 	}
 		
 	public boolean lisaaMauste(Mauste mauste){

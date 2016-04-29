@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Pizzacato.model.dao.TilausDAO;
 
-@WebServlet("/NaytaTilaus")
+@WebServlet("/Tilaukset")
 public class NaytaTilausServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -38,7 +38,7 @@ public class NaytaTilausServlet extends HttpServlet {
 				System.out.println(error.getMessage());
 			}
 		
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/Tilaukset.jsp");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/view/OmatTilaukset.jsp");
 			rd.forward(request, response);
 
 	}

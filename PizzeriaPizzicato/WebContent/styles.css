@@ -441,6 +441,17 @@ button {
 	background-color: #444444 !important;
 }
 
+#valitut_taytteet{
+	display:'inline-block';
+	marign:0;
+	padding:0;	
+}
+
+.tayte{
+	padding:0;
+	margin:0;
+}
+
 #hallintanav ul {
 	padding: 0;
 	margin: 0;

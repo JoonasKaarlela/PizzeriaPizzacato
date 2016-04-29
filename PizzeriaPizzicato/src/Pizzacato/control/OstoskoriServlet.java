@@ -40,13 +40,11 @@ public class OstoskoriServlet extends HttpServlet {
 			}	
 			request.setAttribute("summa", String.format("%.2f", Math.floor(summa)));
 		} else {
-			System.out.println("tyhja=true");
 			request.setAttribute("tyhja", true);
 		}
 		
 		
 		}catch(NullPointerException e){
-			System.out.println("NULL TRIGGERED!");
 			request.setAttribute("tyhja", true);
 		}
 		

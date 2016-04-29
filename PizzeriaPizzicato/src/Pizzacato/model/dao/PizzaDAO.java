@@ -77,30 +77,41 @@ public class PizzaDAO extends DataAccessObject{
 		// YHTEYS
 		Connection conn = getConnection();
 		
-		// LISAYS LAUSE
-		String query = "INSERT INTO PIZZA(pizza_id, nimi, kuvaus, listalla, hinta, kuva) VALUES(?, ?, ?, ?, ?, ?)";
-		PreparedStatement statement = conn.prepareStatement(query);
-		statement.setString(1, pizza.getPizza_id());
-		statement.setString(2, pizza.getNimi());
-		statement.setString(3, pizza.getKuvaus());
-		statement.setBoolean(4, pizza.getListalla());
-		statement.setDouble(5, pizza.getHinta());
-		statement.setString(6, pizza.getKuva());
 		
-		// EXECUTE
-		int syotettiin = statement.executeUpdate();
-		if(syotettiin > 0){
-			System.out.println("uusi pizza: " + pizza.getNimi() + " lisattiin tietokantaan...");
-		}
+		// KATO ONKO JO LISÄTTY
+		String SELECT = "SELECT * FROM PIZZA WHERE nimi=?";
+		PreparedStatement stmnt = conn.prepareStatement(SELECT);
+		stmnt.setString(1, pizza.getNimi());
 		
-		// LISAA PIZZANTÄYTE PÖYTÄÄN
+		ResultSet results = stmnt.executeQuery();
+		if(!results.next()){
+			// LISAYS LAUSE
+			String query = "INSERT INTO PIZZA(pizza_id, nimi, kuvaus, listalla, hinta, kuva) VALUES(?, ?, ?, ?, ?, ?)";
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, pizza.getPizza_id());
+			statement.setString(2, pizza.getNimi());
+			statement.setString(3, pizza.getKuvaus());
+			statement.setBoolean(4, pizza.getListalla());
+			statement.setDouble(5, pizza.getHinta());
+			statement.setString(6, pizza.getKuva());
+			
+			// EXECUTE
+			int syotettiin = statement.executeUpdate();
+			if(syotettiin > 0){
+				System.out.println("uusi pizza: " + pizza.getNimi() + " lisattiin tietokantaan...");
+			}
+			
+			// LISAA PIZZANTÄYTE PÖYTÄÄN
 			for(Tayte tayte : pizza.getTaytteet()){
 				PizzanTayteDAO pizzantaytedao = new PizzanTayteDAO();
 				pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
 			}
-			
+		}else{
+			System.out.println(pizza.getNimi() + " on jo lisätty.");
+		}
+
 		conn.close();
-		System.out.println("pizza lisättiin!");
+		
 		
 	}
 	

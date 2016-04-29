@@ -80,6 +80,16 @@ public class TayteDAO extends DataAccessObject{
 			// YHTEYS
 			Connection conn = getConnection();
 			
+			// POISTA MAHDOLLISET PIZZANTÄYTTEET
+			String DELETE = "DELETE FROM PIZZANTAYTE WHERE tayte_id=?";
+			PreparedStatement stmnt = conn.prepareStatement(DELETE);
+			stmnt.setString(1, tayte_id);
+			int removed = stmnt.executeUpdate();
+			
+			if(removed > 0){
+				System.out.println("PIZZANTAYTTEITÄ poistettiin pizzoilta");
+			}
+			
 			// POISTO LAUSE
 			String query = "DELETE FROM TAYTE WHERE tayte_id=?";
 			PreparedStatement statement = conn.prepareStatement(query);

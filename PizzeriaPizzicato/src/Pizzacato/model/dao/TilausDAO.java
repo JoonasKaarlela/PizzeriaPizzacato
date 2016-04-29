@@ -23,7 +23,7 @@ public class TilausDAO extends DataAccessObject {
 		// ASETA TILAUS
 		String tilaus_id = new Utils().generate(5);
 		String tilausaika = new Utils().getDate();
-		String tila = "";
+		String tila = "vastaanotettu";
 		
 		String kayttaja_id = null;
 		if(kayttaja != null){

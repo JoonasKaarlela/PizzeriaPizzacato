@@ -8,6 +8,7 @@
 <link href="styles.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <script type="text/javascript" src="pizzathallinnointi.js"></script>
+<script type="text/javascript" src="notification.js"></script>
 <script type="text/javascript" src="taytteet.js"></script>
 
 </head>
@@ -66,7 +67,7 @@
            	
             <tr>
             	<td colspan="5">
-                    <form class="pizzaform" id="pizzaform" method="post" action="muokkaa" onSubmit="validoi(event)">
+                    <form class="pizzaform" id="pizzaform" method="post" action="MuokkaaTilausta" onSubmit="validoi(event)">
                     <div class="error"></div>
                    	<div class="pizza">
 	                    	<table>
@@ -103,19 +104,24 @@
 	                        <table>
 		                        <tr>
 		                        	<td>
-		                            	<input disabled value="${tilaus.getTilaus_id()}" name="tilaus_id">
+		                        		<input type="hidden" value="${tilaus.getTilaus_id()}" name="id" />
+		                            	${tilaus.getTilaus_id()}
 		                            </td>
 		                            
 		                            <td>
-		                            	<input disabled  value="${tilaus.getKayttaja().getKayttajatunnus()}" name="kayttajatunnus">
+		                            	${tilaus.getKayttaja().getKayttajatunnus()}
 		                            </td>
 		                            
 		                            <td>
-		                            	<input disabled value="${tilaus.getTilausaika()}" name="tilausaika">
+		                            	${tilaus.getTilausaika()}
 		                            </td>
 		                            
 		                            <td>
-		                            	<input disabled value="${tilaus.getHinta()}" name="hinta">
+		                            	${tilaus.getHinta()}
+		                            </td>
+		        
+		        					<td>
+		                            	${tilaus.getTila()}
 		                            </td>
 		        
 		        					<td>

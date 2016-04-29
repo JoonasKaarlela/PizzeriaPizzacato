@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Pizzacato.model.Tilaus;
 import Pizzacato.model.dao.TilausDAO;
 
 
@@ -19,9 +18,11 @@ public class MuokkaaTilaustaServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String id = request.getParameter("tilaus_id");
+		String id = request.getParameter("id");
 		String tila = request.getParameter("tila");
 
+		System.out.println("TILA=" + tila + " ID=" + id);
+		
 		TilausDAO tilausdao = new TilausDAO();
 		try{
 			tilausdao.muokkaaTilausta(id, tila);
@@ -29,6 +30,8 @@ public class MuokkaaTilaustaServlet extends HttpServlet {
 			System.out.println(e.getMessage());
 			request.getSession(false).setAttribute("notification", "Tilausta ei voitu muokata");
 		}
+		
+		response.sendRedirect("TilaustenHallinta");
 		
 	}
 

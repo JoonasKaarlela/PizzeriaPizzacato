@@ -8,6 +8,7 @@
 <link href="styles.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <script type="text/javascript" src="pizzathallinnointi.js"></script>
+<script type="text/javascript" src="notification.js"></script>
 <script type="text/javascript" src="taytteet.js"></script>
 
 </head>

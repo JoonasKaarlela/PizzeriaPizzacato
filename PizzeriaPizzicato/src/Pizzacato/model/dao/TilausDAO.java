@@ -174,6 +174,8 @@ public class TilausDAO extends DataAccessObject {
 		
 		if(paivitettiin > 0){
 			System.out.println("Tilauksen " + id + " on nyt tilassa " + tila);
+		}else{
+			System.out.println("Tilausta ei löytynyt");
 		}
 		
 	}

@@ -34,6 +34,8 @@ public class LisaaPizzaServlet extends HttpServlet {
 		Pizza pizza = new Pizza(id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
 		if(lisaaPizza(pizza)){
 			request.getSession(false).setAttribute("notification", pizza.getNimi() + " lisättiin!");
+		}else{
+			request.getSession(false).setAttribute("notification", "Pizzaa ei voitu lisätä");
 		}
 		
 		response.sendRedirect("PizzojenHallinta");

@@ -112,15 +112,16 @@ public class MausteDAO extends DataAccessObject {
 		String query = "UPDATE MAUSTE SET nimi=?, hinta=? WHERE mauste_id=?";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, mauste.getNimi());
-		;
-		statement.setDouble(4, mauste.getHinta());
-		statement.setString(5, mauste.getMauste_id());
+		statement.setDouble(2, mauste.getHinta());
+		statement.setString(3, mauste.getMauste_id());
 
 		// EXECUTE
 		int paivitettiin = statement.executeUpdate();
 		if (paivitettiin > 0) {
 			System.out.println("Paivitettiin: " + paivitettiin
 					+ " attribuuttia");
+		}else{
+			System.out.println("Maustetta ei löytynyt");
 		}
 		conn.close();
 	}

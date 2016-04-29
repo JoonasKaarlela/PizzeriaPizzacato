@@ -22,10 +22,12 @@ public class MuokkaaMaustettaServlet extends HttpServlet {
 		String nimi = request.getParameter("nimi");
 		double hinta = Double.parseDouble(request.getParameter("hinta"));
 		
+		
 		Mauste mauste = new Mauste(id, nimi, hinta);
 		
 		try{
 			new MausteDAO().muokkaaMaustetta(mauste);
+			System.out.println("ok");
 		}catch(SQLException e){
 			request.getSession().setAttribute("notification", "Maustetta ei voitu muokata");
 		}

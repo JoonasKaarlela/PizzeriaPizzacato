@@ -27,6 +27,7 @@ import Pizzacato.model.Kayttaja;
 		"/PizzojenHallinta",
 		"/PoistaTayte",
 		"/PoistaTilaus",
+		"/PoistaMauste",
 		"/TaytteidenHallinta",
 		"/TilaustenHallinta"
 })

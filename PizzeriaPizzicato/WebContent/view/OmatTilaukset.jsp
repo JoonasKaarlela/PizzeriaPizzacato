@@ -141,7 +141,7 @@
 							<td>${tilaus.getHinta()}</td>
 							<td>${tilaus.getTila()}</td>
 							<c:if test="${tilaus.voidaanPeruuttaa()}">
-								<td><a href="PoistaTilaus?tilaus_id=${tilaus.getTilaus_id()}"> Peruuta </a></td>
+								<td><a href="PoistaTilaus?tilaus_id=${tilaus.getTilaus_id()}" style="color:crimson;"> Peruuta </a></td>
 							</c:if>
 						</tr>
 					</c:forEach>
@@ -149,7 +149,7 @@
 			</table>
 		</c:when>
 		<c:otherwise>
-			<h1> Et ole tehnyt tilauksia. </h1>
+			<h3> Et ole tehnyt tilauksia. </h3>
 		</c:otherwise>
 			
 		</c:choose>

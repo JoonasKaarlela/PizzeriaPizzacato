@@ -67,7 +67,7 @@ public class Tilaus {
 	}
 	
 	public boolean voidaanPeruuttaa(){
-		if(!this.tila.equals("valmis") || !this.tila.equals("toimituksessa")){
+		if(!this.tila.equals("valmis") && !this.tila.equals("toimituksessa")){
 			return true;
 		}else{
 			return false;

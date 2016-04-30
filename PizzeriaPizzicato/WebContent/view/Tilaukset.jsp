@@ -121,10 +121,6 @@
 		                            </td>
 		        
 		        					<td>
-		                            	${tilaus.getTila()}
-		                            </td>
-		        
-		        					<td>
 		                            	<select name="tila">
 		                            		<option value="vastaanotettu">vastaanotettu</option>
 		                            		<option value="toimituksessa">toimituksessa</option>
@@ -134,7 +130,7 @@
 		                            
 		                            <td rowspan="2" align="right">
 		                            	<button type="submit"> Tallenna </button>
-		                            	<a href="PoistaTilaus?tilaus_id=${tilaus.getTilaus_id()}"> Poista </a>
+		                            	<a href="PoistaTilaus?tilaus_id=${tilaus.getTilaus_id()}" style="color:crimson;"> Poista </a>
 		                            </td>
 	
 		                        </tr>              	

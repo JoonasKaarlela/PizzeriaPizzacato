@@ -27,7 +27,7 @@ public class PoistaTilausServlet extends HttpServlet {
 			request.getSession(false).setAttribute("notification", "Tilausta ei voitu poistaa..");
 		}
 		
-		
+		response.sendRedirect("Tilaukset");
 	}
 
 }

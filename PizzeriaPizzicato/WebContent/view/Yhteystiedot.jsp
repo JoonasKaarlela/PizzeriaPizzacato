@@ -50,9 +50,7 @@
 									<button type=submit>kirjaudu</button>
 								</div>
 								<div style="float:left;">
-									<button>
 									<a href="Rekisterointi"> rekisteroidy </a>
-									</button>
 								</div>
 							</div>
 						</form>

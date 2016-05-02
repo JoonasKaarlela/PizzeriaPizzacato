@@ -10,7 +10,6 @@
 <script type="text/javascript" src="pizzathallinnointi.js"></script>
 <script type="text/javascript" src="notification.js"></script>
 <script type="text/javascript" src="taytteet.js"></script>
-
 </head>
 <body>
 
@@ -44,8 +43,8 @@
 		                <!-- LISÄÄ PIZZA -->
 		                <div>
 		                    <form method="post" action="LisaaMauste">
-		                        <label>Nimi</label><input name="nimi" placeholder="mausteen nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="15" />
-		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4" /><br />
+		                        <label>Nimi</label><input name="nimi" placeholder="mausteen nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="15" required />
+		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4" required /><br />
 		                        <button type="submit"> Lisää </button>
 		                    </form>
 		                </div>
@@ -94,10 +93,10 @@
 			                        <tr>
 			                        	<td>
 			                            	<input type="hidden" value="${mauste.getMauste_id()}" name="id">
-			                            	<input type="text" value="${mauste.getNimi()}" name="nimi" size="20">
+			                            	<input type="text" value="${mauste.getNimi()}" name="nimi" size="20" required>
 			                            </td>
 			                            <td>
-			                            	<input type="text" value="${mauste.getHinta()}" name="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4">
+			                            	<input type="text" value="${mauste.getHinta()}" name="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4" required>
 			                            </td>
 			                            
 			                            <td rowspan="2" align="right">

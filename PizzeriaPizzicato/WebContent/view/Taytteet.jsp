@@ -44,10 +44,10 @@
 		                <!-- lisää täyte -->
 		                <div>
 		                    <form method="post" action="LisaaTayte">
-		                        <label>nimi</label><input name="nimi" placeholder="taytteen nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="15" /><br />
-		                        <label>alkuperä</label><input name="alkupera" placeholder="taytteen alkuperä maa" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="15" /><br />
-		                        <label>kuvaus</label><input name="kuvaus" placeholder="kuvaus" size="40" /><br />
-		                        <label>hinta</label><input name="hinta" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4" /><br />
+		                        <label>nimi</label><input name="nimi" placeholder="taytteen nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="15" required /><br />
+		                        <label>alkuperä</label><input name="alkupera" placeholder="taytteen alkuperä maa" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="15" required/><br />
+		                        <label>kuvaus</label><input name="kuvaus" placeholder="kuvaus" size="40" required /><br />
+		                        <label>hinta</label><input name="hinta" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4" required/><br />
 		                        <button type="submit"> Lisää </button>
 		                    </form>
 		                </div>
@@ -106,16 +106,16 @@
 		                        <tr>
 		                        	<td>
 		                            	<input type="hidden" value="${tayte.getTayte_id()}" name="tayte_id">
-		                            	<input type="text" value="${tayte.getNimi()}" name="nimi">
+		                            	<input type="text" value="${tayte.getNimi()}" name="nimi" required>
 		                            </td>
 		                             <td>
-		                            	<input  type="text" value="${tayte.getAlkupera()}" name="alkupera">
+		                            	<input  type="text" value="${tayte.getAlkupera()}" name="alkupera" required>
 		                            </td>
 		                            <td>
-		                            	<input type="text" value="${tayte.getKuvaus()}" name="kuvaus">
+		                            	<input type="text" value="${tayte.getKuvaus()}" name="kuvaus" required>
 		                            </td>
 		                            <td>
-		                            	<input type="text" value="${tayte.getHinta()}" name="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx">
+		                            	<input type="text" value="${tayte.getHinta()}" name="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" required>
 		                            </td>
 		                            
 		                            <td rowspan="2" align="right">

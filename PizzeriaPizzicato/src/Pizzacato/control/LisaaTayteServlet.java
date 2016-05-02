@@ -23,7 +23,7 @@ public class LisaaTayteServlet extends HttpServlet {
 		String nimi = request.getParameter ("nimi");
 		String alkupera = request.getParameter("alkupera");
 		String kuvaus = request.getParameter("kuvaus");
-		double hinta = Double.parseDouble(request.getParameter("hinta"));
+		double hinta = Double.parseDouble(request.getParameter("hinta").replace(',','.'));
 		 
 		Tayte tayte = new Tayte(tayte_id, nimi, alkupera, kuvaus, hinta);
 		if(lisaaTayte(tayte)){

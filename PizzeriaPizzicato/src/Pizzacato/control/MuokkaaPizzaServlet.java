@@ -28,7 +28,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		ArrayList<Tayte> taytteet = haeTaytteet(request.getParameterValues("taytteet"));
 		String kuvaus = request.getParameter("kuvaus");
 		boolean listalla = listalla(request.getParameter("listalla"));
-		Double hinta = Double.parseDouble(request.getParameter("hinta"));
+		Double hinta = Double.parseDouble(request.getParameter("hinta").replace(',','.'));
 		String kuva = "pizza1.png";
 		
 		Pizza pizza = new Pizza(id, nimi, taytteet, kuvaus, listalla, hinta, kuva);

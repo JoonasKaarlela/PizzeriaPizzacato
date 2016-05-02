@@ -21,7 +21,7 @@ public class LisaaMausteServlet extends HttpServlet {
 		
 		String mauste_id = new Utils().generate(5);
 		String nimi = request.getParameter ("nimi");
-		double hinta = Double.parseDouble(request.getParameter("hinta"));
+		double hinta = Double.parseDouble(request.getParameter("hinta").replace(',','.'));
 		 
 		Mauste mauste = new Mauste(mauste_id, nimi, hinta);
 		if(lisaaMauste(mauste)){

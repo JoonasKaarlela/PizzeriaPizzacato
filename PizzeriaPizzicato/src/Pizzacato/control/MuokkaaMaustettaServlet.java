@@ -20,7 +20,7 @@ public class MuokkaaMaustettaServlet extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		String nimi = request.getParameter("nimi");
-		double hinta = Double.parseDouble(request.getParameter("hinta"));
+		double hinta = Double.parseDouble(request.getParameter("hinta").replace(',', '.'));
 		
 		
 		Mauste mauste = new Mauste(id, nimi, hinta);

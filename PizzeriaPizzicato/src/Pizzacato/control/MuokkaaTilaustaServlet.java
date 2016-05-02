@@ -20,8 +20,6 @@ public class MuokkaaTilaustaServlet extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		String tila = request.getParameter("tila");
-
-		System.out.println("TILA=" + tila + " ID=" + id);
 		
 		TilausDAO tilausdao = new TilausDAO();
 		try{

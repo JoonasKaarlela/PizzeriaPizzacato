@@ -24,13 +24,7 @@ public class MuokkaaTaytettaServlet extends HttpServlet {
 		String nimi = request.getParameter("nimi");
 		String alkupera = request.getParameter("alkupera");
 		String kuvaus = request.getParameter("kuvaus");
-		double hinta = 0.00;
-		
-		try{
-			hinta = Double.parseDouble(request.getParameter("hinta"));
-		}catch(Exception e){
-			System.out.println(e.getMessage());
-		}
+		double hinta = Double.parseDouble(request.getParameter("hinta").replace(',', '.'));
 		
 		Tayte tayte = new Tayte(tayte_id, nimi, alkupera, kuvaus, hinta);
 		if(muokkaaTaytetta(tayte)){

@@ -16,7 +16,6 @@ function validoi(e){
 	var salasana2 = form.elements["salasana2_rek"];
 	
 	if(salasana !== salasana2){
-		e.preventDefault();
 		error = "salasanat ei täsmää";
 	}
 	

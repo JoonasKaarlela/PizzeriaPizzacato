@@ -112,11 +112,10 @@
 	                            			<input disabled type="checkbox" name="listalla">
 	                            		</c:otherwise>
 	                            	</c:choose>
-	                            	
 	                            </td>
 	                            
 	                            <td rowspan="2" align="right">
-	                            	<a href='MuokkaaPizzaa?id=${pizza.getPizza_id()}'> Muokkaa </a>
+	                            	<a href='MuokkaaPizzaaTila?id=${pizza.getPizza_id()}'> Muokkaa </a>
 	                            	<a href="PoistaPizza?id=${pizza.getPizza_id()}"> Poista </a>
 	                            </td>
 

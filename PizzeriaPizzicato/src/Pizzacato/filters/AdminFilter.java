@@ -29,7 +29,9 @@ import Pizzacato.model.Kayttaja;
 		"/PoistaTilaus",
 		"/PoistaMauste",
 		"/TaytteidenHallinta",
-		"/TilaustenHallinta"
+		"/TilaustenHallinta",
+		"/PoistaPizzanTayte",
+		"/LisaaPizzanTayte"
 })
 
 public class AdminFilter implements Filter {

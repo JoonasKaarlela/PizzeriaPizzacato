@@ -64,6 +64,24 @@ public void setHinta(double hinta){
 	this.hinta = hinta;
 }
 
+@Override
+public int hashCode() {
+	return 31 + ((this.getTayte_id() == null) ? 0 : this.getTayte_id().hashCode());
+}
+
+@Override
+public boolean equals(Object object)
+{
+    boolean sameSame = false;
+
+    if (object != null && object instanceof Tayte){
+    	Tayte verrattava = (Tayte) object;
+        sameSame = this.getTayte_id() == verrattava.getTayte_id();
+    }
+
+    return sameSame;
+}
+
 }
 
 

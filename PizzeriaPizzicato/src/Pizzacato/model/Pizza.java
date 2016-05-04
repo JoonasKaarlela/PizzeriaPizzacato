@@ -35,6 +35,17 @@ public class Pizza implements Comparable<Pizza> {
 		this.kuva = kuva;
 	}
 	
+	public Pizza(String pizza_id,String nimi, String kuvaus,boolean listalla, Double hinta, String kuva){
+		this.pizza_id = pizza_id;
+		this.nimi = nimi;
+		this.taytteet = new ArrayList<>();
+		this.mausteet = new ArrayList<>();
+		this.kuvaus = kuvaus;
+		this.listalla = listalla;
+		this.hinta = hinta;
+		this.kuva = kuva;
+	}
+	
 	public ArrayList<Mauste> getMausteet() {
 		return mausteet;
 	}

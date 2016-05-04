@@ -99,8 +99,8 @@
 	                            	${pizza.getHinta()}
 	                            </td>
 	                            <td>
-	                            	<c:forEach items="${pizza.getTaytteet()}" var="tayte">
-	                            		${tayte.getNimi()}
+	                            	<c:forEach items="${pizza.getTaytteet()}" var="tayte" varStatus='current'>
+	                            		${tayte.getNimi()} <c:if test="${current.index < ${pizza.getTaytteet().size()}">,</c:if> 
 	                            	</c:forEach>
 	                            </td>
 	                            <td>
@@ -116,54 +116,13 @@
 	                            </td>
 	                            
 	                            <td rowspan="2" align="right">
-	                            	<button onClick="muokkaa('${current.index}'); return false;"> Muokkaa</button>
-	                            </td>
-
-	                            
-	                        </tr>              	
-                        </table>
-                        </div>
-                        
-                        <div class="muokkaus hidden">
-                        <table>
-	                        <tr>
-	                        	<td>
-	                            	<input type="hidden" value="${pizza.getPizza_id()}" name="id">
-	                            	<input  type="text" value="${pizza.getNimi()}" name="nimi" required>
-	                            </td>
-	                            <td>
-	                            	<input  type="text" value="${pizza.getKuvaus()}" name="kuvaus" required>
-	                            </td>
-	                            <td>
-	                            	<input type="text" value="${pizza.getHinta()}" name="hinta" required>
-	                            </td>
-	                            <td>
-	                        		<select multiple name="taytteet" required>
-	                        			<c:forEach items="${taytteet}" var="tayte" varStatus="status">
-	                        				<option value="${tayte.getNimi()}">${tayte.getNimi()}</option>
-	                        			</c:forEach>
-	                        		</select>
-	                            </td>
-	                            <td>
-	                            	<c:choose>
-	                            		<c:when test="${pizza.getListalla()}">
-	                            			<input  type="checkbox" name="listalla" checked="checked">
-	                            		</c:when>
-	                            		<c:otherwise>
-	                            			<input  type="checkbox" name="listalla">
-	                            		</c:otherwise>
-	                            	</c:choose>
-	                            </td>
-	                            
-	                            <td rowspan="2" align="right">
-	                            	<button type="submit"> Tallenna</button>
+	                            	<a href='MuokkaaPizzaa?id=${pizza.getPizza_id()}'> Muokkaa </a>
 	                            	<a href="PoistaPizza?id=${pizza.getPizza_id()}"> Poista </a>
 	                            </td>
 
-	                        </tr>                    	
+	                        </tr>              	
                         </table>
                         </div>
-                        
                     </form>
                 </td>
             </tr>

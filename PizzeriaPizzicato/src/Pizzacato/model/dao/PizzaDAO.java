@@ -162,21 +162,13 @@ public class PizzaDAO extends DataAccessObject{
 		statement.setString(5, pizza.getKuva());
 		statement.setString(6, pizza.getPizza_id());
 		
-		System.out.println("** UUDET TIEDOT **");
-		System.out.println(pizza.getNimi());
-		System.out.println(pizza.getKuvaus());
-		System.out.println(pizza.getListalla());
-		System.out.println(pizza.getHinta());
-		System.out.println(pizza.getKuva());
-		System.out.println(pizza.getPizza_id());
-		
 		//EXECUTE
 		int paivitettiin = statement.executeUpdate();
 		if(paivitettiin > 0){
-			System.out.println("PÄIVITYS ONNISTUI, poistetaan pizzantäytteitä");
+			System.out.println("PÄIVITYS ONNISTUI!");
 			
 			PizzanTayteDAO pizzantaytedao = new PizzanTayteDAO();
-
+			
 			for(Tayte tayte : pizza.getTaytteet()){
 				pizzantaytedao.poistaPizzanTayte(pizza, tayte);
 			}
@@ -184,6 +176,8 @@ public class PizzaDAO extends DataAccessObject{
 			for(Tayte tayte : pizza.getTaytteet()){
 				pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
 			}
+			
+			
 		}
 		
 		conn.close();

@@ -3,6 +3,7 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,6 +29,8 @@ public class PizzojenHallintaServlet extends HttpServlet {
 		
 		ArrayList<Pizza> pizzat = haePizzat();
 		request.setAttribute("pizzat", pizzat);
+		
+		Collections.sort(pizzat);
 		
 		ArrayList<Tayte> taytteet = haeTaytteet();
 		request.setAttribute("taytteet", taytteet);

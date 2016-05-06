@@ -36,7 +36,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 		
 		Validate validate = new Validate();
 		
-		if(validate.nimi(nimi) && validate.nimi(kuvaus) && validate.hinta(request.getParameter("hinta"))){
+		if(validate.teksti(nimi) && validate.teksti(kuvaus) && validate.hinta(request.getParameter("hinta"))){
 			if(lisaaPizza(pizza)){
 				request.getSession(false).setAttribute("notification", pizza.getNimi() + " lisättiin!");
 			}else{

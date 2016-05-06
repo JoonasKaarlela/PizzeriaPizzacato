@@ -34,7 +34,7 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 		
 		Validate validate = new Validate();
 		
-		if(validate.nimi(nimi) && validate.nimi(kuvaus) && validate.hinta(request.getParameter("hinta"))){
+		if(validate.teksti(nimi) && validate.teksti(kuvaus) && validate.hinta(request.getParameter("hinta"))){
 			Pizza pizza = new Pizza(id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
 			if(muokkaaPizzaa(pizza)){
 				request.getSession().setAttribute("notification", pizza.getNimi() + " tallennettu!");

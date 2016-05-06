@@ -26,7 +26,7 @@ public class MuokkaaMaustettaServlet extends HttpServlet {
 		
 		Validate validate = new Validate();
 		
-		if(validate.nimi(nimi) && validate.hinta(request.getParameter("hinta"))){
+		if(validate.teksti(nimi) && validate.hinta(request.getParameter("hinta"))){
 			Mauste mauste = new Mauste(id, nimi, hinta);
 			try{
 				new MausteDAO().muokkaaMaustetta(mauste);

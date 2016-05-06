@@ -2,7 +2,7 @@ package Pizzacato.model;
 
 public class Validate {
 	
-	public boolean nimi(String nimi){
+	public boolean teksti(String nimi){
 		if(nimi.matches("[a-zA-Z]+") && nimi.length() > 2 && nimi != null){ return true; }
 		return false;
 	}

@@ -29,7 +29,7 @@ public class MuokkaaTaytettaServlet extends HttpServlet {
 		
 		Validate validate = new Validate();
 		
-		if(validate.nimi(nimi) && validate.nimi(alkupera) && validate.nimi(kuvaus) && validate.hinta(request.getParameter("hinta"))){
+		if(validate.teksti(nimi) && validate.teksti(alkupera) && validate.teksti(kuvaus) && validate.hinta(request.getParameter("hinta"))){
 			Tayte tayte = new Tayte(tayte_id, nimi, alkupera, kuvaus, hinta);
 			if(muokkaaTaytetta(tayte)){
 				request.getSession(false).setAttribute("notification", tayte.getNimi() + " tallennettiin!");

@@ -27,7 +27,7 @@ public class LisaaMausteServlet extends HttpServlet {
 		Validate validate = new Validate();
 		Mauste mauste = new Mauste(mauste_id, nimi, hinta);
 		
-		if(validate.nimi(nimi) && validate.hinta(request.getParameter("hinta"))){
+		if(validate.teksti(nimi) && validate.hinta(request.getParameter("hinta"))){
 			if(lisaaMauste(mauste)){
 				request.getSession(false).setAttribute("notification", mauste.getNimi() + " lisättiin!");
 			}

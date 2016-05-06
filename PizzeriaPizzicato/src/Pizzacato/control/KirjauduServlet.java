@@ -27,7 +27,7 @@ public class KirjauduServlet extends HttpServlet {
 		
 		Validate validate = new Validate();
 		
-		if(validate.nimi(kayttajatunnus) && validate.salasana(salasana)){
+		if(validate.teksti(kayttajatunnus) && validate.salasana(salasana)){
 			if(kirjaudu(request, kayttajatunnus, salasana)){
 				request.getSession().setAttribute("notification", "Tervetuloa!");
 			}

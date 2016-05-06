@@ -31,7 +31,8 @@ import Pizzacato.model.Kayttaja;
 		"/TaytteidenHallinta",
 		"/TilaustenHallinta",
 		"/PoistaPizzanTayte",
-		"/LisaaPizzanTayte"
+		"/LisaaPizzanTayte",
+		"/MuokkaaPizzaaTila"
 })
 
 public class AdminFilter implements Filter {

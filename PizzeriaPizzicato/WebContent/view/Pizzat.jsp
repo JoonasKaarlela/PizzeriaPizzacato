@@ -100,7 +100,7 @@
 	                            </td>
 	                            <td>
 	                            	<c:forEach items="${pizza.getTaytteet()}" var="tayte" varStatus='current'>
-	                            		${tayte.getNimi()} <c:if test="${current.index < ${pizza.getTaytteet().size()}">,</c:if> 
+	                            		${tayte.getNimi()}<c:if test="${current.index < pizza.getTaytteet().size()-1}">,</c:if> 
 	                            	</c:forEach>
 	                            </td>
 	                            <td>

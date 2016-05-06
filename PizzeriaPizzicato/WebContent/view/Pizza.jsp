@@ -41,11 +41,27 @@
     	
     	<form class='MuokkaaPizzaa' action='MuokkaaPizzaa' method='POST'>
     		
-    		<input value="${pizza.getNimi()}" name='nimi' />
-    		<input value="${pizza.getKuvaus()}" />
+    		<h2> Muokkaa: ${pizza.getPizza_id()} </h2>
     		
-    		<button type='submit'> Tallenna </button>
+    		<div>
+	    		<input name="nimi" value="${pizza.getNimi()}" placeholder="nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="15" required />
+	    		<input name="kuvaus" value="${pizza.getKuvaus()}" placeholder="kuvaus" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="30" required />
+	    		<input name="hinta" value="${pizza.getHinta()}" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4" required/>
+
+		        <c:choose>
+		        	<c:when test="${pizza.getListalla()}">
+		        		<input type=checkbox name="listalla" checked="checked" />
+		        	</c:when>
+		        	<c:otherwise>
+		        		<input type=checkbox name="listalla" />
+		        	</c:otherwise>
+		        </c:choose>
+	    		<button type='submit'> Tallenna </button>
+	    		<a href='PizzojenHallinta'> Peruuta </a>
+    		</div>
     	
+    		<div>
+    		<h3>Täytteet:</h3>
 	    	<table>
 	    		<thead>
 	    			<tr>
@@ -57,7 +73,7 @@
 	    			</tr>
 	    		</thead>
 	    		<tbody>
-		    		<c:forEach items='${pizza.getTaytteet()}' var='tayte'>
+		    		<c:forEach items='${taytteet}' var='tayte'>
 		    			<tr>
 		    				<td> ${tayte.getNimi()} </td>
 		    				<td> ${tayte.getAlkupera()}</td>
@@ -77,7 +93,8 @@
 		    		</c:forEach>
 	    		</tbody>	
 	    	</table>
-	    	
+	    	</div>
+	    	<input type='hidden' value="${pizza.getPizza_id()}" name='id' />
     	</form>
     </div>
     

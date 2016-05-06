@@ -10,6 +10,7 @@ import java.util.Random;
 
 
 
+
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
 public class Utils {
@@ -22,10 +23,13 @@ public class Utils {
 		return code;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public String getDate(){
-		String date = new Date().toGMTString();
+		Date now = new Date();
+		String date =  now.getDate() + "/" + now.getMonth() + "/" + now.getYear() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 		return date;
 	}
+	
 	
 	public String objectToString(Object obj) throws IOException{
 		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import Pizzacato.model.Pizza;
 import Pizzacato.model.Tayte;
 import Pizzacato.model.Utils;
+import Pizzacato.model.Validate;
 import Pizzacato.model.dao.PizzaDAO;
 import Pizzacato.model.dao.TayteDAO;
 
@@ -32,11 +33,19 @@ public class LisaaPizzaServlet extends HttpServlet {
 		String kuva = "pizza1.png";
 		
 		Pizza pizza = new Pizza(id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
-		if(lisaaPizza(pizza)){
-			request.getSession(false).setAttribute("notification", pizza.getNimi() + " lisättiin!");
+		
+		Validate validate = new Validate();
+		
+		if(validate.nimi(nimi) && validate.nimi(kuvaus) && validate.hinta(request.getParameter("hinta"))){
+			if(lisaaPizza(pizza)){
+				request.getSession(false).setAttribute("notification", pizza.getNimi() + " lisättiin!");
+			}else{
+				request.getSession(false).setAttribute("notification", "Pizzaa ei voitu lisätä");
+			}
 		}else{
-			request.getSession(false).setAttribute("notification", "Pizzaa ei voitu lisätä");
+			request.getSession(false).setAttribute("error", "Virheelliset kentät");
 		}
+		
 		
 		response.sendRedirect("PizzojenHallinta");
 	}

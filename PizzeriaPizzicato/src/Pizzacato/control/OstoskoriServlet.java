@@ -38,7 +38,7 @@ public class OstoskoriServlet extends HttpServlet {
 					summa += pizza.getHinta();
 				}
 			}	
-			request.setAttribute("summa", String.format("%.2f", Math.floor(summa)));
+			request.setAttribute("summa", String.format("%.2f", summa));
 		} else {
 			request.setAttribute("tyhja", true);
 		}

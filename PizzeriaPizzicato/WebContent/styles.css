@@ -164,8 +164,8 @@ button {
 
 /* BANNER ALKAA */
 #banner {
-	/*height: 300px;
-	background: url(banner.jpg);*/
+	height: 300px;
+	background: url(banner.jpg);
 	background-repeat: no-repeat;
 }
 

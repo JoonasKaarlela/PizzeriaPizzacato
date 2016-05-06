@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Pizzacato.model.Mauste;
 import Pizzacato.model.Utils;
+import Pizzacato.model.Validate;
 import Pizzacato.model.dao.MausteDAO;
 
 @WebServlet("/LisaaMauste")
@@ -23,10 +24,17 @@ public class LisaaMausteServlet extends HttpServlet {
 		String nimi = request.getParameter ("nimi");
 		double hinta = Double.parseDouble(request.getParameter("hinta").replace(',','.'));
 		 
+		Validate validate = new Validate();
 		Mauste mauste = new Mauste(mauste_id, nimi, hinta);
-		if(lisaaMauste(mauste)){
-			request.getSession(false).setAttribute("notification", mauste.getNimi() + " lisättiin!");
+		
+		if(validate.nimi(nimi) && validate.hinta(request.getParameter("hinta"))){
+			if(lisaaMauste(mauste)){
+				request.getSession(false).setAttribute("notification", mauste.getNimi() + " lisättiin!");
+			}
+		}else{
+			request.getSession().setAttribute("error", "Virheellinen muoto");
 		}
+		
 		
 		response.sendRedirect("MausteidenHallinta");
 	}

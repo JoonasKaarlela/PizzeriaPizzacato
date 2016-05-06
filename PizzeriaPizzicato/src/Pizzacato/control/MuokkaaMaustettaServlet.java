@@ -1,6 +1,7 @@
 package Pizzacato.control;
 
 import Pizzacato.model.Mauste;
+import Pizzacato.model.Validate;
 import Pizzacato.model.dao.MausteDAO;
 
 import java.io.IOException;
@@ -23,14 +24,20 @@ public class MuokkaaMaustettaServlet extends HttpServlet {
 		double hinta = Double.parseDouble(request.getParameter("hinta").replace(',', '.'));
 		
 		
-		Mauste mauste = new Mauste(id, nimi, hinta);
+		Validate validate = new Validate();
 		
-		try{
-			new MausteDAO().muokkaaMaustetta(mauste);
-			System.out.println("ok");
-		}catch(SQLException e){
-			request.getSession().setAttribute("notification", "Maustetta ei voitu muokata");
+		if(validate.nimi(nimi) && validate.hinta(request.getParameter("hinta"))){
+			Mauste mauste = new Mauste(id, nimi, hinta);
+			try{
+				new MausteDAO().muokkaaMaustetta(mauste);
+				System.out.println("ok");
+			}catch(SQLException e){
+				request.getSession().setAttribute("notification", "Maustetta ei voitu muokata");
+			}
+		}else{
+			request.getSession().setAttribute("error", "Virheelliset kentät");
 		}
+		
 	
 		response.sendRedirect("MausteidenHallinta");
 		

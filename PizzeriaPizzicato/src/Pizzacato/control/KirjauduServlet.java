@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Pizzacato.model.Kayttaja;
+import Pizzacato.model.Utils;
+import Pizzacato.model.Validate;
 import Pizzacato.model.dao.KayttajaDAO;
 
 
@@ -22,9 +24,15 @@ public class KirjauduServlet extends HttpServlet {
 		
 		String kayttajatunnus = request.getParameter("kayttajatunnus");
 		String salasana = request.getParameter("salasana");
-
-		if(kirjaudu(request, kayttajatunnus, salasana)){
-			request.getSession().setAttribute("notification", "Tervetuloa!");
+		
+		Validate validate = new Validate();
+		
+		if(validate.nimi(kayttajatunnus) && validate.salasana(salasana)){
+			if(kirjaudu(request, kayttajatunnus, salasana)){
+				request.getSession().setAttribute("notification", "Tervetuloa!");
+			}
+		}else{
+			request.getSession().setAttribute("error", "Virheelliset tiedot");
 		}
 		
 		response.sendRedirect("Menu");

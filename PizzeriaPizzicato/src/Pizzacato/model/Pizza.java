@@ -124,11 +124,10 @@ public class Pizza implements Comparable<Pizza> {
 	}
 	
 	
-	
 
 	@Override
 	public int compareTo(Pizza pizza) {	
-		return Integer.parseInt(this.getPizza_id()) - Integer.parseInt(pizza.getPizza_id());
+		return pizza.getNimi().compareTo(this.getNimi());
 	}
 
 

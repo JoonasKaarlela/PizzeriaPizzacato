@@ -1,6 +1,6 @@
 package Pizzacato.model;
 
-public class Tayte {
+public class Tayte implements Comparable<Tayte>{
 		
 		private String tayte_id;
 		private String nimi;
@@ -64,6 +64,8 @@ public void setHinta(double hinta){
 	this.hinta = hinta;
 }
 
+
+
 @Override
 public int hashCode() {
 	return 31 + ((this.getTayte_id() == null) ? 0 : this.getTayte_id().hashCode());
@@ -80,6 +82,11 @@ public boolean equals(Object object)
     }
 
     return sameSame;
+}
+
+@Override
+public int compareTo(Tayte o) {
+	return o.getNimi().compareTo(this.getNimi());
 }
 
 }

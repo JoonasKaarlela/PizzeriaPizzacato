@@ -6,6 +6,7 @@ import Pizzacato.model.Kayttaja;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import Pizzacato.model.Tilaus;
 
@@ -33,6 +34,7 @@ public class NaytaTilausServlet extends HttpServlet {
 			
 			try{
 				ArrayList<Tilaus> tilaukset = tilausdao.haeTilaukset(kayttaja);
+				Collections.sort(tilaukset);
 				request.setAttribute("tilaukset", tilaukset);
 			}catch(SQLException error){
 				System.out.println(error.getMessage());

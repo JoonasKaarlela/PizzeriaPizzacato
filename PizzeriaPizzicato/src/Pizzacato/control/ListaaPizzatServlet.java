@@ -3,6 +3,7 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,6 +43,7 @@ public class ListaaPizzatServlet extends HttpServlet {
 		PizzaDAO pizzadao = new PizzaDAO();
 				try {
 					pizzat = pizzadao.haePizzat();
+					Collections.sort(pizzat);
 				} catch (SQLException e) {
 					System.out.println(e.getMessage());
 				}
@@ -54,6 +56,7 @@ public class ListaaPizzatServlet extends HttpServlet {
 		TayteDAO taytedao = new TayteDAO();
 			try{
 				taytteet = taytedao.haeTaytteet();
+				Collections.sort(taytteet);
 			} catch(SQLException e){
 				System.out.println(e.getMessage());
 			}

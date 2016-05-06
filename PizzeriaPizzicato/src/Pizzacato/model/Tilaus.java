@@ -1,7 +1,7 @@
 package Pizzacato.model;
 
 
-public class Tilaus {
+public class Tilaus implements Comparable<Tilaus>{
 
 	private String tilaus_id;
 	private Kayttaja kayttaja;
@@ -72,6 +72,11 @@ public class Tilaus {
 		}else{
 			return false;
 		}
+	}
+
+	@Override
+	public int compareTo(Tilaus o) {
+		return this.getTilausaika().compareTo(o.getTilausaika());
 	}
 	
 }

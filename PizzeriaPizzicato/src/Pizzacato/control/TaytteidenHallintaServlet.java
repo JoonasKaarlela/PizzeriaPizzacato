@@ -2,6 +2,7 @@ package Pizzacato.control;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import Pizzacato.model.Tayte;
 import Pizzacato.model.dao.TayteDAO;
@@ -33,6 +34,7 @@ public class TaytteidenHallintaServlet extends HttpServlet {
 		ArrayList<Tayte> taytteet = new ArrayList<>();
 		try{
 			taytteet = new TayteDAO().haeTaytteet();
+			Collections.sort(taytteet);
 		}catch(SQLException e){
 			System.out.println(e.getMessage());
 		}

@@ -5,8 +5,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+
+
+
+
 
 
 
@@ -23,9 +30,14 @@ public class Utils {
 	}
 	
 	public String getDate(){
-		String date = new Date().toGMTString();
-		return date;
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+		Date date = new Date();
+		String now = dateFormat.format(date);
+
+		return now;
 	}
+	
 	
 	public String objectToString(Object obj) throws IOException{
 		ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();

@@ -3,6 +3,7 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,6 +37,7 @@ public class TilaustenHallintaServlet extends HttpServlet {
 			TilausDAO tilausdao = new TilausDAO ();
 			try {
 				tilaukset = tilausdao.haeTilaukset();
+				Collections.sort(tilaukset);
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}

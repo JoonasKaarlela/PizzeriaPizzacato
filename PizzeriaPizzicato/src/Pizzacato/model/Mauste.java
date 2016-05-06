@@ -1,6 +1,6 @@
 package Pizzacato.model;
 
-public class Mauste {
+public class Mauste implements Comparable<Mauste> {
 
 	private String mauste_id;
 	private String nimi;
@@ -40,6 +40,11 @@ public class Mauste {
 
 	public void setHinta(double hinta) {
 		this.hinta = hinta;
+	}
+
+	@Override
+	public int compareTo(Mauste o) {
+		return this.getNimi().compareTo(o.getNimi());
 	}
 
 }

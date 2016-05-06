@@ -6,6 +6,8 @@ import Pizzacato.model.dao.MausteDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,11 +27,13 @@ public class MausteidenHallintaServlet extends HttpServlet {
 		
 		try{
 			mausteet = new MausteDAO().haeMausteet();
+			Collections.sort(mausteet);
+			request.setAttribute("mausteet", mausteet);
 		}catch(SQLException e){
 			System.out.println(e.getMessage());
 		}
 		
-		request.setAttribute("mausteet", mausteet);
+		
 		
 		dp.forward(request, response);
 	}

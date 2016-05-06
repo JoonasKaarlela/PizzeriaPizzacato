@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Pizzacato.model.Tayte;
+import Pizzacato.model.Validate;
 import Pizzacato.model.dao.TayteDAO;
 
 
@@ -26,10 +27,19 @@ public class MuokkaaTaytettaServlet extends HttpServlet {
 		String kuvaus = request.getParameter("kuvaus");
 		double hinta = Double.parseDouble(request.getParameter("hinta").replace(',', '.'));
 		
-		Tayte tayte = new Tayte(tayte_id, nimi, alkupera, kuvaus, hinta);
-		if(muokkaaTaytetta(tayte)){
-			request.getSession(false).setAttribute("notification", tayte.getNimi() + " tallennettiin!");
+		Validate validate = new Validate();
+		
+		if(validate.nimi(nimi) && validate.nimi(alkupera) && validate.nimi(kuvaus) && validate.hinta(request.getParameter("hinta"))){
+			Tayte tayte = new Tayte(tayte_id, nimi, alkupera, kuvaus, hinta);
+			if(muokkaaTaytetta(tayte)){
+				request.getSession(false).setAttribute("notification", tayte.getNimi() + " tallennettiin!");
+			}else{
+				request.getSession(false).setAttribute("error", tayte.getNimi() + " ei voitu tallentaa");
+			}
+		}else{
+			request.getSession(false).setAttribute("error", "Virheelliset kentät");
 		}
+		
 		
 		response.sendRedirect("TaytteidenHallinta");
 		

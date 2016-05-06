@@ -67,7 +67,7 @@
            	
             <tr>
             	<td colspan="5">
-                    <form class="pizzaform" id="pizzaform" method="post" action="MuokkaaTilausta" onSubmit="validoi(event)">
+                    <form class="pizzaform" id="pizzaform" method="post" action="MuokkaaTilausta" >
                     <div class="error"></div>
                    	<div class="pizza">
 	                    	<table>
@@ -123,6 +123,7 @@
 		        					<td>
 		                            	<select name="tila">
 		                            		<option value="vastaanotettu">vastaanotettu</option>
+		                            		<option value="valmistuksessa">toimituksessa</option>
 		                            		<option value="toimituksessa">toimituksessa</option>
 		                            		<option value="valmis">valmis</option>
 		                            	</select>

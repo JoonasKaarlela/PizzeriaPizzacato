@@ -47,6 +47,7 @@ public class PizzojenHallintaServlet extends HttpServlet {
 		PizzaDAO pizzadao = new PizzaDAO();
 			try {
 				pizzat = pizzadao.haePizzat();
+				Collections.sort(pizzat);
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
@@ -58,6 +59,7 @@ public class PizzojenHallintaServlet extends HttpServlet {
 		TayteDAO taytedao = new TayteDAO();
 		try{
 			taytteet = taytedao.haeTaytteet();
+			Collections.sort(taytteet);
 		}catch(SQLException e){
 			System.out.println(e.getMessage());
 		}

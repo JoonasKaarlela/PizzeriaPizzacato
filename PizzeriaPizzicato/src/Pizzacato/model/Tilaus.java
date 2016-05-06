@@ -1,8 +1,8 @@
 package Pizzacato.model;
 
-import java.util.Date;
 
 public class Tilaus {
+
 	private String tilaus_id;
 	private Kayttaja kayttaja;
 	private String tilausaika;
@@ -67,7 +67,7 @@ public class Tilaus {
 	}
 	
 	public boolean voidaanPeruuttaa(){
-		if(!this.tila.equals("valmis") && !this.tila.equals("toimituksessa")){
+		if(!this.tila.equals("valmis") && !this.tila.equals("toimituksessa") && !this.tila.equals("valmistuksessa")){
 			return true;
 		}else{
 			return false;

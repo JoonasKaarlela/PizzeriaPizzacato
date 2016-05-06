@@ -15,6 +15,8 @@
 
 <div id="wrapper">	
 
+	<c:import url=""></c:import>
+
     <h1>Hallintasivu</h1>
     <h3><a href="Menu">  <i class="fa fa-arrow-left"></i> Takaisin</a></h3>
 	<div id="hallintanav">
@@ -91,10 +93,12 @@
                         <div class="muokkaus hidden">
 	                        <table>
 			                        <tr>
+			                        	
 			                        	<td>
 			                            	<input type="hidden" value="${mauste.getMauste_id()}" name="id">
 			                            	<input type="text" value="${mauste.getNimi()}" name="nimi" size="20" required>
 			                            </td>
+			                            
 			                            <td>
 			                            	<input type="text" value="${mauste.getHinta()}" name="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4" required>
 			                            </td>

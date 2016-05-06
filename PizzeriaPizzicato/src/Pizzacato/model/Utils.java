@@ -5,8 +5,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+
+
+
 
 
 
@@ -23,11 +29,13 @@ public class Utils {
 		return code;
 	}
 	
-	@SuppressWarnings("deprecation")
 	public String getDate(){
-		Date now = new Date();
-		String date =  now.getDate() + "/" + now.getMonth() + "/" + now.getYear() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
-		return date;
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+		Date date = new Date();
+		String now = dateFormat.format(date);
+
+		return now;
 	}
 	
 	

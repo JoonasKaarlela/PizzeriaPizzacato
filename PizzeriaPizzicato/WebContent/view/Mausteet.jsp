@@ -15,7 +15,6 @@
 
 <div id="wrapper">	
 
-	<c:import url=""></c:import>
 
     <h1>Hallintasivu</h1>
     <h3><a href="Menu">  <i class="fa fa-arrow-left"></i> Takaisin</a></h3>
@@ -71,7 +70,9 @@
             	<td colspan="5">
                     <form class="pizzaform" id="pizzaform" method="post" action="MuokkaaMaustetta" onSubmit="validoi(event)">
                     
-                    	<div class="error"> <!-- virhe ilmoitukset --> </div>
+                    	<div class="error">
+                    		<c:if test=" ${sessionScope.error }"> <b> ${sessionScope.error} </b> </c:if>
+                    	 </div>
                     
 	                   	<div class="pizza">
 	                    	<table>
@@ -110,7 +111,6 @@
 			                        </tr>              	
 		                     </table>
                         </div>
-                        
                     </form>
                 </td>
             </tr>

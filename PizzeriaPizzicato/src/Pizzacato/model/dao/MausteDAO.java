@@ -66,18 +66,27 @@ public class MausteDAO extends DataAccessObject {
 		// YHTEYS
 		Connection conn = getConnection();
 
-		// LISAYS LAUSE
-		String query = "INSERT INTO MAUSTE(mauste_id, nimi, hinta) VALUES(?, ?, ?)";
-		PreparedStatement statement = conn.prepareStatement(query);
-		statement.setString(1, mauste.getMauste_id());
-		statement.setString(2, mauste.getNimi());
-		statement.setDouble(3, mauste.getHinta());
-
-		// EXECUTE
-		int syotettiin = statement.executeUpdate();
-		if (syotettiin > 0) {
-			System.out.println("uusi mauste: " + mauste.getMauste_id()
-					+ " lisattiin tietokantaan...");
+		
+		// KATO ONKO JO LISÄTTY
+		String SELECT = "SELECT * FROM MAUSTE WHERE nimi=?";
+		PreparedStatement stmnt = conn.prepareStatement(SELECT);
+		stmnt.setString(1, mauste.getNimi());
+				
+		ResultSet results = stmnt.executeQuery();
+		if(!results.next()){
+			// LISAYS LAUSE
+			String query = "INSERT INTO MAUSTE(mauste_id, nimi, hinta) VALUES(?, ?, ?)";
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, mauste.getMauste_id());
+			statement.setString(2, mauste.getNimi());
+			statement.setDouble(3, mauste.getHinta());
+	
+			// EXECUTE
+			int syotettiin = statement.executeUpdate();
+			if (syotettiin > 0) {
+				System.out.println("uusi mauste: " + mauste.getMauste_id()
+						+ " lisattiin tietokantaan...");
+			}
 		}
 		conn.close();
 	}

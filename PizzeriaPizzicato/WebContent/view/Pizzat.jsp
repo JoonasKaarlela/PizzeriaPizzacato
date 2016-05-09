@@ -47,32 +47,10 @@
     </div>
     <div class="clear"></div>
     <div id="taytelista">
+    	<div id="actionbar">
+    		<div class="action"> <a href="UusiPizza" style="color:lightgreen;"> <i class="fa fa-plus"></i> </a> </div>
+    	</div>
         <table>
-        	<tr>
-            	<td colspan="5">
-                <h2>Lisää pizza</h2>
-		                
-		                <!-- LISÄÄ PIZZA -->
-		                <div>
-		                    <form method="post" action="LisaaPizza">
-		                        <label>Pizzannimi</label><input name="nimi" placeholder="pizzan nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="15" required /><br />
-		                        <label>Pizzan kuvaus</label><input name="kuvaus" placeholder="kuvaus" size="30" required/><br />
-		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4" required/><br />
-		                        <label>Pizzan täytteet</label><select multiple name="taytteet" required>
-		                        	<c:forEach items="${taytteet}" var="tayte" varStatus="current">
-		                        		<label> Täyte ${current.index} </label><option value="${tayte.getTayte_id()}"> ${tayte.getNimi()} </option>
-		                        	</c:forEach>
-		                        </select>
-		                        <label for="listalla"> Listalla </label>
-		                        <input type=checkbox name="listalla" />
-		                        <button type="submit"> Lisää </button>
-		                    </form>
-		                </div>
-                
-                
-                
-                </td>
-            </tr>
             <tr style="border-top:1px solid #CCC;">
             	<td>
                 	Nimi
@@ -126,8 +104,8 @@
 	                            </td>
 	                            
 	                            <td rowspan="2" align="right">
-	                            	<a href='MuokkaaPizzaaTila?id=${pizza.getPizza_id()}'> Muokkaa </a>
-	                            	<a href="PoistaPizza?id=${pizza.getPizza_id()}"> Poista </a>
+	                            	<a href='MuokkaaPizzaaTila?id=${pizza.getPizza_id()}' style='font-size:15px;'>  muokkaa </a>
+	                            	<a href="PoistaPizza?id=${pizza.getPizza_id()}" style="color:crimson; font-size:15px;">  poista </a>
 	                            </td>
 
 	                        </tr>              	

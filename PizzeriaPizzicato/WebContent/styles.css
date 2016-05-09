@@ -45,6 +45,23 @@ button:hover {
 	align-items:center;
 }
 
+#actionbar{
+	display:flex;
+	height:50px;
+	width:100%;
+	flex-flow:nowrap row;
+	justify-content:flex-end;
+	align-items:center;
+	background:#444444;
+}
+
+.action{
+	display:flex;
+	width:50px;
+	justify-content:center;
+	align-items:center;
+}
+
 
 #wrapper {
 	position: relative;

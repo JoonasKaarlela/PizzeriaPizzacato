@@ -16,6 +16,17 @@
 
 <div id="wrapper">	
 
+		<div class="notification">
+		<c:if test="${requestScope.notification != null}">
+			<strong>${requestScope.notification}</strong>
+		</c:if>
+	</div>
+	
+	<div class="error">
+          <b> ${error } </b>
+    </div>
+	
+
     <h1>Hallintasivu</h1>
     <h3><a href="Menu"> <i class="fa fa-arrow-left"></i> Takaisin </a></h3>
 	<div id="hallintanav">

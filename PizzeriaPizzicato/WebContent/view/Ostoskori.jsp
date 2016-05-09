@@ -19,6 +19,10 @@
 			<strong>${requestScope.notification}</strong>
 		</c:if>
 	</div>
+	
+	<div class="error">
+          <b> ${error } </b>
+    </div>
 
 	<div id="wrapper">
 

@@ -71,7 +71,7 @@ public class PizzaDAO extends DataAccessObject{
 	}
 	
 
-	public void lisaaPizza(Pizza pizza) throws SQLException{
+	public boolean lisaaPizza(Pizza pizza) throws SQLException{
 		// LISATTIIN UUSI PIZZA TIETOKANTAAN.
 		
 		// YHTEYS
@@ -107,15 +107,16 @@ public class PizzaDAO extends DataAccessObject{
 				pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
 			}
 		}else{
-			System.out.println(pizza.getNimi() + " on jo lisätty.");
+			conn.close();
+			return false;
 		}
 
 		conn.close();
-		
+		return true;
 		
 	}
 	
-	public void poistaPizza(String id) throws SQLException{
+	public boolean poistaPizza(String id) throws SQLException{
 			
 		// POISTA KYSEINEN PIZZA TIETOKANNASTA
 		
@@ -138,49 +139,62 @@ public class PizzaDAO extends DataAccessObject{
 		int pizzoja_poistettiin = statement.executeUpdate();
 		if( pizzoja_poistettiin > 0){
 			System.out.println("pizza " + id + " poistettiin tietokannasta...");
+		}else{
+			conn.close();
+			return false;
 		}
-		
 		conn.close();
-		
+		return true;
 	}
 	
-	public void muokkaaPizzaa(Pizza pizza) throws SQLException{
+	public boolean muokkaaPizzaa(Pizza pizza) throws SQLException{
 		// TALLENNA UUDET TIEDOT
 		
 		System.out.println("MUOKATAAAN = " + pizza.getNimi());
 		
 		//YHTEYS
 		Connection conn = getConnection();
-		
-		//PAIVITA LAUSE
-		String query = "UPDATE PIZZA SET nimi=?, kuvaus=?, listalla=?, hinta=?, kuva=? WHERE pizza_id=?";
-		PreparedStatement statement = conn.prepareStatement(query);
-		statement.setString(1, pizza.getNimi());
-		statement.setString(2, pizza.getKuvaus());
-		statement.setBoolean(3, pizza.getListalla());
-		statement.setDouble(4, pizza.getHinta());
-		statement.setString(5, pizza.getKuva());
-		statement.setString(6, pizza.getPizza_id());
-		
-		//EXECUTE
-		int paivitettiin = statement.executeUpdate();
-		if(paivitettiin > 0){
-			System.out.println("PÄIVITYS ONNISTUI!");
+
+		String SELECT = "SELECT * FROM PIZZA WHERE nimi=?";
+		PreparedStatement stmnt = conn.prepareStatement(SELECT);
+		stmnt.setString(1, pizza.getNimi());
+				
+		ResultSet results = stmnt.executeQuery();
+		if(!results.next()){
+
+			String query = "UPDATE PIZZA SET nimi=?, kuvaus=?, listalla=?, hinta=?, kuva=? WHERE pizza_id=?";
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, pizza.getNimi());
+			statement.setString(2, pizza.getKuvaus());
+			statement.setBoolean(3, pizza.getListalla());
+			statement.setDouble(4, pizza.getHinta());
+			statement.setString(5, pizza.getKuva());
+			statement.setString(6, pizza.getPizza_id());
 			
-			PizzanTayteDAO pizzantaytedao = new PizzanTayteDAO();
-			
-			for(Tayte tayte : pizza.getTaytteet()){
-				pizzantaytedao.poistaPizzanTayte(pizza, tayte);
+			int paivitettiin = statement.executeUpdate();
+			if(paivitettiin > 0){
+				System.out.println("PÄIVITYS ONNISTUI!");
+				
+				PizzanTayteDAO pizzantaytedao = new PizzanTayteDAO();
+				
+				for(Tayte tayte : pizza.getTaytteet()){
+					pizzantaytedao.poistaPizzanTayte(pizza, tayte);
+				}
+				
+				for(Tayte tayte : pizza.getTaytteet()){
+					pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
+				}
+			}else{
+				conn.close();
+				return false;
 			}
-			
-			for(Tayte tayte : pizza.getTaytteet()){
-				pizzantaytedao.lisaaPizzanTayte(pizza, tayte);
-			}
-			
-			
+		}else{
+			conn.close();
+			return false;
 		}
 		
 		conn.close();
+		return true;
 	}
 	
 	

@@ -21,14 +21,30 @@ button:hover {
 	color: white;
 	z-index: 1;
 	display: flex;
-	flex: nowrap row;
+	flex-flow: nowrap row;
 	justify-content: center;
 	align-items: center;
+	color:lightgreen;
 }
 
 .hidden {
 	display: none !important;
 }
+
+.error{
+	position:absolute;
+	top:0;
+	right:0;
+	height:65px;
+	width:250px;
+	z-index:1;
+	color:crimson;
+	display:flex;
+	flex-flow:nowrap row;
+	justify-content:center;
+	align-items:center;
+}
+
 
 #wrapper {
 	position: relative;

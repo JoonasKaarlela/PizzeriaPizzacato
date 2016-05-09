@@ -29,7 +29,10 @@ public class KirjauduServlet extends HttpServlet {
 		
 		if(validate.teksti(kayttajatunnus) && validate.salasana(salasana)){
 			if(kirjaudu(request, kayttajatunnus, salasana)){
+				request.getSession().removeAttribute("ostoskori");
 				request.getSession().setAttribute("notification", "Tervetuloa!");
+			}else{
+				request.getSession().setAttribute("error", "Kirjautuminen epäonnistui!");
 			}
 		}else{
 			request.getSession().setAttribute("error", "Virheelliset tiedot");

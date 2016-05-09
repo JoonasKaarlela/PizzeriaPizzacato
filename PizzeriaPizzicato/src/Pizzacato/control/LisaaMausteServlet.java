@@ -29,12 +29,13 @@ public class LisaaMausteServlet extends HttpServlet {
 		
 		if(validate.teksti(nimi) && validate.hinta(request.getParameter("hinta"))){
 			if(lisaaMauste(mauste)){
-				request.getSession(false).setAttribute("notification", mauste.getNimi() + " lisättiin!");
+				request.getSession().setAttribute("notification", mauste.getNimi() + " lisättiin!");
+			}else{
+				request.getSession().setAttribute("error", mauste.getNimi() + " on jo listalla.");
 			}
 		}else{
 			request.getSession().setAttribute("error", "Virheellinen muoto");
 		}
-		
 		
 		response.sendRedirect("MausteidenHallinta");
 	}
@@ -42,13 +43,11 @@ public class LisaaMausteServlet extends HttpServlet {
 	public boolean lisaaMauste(Mauste mauste){
 		MausteDAO maustedao = new MausteDAO();
 		try{
-			maustedao.lisaaMauste(mauste);
-			return true;
+			return maustedao.lisaaMauste(mauste);
 		} catch(SQLException e){
 			System.out.println(e.getMessage());
-			
+			return false;
 		}
-		return false;
 	}
 	
 }

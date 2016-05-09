@@ -36,7 +36,7 @@ public class MuokkaaPizzaaTilaServlet extends HttpServlet {
 			sivu = "/view/Pizza.jsp";		
 		}catch(SQLException e){
 			System.out.println(e.getMessage());
-			request.getSession(false).setAttribute("notification", "Pizzaa ei voitu hakea");
+			request.getSession(false).setAttribute("error", "Pizzaa ei voitu hakea");
 		}
 		
 		try{
@@ -44,7 +44,7 @@ public class MuokkaaPizzaaTilaServlet extends HttpServlet {
 			request.setAttribute("taytteet", taytteet);
 		}catch(SQLException e){
 			System.out.println(e.getMessage());
-			request.getSession(false).setAttribute("notification", "Täytteitä ei voitu hakea");
+			request.getSession(false).setAttribute("error", "Täytteitä ei voitu hakea");
 		}
 		
 		RequestDispatcher rd = request.getServletContext().getRequestDispatcher(sivu);

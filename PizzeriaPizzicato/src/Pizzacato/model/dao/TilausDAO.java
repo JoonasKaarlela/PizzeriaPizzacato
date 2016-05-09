@@ -16,7 +16,7 @@ import Pizzacato.model.Pizza;
 
 public class TilausDAO extends DataAccessObject {
 	
-	public void asetaTilaus(HashMap<String, ArrayList<Pizza>> ostoskori, Kayttaja kayttaja) throws SQLException{
+	public boolean asetaTilaus(HashMap<String, ArrayList<Pizza>> ostoskori, Kayttaja kayttaja) throws SQLException{
 		
 		Connection conn = getConnection();
 		
@@ -47,19 +47,20 @@ public class TilausDAO extends DataAccessObject {
 			
 		int syotettiin = statement.executeUpdate();
 		if(syotettiin > 0){
-			System.out.println("Tilaus " + tilaus_id + " asetettiin!");
-		}
-		
-		// LUO TILAUKSEN PIZZAT
-		TilauksenPizzaDAO tilauksenpizzadao = new TilauksenPizzaDAO();
-		for(String key : ostoskori.keySet()){
-			for(Pizza pizza : ostoskori.get(key)){
-				tilauksenpizzadao.luoTilauksenPizza(pizza, tilaus_id, ostoskori.get(key).size());
-				break;
+			TilauksenPizzaDAO tilauksenpizzadao = new TilauksenPizzaDAO();
+			for(String key : ostoskori.keySet()){
+				for(Pizza pizza : ostoskori.get(key)){
+					tilauksenpizzadao.luoTilauksenPizza(pizza, tilaus_id, ostoskori.get(key).size());
+					break;
+				}
 			}
+		}else{
+			conn.close();
+			return false;
 		}
 		
 		conn.close();
+		return true;
 	}
 
 	
@@ -137,11 +138,10 @@ public class TilausDAO extends DataAccessObject {
 
 	}
 	
-	public void poistaTilaus(String id) throws SQLException{
+	public boolean poistaTilaus(String id) throws SQLException{
 		
 		Connection conn = getConnection();
-			
-		// TODO: poista TilauksenPizzat
+
 		String query = "DELETE FROM TILAUKSENPIZZA WHERE tilaus_id=?";
 		PreparedStatement stmt = conn.prepareStatement(query);
 		stmt.setString(1, id);
@@ -153,16 +153,19 @@ public class TilausDAO extends DataAccessObject {
 			statement.setString(1, id);
 			
 			int poistettiin = statement.executeUpdate();
-			if(poistettiin > 1){
+			if(poistettiin > 0){
 				System.out.println("Tilaus " + id + " ja sen pizzat poistettiin");
+			}else{
+				conn.close();
+				return false;
 			}
 		}
-
 		conn.close();
+		return true;
 		
 	}
 	
-	public void muokkaaTilausta(String id, String tila) throws SQLException{
+	public boolean muokkaaTilausta(String id, String tila) throws SQLException{
 		
 		Connection conn = getConnection();
 		
@@ -175,8 +178,12 @@ public class TilausDAO extends DataAccessObject {
 		if(paivitettiin > 0){
 			System.out.println("Tilauksen " + id + " on nyt tilassa " + tila);
 		}else{
-			System.out.println("Tilausta ei löytynyt");
+			conn.close();
+			return false;
 		}
+		
+		conn.close();
+		return true;
 		
 	}
 	

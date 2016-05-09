@@ -39,7 +39,7 @@ public class RekisteroidyServlet extends HttpServlet {
 		if(kayttaja != null){
 			request.getSession().setAttribute("notification", "Tervetuloa " + kayttaja.getKayttajatunnus() + "!");
 		}else{
-			request.getSession().setAttribute("notification", "Rekisteröityminen epäonnisui!");
+			request.getSession().setAttribute("error", "Rekisteröityminen epäonnistui!");
 		}
 		
 		response.sendRedirect("Menu");

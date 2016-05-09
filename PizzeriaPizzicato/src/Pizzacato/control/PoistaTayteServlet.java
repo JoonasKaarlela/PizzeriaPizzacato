@@ -28,12 +28,10 @@ public class PoistaTayteServlet extends HttpServlet {
 	public boolean poistaTayte(String id) {
 		TayteDAO taytedao = new TayteDAO();
 		try {
-			taytedao.poistaTayte(id);
-			return true;
+			return taytedao.poistaTayte(id);
 		}catch (SQLException e) {
 			System.out.println(e.getMessage());
-			e.printStackTrace();
+			return false;
 		}
-		return false;
 	}
 }

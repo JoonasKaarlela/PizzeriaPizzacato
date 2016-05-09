@@ -21,8 +21,12 @@ public class PoistaMausteSerlvet extends HttpServlet {
 		
 		MausteDAO maustedao = new MausteDAO();
 		try{
-			maustedao.poistaMauste(id);
-			request.getSession(false).setAttribute("notification", "Mauste " + id + " poistettiin");
+			if(maustedao.poistaMauste(id)){
+				request.getSession().setAttribute("notification", "Mauste " + id + " poistettiin!");
+			}else{
+				request.getSession().setAttribute("error", "Mauste " + id + " ei voitu poistaa.");
+			}
+			
 		}catch(SQLException e){
 			System.out.println(e.getMessage());
 		}

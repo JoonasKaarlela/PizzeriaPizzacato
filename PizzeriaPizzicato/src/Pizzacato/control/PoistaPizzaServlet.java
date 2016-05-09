@@ -30,13 +30,11 @@ public class PoistaPizzaServlet extends HttpServlet {
 	public boolean poistaPizza(String id){
 		PizzaDAO pizzadao = new PizzaDAO();
 		try {
-			pizzadao.poistaPizza(id);
-			return true;
+			return pizzadao.poistaPizza(id);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			e.printStackTrace();
+			return false;
 		}
-		return false;
 	}
 
 }

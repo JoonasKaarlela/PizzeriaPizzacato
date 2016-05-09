@@ -21,10 +21,15 @@ public class PoistaTilausServlet extends HttpServlet {
 
 		TilausDAO tilausdao = new TilausDAO();
 		try{
-			tilausdao.poistaTilaus(id);
+			if(tilausdao.poistaTilaus(id)){
+				request.getSession().setAttribute("notification", "Tilaus " + id + " on peruutettu!");
+			}else{
+				request.getSession().setAttribute("error", "Tilausta ei voitu poistaa");
+			}
+			
 		}catch(SQLException e){
 			System.out.println(e.getMessage());
-			request.getSession(false).setAttribute("notification", "Tilausta ei voitu poistaa..");
+			request.getSession().setAttribute("error", "Tilausta ei voitu poistaa");
 		}
 		
 		response.sendRedirect("Tilaukset");

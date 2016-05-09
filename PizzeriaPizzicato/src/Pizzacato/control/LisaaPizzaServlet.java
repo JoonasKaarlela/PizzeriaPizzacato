@@ -40,7 +40,7 @@ public class LisaaPizzaServlet extends HttpServlet {
 			if(lisaaPizza(pizza)){
 				request.getSession(false).setAttribute("notification", pizza.getNimi() + " lisättiin!");
 			}else{
-				request.getSession(false).setAttribute("notification", "Pizzaa ei voitu lisätä");
+				request.getSession(false).setAttribute("notification", "Pizzaa on jo listalla.");
 			}
 		}else{
 			request.getSession(false).setAttribute("error", "Virheelliset kentät");
@@ -81,12 +81,11 @@ public class LisaaPizzaServlet extends HttpServlet {
 	public boolean lisaaPizza(Pizza pizza){
 		PizzaDAO dao = new PizzaDAO();
 		try{
-			dao.lisaaPizza(pizza);
-			return true;
+			return dao.lisaaPizza(pizza);
 		} catch(SQLException e){
 			System.out.println(e.getMessage());
+			return false;
 		}
-		return false;
 	}
 }
 

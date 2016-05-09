@@ -12,7 +12,7 @@ import Pizzacato.model.Utils;
 
 public class TilauksenPizzaDAO extends DataAccessObject {
 
-	public void luoTilauksenPizza(Pizza pizza, String tilauksen_id, int lkm) throws SQLException{
+	public boolean luoTilauksenPizza(Pizza pizza, String tilauksen_id, int lkm) throws SQLException{
 		
 		Connection conn = getConnection();
 		
@@ -27,9 +27,12 @@ public class TilauksenPizzaDAO extends DataAccessObject {
 		int syotettiin = statement.executeUpdate();
 		if(syotettiin > 0){
 			System.out.println("Tilauksenpizza " + id + " tallennettiin tilaukselle " + tilauksen_id);
+		}else{
+			conn.close();
+			return false;
 		}
-		
 		conn.close();
+		return true;
 	}
 	
 	public ArrayList<Pizza> HaeTilauksenPizzat(String tilaus_id) throws SQLException{

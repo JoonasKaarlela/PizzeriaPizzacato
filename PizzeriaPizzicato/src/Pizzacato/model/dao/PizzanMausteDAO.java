@@ -14,8 +14,7 @@ import Pizzacato.model.Mauste;
 
 public class PizzanMausteDAO extends DataAccessObject {
 
-	public ArrayList<Mauste> haePizzanMausteet(String pizza_id)
-			throws SQLException {
+	public ArrayList<Mauste> haePizzanMausteet(String pizza_id) throws SQLException {
 		ArrayList<Mauste> mausteet = new ArrayList<>();
 
 		Connection conn = getConnection();
@@ -39,8 +38,7 @@ public class PizzanMausteDAO extends DataAccessObject {
 		return mausteet;
 	}
 
-	public void lisaaPizzanMauste(Pizza pizza, Mauste mauste)
-			throws SQLException {
+	public boolean lisaaPizzanMauste(Pizza pizza, Mauste mauste) throws SQLException {
 
 		Connection conn = getConnection();
 		
@@ -61,13 +59,16 @@ public class PizzanMausteDAO extends DataAccessObject {
 			if (syotettiin > 0) {
 				System.out.println("uusi mauste " + mauste.getNimi()
 						+ " lisättiin tietokantaan...");
+			}else{
+				conn.close();
+				return false;
 			}
 		}
 		conn.close();
+		return true;
 	}
 
-	public void poistaPizzanMauste(Pizza pizza, Mauste mauste)
-			throws SQLException {
+	public boolean poistaPizzanMauste(Pizza pizza, Mauste mauste) throws SQLException {
 
 		Connection conn = getConnection();
 
@@ -80,7 +81,11 @@ public class PizzanMausteDAO extends DataAccessObject {
 		if (poistettiin > 0) {
 			System.out.println("mauste " + mauste.getNimi()
 					+ " poistettiin pizzalta" + pizza.getNimi());
+		}else{
+			conn.close();
+			return false;
 		}
 		conn.close();
+		return true;
 	}
 }

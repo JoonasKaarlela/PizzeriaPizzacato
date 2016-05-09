@@ -29,9 +29,9 @@ public class ErrorFilter implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
 
-		req.removeAttribute("error");
-		req.setAttribute("error", (String) req.getSession().getAttribute("error"));
-		req.getSession().removeAttribute("error");
+		req.removeAttribute("error"); // Poista errori request scopesta.
+		req.setAttribute("error", (String) req.getSession().getAttribute("error")); // Aseta sessiosta mahdollinen uusi errori request scopeen.
+		req.getSession().removeAttribute("error"); // Poista sessiosta errori
 		
 		chain.doFilter(request, response);
 	}

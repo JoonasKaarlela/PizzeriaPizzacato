@@ -7,5 +7,7 @@ Element.prototype.addClass = function(className){
 
 setTimeout(function(){
 	var notification = document.querySelector(".notification");
+	var error = document.querySelector(".error");
+	error.addClass("hidden");
 	notification.addClass("hidden");
 }, 3000);

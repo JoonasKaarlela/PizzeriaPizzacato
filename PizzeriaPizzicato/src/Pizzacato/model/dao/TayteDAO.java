@@ -42,7 +42,7 @@ public class TayteDAO extends DataAccessObject{
 	}
 	
 	// LISAA UUSI TAYTE TIETOKANTAAN.
-	public void lisaaTayte(Tayte tayte) throws SQLException{
+	public boolean lisaaTayte(Tayte tayte) throws SQLException{
 		
 		// YHTEYS
 		Connection conn = getConnection();
@@ -68,63 +68,76 @@ public class TayteDAO extends DataAccessObject{
 				System.out.println("uusi tayte: " + tayte.getTayte_id() + " lisattiin tietokantaan...");
 			}
 		} else {
-			System.out.println("Täyte on jo lisätty");
+			conn.close();
+			return false;
 		}
-		
-		
 		conn.close();
+		return true;
 	}
 		
-	// POISTA KYSEINEN TAYTE TIETOKANNASTA
-		public void poistaTayte(String tayte_id) throws SQLException{
+	public boolean poistaTayte(String tayte_id) throws SQLException{
 			
-			// YHTEYS
 			Connection conn = getConnection();
 			
-			// POISTA MAHDOLLISET PIZZANTÄYTTEET
 			String DELETE = "DELETE FROM PIZZANTAYTE WHERE tayte_id=?";
 			PreparedStatement stmnt = conn.prepareStatement(DELETE);
 			stmnt.setString(1, tayte_id);
 			int removed = stmnt.executeUpdate();
 			
 			if(removed > 0){
-				System.out.println("PIZZANTAYTTEITÄ poistettiin pizzoilta");
+				System.out.println("pizzantäytteet poistettiin pizzalta");
 			}
 			
-			// POISTO LAUSE
 			String query = "DELETE FROM TAYTE WHERE tayte_id=?";
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.setString(1, tayte_id);
 			
-			// EXECUTE
 			int poistettiin = statement.executeUpdate();
-			if( poistettiin > 0){
+			if(poistettiin > 0){
 				System.out.println("tayte " + tayte_id + " poistettiin tietokannasta...");
+			}else{
+				conn.close();
+				return false;
 			}
 			conn.close();
+			return true;
 		}
 		
 		// TALLENNA UUDET TIEDOT
-		public void muokkaaTaytetta(Tayte tayte) throws SQLException{
+		public boolean muokkaaTaytetta(Tayte tayte) throws SQLException{
 
 			//YHTEYS
 			Connection conn = getConnection();
 			
-			//PAIVITA LAUSE
-			String query = "UPDATE TAYTE SET nimi=?, alkupera=?, kuvaus=?, hinta=? WHERE tayte_id=?";
-			PreparedStatement statement = conn.prepareStatement(query);
-			statement.setString(1, tayte.getNimi());
-			statement.setString(2, tayte.getAlkupera());
-			statement.setString(3,  tayte.getKuvaus());
-			statement.setDouble(4,  tayte.getHinta());
-			statement.setString(5, tayte.getTayte_id());
+			String SELECT = "SELECT * FROM TAYTE WHERE nimi=?";
+			PreparedStatement stmt = conn.prepareStatement(SELECT);
+			stmt.setString(1, tayte.getNimi());
+			ResultSet results = stmt.executeQuery();
 			
-			//EXECUTE
-			int paivitettiin = statement.executeUpdate();
-			if(paivitettiin > 0){
-				System.out.println("Paivitettiin: " + paivitettiin + " attribuuttia");
+			if(!results.next()){
+
+				String query = "UPDATE TAYTE SET nimi=?, alkupera=?, kuvaus=?, hinta=? WHERE tayte_id=?";
+				PreparedStatement statement = conn.prepareStatement(query);
+				statement.setString(1, tayte.getNimi());
+				statement.setString(2, tayte.getAlkupera());
+				statement.setString(3,  tayte.getKuvaus());
+				statement.setDouble(4,  tayte.getHinta());
+				statement.setString(5, tayte.getTayte_id());
+
+				int paivitettiin = statement.executeUpdate();
+				if(paivitettiin > 0){
+					System.out.println("Paivitettiin: " + paivitettiin + " attribuuttia");
+				}else{
+					conn.close();
+					return false;
+				}
+			}else{
+				conn.close();
+				return false;
 			}
+			
 			conn.close();
+			return true;
 		}
 		
 		

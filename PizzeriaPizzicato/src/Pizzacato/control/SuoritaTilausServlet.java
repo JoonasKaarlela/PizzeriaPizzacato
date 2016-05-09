@@ -30,8 +30,12 @@ public class SuoritaTilausServlet extends HttpServlet {
 			
 
 			try{
-				tilausdao.asetaTilaus(pizzat, (Kayttaja) request.getSession().getAttribute("kayttaja"));
-				request.getSession(false).setAttribute("notification", "Kiitos tilauksesta! :)");
+				if(tilausdao.asetaTilaus(pizzat, (Kayttaja) request.getSession().getAttribute("kayttaja"))){
+					request.getSession().setAttribute("notification", "Kiitos tilauksestasi! :)");
+				}else{
+					request.getSession().setAttribute("error", "Tilausta ei voitu tehdä.");
+				}
+				
 			}catch(SQLException e){
 				System.out.println(e.getMessage());
 			}

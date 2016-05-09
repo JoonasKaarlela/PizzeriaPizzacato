@@ -13,7 +13,7 @@ public class Validate {
 	}
 	
 	public boolean hinta(String hinta){
-		if(hinta.matches("[0-9]+([,.][0-9]{1,2})?") && !hinta.isEmpty() && hinta != null && Double.parseDouble(hinta) > 0){ return true; }
+		if(hinta.matches("[0-9]+([,.][0-9]{1,2})?") && !hinta.isEmpty() && hinta != null && Double.parseDouble(hinta) > 0 && Double.parseDouble(hinta) < 99){ return true; }
 		return false;
 	}
 	

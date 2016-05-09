@@ -31,10 +31,12 @@ public class LisaaTayteServlet extends HttpServlet {
 		if(validate.teksti(nimi) && validate.teksti(alkupera) && validate.teksti(kuvaus) && validate.hinta(request.getParameter("hinta"))){
 			Tayte tayte = new Tayte(tayte_id, nimi, alkupera, kuvaus, hinta);
 			if(lisaaTayte(tayte)){
-				request.getSession(false).setAttribute("notification", tayte.getNimi() + " lisättiin!");
+				request.getSession().setAttribute("notification", tayte.getNimi() + " lisättiin!");
+			}else{
+				request.getSession().setAttribute("error", "Täyte on jo listalla.");
 			}
 		}else{
-			request.getSession(false).setAttribute("error", "Virheelliset kentät");
+			request.getSession().setAttribute("error", "Virheelliset kentät");
 		}
 		
 		response.sendRedirect("TaytteidenHallinta");
@@ -43,13 +45,11 @@ public class LisaaTayteServlet extends HttpServlet {
 	public boolean lisaaTayte(Tayte tayte){
 		TayteDAO taytedao = new TayteDAO();
 		try{
-			taytedao.lisaaTayte(tayte);
-			return true;
+			return taytedao.lisaaTayte(tayte);
 		} catch(SQLException e){
 			System.out.println(e.getMessage());
-			
+			return false;
 		}
-		return false;
 	}
 	
 

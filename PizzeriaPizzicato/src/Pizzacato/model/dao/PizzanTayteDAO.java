@@ -42,7 +42,7 @@ public class PizzanTayteDAO extends DataAccessObject {
 	}
 		
 		
-	public void lisaaPizzanTayte(Pizza pizza, Tayte tayte) throws SQLException{
+	public boolean lisaaPizzanTayte(Pizza pizza, Tayte tayte) throws SQLException{
 		// LISAA UUSI TAYTE TIETOKANTAAN.
 		
 		// YHTEYS
@@ -71,13 +71,15 @@ public class PizzanTayteDAO extends DataAccessObject {
 				System.out.println("uusi täyte " + tayte.getNimi() + " lisättiin");
 			}
 		}else{
-			System.out.println("Tayte on jo pizzalla " + pizza.getPizza_id());
+			conn.close();
+			return false;
 		}
 		
 		conn.close();
+		return true;
 	}
 			
-	public void poistaPizzanTayte(Pizza pizza, Tayte tayte) throws SQLException{
+	public boolean poistaPizzanTayte(Pizza pizza, Tayte tayte) throws SQLException{
 		// POISTA KYSEINEN TAYTE TIETOKANNASTA
 				
 		// YHTEYS
@@ -94,8 +96,12 @@ public class PizzanTayteDAO extends DataAccessObject {
 		int poistettiin = statement.executeUpdate();
 		if( poistettiin > 0){
 			System.out.println("tayte "  + tayte.getNimi() + " poistettiin pizzalta " + pizza.getNimi() );
+		}else{
+			conn.close();
+			return false;
 		}
 		conn.close();
+		return true;
 	}
 			
 			

@@ -14,11 +14,16 @@
 	</head>
 <body>
 
-	<div class="notification">
+		<div class="notification">
 		<c:if test="${requestScope.notification != null}">
 			<strong>${requestScope.notification}</strong>
 		</c:if>
 	</div>
+	
+	<div class="error">
+          <b> ${error } </b>
+    </div>
+
 
 	<div id="wrapper">
 

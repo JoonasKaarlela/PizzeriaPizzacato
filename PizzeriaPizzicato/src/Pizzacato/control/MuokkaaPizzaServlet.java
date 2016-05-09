@@ -87,13 +87,11 @@ public class MuokkaaPizzaServlet extends HttpServlet {
 	public boolean muokkaaPizzaa(Pizza pizza){
 		PizzaDAO pizzadao = new PizzaDAO();
 		try{
-			pizzadao.muokkaaPizzaa(pizza);
-			return true;
+			return pizzadao.muokkaaPizzaa(pizza);
 		} catch(SQLException e){
-			System.out.println("EI VOITU MUOKATA PIZZAA");
-			System.out.println("ERROR: " + e.getMessage());
+			System.out.println(e.getMessage());
+			return false;
 		}
-		return false;
 	}
 	
 	

@@ -61,7 +61,7 @@ public class MausteDAO extends DataAccessObject {
 	}
 
 	// LISAA UUSI MAUSTE TIETOKANTAAN.
-	public void lisaaMauste(Mauste mauste) throws SQLException {
+	public boolean lisaaMauste(Mauste mauste) throws SQLException {
 
 		// YHTEYS
 		Connection conn = getConnection();
@@ -84,15 +84,17 @@ public class MausteDAO extends DataAccessObject {
 			// EXECUTE
 			int syotettiin = statement.executeUpdate();
 			if (syotettiin > 0) {
-				System.out.println("uusi mauste: " + mauste.getMauste_id()
-						+ " lisattiin tietokantaan...");
+				System.out.println("uusi mauste: " + mauste.getMauste_id() + " lisattiin tietokantaan...");
 			}
+		}else{
+			return false;
 		}
 		conn.close();
+		return true;
 	}
 
 	// POISTA KYSEINEN MAUSTE TIETOKANNASTA
-	public void poistaMauste(String mauste_id) throws SQLException {
+	public boolean poistaMauste(String mauste_id) throws SQLException {
 
 		// YHTEYS
 		Connection conn = getConnection();
@@ -105,34 +107,43 @@ public class MausteDAO extends DataAccessObject {
 		// EXECUTE
 		int poistettiin = statement.executeUpdate();
 		if (poistettiin > 0) {
-			System.out.println("mauste " + mauste_id
-					+ " poistettiin tietokannasta...");
+			System.out.println("mauste " + mauste_id + " poistettiin tietokannasta...");
+			return true;
 		}
 		conn.close();
+		return false;
 	}
 
 	// TALLENNA UUDET TIEDOT
-	public void muokkaaMaustetta(Mauste mauste) throws SQLException {
+	public boolean muokkaaMaustetta(Mauste mauste) throws SQLException {
 
 		// YHTEYS
 		Connection conn = getConnection();
 
-		// PAIVITA LAUSE
-		String query = "UPDATE MAUSTE SET nimi=?, hinta=? WHERE mauste_id=?";
-		PreparedStatement statement = conn.prepareStatement(query);
-		statement.setString(1, mauste.getNimi());
-		statement.setDouble(2, mauste.getHinta());
-		statement.setString(3, mauste.getMauste_id());
+		String SELECT = "SELECT * FROM MAUSTE WHERE nimi=?";
+		PreparedStatement stmnt = conn.prepareStatement(SELECT);
+		stmnt.setString(1, mauste.getNimi());
+						
+		ResultSet results = stmnt.executeQuery();
+		if(!results.next()){
 
-		// EXECUTE
-		int paivitettiin = statement.executeUpdate();
-		if (paivitettiin > 0) {
-			System.out.println("Paivitettiin: " + paivitettiin
-					+ " attribuuttia");
+			String query = "UPDATE MAUSTE SET nimi=?, hinta=? WHERE mauste_id=?";
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, mauste.getNimi());
+			statement.setDouble(2, mauste.getHinta());
+			statement.setString(3, mauste.getMauste_id());
+	
+			int paivitettiin = statement.executeUpdate();
+			if (paivitettiin > 0) {
+				System.out.println("Paivitettiin: " + paivitettiin + " attribuuttia");
+				return true;
+			}
 		}else{
-			System.out.println("Maustetta ei löytynyt");
+			conn.close();
+			return false;
 		}
 		conn.close();
+		return true;
 	}
 
 }

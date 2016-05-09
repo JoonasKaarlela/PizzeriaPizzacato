@@ -29,16 +29,18 @@ public class MuokkaaMaustettaServlet extends HttpServlet {
 		if(validate.teksti(nimi) && validate.hinta(request.getParameter("hinta"))){
 			Mauste mauste = new Mauste(id, nimi, hinta);
 			try{
-				new MausteDAO().muokkaaMaustetta(mauste);
-				System.out.println("ok");
+				if(new MausteDAO().muokkaaMaustetta(mauste)){
+					request.getSession().setAttribute("notification", mauste.getNimi() + " tallennetiin.");
+				}else{
+					request.getSession().setAttribute("error", mauste.getNimi() + " on jo listalla.");
+				}
 			}catch(SQLException e){
-				request.getSession().setAttribute("notification", "Maustetta ei voitu muokata");
+				request.getSession().setAttribute("error", "Maustetta ei voitu muokata");
 			}
 		}else{
 			request.getSession().setAttribute("error", "Virheelliset kentät");
 		}
 		
-	
 		response.sendRedirect("MausteidenHallinta");
 		
 	}

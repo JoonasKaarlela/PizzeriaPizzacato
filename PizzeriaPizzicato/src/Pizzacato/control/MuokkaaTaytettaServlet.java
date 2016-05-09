@@ -40,7 +40,6 @@ public class MuokkaaTaytettaServlet extends HttpServlet {
 			request.getSession(false).setAttribute("error", "Virheelliset kentät");
 		}
 		
-		
 		response.sendRedirect("TaytteidenHallinta");
 		
 	}
@@ -48,12 +47,11 @@ public class MuokkaaTaytettaServlet extends HttpServlet {
 	public boolean muokkaaTaytetta(Tayte tayte){
 		TayteDAO taytedao = new TayteDAO();
 		try{
-			taytedao.muokkaaTaytetta(tayte);
-			return true;
+			return taytedao.muokkaaTaytetta(tayte);
 		} catch (SQLException e){
-			System.out.println("ERROR: " + e.getMessage());
+			System.out.println(e.getMessage());
+			return false;
 		}
-		return false;
 	}
 	
 	

@@ -33,7 +33,9 @@ public class LisaaKoriinServlet extends HttpServlet {
 			if(lisaaKoriin(pizza, request.getSession())){
 				String prefix = "";
 				if(maara > 1){ prefix += maara + "x "; }
-				request.getSession(false).setAttribute("notification", prefix + pizza.getNimi() + " lisättiin koriin!" );
+				request.getSession().setAttribute("notification", prefix + pizza.getNimi() + " lisättiin koriin!" );
+			}else{
+				request.getSession().setAttribute("error", pizza.getNimi() + " ei voitu lisätä..." );
 			}
 		}
 		

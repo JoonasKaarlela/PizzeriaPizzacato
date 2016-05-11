@@ -36,9 +36,11 @@ public class KayttajaDAO extends DataAccessObject {
 			String osoite = results.getString(4);
 			String sposti = results.getString(5);
 			String puh = results.getString(6);
-			Boolean omistaja = results.getBoolean(7);
+			boolean omistaja = results.getBoolean(7);
+			boolean kokki = results.getBoolean(8);
+			boolean kuljettaja = results.getBoolean(9);
 			
-			kayttaja = new Kayttaja(id, kayttaja_tunnus, kayttaja_salasana, osoite, sposti, puh, omistaja);
+			kayttaja = new Kayttaja(id, kayttaja_tunnus, kayttaja_salasana, osoite, sposti, puh, omistaja, kokki, kuljettaja);
 		}
 		
 		conn.close();
@@ -65,7 +67,7 @@ public class KayttajaDAO extends DataAccessObject {
 		}
 		
 			String hashed = BCrypt.hashpw(salasana, BCrypt.gensalt());
-			String INSERT = "INSERT INTO KAYTTAJA(kayttaja_id, kayttajatunnus, salasana, osoite, sahkoposti, puhelinnumero, omistaja) VALUES(?, ?, ?, ?, ?, ?, ?)";
+			String INSERT = "INSERT INTO KAYTTAJA(kayttaja_id, kayttajatunnus, salasana, osoite, sahkoposti, puhelinnumero, omistaja, kokki, kuljettaja) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement insert = conn.prepareStatement(INSERT);
 			insert.setString(1, id);
 			insert.setString(2, kayttajatunnus);
@@ -74,6 +76,8 @@ public class KayttajaDAO extends DataAccessObject {
 			insert.setString(5, sahkoposti);
 			insert.setString(6, puh);
 			insert.setBoolean(7, false);
+			insert.setBoolean(8, false);
+			insert.setBoolean(9, false);
 			
 			int updated = insert.executeUpdate();
 			if(updated < 1){
@@ -83,6 +87,7 @@ public class KayttajaDAO extends DataAccessObject {
 				System.out.println("OK!");
 				kayttaja = new Kayttaja(id, kayttajatunnus, salasana, osoite, sahkoposti, puh, false);
 			}
+		conn.close();
 		return kayttaja;
 	}
 	

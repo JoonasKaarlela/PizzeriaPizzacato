@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Pizzacato.model.Kayttaja;
+import Pizzacato.model.Validate;
 import Pizzacato.model.dao.KayttajaDAO;
 
 
@@ -32,14 +33,19 @@ public class RekisteroidyServlet extends HttpServlet {
 		String kayttajatunnus = request.getParameter("kayttajatunnus_rek");
 		String salasana = request.getParameter("salasana_rek");
 		String osoite = request.getParameter("osoite_rek");
-		String puh = request.getParameter("puh_rek");
-		String sahkoposti = request.getParameter("sahkoposti_rek");
+		String puh = request.getParameter("puh");
+		String sahkoposti = request.getParameter("sahkoposti");
 		
-		Kayttaja kayttaja = rekisteroidy(request, kayttajatunnus, salasana, osoite, sahkoposti, puh);
-		if(kayttaja != null){
-			request.getSession().setAttribute("notification", "Tervetuloa " + kayttaja.getKayttajatunnus() + "!");
+		Validate validate = new Validate();
+		if(validate.teksti(kayttajatunnus) && validate.salasana(salasana) && validate.osoite(osoite) && validate.puh(puh) && validate.sahkoposti(sahkoposti)){
+			Kayttaja kayttaja = rekisteroidy(request, kayttajatunnus, salasana, osoite, sahkoposti, puh);
+			if(kayttaja != null){
+				request.getSession().setAttribute("notification", "Tervetuloa " + kayttaja.getKayttajatunnus() + "!");
+			}else{
+				request.getSession().setAttribute("error", "Rekisteröityminen epäonnistui!");
+			}
 		}else{
-			request.getSession().setAttribute("error", "Rekisteröityminen epäonnistui!");
+			request.getSession().setAttribute("error", "Virheellisiä kenttiä.");
 		}
 		
 		response.sendRedirect("Menu");

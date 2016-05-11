@@ -21,7 +21,7 @@
 	</div>
 	
 	<div class="error">
-          <b> ${error } </b>
+          <b> ${error} </b>
     </div>
 
 
@@ -130,7 +130,7 @@
 		
 		<div id="rekisterointi">
 		
-			<form id="rekisterointi_form">
+			<form id="rekisterointi_form" action="Rekisterointi" method="POST">
 				<label for=kayttajatunnus_rek> kayttaja </label>
 				<input name="kayttajatunnus_rek" placeholder="kayttajatunnus" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$" size="15"/>
 				<label for=salasana_rek> salasana </label>

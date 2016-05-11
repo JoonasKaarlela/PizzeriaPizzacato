@@ -14,7 +14,6 @@
 </head>
 <body>
 
-<div id="wrapper">	
 
 		<div class="notification">
 		<c:if test="${requestScope.notification != null}">
@@ -25,6 +24,9 @@
 	<div class="error">
           <b> ${error } </b>
     </div>
+
+<div id="wrapper">	
+
 	
 
     <h1>Hallintasivu</h1>

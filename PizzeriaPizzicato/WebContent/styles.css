@@ -17,10 +17,9 @@ button:hover {
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 65px;
+	height: 40px;
 	width: 250px;
 	color: white;
-	z-index: 1;
 	display: flex;
 	flex-flow: nowrap row;
 	justify-content: center;
@@ -36,9 +35,8 @@ button:hover {
 	position:absolute;
 	top:0;
 	right:0;
-	height:65px;
+	height:40px;
 	width:250px;
-	z-index:1;
 	color:crimson;
 	display:flex;
 	flex-flow:nowrap row;
@@ -63,10 +61,6 @@ button:hover {
 	align-items:center;
 }
 
-::selection{
-	background:transparent;
-	color:white;
-}
 
 #MuokkaaPizzaa{
 	width:100%;

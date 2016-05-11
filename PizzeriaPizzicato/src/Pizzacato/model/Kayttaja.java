@@ -12,6 +12,22 @@ public class Kayttaja {
 		private boolean kuljettaja;
 
 
+public boolean isKokki() {
+			return kokki;
+		}
+
+		public void setKokki(boolean kokki) {
+			this.kokki = kokki;
+		}
+
+		public boolean isKuljettaja() {
+			return kuljettaja;
+		}
+
+		public void setKuljettaja(boolean kuljettaja) {
+			this.kuljettaja = kuljettaja;
+		}
+
 public Kayttaja(String kayttaja_id, String kayttajatunnus, String salasana, String osoite, String sahkoposti, String puh, boolean omistaja){
 		this.kayttaja_id = kayttaja_id;
 		this.kayttajatunnus = kayttajatunnus;
@@ -20,8 +36,23 @@ public Kayttaja(String kayttaja_id, String kayttajatunnus, String salasana, Stri
 		this.sahkoposti = sahkoposti;
 		this.puh = puh;
 		this.omistaja = omistaja;
-		
+		this.kokki = false;
+		this.kuljettaja = false;
 }
+
+public Kayttaja(String kayttaja_id, String kayttajatunnus, String salasana, String osoite, String sahkoposti, String puh, boolean omistaja, boolean kokki, boolean kuljettaja){
+	this.kayttaja_id = kayttaja_id;
+	this.kayttajatunnus = kayttajatunnus;
+	this.salasana = salasana;
+	this.osoite = osoite;
+	this.sahkoposti = sahkoposti;
+	this.puh = puh;
+	this.omistaja = omistaja;
+	this.kokki = kokki;
+	this.kuljettaja = kuljettaja;
+}
+
+
 
 public String getPuh() {
 	return puh;
@@ -39,6 +70,8 @@ public Kayttaja(){
 	this.osoite = "";
 	this.sahkoposti = "";
 	this.omistaja = false;
+	this.kokki = false;
+	this.kuljettaja = false;
 }
 
 public String getKayttaja_id() {

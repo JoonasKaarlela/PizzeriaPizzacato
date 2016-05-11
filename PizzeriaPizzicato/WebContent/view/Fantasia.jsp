@@ -17,6 +17,12 @@
 			<strong>${requestScope.notification}</strong>
 		</c:if>
 	</div>
+	
+	<div class="error">
+		<c:if test="${error != null}">
+			<strong>${requestScope.notification}</strong>
+		</c:if>
+	</div>
 
 	<div id="wrapper">
 

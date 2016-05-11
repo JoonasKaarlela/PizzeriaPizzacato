@@ -10,7 +10,7 @@ public class Tilaus implements Comparable<Tilaus>{
 	private String tila;
 	private boolean toimitus;
 	
-	public boolean isToimitus() {
+	public boolean getToimitus() {
 		return toimitus;
 	}
 

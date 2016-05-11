@@ -8,9 +8,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Yhteystiedot</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
+<script src="notification.js" type="text/javascript"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 </head>
 <body>
+
+		<div class="notification">
+		<c:if test="${requestScope.notification != null}">
+			<strong>${requestScope.notification}</strong>
+		</c:if>
+	</div>
+	
+	<div class="error">
+          <b> ${error } </b>
+    </div>
 
 	<div id="wrapper">
 	

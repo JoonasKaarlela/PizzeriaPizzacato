@@ -505,6 +505,46 @@ button {
 	margin: 0;
 }
 
+/* Fantasia muokkaus */
+.pkuva {
+	text-align: center;
+}
+
+#pcontent {
+	margin: auto;
+	width: 90%;
+}
+
+#pcontent-left {
+	float: left;
+	width: 48%;
+	padding: 1%;
+}
+
+#pcontent-right {
+	float: left;
+	width: 48%;
+	padding: 1%;
+}
+
+.pmauste {
+	max-width: 250px;
+}
+
+.pmauste label {
+	width: 100px;
+	display: inline-block;
+}
+
+.pnimi {
+	position: absolute;
+	font-size: 40px;
+	font-weight: bold;
+	text-shadow: 5px 5px 5px #000;
+}
+
+/* Fantasia muokkaus loppuu */
+
 /* RESPONSIVE */
 @media only screen and (max-width: 1024px) {
 	.menuitemwrap {

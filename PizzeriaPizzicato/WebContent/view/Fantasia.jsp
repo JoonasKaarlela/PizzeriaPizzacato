@@ -127,10 +127,10 @@
 		</div>
 
 		<!--  PIZZA MENU ALKAA -->
-		<div id="content">
-			<div id="content-left">
+		<div id="pcontent">
+			<div id="pcontent-left">
             	<div class="pkuva">
-            		<div class="pizzanimi">Fantasia</div>
+            		<div class="pnimi">Fantasia</div>
                 	<img src="pizza1.png">
                 </div>
             	<div class="pkuvaus">
@@ -138,7 +138,7 @@
                 </div>
             </div>
             
-            <div id="content-right">
+            <div id="pcontent-right">
             	<form method="post" action="lisaaKoriin">
 	            	<div class="ptayte">
 	            	<h3>Täytteet</h3>
@@ -167,7 +167,7 @@
 	                	<c:forEach items="${mausteet}" var="mauste" varStatus="current">
 			                <input type="checkbox" value="${mauste.getMauste_id()}"><label>${mauste.getNimi()}</label>
 			            </c:forEach>
-	                </div>
+	                </div><br>
 	                <button type="submit" class="ptilaa">Tilaa</button>
 	                Hinta: 0,00€
            		</form>
@@ -175,48 +175,31 @@
             
 		</div>
 		<!-- CONTENT LOPPUU -->
-	<style type="text/css">
-			.pkuva {
-				text-align: center;
-			}
-			
-			#content {
-				margin:auto;
-				width:90%;
-			}
-			#content-left {
-				float: left;
-				width: 48%;
-				padding: 1%;
-			}
-			#content-right {
-				float: left;
-				width:48%;
-				padding: 1%;
-			}
-        </style>
 	</div>
 
-<script>
+	<script>
 		function addRow() {
-		   var row = $('tbody tr:first').clone();
-		   row.find('input[type!=button]').val('');
-		   $('#tbl tbody').append(row);
+			var row = $('tbody tr:first').clone();
+			row.find('input[type!=button]').val('');
+			$('#tbl tbody').append(row);
 		}
 		function delRow() {
 			$(this).closest('tr').remove();
 		}
-		
+
 		$('#tbl').on('click', '.del-row', delRow);
-		
+
 		$('#tbl').on('click', '.add-row', addRow);
-		
-		$('#tbl').on('change', 'input', function() {
-		  if($(this).val() != '' &&
-		     $(this).closest('tr').is(':last-child')) {
-		    addRow();
-		  }
-		});
-		</script>
+
+		$('#tbl').on(
+				'change',
+				'input',
+				function() {
+					if ($(this).val() != ''
+							&& $(this).closest('tr').is(':last-child')) {
+						addRow();
+					}
+				});
+	</script>
 </body>
 </html>

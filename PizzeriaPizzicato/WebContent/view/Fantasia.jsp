@@ -161,7 +161,7 @@
 	                	<c:forEach items="${mausteet}" var="mauste" varStatus="current">
 			                <input type="checkbox" value="${mauste.getMauste_id()}"><label>${mauste.getNimi()}</label>
 			            </c:forEach>
-	                </div>
+	                </div><br>
 	                <button type="submit" class="ptilaa">Tilaa</button>
 	                Hinta: 0,00€
            		</form>
@@ -171,26 +171,29 @@
 		<!-- CONTENT LOPPUU -->
 	</div>
 
-<script>
+	<script>
 		function addRow() {
-		   var row = $('tbody tr:first').clone();
-		   row.find('input[type!=button]').val('');
-		   $('#tbl tbody').append(row);
+			var row = $('tbody tr:first').clone();
+			row.find('input[type!=button]').val('');
+			$('#tbl tbody').append(row);
 		}
 		function delRow() {
 			$(this).closest('tr').remove();
 		}
-		
+
 		$('#tbl').on('click', '.del-row', delRow);
-		
+
 		$('#tbl').on('click', '.add-row', addRow);
-		
-		$('#tbl').on('change', 'input', function() {
-		  if($(this).val() != '' &&
-		     $(this).closest('tr').is(':last-child')) {
-		    addRow();
-		  }
-		});
-		</script>
+
+		$('#tbl').on(
+				'change',
+				'input',
+				function() {
+					if ($(this).val() != ''
+							&& $(this).closest('tr').is(':last-child')) {
+						addRow();
+					}
+				});
+	</script>
 </body>
 </html>

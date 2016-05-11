@@ -169,29 +169,22 @@
 					</div>
 
 					<div id="ostoskori_bottom">
-						<form action=suoritaTilaus method=post onSubmit="validoi()"
-							id="ostoskori_lomake">
+						<form action=suoritaTilaus method=post onSubmit="validoi()" id="ostoskori_lomake">
 							<h2>Osoite tiedot</h2>
 							<strong class="error" style="color: crimson;"></strong> 
-								<input
-								name="osoite_rek" maxlength="50" required placeholder="osoite"
-								value="${sessionScope.kayttaja.getOsoite()}" /> <input
-								name="puh_rek" type="tel" maxlength="25" placeholder="puh"
-								pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$"
-								required value="${sessionScope.kayttaja.getPuh()}" /> <input
-								name="sahkoposti_rek" type="email" maxlength="30" required
-								placeholder="sähköposti"
-								value="${sessionScope.kayttaja.getSahkoposti()}" />
-							<c:if test="${!sessionScope.ostoskori.isEmpty()}">
-								<button type=submit id="ostoskori_tilaus_button">Tilaa
-								</button>
-							</c:if>
+								<label for="osoite_rek">Osoite </label>
+								 <input name="osoite_rek" maxlength="50" required placeholder="osoite" value="${sessionScope.kayttaja.getOsoite()}" />
+								 <label for="puh_rek">Puh</label>
+								 <input name="puh_rek" type="tel" maxlength="25" placeholder="puh" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" required value="${sessionScope.kayttaja.getPuh()}" />
+								 <label for="sahkoposti">Email</label>
+								 <input name="sahkoposti_rek" type="email" maxlength="30" required placeholder="sähköposti" value="${sessionScope.kayttaja.getSahkoposti()}" />
+								 <label for="Toimitus">Toimitus</label>
+								 <input name="toimitus" type="checkbox" />
+								<button type=submit id="ostoskori_tilaus_button">Tilaa </button>
 						</form>
 
 						<div id="ostoskori_tilaus">
-							<c:if test="${requestScope.tyhja == null}">
 								<div> <strong style="font-size: 100px;"> ${requestScope.summa}€ </strong>  </div>
-							</c:if>
 						</div>
 					</div>
 				</c:when>

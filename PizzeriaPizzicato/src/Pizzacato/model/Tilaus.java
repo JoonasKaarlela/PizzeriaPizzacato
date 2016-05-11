@@ -8,21 +8,32 @@ public class Tilaus implements Comparable<Tilaus>{
 	private String tilausaika;
 	private double hinta;
 	private String tila;
+	private boolean toimitus;
 	
-	public Tilaus(String tilaus_id, Kayttaja kayttaja, String tilausaika, double hinta, String tila){
+	public boolean isToimitus() {
+		return toimitus;
+	}
+
+	public void setToimitus(boolean toimitus) {
+		this.toimitus = toimitus;
+	}
+
+	public Tilaus(String tilaus_id, Kayttaja kayttaja, String tilausaika, double hinta, String tila, boolean toimitus){
 		this.tilaus_id = tilaus_id;
 		this.kayttaja = kayttaja;
 		this.tilausaika = tilausaika;
 		this.hinta = hinta;
 		this.tila = tila;
+		this.toimitus = toimitus;
 	}
 	
-	public Tilaus(String tilaus_id, String tilausaika, double hinta, String tila){
+	public Tilaus(String tilaus_id, String tilausaika, double hinta, String tila, boolean toimitus){
 		this.tilaus_id = tilaus_id;
 		this.kayttaja = null;
 		this.tilausaika = tilausaika;
 		this.hinta = hinta;
 		this.tila = tila;
+		this.toimitus = toimitus;
 	}
 	
 

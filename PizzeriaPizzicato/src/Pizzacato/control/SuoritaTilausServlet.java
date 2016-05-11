@@ -28,9 +28,15 @@ public class SuoritaTilausServlet extends HttpServlet {
 			// SUORITA TILAUS
 			TilausDAO tilausdao = new TilausDAO();
 			
+			boolean toimitus = false;
+			if(request.getParameter("toimitus") != null){
+				toimitus = true;
+			}
+			
+			
 
 			try{
-				if(tilausdao.asetaTilaus(pizzat, (Kayttaja) request.getSession().getAttribute("kayttaja"))){
+				if(tilausdao.asetaTilaus(pizzat, (Kayttaja) request.getSession().getAttribute("kayttaja"), toimitus)){
 					request.getSession().setAttribute("notification", "Kiitos tilauksestasi! :)");
 				}else{
 					request.getSession().setAttribute("error", "Tilausta ei voitu tehdä.");

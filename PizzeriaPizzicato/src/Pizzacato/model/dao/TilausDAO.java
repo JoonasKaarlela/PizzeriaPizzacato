@@ -16,7 +16,7 @@ import Pizzacato.model.Pizza;
 
 public class TilausDAO extends DataAccessObject {
 	
-	public boolean asetaTilaus(HashMap<String, ArrayList<Pizza>> ostoskori, Kayttaja kayttaja) throws SQLException{
+	public boolean asetaTilaus(HashMap<String, ArrayList<Pizza>> ostoskori, Kayttaja kayttaja, boolean toimitus) throws SQLException{
 		
 		Connection conn = getConnection();
 		
@@ -37,13 +37,14 @@ public class TilausDAO extends DataAccessObject {
 			}
 		}
 			
-		String query = "INSERT INTO TILAUS(tilaus_id, tilausaika, hinta, tila, kayttaja_id) VALUES(?, ?, ?, ?, ?)";
+		String query = "INSERT INTO TILAUS(tilaus_id, tilausaika, hinta, tila, kayttaja_id, toimitus) VALUES(?, ?, ?, ?, ?, ?)";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, tilaus_id);
 		statement.setString(2, tilausaika);
 		statement.setDouble(3, hinta);
 		statement.setString(4, tila);
 		statement.setString(5, kayttaja_id);
+		statement.setBoolean(6, toimitus);
 			
 		int syotettiin = statement.executeUpdate();
 		if(syotettiin > 0){
@@ -80,8 +81,9 @@ public class TilausDAO extends DataAccessObject {
 			String tilaus_aika = results.getString(2);
 			double hinta = results.getDouble(3);
 			String tila = results.getString(4);
+			boolean toimitus = results.getBoolean(5);
 
-			Tilaus tilaus = new Tilaus(tilaus_id, kayttaja, tilaus_aika, hinta, tila);
+			Tilaus tilaus = new Tilaus(tilaus_id, kayttaja, tilaus_aika, hinta, tila, toimitus);
 			tilaukset.add(tilaus);
 		}
 		
@@ -107,10 +109,11 @@ public class TilausDAO extends DataAccessObject {
 			double hinta = results.getDouble(3);
 			String tila = results.getString(4);
 			String kayttaja_id = results.getString(5);
+			boolean toimitus = results.getBoolean(6);
 			
 			Tilaus tilaus = null;
 			if(kayttaja_id == null){
-				tilaus = new Tilaus(tilaus_id, tilausaika, hinta, tila);
+				tilaus = new Tilaus(tilaus_id, tilausaika, hinta, tila, toimitus);
 			}else{
 				String KAYTTAJA = "SELECT * FROM KAYTTAJA WHERE kayttaja_id=?";
 				PreparedStatement stmt = conn.prepareStatement(KAYTTAJA);
@@ -126,7 +129,7 @@ public class TilausDAO extends DataAccessObject {
 					boolean omistaja = kayttaja_results.getBoolean(7);
 					Kayttaja kayttaja = new Kayttaja(kayttaja_id, kayttajatunnus, salasana, osoite, sahkoposti, puh, omistaja);
 					
-					tilaus = new Tilaus(tilaus_id, kayttaja, tilausaika, hinta, tila);
+					tilaus = new Tilaus(tilaus_id, kayttaja, tilausaika, hinta, tila, toimitus);
 	
 				}
 			}

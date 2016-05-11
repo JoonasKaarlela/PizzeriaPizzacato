@@ -9,7 +9,34 @@ public class Tilaus implements Comparable<Tilaus>{
 	private double hinta;
 	private String tila;
 	private boolean toimitus;
+	private String osoite;
+	private String puh;
+	private String sahkoposti;
 	
+	public String getOsoite() {
+		return osoite;
+	}
+
+	public void setOsoite(String osoite) {
+		this.osoite = osoite;
+	}
+
+	public String getPuh() {
+		return puh;
+	}
+
+	public void setPuh(String puh) {
+		this.puh = puh;
+	}
+
+	public String getSahkoposti() {
+		return sahkoposti;
+	}
+
+	public void setSahkoposti(String sahkoposti) {
+		this.sahkoposti = sahkoposti;
+	}
+
 	public boolean getToimitus() {
 		return toimitus;
 	}
@@ -25,15 +52,22 @@ public class Tilaus implements Comparable<Tilaus>{
 		this.hinta = hinta;
 		this.tila = tila;
 		this.toimitus = toimitus;
+		this.osoite = this.kayttaja.getOsoite();
+		this.puh = this.kayttaja.getPuh();
+		this.sahkoposti = this.kayttaja.getSahkoposti();
 	}
+
 	
-	public Tilaus(String tilaus_id, String tilausaika, double hinta, String tila, boolean toimitus){
+	public Tilaus(String tilaus_id, String tilausaika, double hinta, String tila, boolean toimitus, String osoite, String sahkoposti, String puh){
 		this.tilaus_id = tilaus_id;
 		this.kayttaja = null;
 		this.tilausaika = tilausaika;
 		this.hinta = hinta;
 		this.tila = tila;
 		this.toimitus = toimitus;
+		this.osoite = osoite;
+		this.sahkoposti = sahkoposti;
+		this.puh = puh;
 	}
 	
 
@@ -78,11 +112,7 @@ public class Tilaus implements Comparable<Tilaus>{
 	}
 	
 	public boolean voidaanPeruuttaa(){
-		if(!this.tila.equals("valmis") && !this.tila.equals("toimituksessa") && !this.tila.equals("valmistuksessa")){
-			return true;
-		}else{
-			return false;
-		}
+		return !this.tila.equals("vastaanotettu");
 	}
 
 	@Override

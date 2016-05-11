@@ -25,11 +25,6 @@ public class TilausDAO extends DataAccessObject {
 		String tilausaika = new Utils().getDate();
 		String tila = "vastaanotettu";
 		
-		String kayttaja_id = null;
-		if(kayttaja != null){
-			kayttaja_id = kayttaja.getKayttaja_id();
-		}
-		
 		double hinta = 0;
 		for(String key : ostoskori.keySet()){
 			for(Pizza pizza : ostoskori.get(key)){
@@ -37,14 +32,17 @@ public class TilausDAO extends DataAccessObject {
 			}
 		}
 			
-		String query = "INSERT INTO TILAUS(tilaus_id, tilausaika, hinta, tila, kayttaja_id, toimitus) VALUES(?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO TILAUS(tilaus_id, tilausaika, hinta, tila, kayttaja_id, toimitus, osoite, puh, sahkoposti) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement statement = conn.prepareStatement(query);
 		statement.setString(1, tilaus_id);
 		statement.setString(2, tilausaika);
 		statement.setDouble(3, hinta);
 		statement.setString(4, tila);
-		statement.setString(5, kayttaja_id);
+		statement.setString(5, kayttaja.getKayttaja_id());
 		statement.setBoolean(6, toimitus);
+		statement.setString(7, kayttaja.getOsoite());
+		statement.setString(8, kayttaja.getPuh());
+		statement.setString(9, kayttaja.getSahkoposti());
 			
 		int syotettiin = statement.executeUpdate();
 		if(syotettiin > 0){
@@ -110,10 +108,13 @@ public class TilausDAO extends DataAccessObject {
 			String tila = results.getString(4);
 			String kayttaja_id = results.getString(5);
 			boolean toimitus = results.getBoolean(6);
+			String osoite = results.getString(7);
+			String puh = results.getString(8);
+			String sahkoposti = results.getString(9);
 			
 			Tilaus tilaus = null;
 			if(kayttaja_id == null){
-				tilaus = new Tilaus(tilaus_id, tilausaika, hinta, tila, toimitus);
+				tilaus = new Tilaus(tilaus_id, tilausaika, hinta, tila, toimitus, osoite, puh, sahkoposti);
 			}else{
 				String KAYTTAJA = "SELECT * FROM KAYTTAJA WHERE kayttaja_id=?";
 				PreparedStatement stmt = conn.prepareStatement(KAYTTAJA);
@@ -123,11 +124,13 @@ public class TilausDAO extends DataAccessObject {
 				if(kayttaja_results.next()){
 					String kayttajatunnus = kayttaja_results.getString(2);
 					String salasana = kayttaja_results.getString(3);
-					String osoite = kayttaja_results.getString(4);
-					String sahkoposti = kayttaja_results.getString(5); 
-					String puh = kayttaja_results.getString(6);
+					String kayt_osoite = kayttaja_results.getString(4);
+					String kayt_sahkoposti = kayttaja_results.getString(5); 
+					String kayt_puh = kayttaja_results.getString(6);
 					boolean omistaja = kayttaja_results.getBoolean(7);
-					Kayttaja kayttaja = new Kayttaja(kayttaja_id, kayttajatunnus, salasana, osoite, sahkoposti, puh, omistaja);
+					boolean kokki = kayttaja_results.getBoolean(8);
+					boolean kuljettaja = kayttaja_results.getBoolean(9);
+					Kayttaja kayttaja = new Kayttaja(kayttaja_id, kayttajatunnus, salasana, kayt_osoite, kayt_sahkoposti, kayt_puh, omistaja, kokki, kuljettaja);
 					
 					tilaus = new Tilaus(tilaus_id, kayttaja, tilausaika, hinta, tila, toimitus);
 	

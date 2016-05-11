@@ -136,7 +136,6 @@
 		        					<td>
 		                            	<select name="tila">
 		                            		<option value="vastaanotettu">vastaanotettu</option>
-		                            		<option value="valmistuksessa">valmistuksessa</option>
 		                            		<option value="odottaa toimitusta">odottaa toimitusta</option>
 		                            		<option value="valmistuksessa">toimituksessa</option>
 		                            		<option value="noudettavissa">noudettavissa</option>

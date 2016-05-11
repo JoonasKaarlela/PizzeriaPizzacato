@@ -120,15 +120,24 @@
 		                            </td>
 		        
 		        					<td>
-		                            	<button type="submit"> Valmis! </button>
-		                            	<c:if test="${!tilaus.key.getToimitus()}"> <input type="hidden" value="noudettavissa" name="tila" /> </c:if>
-		                            	<c:if test="${tilaus.key.getToimitus()}"> <input type="hidden" value="odottaa toimitusta" name="tila" /> </c:if>
+										<c:choose>
+											<c:when test="${tilaus.key.getTila().equals('vastaanotettu')}">
+												<button type="submit"> aloita </button>
+												<input type="hidden" value="valmistuksessa" name="tila" />
+											</c:when>
+											<c:otherwise>
+												<button type="submit"> valmis </button>
+												<c:if test="${!tilaus.key.getToimitus()}"> <input type="hidden" value="noudettavissa" name="tila" /> </c:if>
+		               							<c:if test="${tilaus.key.getToimitus()}"> <input type="hidden" value="odottaa toimitusta" name="tila" /> </c:if>
+											</c:otherwise>
+										</c:choose>
 		                            </td>
 		                            
 		                        </tr>              	
 	                        </table>
                         </div>
                         
+
                     </form>
                 </td>
             </tr>

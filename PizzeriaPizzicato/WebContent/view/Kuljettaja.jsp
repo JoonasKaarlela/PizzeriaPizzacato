@@ -70,13 +70,18 @@
                 	Hinta
                 </td>
                 <td>
-                	Toimitus
+                	Osoite
+                </td>
+                <td>
+                	Puh
                 </td>
                 <td>
                 	Tila
                 </td>
+                
                 <td>
                 </td>
+                
            	</tr>
            	
            	<c:forEach items="${tilaukset}" var="tilaus" varStatus="current">
@@ -85,45 +90,8 @@
             	<td colspan="5">
                     <form class="pizzaform" id="pizzaform" method="post" action="MuokkaaTilausta" >
                     <div class="error"></div>
-                   	<div class="pizza">
-	                    	<table>
-		                        <tr>
-		                        	<td>
-		                            	${tilaus.getTilaus_id()}
-		                            </td>
-		                            
-		                            <td>
-		                            	${tilaus.getKayttaja().getKayttajatunnus()}
-		                            </td>
-		                            
-		                            <td>
-		                            	${tilaus.getTilausaika()}
-		                            </td>
-		                            
-		                            <td>
-		                            	${tilau.getHinta()}
-		                            </td>
-		                            
-		                            <td>
-		                            	<c:choose>
-		                            		<c:when test="${tilaus.getToimitus() }">kyllä</c:when>
-		                            		<c:otherwise>ei</c:otherwise>
-		                            	</c:choose>
-		                            </td>
-		        
-		        					<td>
-		                            	${tilaus.getTila()}
-		                            </td>
-		                            
-		                            <td rowspan="2" align="right">
-		                            	<button onClick="muokkaa('${current.index}'); return false;"> Muokkaa </button>
-		                            </td>
-	
-		                        </tr>              	
-	                        </table>
-                        </div>
-                        
-                        <div class="muokkaus hidden">
+
+                        <div class="pizza">
 	                        <table>
 		                        <tr>
 		                        	<td>
@@ -140,22 +108,29 @@
 		                            </td>
 		                            
 		                            <td>
-		                            	<c:choose>
-		                            		<c:when test="${tilaus.getToimitus()}">kyllä</c:when>
-		                            		<c:otherwise>ei</c:otherwise>
-		                            	</c:choose>
-		                            </td>
-		        
-		        					<td>
-		                            	<select name="tila">
-		                            		<option value="valmis"> valmis </option>
-		                            	</select>
+		                            	${tilaus.getHinta()}€
 		                            </td>
 		                            
-		                            <td rowspan="2" align="right">
-		                            	<button type="submit"> Tallenna </button>
-		                            	<a href="PoistaTilaus?tilaus_id=${tilaus.getTilaus_id()}" style="color:crimson;"> Poista </a>
+		                            <td>
+		                            	${tilaus.getOsoite()}
 		                            </td>
+		                            
+		                            <td>
+		                            	${tilaus.getPuh()}
+		                            </td>
+
+		        					<td>
+		                            	<c:choose>
+											<c:when test="${tilaus.getTila().equals('odottaa toimitusta')}">
+												<button type="submit"> aloita </button>
+												<input type="hidden" value="toimituksessa" name="tila" />
+											</c:when>
+											<c:otherwise>
+												<button type="submit"> valmis </button>
+												<c:if test="${!tilaus.getToimitus()}"> <input type="hidden" value="valmis" name="tila" /> </c:if>
+											</c:otherwise>
+										</c:choose>
+									</td>
 	
 		                        </tr>              	
 	                        </table>

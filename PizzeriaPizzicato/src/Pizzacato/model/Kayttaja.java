@@ -8,6 +8,8 @@ public class Kayttaja {
 		private String sahkoposti;
 		private String puh;
 		private boolean omistaja;
+		private boolean kokki;
+		private boolean kuljettaja;
 
 
 public Kayttaja(String kayttaja_id, String kayttajatunnus, String salasana, String osoite, String sahkoposti, String puh, boolean omistaja){

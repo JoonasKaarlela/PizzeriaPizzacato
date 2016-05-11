@@ -113,10 +113,10 @@
 		</div>
 
 		<!--  PIZZA MENU ALKAA -->
-		<div id="content">
-			<div id="content-left">
+		<div id="pcontent">
+			<div id="pcontent-left">
             	<div class="pkuva">
-            		<div class="pizzanimi">Fantasia</div>
+            		<div class="pnimi">Fantasia</div>
                 	<img src="pizza1.png">
                 </div>
             	<div class="pkuvaus">
@@ -124,7 +124,7 @@
                 </div>
             </div>
             
-            <div id="content-right">
+            <div id="pcontent-right">
             	<form method="post" action="lisaaKoriin">
 	            	<div class="ptayte">
 	            	<h3>Täytteet</h3>
@@ -161,26 +161,6 @@
             
 		</div>
 		<!-- CONTENT LOPPUU -->
-	<style type="text/css">
-			.pkuva {
-				text-align: center;
-			}
-			
-			#content {
-				margin:auto;
-				width:90%;
-			}
-			#content-left {
-				float: left;
-				width: 48%;
-				padding: 1%;
-			}
-			#content-right {
-				float: left;
-				width:48%;
-				padding: 1%;
-			}
-        </style>
 	</div>
 
 <script>

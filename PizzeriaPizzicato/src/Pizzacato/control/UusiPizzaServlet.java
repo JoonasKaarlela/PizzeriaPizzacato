@@ -20,7 +20,7 @@ public class UusiPizzaServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getServletContext().getRequestDispatcher("/views/LuoPizza.jsp");
+		RequestDispatcher rd = request.getServletContext().getRequestDispatcher("/view/LuoPizza.jsp");
 		
 		ArrayList<Tayte> taytteet = new ArrayList<>();
 		

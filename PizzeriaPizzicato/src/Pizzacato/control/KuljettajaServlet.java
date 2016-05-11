@@ -30,7 +30,7 @@ public class KuljettajaServlet extends HttpServlet {
 			
 			ArrayList<Tilaus> poistettavat = new ArrayList<>();
 			for(Tilaus tilaus : tilaukset){
-				if(!tilaus.getTila().equals("odottaa toimitusta")){
+				if(!tilaus.getTila().equals("odottaa toimitusta") && !tilaus.getTila().equals("toimituksessa")){
 					poistettavat.add(tilaus);
 				}
 			}

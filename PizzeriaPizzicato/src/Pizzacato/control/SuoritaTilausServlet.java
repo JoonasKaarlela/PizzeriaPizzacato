@@ -41,7 +41,7 @@ public class SuoritaTilausServlet extends HttpServlet {
 				String sahkoposti = request.getParameter("sahkoposti");
 				
 				kayttaja = new Kayttaja();
-				kayttaja.setKayttaja_id(new Utils().generate(5));
+				kayttaja.setKayttaja_id(null);
 				kayttaja.setKayttajatunnus("asiakas"+new Utils().generate(5));
 				kayttaja.setOsoite(osoite);
 				kayttaja.setPuh(puh);

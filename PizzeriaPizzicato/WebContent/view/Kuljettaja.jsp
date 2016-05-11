@@ -127,7 +127,7 @@
 											</c:when>
 											<c:otherwise>
 												<button type="submit"> valmis </button>
-												<c:if test="${!tilaus.getToimitus()}"> <input type="hidden" value="valmis" name="tila" /> </c:if>
+												 <input type="hidden" value="valmis" name="tila" />
 											</c:otherwise>
 										</c:choose>
 									</td>

@@ -36,9 +36,9 @@ public class KokkiServlet extends HttpServlet {
 		try{
 			tilaukset = new TilausDAO().haeTilaukset();
 			
-			// Lis‰‰ mappiin tilaukset joiden tila on "vastaanotettu"
+			// Lis‰‰ mappiin tilaukset joiden tila on "vastaanotettu" tai "valmistuksessa"
 			for(Tilaus tilaus : tilaukset){
-				if(tilaus.getTila().equals("vastaanotettu")){
+				if(tilaus.getTila().equals("vastaanotettu") || tilaus.getTila().equals("valmistuksessa")){
 					pizzat = new TilauksenPizzaDAO().HaeTilauksenPizzat(tilaus.getTilaus_id());
 					Tilaus.put(tilaus, pizzat);
 				}

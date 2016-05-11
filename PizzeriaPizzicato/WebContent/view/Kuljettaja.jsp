@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -68,6 +68,9 @@
                 	Hinta
                 </td>
                 <td>
+                	Toimitus
+                </td>
+                <td>
                 	Tila
                 </td>
                 <td>
@@ -96,7 +99,14 @@
 		                            </td>
 		                            
 		                            <td>
-		                            	${tilaus.getHinta()}
+		                            	${tilau.getHinta()}
+		                            </td>
+		                            
+		                            <td>
+		                            	<c:choose>
+		                            		<c:when test="${tilaus.getToimitus() }">kyllä</c:when>
+		                            		<c:otherwise>ei</c:otherwise>
+		                            	</c:choose>
 		                            </td>
 		        
 		        					<td>
@@ -128,17 +138,15 @@
 		                            </td>
 		                            
 		                            <td>
-		                            	${tilaus.getHinta()}
+		                            	<c:choose>
+		                            		<c:when test="${tilaus.getToimitus()}">kyllä</c:when>
+		                            		<c:otherwise>ei</c:otherwise>
+		                            	</c:choose>
 		                            </td>
 		        
 		        					<td>
 		                            	<select name="tila">
-		                            		<option value="vastaanotettu">vastaanotettu</option>
-		                            		<option value="valmistuksessa">valmistuksessa</option>
-		                            		<option value="odottaa toimitusta">odottaa toimitusta</option>
-		                            		<option value="valmistuksessa">toimituksessa</option>
-		                            		<option value="noudettavissa">noudettavissa</option>
-		                            		<option value="valmis">valmis</option>
+		                            		<option value="valmis"> valmis </option>
 		                            	</select>
 		                            </td>
 		                            
@@ -158,6 +166,7 @@
     	</table>
     </div>
 </div>
+
 
 <script type="text/javascript" src="hallinnointi.js"></script>
 </body>

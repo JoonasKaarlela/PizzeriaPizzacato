@@ -26,6 +26,8 @@ public class FantasiaMuokkausServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sivu = "/view/Fantasia.jsp";
 		
+		
+		
 		ArrayList<Tayte> taytteet = haeTaytteet();
 		request.setAttribute("taytteet", taytteet);
 			

@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -68,6 +68,9 @@
                 	Hinta
                 </td>
                 <td>
+                	Toimitus
+                </td>
+                <td>
                 	Tila
                 </td>
                 <td>
@@ -84,23 +87,30 @@
 	                    	<table>
 		                        <tr>
 		                        	<td>
-		                            	${tilaus.getTilaus_id()}
+		                            	${tilaus.key.getTilaus_id()}
 		                            </td>
 		                            
 		                            <td>
-		                            	${tilaus.getKayttaja().getKayttajatunnus()}
+		                            	${tilaus.key.getKayttaja().getKayttajatunnus()}
 		                            </td>
 		                            
 		                            <td>
-		                            	${tilaus.getTilausaika()}
+		                            	${tilaus.key.getTilausaika()}
 		                            </td>
 		                            
 		                            <td>
-		                            	${tilaus.getHinta()}
+		                            	${tilaus.key.getHinta()}
+		                            </td>
+		                            
+		                            <td>
+		                            	<c:choose>
+		                            		<c:when test="${tilaus.key.getToimitus() }">kyllä</c:when>
+		                            		<c:otherwise>ei</c:otherwise>
+		                            	</c:choose>
 		                            </td>
 		        
 		        					<td>
-		                            	${tilaus.getTila()}
+		                            	${tilaus.key.getTila()}
 		                            </td>
 		                            
 		                            <td rowspan="2" align="right">
@@ -115,36 +125,34 @@
 	                        <table>
 		                        <tr>
 		                        	<td>
-		                        		<input type="hidden" value="${tilaus.getTilaus_id()}" name="id" />
-		                            	${tilaus.getTilaus_id()}
+		                        		<input type="hidden" value="${tilaus.key.getTilaus_id()}" name="id" />
+		                            	${tilaus.key.getTilaus_id()}
 		                            </td>
 		                            
 		                            <td>
-		                            	${tilaus.getKayttaja().getKayttajatunnus()}
+		                            	${tilaus.key.getKayttaja().getKayttajatunnus()}
 		                            </td>
 		                            
 		                            <td>
-		                            	${tilaus.getTilausaika()}
+		                            	${tilaus.key.getTilausaika()}
 		                            </td>
 		                            
 		                            <td>
-		                            	${tilaus.getHinta()}
+		                            	<c:forEach items="${tilaus.value}" var="pizza">
+		                            		${pizza.getNimi()}
+		                            	</c:forEach>
 		                            </td>
 		        
 		        					<td>
 		                            	<select name="tila">
-		                            		<option value="vastaanotettu">vastaanotettu</option>
-		                            		<option value="valmistuksessa">valmistuksessa</option>
-		                            		<option value="odottaa toimitusta">odottaa toimitusta</option>
-		                            		<option value="valmistuksessa">toimituksessa</option>
-		                            		<option value="noudettavissa">noudettavissa</option>
-		                            		<option value="valmis">valmis</option>
+		                            		<c:if test="${tilaus.key.getToimitus()}"> <option value="odottaa toimitusta"> odottaa toimitusta </option> </c:if>
+		                            		<c:if test="${!tilaus.key.getToimitus()}"><option value="noudettavissa"> noudettavissa </option></c:if>
 		                            	</select>
 		                            </td>
 		                            
 		                            <td rowspan="2" align="right">
 		                            	<button type="submit"> Tallenna </button>
-		                            	<a href="PoistaTilaus?tilaus_id=${tilaus.getTilaus_id()}" style="color:crimson;"> Poista </a>
+		                            	<a href="PoistaTilaus?tilaus_id=${tilaus.key.getTilaus_id()}" style="color:crimson;"> Poista </a>
 		                            </td>
 	
 		                        </tr>              	
@@ -158,6 +166,7 @@
     	</table>
     </div>
 </div>
+
 
 <script type="text/javascript" src="hallinnointi.js"></script>
 </body>

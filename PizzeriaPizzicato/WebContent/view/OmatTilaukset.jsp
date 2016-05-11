@@ -102,6 +102,14 @@
 					<c:if test="${sessionScope.kayttaja.isOmistaja()}">
 						<li><a href="PizzojenHallinta"> Hallinnoi </a> </li>
 					</c:if>
+					
+					<c:if test="${sessionScope.kayttaja.isKuljettaja()}">
+						<li><a href="Kuljettaja"> Kuljetukset </a></li>
+					</c:if>
+					
+					<c:if test="${sessionScope.kayttaja.isKokki()}">
+						<li><a href="Kokki"> Odottavat </a> </li>
+					</c:if>
 
 				</ul>
 			</div>

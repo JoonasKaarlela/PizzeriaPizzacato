@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/KokkiServlet")
+@WebServlet("/Kokki")
 public class KokkiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

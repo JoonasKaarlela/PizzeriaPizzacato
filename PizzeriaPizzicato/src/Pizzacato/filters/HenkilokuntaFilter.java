@@ -16,13 +16,13 @@ import Pizzacato.model.Kayttaja;
 
 
 @WebFilter(urlPatterns={
-		"/Kokki"
+		"/MuokkaaTilausta"
 })
-public class KokkiFilter implements Filter {
+public class HenkilokuntaFilter implements Filter {
 
 
-    public KokkiFilter() {
-
+    public HenkilokuntaFilter() {
+   
     }
 
 
@@ -32,12 +32,11 @@ public class KokkiFilter implements Filter {
 
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		
 		Kayttaja kayttaja = (Kayttaja) req.getSession(false).getAttribute("kayttaja");
-		if(kayttaja == null || !kayttaja.isKokki()){
+		if(kayttaja == null || !kayttaja.isKokki() && !kayttaja.isKuljettaja()){
 			res.sendRedirect("Menu");
 		}else{
 			chain.doFilter(request, response);
@@ -46,6 +45,7 @@ public class KokkiFilter implements Filter {
 
 
 	public void init(FilterConfig fConfig) throws ServletException {
+	
 	}
 
 }

@@ -67,7 +67,7 @@
                 	Tilausaika
                 </td>
                 <td>
-                	Hinta
+                	Pizzat
                 </td>
                 <td>
                 	Toimitus
@@ -76,6 +76,7 @@
                 	Tila
                 </td>
                 <td>
+                
                 </td>
            	</tr>
            	
@@ -85,45 +86,7 @@
             	<td colspan="5">
                     <form class="pizzaform" id="pizzaform" method="post" action="MuokkaaTilausta" >
                     <div class="error"></div>
-                   	<div class="pizza">
-	                    	<table>
-		                        <tr>
-		                        	<td>
-		                            	${tilaus.key.getTilaus_id()}
-		                            </td>
-		                            
-		                            <td>
-		                            	${tilaus.key.getKayttaja().getKayttajatunnus()}
-		                            </td>
-		                            
-		                            <td>
-		                            	${tilaus.key.getTilausaika()}
-		                            </td>
-		                            
-		                            <td>
-		                            	${tilaus.key.getHinta()}
-		                            </td>
-		                            
-		                            <td>
-		                            	<c:choose>
-		                            		<c:when test="${tilaus.key.getToimitus() }">kyllä</c:when>
-		                            		<c:otherwise>ei</c:otherwise>
-		                            	</c:choose>
-		                            </td>
-		        
-		        					<td>
-		                            	${tilaus.key.getTila()}
-		                            </td>
-		                            
-		                            <td rowspan="2" align="right">
-		                            	<button onClick="muokkaa('${current.index}'); return false;"> Muokkaa </button>
-		                            </td>
-	
-		                        </tr>              	
-	                        </table>
-                        </div>
-                        
-                        <div class="muokkaus hidden">
+                        <div class="pizza">
 	                        <table>
 		                        <tr>
 		                        	<td>
@@ -144,19 +107,24 @@
 		                            		${pizza.getNimi()}
 		                            	</c:forEach>
 		                            </td>
-		        
-		        					<td>
-		                            	<select name="tila">
-		                            		<c:if test="${tilaus.key.getToimitus()}"> <option value="odottaa toimitusta"> odottaa toimitusta </option> </c:if>
-		                            		<c:if test="${!tilaus.key.getToimitus()}"><option value="noudettavissa"> noudettavissa </option></c:if>
-		                            	</select>
+		                            
+		                            <td>
+		                            	<c:choose>
+		                            		<c:when test="${tilaus.key.getToimitus()}">Kyllä</c:when>
+		                            		<c:otherwise>Ei</c:otherwise>
+		                            	</c:choose>
 		                            </td>
 		                            
-		                            <td rowspan="2" align="right">
-		                            	<button type="submit"> Tallenna </button>
-		                            	<a href="PoistaTilaus?tilaus_id=${tilaus.key.getTilaus_id()}" style="color:crimson;"> Poista </a>
+		                            <td>
+		                            	${tilaus.key.getTila()}
 		                            </td>
-	
+		        
+		        					<td>
+		                            	<button type="submit"> Valmis! </button>
+		                            	<c:if test="${!tilaus.key.getToimitus()}"> <input type="hidden" value="noudettavissa" name="tila" /> </c:if>
+		                            	<c:if test="${tilaus.key.getToimitus()}"> <input type="hidden" value="odottaa toimitusta" name="tila" /> </c:if>
+		                            </td>
+		                            
 		                        </tr>              	
 	                        </table>
                         </div>

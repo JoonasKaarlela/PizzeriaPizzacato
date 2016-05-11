@@ -23,7 +23,6 @@ import Pizzacato.model.Kayttaja;
 		"/MuokkaaMaustetta",
 		"/MuokkaaPizzaa",
 		"/MuokkaaTaytetta",
-		"/MuokkaaTilausta",
 		"/PizzojenHallinta",
 		"/PoistaTayte",
 		"/PoistaTilaus",

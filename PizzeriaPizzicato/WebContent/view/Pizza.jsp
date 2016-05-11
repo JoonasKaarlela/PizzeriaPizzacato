@@ -7,7 +7,7 @@
 <title>Hallintasivu - Pizzat</title>
 <link href="styles.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-<script type="text/javascript" src="pizzathallinnointi.js"></script>
+<script type="text/javascript" src="hallinnointi.js"></script>
 <script type="text/javascript" src="notification.js"></script>
 <script type="text/javascript" src="taytteet.js"></script>
 
@@ -55,24 +55,35 @@
     		<h2> Muokkaa: ${pizza.getPizza_id()} </h2>
     		
     		<div>
-	    		<input name="nimi" value="${pizza.getNimi()}" placeholder="nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="15" required />
-	    		<input name="kuvaus" value="${pizza.getKuvaus()}" placeholder="kuvaus" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="30" required />
-	    		<input name="hinta" value="${pizza.getHinta()}" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4" required/>
-
-		        <c:choose>
-		        	<c:when test="${pizza.getListalla()}">
-		        		<input type=checkbox name="listalla" checked="checked" />
-		        	</c:when>
-		        	<c:otherwise>
-		        		<input type=checkbox name="listalla" />
-		        	</c:otherwise>
-		        </c:choose>
-	    		<button type='submit'> Tallenna </button>
-	    		<a href='PizzojenHallinta'> Peruuta </a>
+	    		<div>
+	    			<label for="nimi"> Nimi </label>
+	    			<input name="nimi" value="${pizza.getNimi()}" placeholder="nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="15" required />
+	    		</div>
+	    		<div>
+	    			<label for="kuvaus"> Kuvaus </label>
+	    			<input name="kuvaus" value="${pizza.getKuvaus()}" placeholder="kuvaus" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="30" required />
+	    		</div>
+	    		<div>
+	    			<label for="hinta"> Hinta </label>
+	    			<input name="hinta" value="${pizza.getHinta()}" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4" required/>
+	    		</div>
+	
+				<div>
+			        <c:choose>
+			        	<c:when test="${pizza.getListalla()}">
+			        		<label for="listalla"> Listalla </label>
+			        		<input type=checkbox name="listalla" id="listalla" checked="checked" />
+			        	</c:when>
+			        	<c:otherwise>
+			        		<label for="listalla"> Listalla </label>
+			        		<input type=checkbox name="listalla" id="listalla"  />
+			        	</c:otherwise>
+			        </c:choose>
+			    </div>
     		</div>
     	
     		<div>
-    		<h3>Täytteet:</h3>
+    		<h3>Valitse täytteet:</h3>
 	    	<table>
 	    		<thead>
 	    			<tr>
@@ -104,6 +115,10 @@
 		    		</c:forEach>
 	    		</tbody>	
 	    	</table>
+	    	<div>
+	    		<button type='submit'> Tallenna </button>
+	    		<a href='PizzojenHallinta' style='color:crimson;'> Peruuta </a>
+	    	</div>
 	    	</div>
 	    	<input type='hidden' value="${pizza.getPizza_id()}" name='id' />
     	</form>
@@ -112,6 +127,6 @@
     
 </div>
 
-<script type="text/javascript" src="pizzathallinnointi.js"></script>
+<script type="text/javascript" src="hallinnointi.js"></script>
 </body>
 </html>

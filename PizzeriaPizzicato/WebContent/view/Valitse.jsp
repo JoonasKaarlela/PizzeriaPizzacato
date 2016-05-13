@@ -127,7 +127,7 @@
 		</div>
 
 		
-		<form id='container'>
+		<form id='container' action='lisaaKoriin' method='post'>
 			
 			<div id='valitse_top'> 
 				<h1> ${pizza.getNimi()} </h1>
@@ -169,7 +169,7 @@
 						<c:forEach items="${mausteet}" var="mauste">
 							<tr>
 								<td> ${mauste.getNimi()} </td>
-								<td> <input type='checkbox' name='mausteet' value='${mauste.getMauste_id() }' /> </td>
+								<td> <input type='checkbox' name='mausteet' value='${mauste.getMauste_id()}' /> </td>
 							</tr>
 						</c:forEach>
 					</table>
@@ -181,6 +181,7 @@
 				<input type='number' min='1' max='10' value='1' name="maara" />
 			</div>
 		
+			<input name='pizza_id' value='${pizza.getPizza_id()}'  type="hidden" />
 		</form>
 		
 		

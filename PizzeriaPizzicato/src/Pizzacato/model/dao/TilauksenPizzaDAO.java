@@ -1,4 +1,5 @@
 package Pizzacato.model.dao;
+import Pizzacato.model.Mauste;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,6 +28,11 @@ public class TilauksenPizzaDAO extends DataAccessObject {
 		int syotettiin = statement.executeUpdate();
 		if(syotettiin > 0){
 			System.out.println("Tilauksenpizza " + id + " tallennettiin tilaukselle " + tilauksen_id);
+			
+			for(Mauste mauste : pizza.getMausteet()){
+				new PizzanMausteDAO().lisaaPizzanMauste(pizza, mauste);
+			}
+			
 		}else{
 			conn.close();
 			return false;

@@ -105,6 +105,8 @@
 		                            <td>
 		                            	<c:forEach items="${tilaus.value}" var="pizza">
 		                            		${pizza.getNimi()}
+		                            				<c:forEach items=${pizza.getMausteet( )} var="mauste"> ${mauste.getNimi()}  </c:forEach> 
+		                            		
 		                            	</c:forEach>
 		                            </td>
 		                            

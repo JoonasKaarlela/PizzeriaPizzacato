@@ -42,18 +42,18 @@ public class PizzanMausteDAO extends DataAccessObject {
 
 		Connection conn = getConnection();
 		
-		
-		String SELECT = "SELECT * FROM PIZZANTAYTE WHERE mauste_id=?";
+		String SELECT = "SELECT * FROM PIZZANMAUSTE WHERE mauste_id=?";
 		PreparedStatement stmnt = conn.prepareStatement(SELECT);
 		stmnt.setString(1, mauste.getMauste_id());
 				
 		ResultSet results = stmnt.executeQuery();
 		if(!results.next()){
-			String query = "INSERT INTO PIZZANMAUSTE(id, pizza_id, mauste_id) VALUES(?, ?, ?,)";
+			String query = "INSERT INTO PIZZANMAUSTE(pizzanmauste_id, nimi, mauste_id, pizza_id) VALUES(?, ?, ?, ?)";
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.setString(1, new Utils().generate(5));
-			statement.setString(2, pizza.getPizza_id());
+			statement.setString(2, mauste.getNimi());
 			statement.setString(3, mauste.getMauste_id());
+			statement.setString(4, pizza.getPizza_id());
 	
 			int syotettiin = statement.executeUpdate();
 			if (syotettiin > 0) {

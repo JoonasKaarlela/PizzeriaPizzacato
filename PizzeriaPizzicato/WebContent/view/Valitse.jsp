@@ -7,8 +7,8 @@
 		<title>Fantasia</title>
 		<link href="styles.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link rel="stylesheet" href="ValitsePizza.css" >
 		<script type="text/javascript" src="notification.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
    </head>
 <body>
 
@@ -127,12 +127,65 @@
 		</div>
 
 		
-		
-		
-		
+		<form id='container'>
+			
+			<div id='valitse_top'> 
+				<h1> ${pizza.getNimi()} </h1>
+			</div>
+			
+			<div id='valitse_left'>
+				<div> <img src="${pizza.getKuva()}" /> </div>
+			</div>
+			
+			<div  id='valitse_right'>
+				
+				<div>
+					<h3> Kuvaus </h3>
+					<div>
+						${pizza.getKuvaus()}
+					</div>
+				</div>
+			
+			
+				<div>
+					<div>
+						<h3>Täytteet</h3>
+						<div>
+							<c:forEach items="${pizza.getTaytteet()}" var="tayte"  varStatus="status">
+								${ tayte.getNimi()}<c:if test="${status.index != pizza.getTaytteet().size() - 1 }">, </c:if>
+							</c:forEach>
+						</div>
+					</div>
 
-		<!-- CONTENT LOPPUU -->
+				</div>
+			</div>
+			
+			<div>
+				<div>
+					<h3> Mausteet: </h3>
+				</div>
+				<div>
+					<table>
+						<c:forEach items="${mausteet}" var="mauste">
+							<tr>
+								<td> ${mauste.getNimi()} </td>
+								<td> <input type='checkbox' name='mausteet' value='${mauste.getMauste_id() }' /> </td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</div>
+		
+			<div>
+				<button type='submit'> valitse </button>
+				<input type='number' min='1' max='10' value='1' />
+			</div>
+		
+		</form>
+		
+		
 	</div>
+
 	
 	</body>
 	</html>

@@ -2,6 +2,8 @@ package Pizzacato.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Pizzacato.model.Mauste;
 import Pizzacato.model.Pizza;
+import Pizzacato.model.dao.MausteDAO;
 import Pizzacato.model.dao.PizzaDAO;
 
 
@@ -31,8 +35,15 @@ public class ValitsePizzaServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		
 		try{
+			
 			Pizza pizza = new PizzaDAO().haePizza(id);
 			request.setAttribute("pizza", pizza);
+			
+			ArrayList<Mauste> mausteet = (ArrayList<Mauste>) new MausteDAO().haeMausteet();
+			Collections.sort(mausteet);
+			
+			request.setAttribute("mausteet", mausteet);
+			
 		}catch(SQLException e){
 			System.out.println(e.getMessage());
 		}

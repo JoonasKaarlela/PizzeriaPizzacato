@@ -1,0 +1,16 @@
+#container{
+	width:100%;
+	height:600px;
+}
+
+#valitse_left{
+	width:45%;
+	float:left;
+}
+
+
+
+#valitse_right{
+	width:65%;
+	margin-right:auto;
+}

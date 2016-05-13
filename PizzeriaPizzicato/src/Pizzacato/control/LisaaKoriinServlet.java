@@ -20,6 +20,17 @@ import Pizzacato.model.dao.PizzaDAO;
 public class LisaaKoriinServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	
+	/*
+	 *
+	 * 	1. Hae pizzalle valitut mausteet tietokannasta
+	 * 	2. Hae valittu pizza tietokannasta id:n perusteella.
+	 * 	3. Talleta haetulle pizalle haetut mausteet
+	 * 	4. Lis‰‰ koriin kyseinen pizza.	(HashMap<String, ArrayList<Pizza>, jossa string on pizzan id ja pizzat on kyseisen id:n omaavat pizzat) 
+	 * 	5. Ohjaa asiakas Menuun
+	 * 
+	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("pizza_id");

@@ -46,6 +46,12 @@ public class AdminFilter implements Filter {
 		
 	}
 
+	/*
+	 * 
+	 * Admin kohtaiset urlit. Vain adminilla on oikeudet requestaa näitä urleja.
+	 * Muuten ohjataan Menuun.
+	 *
+	 */
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		

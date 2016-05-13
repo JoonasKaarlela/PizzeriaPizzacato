@@ -128,7 +128,6 @@
 						<c:when test="${pizza.getListalla()}">
 							<div class="menuitemwrap">
 								<div class="menuitem">
-									<form action="lisaaKoriin" method="post">
 										<table>
 											<tr>
 												<td valign="middle"><div class="pizzakuva">
@@ -148,25 +147,13 @@
 															</p>
 														</div>
 														<div style="display:'inline-block'">
-															<button type=submit> <strong> valitse </strong> </button>
-															<select name="maara">
-																<option value=1>1</option>
-																<option value=2>2</option>
-																<option value=3>3</option>
-																<option value=4>4</option>
-																<option value=5>5</option>
-																<option value=6>6</option>
-																<option value=7>7</option>
-																<option value=8>8</option>
-															</select>
+															<a href="ValitsePizza?id=${pizza.getPizza_id() }"> valitse </a>
 														</div>
 															
 														</div>
-													<input type=hidden name=pizza_id value="${pizza.getPizza_id()}" />
 												</td>
 											</tr>
 										</table>
-									</form>
 								</div>
 								<!-- MENUITEM LOPPUU -->
 							</div>

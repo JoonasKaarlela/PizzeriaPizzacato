@@ -15,6 +15,12 @@ import Pizzacato.model.dao.TilausDAO;
 public class PoistaTilausServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/*
+	 * 
+	 * 	1. Poista parametrinä annetun id:n omaava tilaus
+	 * 
+	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("tilaus_id");

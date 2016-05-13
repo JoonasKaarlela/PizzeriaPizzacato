@@ -23,7 +23,13 @@ public class FantasiaMuokkausServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-
+	/*
+	 * 
+	 * 1. Hae täytteet, jotta asiakas voi valita täytteistä mieluiset pizzaansa.
+	 * 2. Hae mausteet, jotta asiakas voi valita täytteistä mieluiset pizzaansa.
+	 * 3. Ohjaa asiakas Fantasia.jsp sivulle.
+	 * 
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sivu = "/view/Fantasia.jsp";
 		

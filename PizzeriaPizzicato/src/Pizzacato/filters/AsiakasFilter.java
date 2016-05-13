@@ -28,6 +28,11 @@ public class AsiakasFilter implements Filter {
 		
 	}
 
+	/*
+	 * Tulee olla kirjautunut, jotta voi requestaa tätä urlia. Muuten ohjataan Menuun.
+	 * 
+	 */
+	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
 		HttpServletRequest req = (HttpServletRequest) request;

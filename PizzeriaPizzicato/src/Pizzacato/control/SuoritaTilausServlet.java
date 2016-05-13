@@ -20,6 +20,14 @@ import javax.servlet.http.HttpServletResponse;
 public class SuoritaTilausServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	/*
+	 * 
+	 * 	1. Hae parametrit
+	 * 	2. Validoi parametrit
+	 * 	3. Tsekkaa tehdäänkö tilaus rekisteröidylle asiakkaalle vai ei
+	 * 	4. tallenna tilaus.
+	 * 
+	 */
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

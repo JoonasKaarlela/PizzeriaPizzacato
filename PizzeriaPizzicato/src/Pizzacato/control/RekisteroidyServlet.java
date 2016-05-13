@@ -20,6 +20,16 @@ import Pizzacato.model.dao.KayttajaDAO;
 public class RekisteroidyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/*
+	 * 
+	 * 	GET: Ohjaa rekisteröinti sivulle
+	 * 	POST:
+	 * 		1. Hae parametrit
+	 * 		2. Validoi parametrit
+	 * 		3. Yritä rekisteröityä
+	 * 		4. Jos onnistui, aseta käyttäjä sessiion. ( kirjautuu sisään ) 
+	 * 
+	 */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rp = request.getServletContext().getRequestDispatcher("/view/Rekisterointi.jsp");

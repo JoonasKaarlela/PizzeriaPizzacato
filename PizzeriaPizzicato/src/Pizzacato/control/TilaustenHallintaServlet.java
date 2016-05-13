@@ -19,6 +19,12 @@ import Pizzacato.model.dao.TilausDAO;
 public class TilaustenHallintaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+		/*
+		 * 
+		 * 	1. Hae tilaukset
+		 * 	2. Ohjaa tilausten hallinta sivulle
+		 * 
+		 */
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sivu = "/view/Tilaukset.jsp";

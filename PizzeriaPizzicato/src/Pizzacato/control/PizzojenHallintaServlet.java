@@ -22,6 +22,13 @@ import Pizzacato.model.Tayte;
 public class PizzojenHallintaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	/*
+	 * 
+	 * 	1. Hae pizzat
+	 * 	2. Hae täytteet
+	 * 	3. Ohjaa pizzojen hallinta sivulle
+	 * 
+	 */
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

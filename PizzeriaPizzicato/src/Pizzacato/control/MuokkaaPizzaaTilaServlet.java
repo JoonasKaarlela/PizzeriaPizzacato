@@ -21,8 +21,17 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/MuokkaaPizzaaTila")
 public class MuokkaaPizzaaTilaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
 
+	/*
+	 * 	1. Hae muokattava pizza
+	 * 	2. Hae valittavat täytteet
+	 * 	3. Järjestä täytteet
+	 * 	4. Ohjaa admin pizzan muokkaus sivulle
+	 * 
+	 * 
+	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sivu = "/view/Pizzat.jsp";
 		String id = request.getParameter("id");

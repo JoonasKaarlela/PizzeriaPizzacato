@@ -21,6 +21,13 @@ import javax.servlet.http.HttpServletResponse;
 public class TaytteidenHallintaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	
+	/*
+	 * 	1. Hae täytteet
+	 * 	2. Ohjaa täyte hallinta sivulle
+	 * 
+	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dp = request.getServletContext().getRequestDispatcher("/view/Taytteet.jsp");
 		

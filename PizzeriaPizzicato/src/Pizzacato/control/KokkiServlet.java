@@ -25,6 +25,16 @@ import javax.servlet.http.HttpServletResponse;
 public class KokkiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/*
+	 * 
+	 * 	1. Hae kokille oleelliset tilaukset (tilassa "vastaanotettu" tai "valmimstuksessa")
+	 * 	2. Hae tilaus kohtaiset pizza tilauksille, jotta kokki näkee mitkä pizzat tilaukseen tulee valmistaa.
+	 * 	3. Uudelleen järjestä pizzat aakkosjärjestykseen.
+	 * 	4. Tallenna rajapinnan Map toteuttavan hashmap luokan olioon avaimeksi Tilaus ja arvoksi ArrayList<Pizza>.
+	 * 	4. Ohjaa kokki hallinnointi sivulle. 
+	 * 
+	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getServletContext().getRequestDispatcher("/view/Kokki.jsp");
 		

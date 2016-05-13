@@ -16,6 +16,11 @@ import Pizzacato.model.dao.PizzaDAO;
 public class PoistaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	/*
+	 * 	1. Poista parametrinä annetun id:n omaava pizza
+	 * 
+	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("id");

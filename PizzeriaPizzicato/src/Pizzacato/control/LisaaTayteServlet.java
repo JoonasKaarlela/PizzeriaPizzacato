@@ -17,6 +17,14 @@ import Pizzacato.model.dao.TayteDAO;
 @WebServlet("/LisaaTayte")
 public class LisaaTayteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	/*
+	 * 
+	 * 	1. Hae parametrit
+	 * 	2. Validoi parametrit
+	 * 	3. Lis‰‰ t‰yte
+	 * 
+	 */
       
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

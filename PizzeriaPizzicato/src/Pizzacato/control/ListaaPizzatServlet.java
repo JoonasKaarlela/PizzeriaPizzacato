@@ -23,15 +23,19 @@ import Pizzacato.model.dao.TayteDAO;
 public class ListaaPizzatServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/*
+	 * 	1. Hae pizzat
+	 * 	2. Ohjaa Menu sivulle
+	 * 	
+	 * 
+	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sivu = "/view/Menu.jsp";
 		
 		ArrayList<Pizza> pizzat = haePizzat();
 		request.setAttribute("pizzat", pizzat);
-		
-		ArrayList<Tayte> taytteet = haeTaytteet();
-		request.setAttribute("taytteet", taytteet);
-		
+
 		RequestDispatcher dp = getServletContext().getRequestDispatcher(sivu);
 		dp.forward(request, response);
 			
@@ -63,17 +67,6 @@ public class ListaaPizzatServlet extends HttpServlet {
 		return taytteet;	
 	}
 	
-	
-	public boolean onKirjautunut(HttpSession session){
-		try{
-			@SuppressWarnings("unused")
-			Kayttaja kayttaja = (Kayttaja) session.getAttribute("kayttaja");
-			return true;
-		} catch(NullPointerException e){
-			System.out.println(e.getMessage());
-			return false;
-		}
-	}
 	
 	
 

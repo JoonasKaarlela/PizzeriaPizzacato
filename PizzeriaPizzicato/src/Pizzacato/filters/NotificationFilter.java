@@ -24,6 +24,14 @@ public class NotificationFilter implements Filter {
 		
 	}
 
+	/*
+	 *
+	 * Notification stack
+	 * 1. Poista ilmoitus request scopesta.
+	 * 2. Aseta sessiosta mahdollinen uusi ilmoitus request scopeen.
+	 * 3. Clearaa sessiosta ilmoitukset.
+	 * 
+	 */
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		

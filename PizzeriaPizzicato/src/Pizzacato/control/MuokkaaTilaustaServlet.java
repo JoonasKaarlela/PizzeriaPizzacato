@@ -15,6 +15,12 @@ import Pizzacato.model.dao.TilausDAO;
 @WebServlet("/MuokkaaTilausta")
 public class MuokkaaTilaustaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	/*
+	 * 	1. Muokkaa tilauksen tilaa
+	 * 
+	 * 
+	 */
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

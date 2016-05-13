@@ -24,6 +24,14 @@ public class NaytaTilausServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	/*
+	 * 	1. Hae tilaukset
+	 * 	2. Aseta järjestykseen
+	 * 	3. Ohjaa tilaukset sivulle
+	 * 
+	 * 
+	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 			TilausDAO tilausdao = new TilausDAO();

@@ -18,6 +18,13 @@ import Pizzacato.model.dao.TayteDAO;
 public class MuokkaaTaytettaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/*
+	 * 
+	 * 	1. Suorita täytteen muokkaus ( lähetä päivitetyt tiedot kantaan )
+	 * 	
+	 * 
+	 * 
+	 */
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

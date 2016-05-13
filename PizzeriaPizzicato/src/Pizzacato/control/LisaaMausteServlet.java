@@ -18,6 +18,17 @@ import Pizzacato.model.dao.MausteDAO;
 public class LisaaMausteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
+	
+	/*
+	 * 
+	 * 1. Hae parametrit
+	 * 2. Validoi parametrit
+	 * 3. Lisää mauste
+	 * 4. Kaikki ok => ilmoita asiakkaalle
+	 * 5. Virheitä => ilmoita asiakkaalle 
+	 * 
+	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String mauste_id = new Utils().generate(5);

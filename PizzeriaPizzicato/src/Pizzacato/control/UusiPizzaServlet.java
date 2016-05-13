@@ -18,6 +18,11 @@ import Pizzacato.model.dao.TayteDAO;
 public class UusiPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+		/*
+		 * 	1. Hae täytteet
+		 * 	2. Ohjaa uuden pizzan luonti sivulle
+		 * 	
+		 */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getServletContext().getRequestDispatcher("/view/LuoPizza.jsp");

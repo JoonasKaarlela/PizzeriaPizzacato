@@ -31,6 +31,12 @@ public class KokkiFilter implements Filter {
 	}
 
 
+	/*
+	 * 
+	 * Kokki kohtainen url. Vain kokilla on oikeudet requestaa tätä urlia.
+	 * Muuten ohjataan Menuun.
+	 * 
+	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
 		HttpServletRequest req = (HttpServletRequest) request;

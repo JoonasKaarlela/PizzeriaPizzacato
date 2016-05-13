@@ -20,6 +20,13 @@ import javax.servlet.http.HttpServletResponse;
 public class MausteidenHallintaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/*
+	 * 	1. Hae mausteet
+	 * 	2. Ohjaa mausteiden hallinta sivulle.
+	 * 
+	 * 
+	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dp = request.getServletContext().getRequestDispatcher("/view/Mausteet.jsp");
 		

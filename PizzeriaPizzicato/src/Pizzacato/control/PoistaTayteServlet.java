@@ -15,6 +15,12 @@ import Pizzacato.model.dao.TayteDAO;
 public class PoistaTayteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/*
+	 * 
+	 * 	1. Poista parametrinä annetun id:n omaava tayte
+	 * 
+	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("tayte_id");
 		

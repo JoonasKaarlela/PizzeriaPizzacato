@@ -17,6 +17,15 @@ import javax.servlet.http.HttpServletResponse;
 public class MuokkaaMaustettaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	/*
+	 * 	1. Hae parametrit
+	 * 	2. Validoi parametrit
+	 * 	3. anna mausteen uudet tiedot parametrinä MausteDAO luokan muokkaMaustetta metodille.
+	 * 
+	 * 
+	 * 
+	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("id");

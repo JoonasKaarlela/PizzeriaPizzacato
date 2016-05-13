@@ -30,6 +30,12 @@ public class KuljettajaFilter implements Filter {
 
 	}
 
+	/*
+	 * 
+	 * Kuljettaja kohtainen url. Vain kuljettajalla on oikeudet requestaa tätä urlia.
+	 * Muuten ohjataan Menuun.
+	 * 
+	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
 		HttpServletRequest req = (HttpServletRequest) request;

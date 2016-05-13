@@ -20,6 +20,13 @@ import Pizzacato.model.dao.PizzaDAO;
 public class PoistaKoristaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	
+	/*
+	 * 
+	 * 	1. Poista korista parametrinä annetun id:n omaava tuote
+	 * 	
+	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("pizza_id");
 		Pizza pizza = haePizza(id);

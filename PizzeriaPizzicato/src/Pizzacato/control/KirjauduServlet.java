@@ -20,6 +20,17 @@ import Pizzacato.model.dao.KayttajaDAO;
 public class KirjauduServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/* Kirjautuminen
+	 * 
+	 * 1. Hae parametreinä annetut tunnukset.
+	 * 2. Validoi syötetyt parametrit Validate luokan metodeilla.
+	 * 3. Jos kaikki ok, tyhjennä ostoskori jotta mahdollisen edellisen asiakkaan valitsemat tuotteet nollaantuu.
+	 * 4. Jos kirjautuminen onnistui annetuilla parametreillä, tallenna DAO:n palauttama Kayttaja luokan olio requestin HTTPSession olioon.
+	 * 5. Ilmoita asiakkaalle onnistuneesta kirjautumisesta.
+	 * 6. Ilmoita myös mikäli virheitä tapahtui operaation yhteydessä.
+	 * 
+	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String kayttajatunnus = request.getParameter("kayttajatunnus");

@@ -17,6 +17,18 @@ import Pizzacato.model.Pizza;
 public class OstoskoriServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	/*
+	 * 
+	 * 	1. Hae ostoskorin tuotteet kannasta
+	 * 	2. Laske korin hinta
+	 * 	3. Tsekkaa onko kori tyhjä vai ei
+	 * 	4. Tallenna attribuutit
+	 * 	5. Ohjaa asiakas ostoskori sivulle
+	 * 
+	 * 
+	 */
+	
+	
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dp = request.getServletContext().getRequestDispatcher("/view/Ostoskori.jsp");

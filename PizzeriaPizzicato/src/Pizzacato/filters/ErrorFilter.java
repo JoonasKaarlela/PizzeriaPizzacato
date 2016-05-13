@@ -24,7 +24,14 @@ public class ErrorFilter implements Filter {
 	
 	}
 
-
+	/*
+	 *
+	 * Error stack
+	 * 1. Poista errori request scopesta.
+	 * 2. Aseta sessiosta mahdollinen uusi errori request scopeen.
+	 * 3. Clearaa sessiosta errorit.
+	 * 
+	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
 		HttpServletRequest req = (HttpServletRequest) request;

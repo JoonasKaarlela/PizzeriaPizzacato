@@ -22,6 +22,15 @@ import Pizzacato.model.dao.TayteDAO;
 public class LisaaPizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/*
+	 * 	1. Hae parametrit ( id generoidaan Utils luokan generate(5) metodilla )
+	 * 	2. Luo Pizza luokan olio n‰ill‰ parametreilla.
+	 * 	3. Validoi parametrit
+	 * 	4. Lis‰‰ pizza
+	 * 
+	 * 
+	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = new Utils().generate(5);

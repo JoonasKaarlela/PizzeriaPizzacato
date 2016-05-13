@@ -3,42 +3,41 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Pizzacato.model.dao.MausteDAO;
+import Pizzacato.model.Pizza;
+import Pizzacato.model.dao.PizzaDAO;
 
 
-@WebServlet("/PoistaMauste")
-public class PoistaMausteSerlvet extends HttpServlet {
+@WebServlet("/ValitsePizza")
+public class ValitsePizzaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
 
 	/*
-	 * 	1. Poista mauste id:n perusteella
-	 * 
+	 * 	1. Hae pizza id:n perusteella
+	 * 	2. Ohjaa asiakas Valitse.jsp sivulle. Jossa asiakas voi p‰‰tt‰‰ pizzojen m‰‰r‰n ja mausteet ja lis‰t‰ koriin.
+	 * 	
 	 */
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher rd = request.getServletContext().getRequestDispatcher("/view/Valitse.jsp");
+		
 		String id = request.getParameter("id");
 		
-		MausteDAO maustedao = new MausteDAO();
 		try{
-			if(maustedao.poistaMauste(id)){
-				request.getSession().setAttribute("notification", "Mauste " + id + " poistettiin!");
-			}else{
-				request.getSession().setAttribute("error", "Mauste " + id + " ei voitu poistaa.");
-			}
-			
+			Pizza pizza = new PizzaDAO().haePizza(id);
+			request.setAttribute("pizza", pizza);
 		}catch(SQLException e){
 			System.out.println(e.getMessage());
 		}
 		
-		
-		response.sendRedirect("MausteidenHallinta");
-		
+		rd.forward(request, response);
 	}
 
 

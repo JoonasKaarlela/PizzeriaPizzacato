@@ -21,6 +21,14 @@ public class KuljettajaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
+	/*
+	 * 
+	 * 	1. 	Hae kuljettajalle oleelliset tilaukset ( tilassa "odottaa toimitusta" tai "toimituksessa" )
+	 * 	2.	Aseta tilaukset tilaus järjestykseen
+	 * 	3.	Ohjaa kuljettaja hallinointi sivulle.
+	 * 
+	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getServletContext().getRequestDispatcher("/view/Kuljettaja.jsp");
 		

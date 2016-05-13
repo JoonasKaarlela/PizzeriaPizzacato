@@ -30,6 +30,11 @@ public class HenkilokuntaFilter implements Filter {
 	
 	}
 
+	/*
+	 * Henkilökunnalla (kuljettaja tai kokki) on oikeus requestaa tätä urlia. 
+	 * Muuten ohjataan menuun
+	 * 
+	 */
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;

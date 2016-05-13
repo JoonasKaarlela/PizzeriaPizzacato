@@ -178,7 +178,7 @@
 		
 			<div>
 				<button type='submit'> valitse </button>
-				<input type='number' min='1' max='10' value='1' />
+				<input type='number' min='1' max='10' value='1' name="maara" />
 			</div>
 		
 		</form>

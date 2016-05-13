@@ -57,7 +57,7 @@
 		                <div>
 		                    <form method="post" action="LisaaMauste">
 		                        <label>Nimi</label><input name="nimi" placeholder="mausteen nimi" pattern="^\s*([0-9a-zA-Z ]+)\s*$" title="Ei erikoismerkkejä" size="15" required />
-		                        <label>Pizzan hinta</label><input name="hinta" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4" required /><br />
+		                        <input name="hinta" placeholder="hinta" pattern="[-+]?[0-9]*[.,]?[0-9]+" title="Anna hinta numeroina muodossa x.xx" size="4" required />
 		                        <button type="submit"> Lisää </button>
 		                    </form>
 		                </div>

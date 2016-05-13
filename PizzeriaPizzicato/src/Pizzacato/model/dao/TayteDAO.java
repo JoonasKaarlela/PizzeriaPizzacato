@@ -108,29 +108,18 @@ public class TayteDAO extends DataAccessObject{
 
 			//YHTEYS
 			Connection conn = getConnection();
-			
-			String SELECT = "SELECT * FROM TAYTE WHERE nimi=?";
-			PreparedStatement stmt = conn.prepareStatement(SELECT);
-			stmt.setString(1, tayte.getNimi());
-			ResultSet results = stmt.executeQuery();
-			
-			if(!results.next()){
 
-				String query = "UPDATE TAYTE SET nimi=?, alkupera=?, kuvaus=?, hinta=? WHERE tayte_id=?";
-				PreparedStatement statement = conn.prepareStatement(query);
-				statement.setString(1, tayte.getNimi());
-				statement.setString(2, tayte.getAlkupera());
-				statement.setString(3,  tayte.getKuvaus());
-				statement.setDouble(4,  tayte.getHinta());
-				statement.setString(5, tayte.getTayte_id());
+			String query = "UPDATE TAYTE SET nimi=?, alkupera=?, kuvaus=?, hinta=? WHERE tayte_id=?";
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, tayte.getNimi());
+			statement.setString(2, tayte.getAlkupera());
+			statement.setString(3,  tayte.getKuvaus());
+			statement.setDouble(4,  tayte.getHinta());
+			statement.setString(5, tayte.getTayte_id());
 
-				int paivitettiin = statement.executeUpdate();
-				if(paivitettiin > 0){
-					System.out.println("Paivitettiin: " + paivitettiin + " attribuuttia");
-				}else{
-					conn.close();
-					return false;
-				}
+			int paivitettiin = statement.executeUpdate();
+			if(paivitettiin > 0){
+				System.out.println("Paivitettiin: " + paivitettiin + " attribuuttia");
 			}else{
 				conn.close();
 				return false;

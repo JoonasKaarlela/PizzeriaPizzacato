@@ -134,7 +134,8 @@
                 	<img src="pizza1.png">
                 </div>
             	<div class="pkuvaus">
-                	Kuvaus
+            		<h3>Kuvaus</h3>
+                	<p>Luo oma pizza suosikki täytteilläsi.</p>
                 </div>
             </div>
             

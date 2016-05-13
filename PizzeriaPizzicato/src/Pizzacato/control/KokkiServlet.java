@@ -9,6 +9,7 @@ import Pizzacato.model.dao.TilausDAO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,10 +41,10 @@ public class KokkiServlet extends HttpServlet {
 			for(Tilaus tilaus : tilaukset){
 				if(tilaus.getTila().equals("vastaanotettu") || tilaus.getTila().equals("valmistuksessa")){
 					pizzat = new TilauksenPizzaDAO().HaeTilauksenPizzat(tilaus.getTilaus_id());
+					Collections.sort(pizzat);
 					Tilaus.put(tilaus, pizzat);
 				}
 			}
-			
 			request.setAttribute("tilaukset", Tilaus);
 			
 		}catch(SQLException e){

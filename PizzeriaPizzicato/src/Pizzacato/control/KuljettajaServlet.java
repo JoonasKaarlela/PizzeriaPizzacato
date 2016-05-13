@@ -5,6 +5,7 @@ import Pizzacato.model.dao.TilausDAO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -36,6 +37,7 @@ public class KuljettajaServlet extends HttpServlet {
 			}
 			tilaukset.removeAll(poistettavat);
 			
+			Collections.sort(tilaukset);
 			request.setAttribute("tilaukset", tilaukset);
 			
 		}catch(SQLException e){

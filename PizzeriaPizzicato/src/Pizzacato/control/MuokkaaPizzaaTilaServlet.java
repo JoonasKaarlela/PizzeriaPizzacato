@@ -3,6 +3,7 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import Pizzacato.model.Pizza;
 import Pizzacato.model.Tayte;
@@ -41,6 +42,7 @@ public class MuokkaaPizzaaTilaServlet extends HttpServlet {
 		
 		try{
 			taytteet = taytedao.haeTaytteet();
+			Collections.sort(taytteet);
 			request.setAttribute("taytteet", taytteet);
 		}catch(SQLException e){
 			System.out.println(e.getMessage());

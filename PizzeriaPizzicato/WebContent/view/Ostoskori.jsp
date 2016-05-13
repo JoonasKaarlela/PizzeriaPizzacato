@@ -66,11 +66,6 @@
 								</div>
 							</div>
 						</form>
-						<div class="error">
-							<p style="color: crimson">
-								<c:out value="${error}"></c:out>
-							</p>
-						</div>
 					</c:otherwise>
 
 				</c:choose>
@@ -157,8 +152,8 @@
 										  <td> ${item.value.get(0).getNimi()} </td>
 										  <td> ${item.value.get(0).getHinta()}€ </td>
 										  <td>
-										  	 <c:forEach items="${item.value.get(0).getTaytteet()}" var="tayte">
-										    	${tayte.getNimi()}
+										  	 <c:forEach items="${item.value.get(0).getTaytteet()}" var="tayte" varStatus="status">
+										    	${tayte.getNimi()}<c:if test="${status.index != pizza.getTaytteet().size()-1}">, </c:if>
 										     </c:forEach>
 										  </td>
 										  <td>
@@ -192,7 +187,7 @@
 						</form>
 
 						<div id="ostoskori_tilaus">
-								<div> <strong style="font-size: 100px;"> ${requestScope.summa}€ </strong>  </div>
+								<div> <strong style="font-size: 35px;"> ${requestScope.summa}€ </strong>  </div>
 						</div>
 					</div>
 				</c:when>

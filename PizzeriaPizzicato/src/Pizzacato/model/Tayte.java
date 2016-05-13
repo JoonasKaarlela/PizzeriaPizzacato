@@ -93,8 +93,8 @@ public boolean equals(Object obj) {
 
 
 @Override
-public int compareTo(Tayte o) {
-	return o.getNimi().compareTo(this.getNimi());
+public int compareTo(Tayte tayte) {
+	return this.getNimi().compareTo(tayte.getNimi());
 }
 
 }

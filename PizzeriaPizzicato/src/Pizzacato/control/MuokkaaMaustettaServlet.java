@@ -26,7 +26,7 @@ public class MuokkaaMaustettaServlet extends HttpServlet {
 		
 		Validate validate = new Validate();
 		
-		if(validate.teksti(nimi) && validate.hinta(request.getParameter("hinta"))){
+		if(validate.teksti(nimi) && validate.hinta(request.getParameter("hinta").replace(',','.'))){
 			Mauste mauste = new Mauste(id, nimi, hinta);
 			try{
 				if(new MausteDAO().muokkaaMaustetta(mauste)){

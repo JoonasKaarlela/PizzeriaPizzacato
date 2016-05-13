@@ -3,7 +3,7 @@ package Pizzacato.model;
 public class Validate {
 	
 	public boolean teksti(String nimi){
-		if(nimi.matches("[a-zA-Z]+") && nimi.length() > 2 && nimi != null){ return true; }
+		if(nimi.matches("[a-öA-Ö]+") && nimi.length() > 2 && nimi != null){ return true; }
 		System.out.println("invalid text");
 		return false;
 	}
@@ -15,7 +15,7 @@ public class Validate {
 	}
 	
 	public boolean hinta(String hinta){
-		if(hinta.matches("[0-9]+([,.][0-9]{1,2})?") && !hinta.isEmpty() && hinta != null && Double.parseDouble(hinta) > 0 && Double.parseDouble(hinta) < 99){ return true; }
+		if(hinta.matches("[0-9]+([,.][0-9]{1,2})?") && !hinta.isEmpty() && hinta != null && Double.parseDouble(hinta) > -1 && Double.parseDouble(hinta) < 99){ return true; }
 		System.out.println("invalid price");
 		return false;
 	}

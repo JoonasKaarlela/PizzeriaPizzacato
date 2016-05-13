@@ -3,6 +3,7 @@ package Pizzacato.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import Pizzacato.model.Mauste;
 import Pizzacato.model.Tayte;
@@ -26,8 +27,6 @@ public class FantasiaMuokkausServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sivu = "/view/Fantasia.jsp";
 		
-		
-		
 		ArrayList<Tayte> taytteet = haeTaytteet();
 		request.setAttribute("taytteet", taytteet);
 			
@@ -41,6 +40,7 @@ public class FantasiaMuokkausServlet extends HttpServlet {
 		ArrayList<Tayte> taytteet = new ArrayList<>();
 		try {
 			taytteet = new TayteDAO().haeTaytteet();
+			Collections.sort(taytteet);
 		}catch(SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -51,6 +51,7 @@ public class FantasiaMuokkausServlet extends HttpServlet {
 		ArrayList<Mauste> mausteet = new ArrayList<>();
 		try {
 			mausteet = new MausteDAO().haeMausteet();
+			Collections.sort(mausteet);
 		}catch(SQLException e) {
 			System.out.println(e.getMessage());
 		}

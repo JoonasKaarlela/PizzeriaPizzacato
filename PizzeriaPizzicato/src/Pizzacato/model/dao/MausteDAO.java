@@ -120,13 +120,6 @@ public class MausteDAO extends DataAccessObject {
 		// YHTEYS
 		Connection conn = getConnection();
 
-		String SELECT = "SELECT * FROM MAUSTE WHERE nimi=?";
-		PreparedStatement stmnt = conn.prepareStatement(SELECT);
-		stmnt.setString(1, mauste.getNimi());
-						
-		ResultSet results = stmnt.executeQuery();
-		if(!results.next()){
-
 			String query = "UPDATE MAUSTE SET nimi=?, hinta=? WHERE mauste_id=?";
 			PreparedStatement statement = conn.prepareStatement(query);
 			statement.setString(1, mauste.getNimi());
@@ -138,10 +131,7 @@ public class MausteDAO extends DataAccessObject {
 				System.out.println("Paivitettiin: " + paivitettiin + " attribuuttia");
 				return true;
 			}
-		}else{
-			conn.close();
-			return false;
-		}
+
 		conn.close();
 		return true;
 	}

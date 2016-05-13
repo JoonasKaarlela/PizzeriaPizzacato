@@ -143,7 +143,7 @@
 														<div class="pizzantayte">
 															<p>
 																<c:forEach items="${pizza.getTaytteet()}" var="tayte" varStatus="status">
-																	${tayte.getNimi()}
+																	${tayte.getNimi()}<c:if test="${status.index != pizza.getTaytteet().size()-1}">, </c:if>
 																</c:forEach>
 															</p>
 														</div>
@@ -155,9 +155,9 @@
 																<option value=3>3</option>
 																<option value=4>4</option>
 																<option value=5>5</option>
-																<option value=5>6</option>
-																<option value=5>7</option>
-																<option value=5>8</option>
+																<option value=6>6</option>
+																<option value=7>7</option>
+																<option value=8>8</option>
 															</select>
 														</div>
 															

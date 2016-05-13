@@ -30,7 +30,6 @@ public class PizzojenHallintaServlet extends HttpServlet {
 		ArrayList<Pizza> pizzat = haePizzat();
 		request.setAttribute("pizzat", pizzat);
 		
-		Collections.sort(pizzat);
 		
 		ArrayList<Tayte> taytteet = haeTaytteet();
 		request.setAttribute("taytteet", taytteet);

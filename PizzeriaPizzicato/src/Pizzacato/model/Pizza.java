@@ -127,7 +127,7 @@ public class Pizza implements Comparable<Pizza> {
 
 	@Override
 	public int compareTo(Pizza pizza) {	
-		return pizza.getNimi().compareTo(this.getNimi());
+		return this.getNimi().compareTo(pizza.getNimi());
 	}
 
 

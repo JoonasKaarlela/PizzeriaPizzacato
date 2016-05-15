@@ -20,11 +20,12 @@ public class PizzanMausteDAO extends DataAccessObject {
 		Connection conn = getConnection();
 
 		String query = "SELECT * FROM MAUSTE"
-				+ " INNER JOIN PIZZANMAUSTE ON MAUSTE.mauste.id=PIZZANMAUSTE.mauste_id"
-				+ " AND PIZZANMAUSTE.mauste.id=" + pizza_id;
+				+ " INNER JOIN PIZZANMAUSTE ON MAUSTE.mauste_id=PIZZANMAUSTE.mauste_id"
+				+ " AND PIZZANMAUSTE.pizza_id=?";
 
-		Statement statement = conn.createStatement();
-		ResultSet results = statement.executeQuery(query);
+		PreparedStatement statement = conn.prepareStatement(query);
+		statement.setString(1, pizza_id);
+		ResultSet results = statement.executeQuery();
 
 		while (results.next()) {
 			String mauste_id = results.getString(1);

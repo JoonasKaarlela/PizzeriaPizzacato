@@ -55,11 +55,12 @@ public class TilauksenPizzaDAO extends DataAccessObject {
 			String pizza_id = results.getString(1);
 			String nimi = results.getString(2);
 			ArrayList<Tayte> taytteet = new PizzanTayteDAO().haePizzanTaytteet(pizza_id);
+			ArrayList<Mauste> mausteet = new PizzanMausteDAO().haePizzanMausteet(pizza_id);
 			String kuvaus = results.getString(3);
 			boolean listalla = results.getBoolean(4) ;
 			double hinta = results.getDouble(5);
 			String kuva = "pizza1.png";
-			Pizza pizza = new Pizza(pizza_id, nimi, taytteet, kuvaus, listalla, hinta, kuva);
+			Pizza pizza = new Pizza(pizza_id, nimi, taytteet, mausteet, kuvaus, listalla, hinta, kuva);
 			pizzat.add(pizza);
 		}
 		

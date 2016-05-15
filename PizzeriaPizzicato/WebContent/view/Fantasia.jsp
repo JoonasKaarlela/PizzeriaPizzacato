@@ -7,8 +7,8 @@
 		<title>Fantasia</title>
 		<link href="styles.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link rel="stylesheet" href="ValitsePizza.css" >
 		<script type="text/javascript" src="notification.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
    </head>
 <body>
 
@@ -126,81 +126,68 @@
 			<img src="banner.jpg">
 		</div>
 
-		<!--  PIZZA MENU ALKAA -->
-		<div id="pcontent">
-			<div id="pcontent-left">
-            	<div class="pkuva">
-            		<div class="pnimi">Fantasia</div>
-                	<img src="pizza1.png">
-                </div>
-            	<div class="pkuvaus">
-            		<h3>Kuvaus</h3>
-                	<p>Luo oma pizza suosikki täytteilläsi.</p>
-                </div>
-            </div>
-            
-            <div id="pcontent-right">
-            	<form method="post" action="lisaaKoriin">
-	            	<div class="ptayte">
-	            	<h3>Täytteet</h3>
-	            	<h3>Lisätäytteet</h3>
-	                	<table id="tbl">
-						    <tbody>
-						      <tr>
-						        <td>
-						        	<select name="taytteet" required>
-						        		<option disabled selected>Valitse täyte</option>
-						        		<c:forEach items="${taytteet}" var="tayte" varStatus="current">
-						             	<option value="${tayte.getTayte_id()}"> ${tayte.getNimi()} </option>
-						                </c:forEach>
-						          	</select>
-						        </td>
-						        <td>
-						          	<input type="button" class="add-row" value="+"/>
-						          	<input type="button" class="del-row" value="x"/>
-						        </td>
-						      </tr>
-						    </tbody>
-						  </table>
-	                </div>
-	            	<div class="pmauste">
-	            	<h3>Mausteet</h3>
-	                	<c:forEach items="${mausteet}" var="mauste" varStatus="current">
-			                <input type="checkbox" value="${mauste.getMauste_id()}"><label>${mauste.getNimi()}</label>
-			            </c:forEach>
-	                </div><br>
-	                <button type="submit" class="ptilaa">Tilaa</button>
-	                Hinta: 0,00€
-           		</form>
-           	</div>
-            
-		</div>
-		<!-- CONTENT LOPPUU -->
+		
+		<form id='container' action='lisaaKoriin' method='post'>
+			
+			<div id='valitse_top'> 
+				<h1> ${pizza.getNimi()} </h1>
+			</div>
+			
+			<div id='valitse_left'>
+				<div> <img src="${pizza.getKuva()}" /> </div>
+			</div>
+			
+			<div  id='valitse_right'>
+				
+				<div>
+					<h3> Kuvaus </h3>
+					<div>
+						${pizza.getKuvaus()}
+					</div>
+				</div>
+			
+			
+				<div>
+					<div>
+						<h3>Täytteet (väh. 1)</h3>
+						<div>
+							<c:forEach items="${taytteet}" var="tayte"  varStatus="status">
+									<label for="taytteet">${tayte.getNimi()} </label>
+									<input type='checkbox' name='taytteet' value='${tayte.getTayte_id()}' />
+							</c:forEach>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			
+			<div>
+				<div>
+					<h3> Mausteet: </h3>
+				</div>
+				<div>
+					<table>
+						<c:forEach items="${mausteet}" var="mauste">
+							<tr>
+								<td> ${mauste.getNimi()} </td>
+								<td> <input type='checkbox' name='mausteet' value='${mauste.getMauste_id()}' /> </td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</div>
+		
+			<div>
+				<button type='submit'> valitse </button>
+				<input type='number' min='1' max='10' value='1' name="maara" />
+			</div>
+		
+			<input name='pizza_id' value='${pizza.getPizza_id()}'  type="hidden" />
+		</form>
+		
+		
 	</div>
 
-	<script>
-		function addRow() {
-			var row = $('tbody tr:first').clone();
-			row.find('input[type!=button]').val('');
-			$('#tbl tbody').append(row);
-		}
-		function delRow() {
-			$(this).closest('tr').remove();
-		}
-
-		$('#tbl').on('click', '.del-row', delRow);
-
-		$('#tbl').on('click', '.add-row', addRow);
-
-		$('#tbl').on(
-				'change',
-				'input',
-				function() {
-					if ($(this).val() != ''
-							&& $(this).closest('tr').is(':last-child')) {
-						addRow();
-					}
-				});
-	</script>
-</body>
-</html>
+	
+	</body>
+	</html>

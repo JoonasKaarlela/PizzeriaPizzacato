@@ -1,5 +1,7 @@
 package Pizzacato.control;
 import Pizzacato.model.dao.MausteDAO;
+import Pizzacato.model.dao.TayteDAO;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import Pizzacato.model.Mauste;
 import Pizzacato.model.Pizza;
+import Pizzacato.model.Tayte;
 import Pizzacato.model.dao.PizzaDAO;
 
 @WebServlet("/lisaaKoriin")
@@ -36,10 +39,21 @@ public class LisaaKoriinServlet extends HttpServlet {
 		String id = request.getParameter("pizza_id");
 		int maara = Integer.parseInt(request.getParameter("maara"));
 		ArrayList<Mauste> mausteet = haeMausteet(request.getParameterValues("mausteet"));
+		ArrayList<Tayte> taytteet = haeTaytteet(request.getParameterValues("taytteet"));
 
 		Pizza pizza = haePizza(id);
-		pizza.setMausteet(mausteet);
-
+		
+		if(!taytteet.isEmpty() || taytteet == null){
+			request.getSession().setAttribute("error", "Valitse v‰hint‰‰n 1 t‰yte.");
+			response.sendRedirect("Menu");
+		}
+		
+		pizza.setTaytteet(taytteet);
+		
+		if(!mausteet.isEmpty() || mausteet != null){
+			pizza.setMausteet(mausteet);
+		}
+		
 		for (int i = 0; i < maara; i++) {
 			if(lisaaKoriin(pizza, request.getSession())){
 				String prefix = "";
@@ -83,6 +97,25 @@ public class LisaaKoriinServlet extends HttpServlet {
 			}
 		}
 		return mausteet;
+	}
+	
+	public ArrayList<Tayte> haeTaytteet(String[] valitut_taytteet){
+		ArrayList<Tayte> taytteet = new ArrayList<>();
+		if(valitut_taytteet != null){
+			try{
+				ArrayList<Tayte> kaikki_taytteet = new TayteDAO().haeTaytteet();
+				for(Tayte x : kaikki_taytteet){
+					for(String y : valitut_taytteet){
+						if(x.getTayte_id().equals(y)){
+							taytteet.add(x);
+						}
+					}
+				}
+			}catch(SQLException e){
+				System.out.println(e.getMessage());
+			}
+		}
+		return taytteet;
 	}
 	
 	@SuppressWarnings("unchecked")

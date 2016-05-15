@@ -148,8 +148,13 @@
 								<c:choose>
 									<c:when test="${item.key != null || item.value != null || !item.value.isEmpty()}">
 										<tr class="ostoskori_pizza">
-										  <td> <img style="width:50px; height:50px; object-fit:fill;" src="${item.value.get(0).getKuva()}" /> </td>
-										  <td> ${item.value.get(0).getNimi()} </td>
+										  <td> <img style="width:50px; height:50px; object-fit:fill;" src="pizza1.png" /> </td>
+										  <td>
+										  	<c:choose>
+										  		<c:when test="${item.value.get(0).getNimi().isEmpty()}">Fantasia </c:when>
+										  		 <c:otherwise>${item.value.get(0).getNimi()}</c:otherwise>
+										  	</c:choose>
+										  </td>
 										  <td> ${item.value.get(0).getHinta()}€ </td>
 										  <td>
 										  	 <c:forEach items="${item.value.get(0).getTaytteet()}" var="tayte" varStatus="status">

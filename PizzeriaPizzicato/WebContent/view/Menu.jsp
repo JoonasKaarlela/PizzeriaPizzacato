@@ -173,9 +173,9 @@
 													<td valign="middle">
 														<div class="pizzainfo">
 															<div class="pizzanimi"> <h2> Fantasia </h2> </div>
-															<div class="pizzakuvaus">  Luo oma </div>
-															<div class="pizzahinta"> alk. 5€ </div>
-															<div> <a href="Fantasia"> Valitse </a> </div>
+															<div class="pizzakuvaus"> <p>  Luo oma </p> </div>
+															<div class="pizzahinta"> <p> alk. 6€ </p> </div>
+															<div> <p> <a href="Fantasia"> Valitse </a> </p> </div>
 														</div>
 													</td>
 									</tr>

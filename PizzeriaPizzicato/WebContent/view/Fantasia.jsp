@@ -130,11 +130,11 @@
 		<form id='container' action='lisaaKoriin' method='post'>
 			
 			<div id='valitse_top'> 
-				<h1> ${pizza.getNimi()} </h1>
+				<h1> Fantasia </h1>
 			</div>
 			
 			<div id='valitse_left'>
-				<div> <img src="${pizza.getKuva()}" /> </div>
+				<div> <img src="pizza1.png"/> </div>
 			</div>
 			
 			<div  id='valitse_right'>
@@ -142,7 +142,7 @@
 				<div>
 					<h3> Kuvaus </h3>
 					<div>
-						${pizza.getKuvaus()}
+						<p>Luo oma pizza suosikki täytteilläsi</p>
 					</div>
 				</div>
 			
@@ -150,16 +150,21 @@
 				<div>
 					<div>
 						<h3>Täytteet (väh. 1)</h3>
-						<div>
+						<table>
 							<c:forEach items="${taytteet}" var="tayte"  varStatus="status">
-									<label for="taytteet">${tayte.getNimi()} </label>
-									<input type='checkbox' name='taytteet' value='${tayte.getTayte_id()}' />
+									<tr>
+										<td>${tayte.getNimi()}</td>
+										<td><input type='checkbox' name='taytteet' value='${tayte.getTayte_id()}'  /></td>
+										<td>( +1€ )</td>
+									</tr>
 							</c:forEach>
-						</div>
+						</table>
 					</div>
 
 				</div>
 			</div>
+			
+			<div class='clear'></div>
 			
 			<div>
 				<div>
@@ -176,7 +181,7 @@
 					</table>
 				</div>
 			</div>
-		
+			
 			<div>
 				<button type='submit'> valitse </button>
 				<input type='number' min='1' max='10' value='1' name="maara" />

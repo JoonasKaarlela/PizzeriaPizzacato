@@ -43,16 +43,25 @@ public class LisaaKoriinServlet extends HttpServlet {
 
 		Pizza pizza = haePizza(id);
 		
-		if(!taytteet.isEmpty() || taytteet == null){
+		if(request.getParameterValues("taytteet") != null && taytteet.isEmpty()){
 			request.getSession().setAttribute("error", "Valitse v‰hint‰‰n 1 t‰yte.");
-			response.sendRedirect("Menu");
+			
 		}
 		
-		pizza.setTaytteet(taytteet);
-		
-		if(!mausteet.isEmpty() || mausteet != null){
+		if(!mausteet.isEmpty() || request.getParameterValues("mausteet") != null){
 			pizza.setMausteet(mausteet);
 		}
+		
+		double summa = pizza.getHinta();
+		
+		if(request.getParameterValues("taytteet") != null && !taytteet.isEmpty()){
+			summa = 6.00;
+			for(Tayte tayte : taytteet){
+				summa += 1.00;
+			}
+		}
+		
+		pizza.setHinta(summa);
 		
 		for (int i = 0; i < maara; i++) {
 			if(lisaaKoriin(pizza, request.getSession())){
@@ -96,6 +105,7 @@ public class LisaaKoriinServlet extends HttpServlet {
 				System.out.println(e.getMessage());
 			}
 		}
+		System.out.println("Mausteita lˆydettiin " + mausteet.size());
 		return mausteet;
 	}
 	
@@ -115,6 +125,7 @@ public class LisaaKoriinServlet extends HttpServlet {
 				System.out.println(e.getMessage());
 			}
 		}
+		System.out.println("T‰ytteit‰ lˆydettiin " + taytteet.size());
 		return taytteet;
 	}
 	

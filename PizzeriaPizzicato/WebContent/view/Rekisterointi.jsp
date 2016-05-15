@@ -132,17 +132,17 @@
 		
 			<form id="rekisterointi_form" action="Rekisterointi" method="POST">
 				<label for=kayttajatunnus_rek> kayttaja </label>
-				<input name="kayttajatunnus_rek" placeholder="kayttajatunnus" pattern="^[a-öA-Ö][a-zA-Z0-9-_\.]{1,20}$" size="15"/> <span style='color:#333;'> (väh: 3 merkkiä, vain kirjaimia) </span>
+				<input name="kayttajatunnus_rek" placeholder="kayttajatunnus (väh: 3 merkkiä, vain kirjaimia) " pattern="^[a-öA-Ö][a-zA-Z0-9-_\.]{1,20}$" size="15"/>
 				<label for=salasana_rek> salasana </label>
-				<input name="salasana_rek" placeholder="(vähintään 8 merkkiä)" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" size="20" />  <span style='color:#333;'> (väh: 8 merkkiä, iso kirjain + pieni kirjain + numero) </span>
+				<input name="salasana_rek" placeholder="salasana (väh: 8 merkkiä, iso kirjain + pieni kirjain + numero)" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" size="20" />
 				<label for=salasana_rek2> salasana(uudestaan) </label>
-				<input name="salasana2_rek" placeholder="(vähintään 8 merkkiä)" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" size="20" />
+				<input name="salasana2_rek" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" size="20" />
 				<label for=osoite_rek> osoite </label>
-				<input name="osoite_rek" placeholder="asiakastie123" size="20"/>  <span style='color:#333;'> (väh: 3 merkkiä) </span>
+				<input name="osoite_rek" placeholder="asiakastie123 (väh: 3 merkkiä)" size="20"/>
 				<label for=puh> puhelin </label>
-				<input name="puh" placeholder="0400123123" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" size="20" />  <span style='color:#333;'> (väh: 10 merkkiä, vain numeroita) </span>
+				<input name="puh" placeholder="0400123123  (väh: 10 merkkiä, vain numeroita)" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" size="20" /> 
 				<label for=sahkoposti> sahkoposti </label>
-				<input name="sahkoposti" placeholder="asiakas@domain.fi" size="20" />  <span style='color:#333;'> (väh: 5 merkkiä) </span>
+				<input name="sahkoposti" placeholder="asiakas@domain.fi  (väh: 5 merkkiä) " size="20" />
 				<button type="submit"> Tallenna </button>
 			</form>
 		

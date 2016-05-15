@@ -28,7 +28,7 @@
 
 		<div id="header">
 			<div id="logo">
-				<img src="pizzerialogo-lapinakyva.png" width="50" />PizzeriaPizzicato
+				<img src="pizzerialogo-lapinakyva.png" />PizzeriaPizzicato
 			</div>
 
 			<div id="kirjaudu">

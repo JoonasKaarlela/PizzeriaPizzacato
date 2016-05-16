@@ -63,13 +63,11 @@ public class LisaaKoriinServlet extends HttpServlet {
 		pizza.setHinta(summa);
 			
 		for (int i = 0; i < maara; i++) {
-			@SuppressWarnings("unchecked")
-			Map<String, Pizza> ostoskori = (HashMap<String, Pizza>) request.getSession().getAttribute("ostoskori");
-			System.out.println(ostoskori);
-			if(ostoskori == null){
+			if(request.getSession().getAttribute("ostoskori") == null){
 				Map<String, Pizza> uusi_kori = new HashMap<String, Pizza>();
 				request.getSession(true).setAttribute("ostoskori", uusi_kori);
 			}
+			Map<String, Pizza> ostoskori = (HashMap<String, Pizza>) request.getSession().getAttribute("ostoskori");
 			ostoskori.put(new Utils().generate(5), pizza);
 			String prefix = "";
 			if(maara > 1){ prefix += maara + "x "; }

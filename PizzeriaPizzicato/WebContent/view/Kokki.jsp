@@ -33,17 +33,8 @@
     <h3><a href="Menu">  <i class="fa fa-arrow-left"></i> Takaisin</a></h3>
 	<div id="hallintanav">
     	<ul>
-        	<li>
-            	<a href="TaytteidenHallinta">Täytteet</a>
-        	</li>
-            <li>
-            	<a href="PizzojenHallinta">Pizzat</a>
-            </li>
             <li class="aktiivinen">	
             	<a href="TilaustenHallinta">Tilaukset</a>
-            </li>
-            <li>
-            	<a href="MausteidenHallinta"> Mausteet </a>
             </li>
     	</ul>
     </div>

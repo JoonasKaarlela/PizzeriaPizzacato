@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import Pizzacato.model.Kayttaja;
 import Pizzacato.model.Tilaus;
@@ -16,7 +17,7 @@ import Pizzacato.model.Pizza;
 
 public class TilausDAO extends DataAccessObject {
 	
-	public boolean asetaTilaus(HashMap<String, ArrayList<Pizza>> ostoskori, Kayttaja kayttaja, boolean toimitus) throws SQLException{
+	public boolean asetaTilaus(Map<String, Pizza> ostoskori, Kayttaja kayttaja, boolean toimitus) throws SQLException{
 		
 		Connection conn = getConnection();
 		
@@ -27,9 +28,7 @@ public class TilausDAO extends DataAccessObject {
 		
 		double hinta = 0;
 		for(String key : ostoskori.keySet()){
-			for(Pizza pizza : ostoskori.get(key)){
-				hinta += pizza.getHinta();
-			}
+			hinta += ostoskori.get(key).getHinta();
 		}
 			
 		String query = "INSERT INTO TILAUS(tilaus_id, tilausaika, hinta, tila, kayttaja_id, toimitus, osoite, puh, sahkoposti) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -48,10 +47,18 @@ public class TilausDAO extends DataAccessObject {
 		if(syotettiin > 0){
 			TilauksenPizzaDAO tilauksenpizzadao = new TilauksenPizzaDAO();
 			for(String key : ostoskori.keySet()){
-				for(Pizza pizza : ostoskori.get(key)){
-					tilauksenpizzadao.luoTilauksenPizza(pizza, tilaus_id, ostoskori.get(key).size());
-					break;
+				Pizza pizza = ostoskori.get(key);
+				
+				/*LKM*/
+				int counter = 0;
+				for(Pizza current : ostoskori.values()){
+					if(current.getPizza_id().equals(pizza.getPizza_id()) && current.getTaytteet().equals(pizza.getTaytteet()) && current.getMausteet().equals(pizza.getMausteet())){
+						counter++;
+					}
 				}
+				
+				tilauksenpizzadao.luoTilauksenPizza(pizza, tilaus_id, counter);
+				break;
 			}
 		}else{
 			conn.close();

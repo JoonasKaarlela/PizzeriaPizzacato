@@ -146,28 +146,24 @@
 							<tbody>
 							<c:forEach items="${sessionScope.ostoskori}" var="item">
 								<c:choose>
-									<c:when test="${item.key != null || item.value != null || !item.value.isEmpty()}">
+									<c:when test="${item.key != null || item.value != null}">
 										<tr class="ostoskori_pizza">
-										  <td> <img style="width:50px; height:50px; object-fit:fill;" src="pizza1.png" /> </td>
+										  <td> <img style="width:50px; height:50px; object-fit:fill;" src="${item.value.getKuva()}" /> </td>
 										  <td>
-										  	<c:choose>
-										  		<c:when test="${item.value.get(0).getNimi().isEmpty()}">Fantasia </c:when>
-										  		 <c:otherwise>${item.value.get(0).getNimi()}</c:otherwise>
-										  	</c:choose>
+												${item.value.getNimi()}
 										  </td>
-										  <td> ${item.value.get(0).getHinta()}€ </td>
+										  <td> ${item.value.getHinta()}€ </td>
 										  <td>
-										  	 <c:forEach items="${item.value.get(0).getTaytteet()}" var="tayte" varStatus="status">
+										  	 <c:forEach items="${item.value.getTaytteet()}" var="tayte" varStatus="status">
 										    	${tayte.getNimi()}<c:if test="${status.index != pizza.getTaytteet().size()-1}">, </c:if>
 										     </c:forEach>
 										  </td>
 										  <td>
-										  	 <c:forEach items="${item.value.get(0).getMausteet()}" var="mauste">
+										  	 <c:forEach items="${item.value.getMausteet()}" var="mauste">
 										  	 	${mauste.getNimi()}
 										  	 </c:forEach>
 										  </td>
-										  <td> x${item.value.size()} </td>
-										  <td> <a href="poistaKorista?pizza_id=${item.key}"> <b style="color: crimson"> poista </b> </a> </td>
+										  <td> <a href="poistaKorista?pizza_id=${item.key}&nimi=${item.value.getNimi()}"> <b style="color: crimson"> poista </b> </a> </td>
 										</tr>
 									</c:when>
 								</c:choose>

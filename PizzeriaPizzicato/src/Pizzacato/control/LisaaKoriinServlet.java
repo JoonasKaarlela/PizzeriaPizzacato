@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import Pizzacato.model.Mauste;
 import Pizzacato.model.Pizza;
 import Pizzacato.model.Tayte;
+import Pizzacato.model.Utils;
 import Pizzacato.model.dao.PizzaDAO;
 
 @WebServlet("/lisaaKoriin")
@@ -43,35 +45,36 @@ public class LisaaKoriinServlet extends HttpServlet {
 
 		Pizza pizza = haePizza(id);
 		
-		if(request.getParameterValues("taytteet") != null && taytteet.isEmpty()){
-			request.getSession().setAttribute("error", "Valitse v‰hint‰‰n 1 t‰yte.");
-			
-		}
-		
-		if(!mausteet.isEmpty() || request.getParameterValues("mausteet") != null){
+		System.out.println(pizza);
+
+		if(request.getParameterValues("mausteet") != null || !mausteet.isEmpty()){
 			pizza.setMausteet(mausteet);
 		}
 		
 		double summa = pizza.getHinta();
-		
-		if(request.getParameterValues("taytteet") != null && !taytteet.isEmpty()){
+		if(request.getParameterValues("taytteet") != null || !taytteet.isEmpty()){
+			pizza.setTaytteet(taytteet);
 			summa = 6.00;
-			for(Tayte tayte : taytteet){
+			for(int x=0; x<taytteet.size(); x++){
 				summa += 1.00;
 			}
 		}
-		
+
 		pizza.setHinta(summa);
-		
+			
 		for (int i = 0; i < maara; i++) {
-			if(lisaaKoriin(pizza, request.getSession())){
-				String prefix = "";
-				if(maara > 1){ prefix += maara + "x "; }
-				request.getSession().setAttribute("notification", prefix + pizza.getNimi() + " lis‰ttiin koriin!" );
-			}else{
-				request.getSession().setAttribute("error", pizza.getNimi() + " ei voitu lis‰t‰..." );
+			@SuppressWarnings("unchecked")
+			Map<String, Pizza> ostoskori = (HashMap<String, Pizza>) request.getSession().getAttribute("ostoskori");
+			System.out.println(ostoskori);
+			if(ostoskori == null){
+				Map<String, Pizza> uusi_kori = new HashMap<String, Pizza>();
+				request.getSession(true).setAttribute("ostoskori", uusi_kori);
 			}
-		}
+			ostoskori.put(new Utils().generate(5), pizza);
+			String prefix = "";
+			if(maara > 1){ prefix += maara + "x "; }
+				request.getSession().setAttribute("notification", prefix + pizza.getNimi() + " lis‰ttiin koriin!" );
+			}
 		
 		response.sendRedirect("Menu");
 	}
@@ -129,34 +132,6 @@ public class LisaaKoriinServlet extends HttpServlet {
 		return taytteet;
 	}
 	
-	@SuppressWarnings("unchecked")
-	public boolean lisaaKoriin(Pizza pizza, HttpSession session){
-		if(pizza != null){
-			if(session.getAttribute("ostoskori") == null){
-				HashMap<String, ArrayList<Pizza>> ostoskori = new HashMap<>();				
-				ArrayList<Pizza> pizzat = new ArrayList<>();
-				pizzat.add(pizza);
-				ostoskori.put(pizza.getPizza_id(), pizzat);			
-				session.setAttribute("ostoskori", ostoskori);
-			} else {
-				HashMap<String, ArrayList<Pizza>> ostoskori = (HashMap<String, ArrayList<Pizza>>) session.getAttribute("ostoskori");
-				boolean match = false;
-				for(String id : ostoskori.keySet()){
-					if(id.equals(pizza.getPizza_id())){
-						ostoskori.get(id).add(pizza);
-						match = true;
-					}
-				}
-				if(!match){
-					ArrayList<Pizza> uusi_tyyppi = new ArrayList<>();
-					uusi_tyyppi.add(pizza);
-					ostoskori.put(pizza.getPizza_id(), uusi_tyyppi);
-				}
-				session.setAttribute("ostoskori", ostoskori);
-			}
-			return true;
-		}
-		return false;
-	}
+	
 	
 }

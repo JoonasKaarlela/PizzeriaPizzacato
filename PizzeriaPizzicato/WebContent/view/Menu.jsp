@@ -161,27 +161,7 @@
 						</c:when>
 					</c:choose>
 				</c:forEach>
-			
-				<div class="menuitemwrap">
-					<div class="menuitem">
-						<table>
-								<tr>
-										<td valign="middle">
-											<div class="pizzakuva">
-												<img src="pizza1.png" style="width: 150px; height: 125px;" />
-											</div>
-													<td valign="middle">
-														<div class="pizzainfo">
-															<div class="pizzanimi"> <h2> Fantasia </h2> </div>
-															<div class="pizzakuvaus"> <p>  Luo oma </p> </div>
-															<div class="pizzahinta"> <p> alk. 6€ </p> </div>
-															<div> <p> <a href="Fantasia"> Valitse </a> </p> </div>
-														</div>
-													</td>
-									</tr>
-						</table>
-					</div>
-				</div>
+
 
 				<div class="clear"></div>
 

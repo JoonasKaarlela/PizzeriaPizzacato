@@ -33,22 +33,13 @@ public class OstoskoriServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dp = request.getServletContext().getRequestDispatcher("/view/Ostoskori.jsp");
 
-		HashMap<String, ArrayList<Pizza>> pizzat = (HashMap<String, ArrayList<Pizza>>) request.getSession().getAttribute("ostoskori");
+		HashMap<String, Pizza> pizzat = (HashMap<String, Pizza>) request.getSession().getAttribute("ostoskori");
 		
 		try{
-		ArrayList<Pizza> test = new ArrayList<>();
-		for(String key : pizzat.keySet()){
-			for(Pizza pizza : pizzat.get(key)){
-				test.add(pizza);
-			}
-		}
-		System.out.println(test.size());
-		if(!test.isEmpty()){	
+		if(!pizzat.isEmpty()){	
 			double summa = 0;
-			for(String key : pizzat.keySet()){
-				for(Pizza pizza : pizzat.get(key)){
-					summa += pizza.getHinta();
-				}
+			for(String id : pizzat.keySet()){
+				summa += pizzat.get(id).getHinta();
 			}	
 			request.setAttribute("summa", String.format("%.2f", summa));
 		} else {

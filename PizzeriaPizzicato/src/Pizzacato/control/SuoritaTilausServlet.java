@@ -32,7 +32,7 @@ public class SuoritaTilausServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 			@SuppressWarnings("unchecked")
-			HashMap<String, ArrayList<Pizza>> pizzat = (HashMap<String, ArrayList<Pizza>>) request.getSession().getAttribute("ostoskori");
+			Map<String, Pizza> pizzat = (HashMap<String, Pizza>) request.getSession().getAttribute("ostoskori");
 			
 			// SUORITA TILAUS
 			TilausDAO tilausdao = new TilausDAO();

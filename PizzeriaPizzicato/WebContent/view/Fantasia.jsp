@@ -130,11 +130,11 @@
 		<form id='container' action='lisaaKoriin' method='post'>
 			
 			<div id='valitse_top'> 
-				<h1> Fantasia </h1>
+				<h1> ${pizza.getNimi()} </h1>
 			</div>
 			
 			<div id='valitse_left'>
-				<div> <img src="pizza1.png"/> </div>
+				<div> <img src="${pizza.getKuva()}"/> </div>
 			</div>
 			
 			<div  id='valitse_right'>
